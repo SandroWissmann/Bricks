@@ -25,7 +25,7 @@ target_link_libraries(bricks
 add_executable(test 
     test/NearlyEqual_test.cpp
     src/NearlyEqual.cpp
-    src/NearlyEqual.h
+    test/OperatorDegree_test.cpp
 )
 target_link_libraries(test 
     gtest_main 

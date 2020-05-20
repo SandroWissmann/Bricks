@@ -3,9 +3,9 @@
 
 namespace bricks {
 
-    struct Point {
-        double x{ 0.0};
-        double y{ 0.0};
-    };
-}
+struct Point {
+    double x{0.0};
+    double y{0.0};
+};
+} // namespace bricks
 #endif
