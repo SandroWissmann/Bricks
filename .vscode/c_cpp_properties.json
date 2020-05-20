@@ -4,13 +4,15 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/SDL2/**"
+                "/usr/include/SDL2/**",
+                "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include/**"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": false,
                 "path": [
                     "${workspaceFolder}/**",
                     "/usr/include/SDL2/**"
+                    /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include/**
                 ]
             },
             "defines": [],

@@ -8,8 +8,7 @@ namespace bricks {
     template <typename FloatingPointType>
 	bool nearlyEqual(FloatingPointType a, FloatingPointType b)
 	{
-		return nextLow(a) <= b
-			&& nextHight(a) >= b;
+		return nextLow(a) <= b && nextHight(a) >= b;
 	}
 
     template<> bool nearlyEqual<float>(float a, float b);
@@ -49,5 +48,4 @@ namespace bricks {
     template<> float nextHight<float>(float a);
     template<> double nextHight<double>(double a);
     template<> long double nextHight<long double>(long double a);
-
 } // namespace bricks

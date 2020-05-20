@@ -10,9 +10,9 @@ namespace bricks {
 	bool nearlyEqual(FloatingPointType a, FloatingPointType b, int factor);
 
     template <typename FloatingPointType>
-    double nextLow(FloatingPointType a);
+    FloatingPointType nextLow(FloatingPointType a);
 
     template <typename FloatingPointType>
-    double nextHight(FloatingPointType a);
+    FloatingPointType nextHight(FloatingPointType a);
 }
 #endif

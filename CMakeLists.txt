@@ -7,6 +7,8 @@ set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
 project(bricks)
 
+set(LIBRARY_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/lib")
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(SDL2 REQUIRED)
@@ -20,7 +22,11 @@ target_link_libraries(bricks
     ${SDL2_LIBRARIES}
 )
 
-add_executable(test test/test.cpp src/main.cpp)
+add_executable(test 
+    test/NearlyEqual_test.cpp
+    src/NearlyEqual.cpp
+    src/NearlyEqual.h
+)
 target_link_libraries(test 
     gtest_main 
 )
