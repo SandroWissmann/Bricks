@@ -5,7 +5,7 @@ add_definitions(-std=c++17)
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
-project(Bricks)
+project(bricks)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -14,9 +14,9 @@ include_directories(${SDL2_INCLUDE_DIRS} src)
 
 add_subdirectory(thirdparty/googletest)
 
-add_executable(Bricks src/main.cpp)
+add_executable(bricks src/main.cpp)
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
-target_link_libraries(Bricks 
+target_link_libraries(bricks 
     ${SDL2_LIBRARIES}
 )
 
