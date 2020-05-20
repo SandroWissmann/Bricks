@@ -8,7 +8,7 @@ namespace bricks {
 enum class Quadrant { I, II, III, IV };
 
 class GameObject {
-  public:
+public:
     GameObject(Point topLeft, double maxPositioX, double maxPositionY,
                double width, double height, double velocity, long double angle);
 
@@ -41,7 +41,7 @@ class GameObject {
     double maxPositionX() const;
     double maxPositionY() const;
 
-  private:
+private:
     Point mTopLeft;
     const double mMaxPositionX;
     const double mMaxPositionY;
