@@ -9,13 +9,13 @@ using namespace bricks;
 //     EXPECT_TRUE(bricks::nearlyEqual<double>(1.0, 1.0));
 // }
 
-
 class DerivedGameObject : public GameObject {
-    public:
+public:
     DerivedGameObject(Point topLeft, double maxPositionX, double maxPositionY,
-        double width, double height, double velocity, long double angle)
-        :GameObject(topLeft, maxPositionX, maxPositionY, width, height,
-        velocity, angle)
+                      double width, double height, double velocity,
+                      long double angle)
+        : GameObject(topLeft, maxPositionX, maxPositionY, width, height,
+                     velocity, angle)
     {
     }
 
@@ -26,52 +26,46 @@ class DerivedGameObject : public GameObject {
     DerivedGameObject &operator=(DerivedGameObject &&other) = default;
 };
 
-
 class GameObjectTest : public ::testing::Test {
-    protected:
+protected:
     DerivedGameObject obj{
-        Point{ 10.1, 20.2}, 
-        50.3,   // maxPositionX
-        70.4,   // maxPositionY
-        10.5,   // width
-        20.6,   // height
-        2.0,    // velocity
-        30.0_deg //angle
+        Point{10.1, 20.2},
+        50.3,    // maxPositionX
+        70.4,    // maxPositionY
+        10.5,    // width
+        20.6,    // height
+        2.0,     // velocity
+        30.0_deg // angle
     };
 };
 
-TEST_F(GameObjectTest, topLeft) {
+TEST_F(GameObjectTest, topLeft)
+{
     EXPECT_EQ(obj.topLeft().x, 10.1);
     EXPECT_EQ(obj.topLeft().y, 20.2);
 
     obj.setTopLeft(Point{20.3, 50.5});
 
     EXPECT_EQ(obj.topLeft().x, 20.3);
-    EXPECT_EQ(obj.topLeft().y, 50.5);       
+    EXPECT_EQ(obj.topLeft().y, 50.5);
 }
 
-TEST_F(GameObjectTest, bottomRight) {
+TEST_F(GameObjectTest, bottomRight)
+{
     EXPECT_EQ(obj.bottomRight().x, 10.1 + obj.width());
-    EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.height());    
+    EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.height());
 }
 
-TEST_F(GameObjectTest, width) {
-    EXPECT_EQ(obj.width(), 10.5);
-}
+TEST_F(GameObjectTest, width) { EXPECT_EQ(obj.width(), 10.5); }
 
-TEST_F(GameObjectTest, height) {
-    EXPECT_EQ(obj.height(), 20.6);
-}
+TEST_F(GameObjectTest, height) { EXPECT_EQ(obj.height(), 20.6); }
 
-TEST_F(GameObjectTest, maxPositionX) {
-    EXPECT_EQ(obj.maxPositionX(), 50.3);
-}
+TEST_F(GameObjectTest, maxPositionX) { EXPECT_EQ(obj.maxPositionX(), 50.3); }
 
-TEST_F(GameObjectTest, maxPositionY) {
-    EXPECT_EQ(obj.maxPositionY(), 70.4);
-}
+TEST_F(GameObjectTest, maxPositionY) { EXPECT_EQ(obj.maxPositionY(), 70.4); }
 
-TEST_F(GameObjectTest, velocity) {
+TEST_F(GameObjectTest, velocity)
+{
     EXPECT_EQ(obj.velocity(), 2.0);
 
     obj.setVelocity(5.3);
@@ -79,7 +73,8 @@ TEST_F(GameObjectTest, velocity) {
     EXPECT_EQ(obj.velocity(), 5.3);
 }
 
-TEST_F(GameObjectTest, angle) {
+TEST_F(GameObjectTest, angle)
+{
     EXPECT_EQ(obj.angle(), 30.0_deg);
 
     obj.setAngle(65.0_deg);
@@ -87,7 +82,8 @@ TEST_F(GameObjectTest, angle) {
     EXPECT_EQ(obj.angle(), 65.0_deg);
 }
 
-TEST_F(GameObjectTest, quadrantAngle) {
+TEST_F(GameObjectTest, quadrantAngle)
+{
     EXPECT_DOUBLE_EQ(obj.angle(), 30.0_deg);
     EXPECT_DOUBLE_EQ(obj.quadrantAngle(), 30.0_deg);
 
@@ -97,15 +93,17 @@ TEST_F(GameObjectTest, quadrantAngle) {
     EXPECT_DOUBLE_EQ(obj.quadrantAngle(), 60.0_deg);
 }
 
-TEST_F(GameObjectTest, quadrant) {
+TEST_F(GameObjectTest, quadrant)
+{
     EXPECT_EQ(obj.quadrant(), Quadrant::I);
 
     obj.setQuadrant(Quadrant::III);
 
-    EXPECT_EQ(obj.quadrant(), Quadrant::III); 
+    EXPECT_EQ(obj.quadrant(), Quadrant::III);
 }
 
-TEST(calcQuadrant, Expect_FALSE) {
+TEST(calcQuadrant, Expect_FALSE)
+{
     EXPECT_EQ(impl::calcQuadrant(0.0_deg), Quadrant::I);
     EXPECT_EQ(impl::calcQuadrant(45.0_deg), Quadrant::I);
     EXPECT_EQ(impl::calcQuadrant(90.0_deg), Quadrant::I);
@@ -120,14 +118,15 @@ TEST(calcQuadrant, Expect_FALSE) {
     EXPECT_EQ(impl::calcQuadrant(360.0_deg), Quadrant::IV);
 }
 
-
-TEST(isInQuadrantI, Expect_TRUE) {
+TEST(isInQuadrantI, Expect_TRUE)
+{
     EXPECT_TRUE(impl::isInQuadrantI(0.0_deg));
     EXPECT_TRUE(impl::isInQuadrantI(45.0_deg));
     EXPECT_TRUE(impl::isInQuadrantI(90.0_deg));
 }
 
-TEST(isInQuadrantI, Expect_FALSE) {
+TEST(isInQuadrantI, Expect_FALSE)
+{
     EXPECT_FALSE(impl::isInQuadrantI(90.1_deg));
     EXPECT_FALSE(impl::isInQuadrantI(135.0_deg));
     EXPECT_FALSE(impl::isInQuadrantI(180.0_deg));
@@ -139,13 +138,15 @@ TEST(isInQuadrantI, Expect_FALSE) {
     EXPECT_FALSE(impl::isInQuadrantI(360.0_deg));
 }
 
-TEST(isInQuadrantII, Expect_TRUE) {
+TEST(isInQuadrantII, Expect_TRUE)
+{
     EXPECT_TRUE(impl::isInQuadrantII(90.1_deg));
     EXPECT_TRUE(impl::isInQuadrantII(135.0_deg));
     EXPECT_TRUE(impl::isInQuadrantII(180.0_deg));
 }
 
-TEST(isInQuadrantII, Expect_FALSE) {
+TEST(isInQuadrantII, Expect_FALSE)
+{
     EXPECT_FALSE(impl::isInQuadrantII(0.0_deg));
     EXPECT_FALSE(impl::isInQuadrantII(45.0_deg));
     EXPECT_FALSE(impl::isInQuadrantII(90.0_deg));
@@ -157,13 +158,15 @@ TEST(isInQuadrantII, Expect_FALSE) {
     EXPECT_FALSE(impl::isInQuadrantII(360.0_deg));
 }
 
-TEST(isInQuadrantIII, Expect_TRUE) {
+TEST(isInQuadrantIII, Expect_TRUE)
+{
     EXPECT_TRUE(impl::isInQuadrantIII(180.1_deg));
     EXPECT_TRUE(impl::isInQuadrantIII(225.0_deg));
     EXPECT_TRUE(impl::isInQuadrantIII(270.0_deg));
 }
 
-TEST(isInQuadrantIII, Expect_FALSE) {
+TEST(isInQuadrantIII, Expect_FALSE)
+{
     EXPECT_FALSE(impl::isInQuadrantIII(0.0_deg));
     EXPECT_FALSE(impl::isInQuadrantIII(45.0_deg));
     EXPECT_FALSE(impl::isInQuadrantIII(90.0_deg));
@@ -175,13 +178,15 @@ TEST(isInQuadrantIII, Expect_FALSE) {
     EXPECT_FALSE(impl::isInQuadrantIII(360.0_deg));
 }
 
-TEST(isInQuadrantIV, Expect_TRUE) {
+TEST(isInQuadrantIV, Expect_TRUE)
+{
     EXPECT_TRUE(impl::isInQuadrantIV(270.1_deg));
     EXPECT_TRUE(impl::isInQuadrantIV(315.0_deg));
     EXPECT_TRUE(impl::isInQuadrantIV(360.0_deg));
 }
 
-TEST(isInQuadrantIV, Expect_FALSE) {
+TEST(isInQuadrantIV, Expect_FALSE)
+{
     EXPECT_FALSE(impl::isInQuadrantIV(0.0_deg));
     EXPECT_FALSE(impl::isInQuadrantIV(45.0_deg));
     EXPECT_FALSE(impl::isInQuadrantIV(90.0_deg));
@@ -193,7 +198,8 @@ TEST(isInQuadrantIV, Expect_FALSE) {
     EXPECT_FALSE(impl::isInQuadrantIV(270.0_deg));
 }
 
-TEST(calcAngleIfOver360, Expect_FALSE) {
+TEST(calcAngleIfOver360, Expect_FALSE)
+{
     EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(0.0_deg), 0.0_deg);
     EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(360.0_deg), 0.0_deg);
     EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(540.0_deg), 180.0_deg);

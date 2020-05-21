@@ -69,7 +69,7 @@ void GameObject::setQuadrantAngle(long double quadrantAngle)
     //     setAngle(quadrantAngle);
     // }
     // else {
-        mQuadrantAngle = quadrantAngle;
+    mQuadrantAngle = quadrantAngle;
     // }
 }
 
@@ -77,11 +77,11 @@ Quadrant GameObject::quadrant() const { return mQuadrant; }
 
 void GameObject::setQuadrant(Quadrant quadrant) { mQuadrant = quadrant; }
 
-namespace impl{
+namespace impl {
 
 Quadrant calcQuadrant(long double angle)
 {
-    assert(angle >=0.0 && angle <= 360.0);
+    assert(angle >= 0.0 && angle <= 360.0);
 
     if (isInQuadrantI(angle)) {
         return Quadrant::I;
@@ -135,6 +135,6 @@ long double calcAngleIfOver360(long double angle)
     return angle;
 }
 
-}
+} // namespace impl
 
 } // namespace bricks

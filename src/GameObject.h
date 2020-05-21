@@ -54,7 +54,7 @@ private:
     long double mQuadrantAngle;
 };
 
-namespace impl{
+namespace impl {
 
 Quadrant calcQuadrant(long double angle);
 
@@ -69,7 +69,7 @@ long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant);
 
 long double calcAngleIfOver360(long double angle);
 
-}
+} // namespace impl
 
 } // namespace bricks
 #endif
