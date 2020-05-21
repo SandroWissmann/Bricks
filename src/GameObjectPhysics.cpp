@@ -38,6 +38,43 @@ namespace bricks {
         return Point{p.x + traveldWay.x, p.y + traveldWay.y};
     }
 
+    double calcTraveldWay(double deltaTimeMS, double velocityInS)
+    {
+        return deltaTimeMS / 1000.0 * velocityInS;
+    }
+
+    Point calcDelta(double quadrantAngle, Quadrant quadrant, double sideC)
+    {
+        if (nearlyEqual(sideC, 0.0)) {
+            return Point{ 0,0 };
+        }
+
+        auto sideA = sin(quadrantAngle) * sideC;
+        auto sideB = cos(quadrantAngle) * sideC;
+
+        Point ret;
+        switch (quadrant)
+        {
+        case Quadrant::I:
+            ret.x = sideB;
+            ret.y = sideA;
+            break;
+        case Quadrant::II:
+            ret.x = -sideA;
+            ret.y = sideB;
+            break;
+        case Quadrant::III:
+            ret.x = -sideB;
+            ret.y = -sideA;
+            break;
+        case Quadrant::IV:
+            ret.x = sideA;
+            ret.y = -sideB;
+            break;
+        }
+        return ret;
+    }
+
 
     bool ifHitReflect(GameObject& a, const GameObject& b)
     {
@@ -353,43 +390,6 @@ namespace bricks {
     {
         obj.setQuadrant(Quadrant::IV);
         obj.setQuadrantAngle(mirror(obj.quadrantAngle()));
-    }
-
-    Point calcDelta(double quadrantAngle, Quadrant quadrant, double sideC)
-    {
-        if (nearlyEqual(sideC, 0.0)) {
-            return Point{ 0,0 };
-        }
-
-        auto sideA = sin(quadrantAngle) * sideC;
-        auto sideB = cos(quadrantAngle) * sideC;
-
-        Point ret;
-        switch (quadrant)
-        {
-        case Quadrant::I:
-            ret.x = sideB;
-            ret.y = sideA;
-            break;
-        case Quadrant::II:
-            ret.x = -sideA;
-            ret.y = sideB;
-            break;
-        case Quadrant::III:
-            ret.x = -sideB;
-            ret.y = -sideA;
-            break;
-        case Quadrant::IV:
-            ret.x = sideA;
-            ret.y = -sideB;
-            break;
-        }
-        return ret;
-    }
-
-    double calcTraveldWay(double deltaTimeMS, double velocityInS)
-    {
-        return deltaTimeMS / 1000.0 * velocityInS;
     }
 
     long double increaseAngle(long double quadrantAngle)

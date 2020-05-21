@@ -13,6 +13,8 @@ namespace bricks {
         const Point& p, double velocity, Quadrant quadrant,
         double quadrantAngle, double elapsedTimeInMS);
 
+    double calcTraveldWay(double deltaTimeMS, double velocityInS);
+    Point calcDelta(double quadrantAngle, Quadrant quadrant, double sideC);
 
     bool ifHitReflect(GameObject& a, const GameObject& b);
 
@@ -65,10 +67,6 @@ namespace bricks {
     void toQuadrantII(GameObject& obj);
     void toQuadrantIII(GameObject& obj);
     void toQuadrantIV(GameObject& obj);
-
-    Point calcDelta(double quadrantAngle, Quadrant quadrant, double sideC);
-
-    double calcTraveldWay(double deltaTimeMS, double velocityInS);
 
     long double increaseAngle(long double quadrantAngle);
 
