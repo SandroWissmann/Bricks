@@ -7,9 +7,9 @@ using namespace bricks;
 
 class DerivedGameObject : public GameObject {
 public:
-    DerivedGameObject(Point topLeft, MaxPositionX maxPositionX, MaxPositionY maxPositionY,
-                      Width width, Height height, Velocity velocity,
-                      Angle angle)
+    DerivedGameObject(Point topLeft, MaxPositionX maxPositionX,
+                      MaxPositionY maxPositionY, Width width, Height height,
+                      Velocity velocity, Angle angle)
         : GameObject(topLeft, maxPositionX, maxPositionY, width, height,
                      velocity, angle)
     {
@@ -25,14 +25,8 @@ public:
 class GameObjectTest : public ::testing::Test {
 protected:
     DerivedGameObject obj{
-        Point{10.1, 20.2},
-        MaxPositionX{50.3},    
-        MaxPositionY{70.4},    
-        Width{10.5},   
-        Height{20.6},    
-        Velocity{2.0},     
-        Angle{30.0_deg} 
-    };
+        Point{10.1, 20.2}, MaxPositionX{50.3}, MaxPositionY{70.4}, Width{10.5},
+        Height{20.6},      Velocity{2.0},      Angle{30.0_deg}};
 };
 
 TEST_F(GameObjectTest, topLeft)
@@ -49,16 +43,10 @@ TEST_F(GameObjectTest, topLeft)
 TEST(GameObjectTest_F, topLeftGetsClampedOnX)
 {
     DerivedGameObject obj{
-        Point{10.0, 20.0},
-        MaxPositionX{50.0},    
-        MaxPositionY{70.0},    
-        Width{10.0},   
-        Height{20.0},    
-        Velocity{0.0},     
-        Angle{0.0_deg} 
-    };
+        Point{10.0, 20.0}, MaxPositionX{50.0}, MaxPositionY{70.0}, Width{10.0},
+        Height{20.0},      Velocity{0.0},      Angle{0.0_deg}};
 
-    constexpr double maxPointX = 50.0 -10.0;
+    constexpr double maxPointX = 50.0 - 10.0;
     constexpr double maxPointY = 70.0 - 20.0;
 
     obj.setTopLeft(Point{maxPointX + 10, maxPointY + 10});

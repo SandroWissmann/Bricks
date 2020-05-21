@@ -10,56 +10,44 @@ enum class Quadrant { I, II, III, IV };
 struct MaxPositionX {
     double value;
 
-    double operator()() const {
-        return value;
-    }
+    double operator()() const { return value; }
 };
 
 struct MaxPositionY {
     double value;
 
-    double operator()() const {
-        return value;
-    }
+    double operator()() const { return value; }
 };
 
 struct Width {
     double value;
 
-    double operator()() const {
-        return value;
-    }
+    double operator()() const { return value; }
 };
 
 struct Height {
     double value;
 
-    double operator()() const {
-        return value;
-    }
+    double operator()() const { return value; }
 };
 
 struct Velocity {
     double value;
 
-    double operator()() const {
-        return value;
-    }
+    double operator()() const { return value; }
 };
 
 struct Angle {
     long double value;
 
-    long double operator()() const {
-        return value;
-    }
+    long double operator()() const { return value; }
 };
-
 
 class GameObject {
 public:
-    GameObject(Point topLeft, MaxPositionX maxPositionX, MaxPositionY maxPositionY,
-               Width width, Height height, Velocity velocity, Angle angle);
+    GameObject(Point topLeft, MaxPositionX maxPositionX,
+               MaxPositionY maxPositionY, Width width, Height height,
+               Velocity velocity, Angle angle);
 
     virtual ~GameObject() = 0;
 

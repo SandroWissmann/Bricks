@@ -2,13 +2,14 @@
 
 #include "OperatorDegree.h"
 
-#include <cassert>
 #include <algorithm>
+#include <cassert>
 
 namespace bricks {
 
-GameObject::GameObject(Point topLeft, MaxPositionX maxPositionX, MaxPositionY maxPositionY,
-               Width width, Height height, Velocity velocity, Angle angle)
+GameObject::GameObject(Point topLeft, MaxPositionX maxPositionX,
+                       MaxPositionY maxPositionY, Width width, Height height,
+                       Velocity velocity, Angle angle)
     : mTopLeft{topLeft}, mMaxPositionX(maxPositionX()),
       mMaxPositionY(maxPositionY()), mWidth{width()}, mHeight{height()},
       mVelocity{velocity()}, mQuadrant{impl::calcQuadrant(angle())},
@@ -28,12 +29,12 @@ GameObject::~GameObject() = default;
 
 Point GameObject::topLeft() const { return mTopLeft; }
 
-void GameObject::setTopLeft(Point topLeft) 
+void GameObject::setTopLeft(Point topLeft)
 {
-    topLeft.x = std::clamp(0.0, mWidth, mMaxPositionX - mWidth);
-    topLeft.y = std::clamp(0.0, mHeight, mMaxPositionY - mHeight);
+    topLeft.x = std::clamp(topLeft.x, 0.0, mMaxPositionX - mWidth);
+    topLeft.y = std::clamp(topLeft.y, 0.0, mMaxPositionY - mHeight);
 
-    mTopLeft = topLeft; 
+    mTopLeft = topLeft;
 }
 
 Point GameObject::bottomRight() const
