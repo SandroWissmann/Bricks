@@ -9,7 +9,7 @@ enum class Quadrant { I, II, III, IV };
 
 class GameObject {
 public:
-    GameObject(Point topLeft, double maxPositioX, double maxPositionY,
+    GameObject(Point topLeft, double maxPositionX, double maxPositionY,
                double width, double height, double velocity, long double angle);
 
     virtual ~GameObject() = 0;
@@ -23,6 +23,12 @@ public:
     void setTopLeft(Point topLeft);
     Point bottomRight() const;
 
+    double maxPositionX() const;
+    double maxPositionY() const;
+
+    double width() const;
+    double height() const;
+
     double velocity() const;
     void setVelocity(double velocity);
 
@@ -34,12 +40,6 @@ public:
 
     Quadrant quadrant() const;
     void setQuadrant(Quadrant quadrant);
-
-    double width() const;
-    double height() const;
-
-    double maxPositionX() const;
-    double maxPositionY() const;
 
 private:
     Point mTopLeft;
@@ -54,18 +54,22 @@ private:
     long double mQuadrantAngle;
 };
 
+namespace impl{
+
+Quadrant calcQuadrant(long double angle);
+
 bool isInQuadrantI(long double angle);
 bool isInQuadrantII(long double angle);
 bool isInQuadrantIII(long double angle);
 bool isInQuadrantIV(long double angle);
 
-Quadrant calcQuadrant(long double angle);
-
 long double angleToQuadrantAngle(long double angle, Quadrant quadrant);
 
-long double qudrantAngleToAngle(long double quadrantAngle, Quadrant quadrant);
+long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant);
 
 long double calcAngleIfOver360(long double angle);
+
+}
 
 } // namespace bricks
 #endif

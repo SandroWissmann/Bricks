@@ -11,8 +11,8 @@
                 "limitSymbolsToIncludedHeaders": false,
                 "path": [
                     "${workspaceFolder}/**",
-                    "/usr/include/SDL2/**"
-                    /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include/**
+                    "/usr/include/SDL2/**",
+                    "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include/**"
                 ]
             },
             "defines": [],

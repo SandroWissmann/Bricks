@@ -7,7 +7,8 @@ namespace bricks {
 
 constexpr long double pi() { return std::atan(1) * 4; }
 
-constexpr long double operator"" _deg(long double deg) {
+constexpr long double operator"" _deg(long double deg)
+{
     return deg * pi() / 180.0L;
 }
 } // namespace bricks

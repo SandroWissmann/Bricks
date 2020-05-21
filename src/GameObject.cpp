@@ -2,15 +2,27 @@
 
 #include "OperatorDegree.h"
 
+#include <cassert>
+
 namespace bricks {
 
-GameObject::GameObject(Point topLeft, double maxPositioX, double maxPositionY,
+GameObject::GameObject(Point topLeft, double maxPositionX, double maxPositionY,
                        double width, double height, double velocity,
                        long double angle)
-    : mTopLeft{topLeft}, mMaxPositionX(maxPositioX),
+    : mTopLeft{topLeft}, mMaxPositionX(maxPositionX),
       mMaxPositionY(maxPositionY), mWidth{width}, mHeight{height},
-      mVelocity{velocity}, mQuadrant{calcQuadrant(angle)},
-      mQuadrantAngle{angleToQuadrantAngle(angle, mQuadrant)} {}
+      mVelocity{velocity}, mQuadrant{impl::calcQuadrant(angle)},
+      mQuadrantAngle{impl::angleToQuadrantAngle(angle, mQuadrant)}
+{
+    assert(mTopLeft.x > 0);
+    assert(mTopLeft.y > 0);
+
+    assert(maxPositionX > 0);
+    assert(maxPositionY > 0);
+
+    assert(width > 0);
+    assert(height > 0);
+}
 
 GameObject::~GameObject() = default;
 
@@ -18,63 +30,59 @@ Point GameObject::topLeft() const { return mTopLeft; }
 
 void GameObject::setTopLeft(Point topLeft) { mTopLeft = topLeft; }
 
-Point GameObject::bottomRight() const {
+Point GameObject::bottomRight() const
+{
     return Point{mTopLeft.x + mWidth, mTopLeft.y + mHeight};
 }
+
+double GameObject::maxPositionX() const { return mMaxPositionX; }
+
+double GameObject::maxPositionY() const { return mMaxPositionY; }
+
+double GameObject::width() const { return mWidth; }
+
+double GameObject::height() const { return mHeight; }
 
 double GameObject::velocity() const { return mVelocity; }
 
 void GameObject::setVelocity(double velocity) { mVelocity = velocity; }
 
-long double GameObject::angle() const {
-    return qudrantAngleToAngle(mQuadrantAngle, mQuadrant);
+long double GameObject::angle() const
+{
+    return impl::quadrantAngleToAngle(mQuadrantAngle, mQuadrant);
 }
 
-void GameObject::setAngle(long double angle) {
-    angle = calcAngleIfOver360(angle);
-    mQuadrant = calcQuadrant(angle);
-    mQuadrantAngle = angleToQuadrantAngle(angle, mQuadrant);
+void GameObject::setAngle(long double angle)
+{
+    angle = impl::calcAngleIfOver360(angle);
+    mQuadrant = impl::calcQuadrant(angle);
+    mQuadrantAngle = impl::angleToQuadrantAngle(angle, mQuadrant);
 }
 
 long double GameObject::quadrantAngle() const { return mQuadrantAngle; }
 
-void GameObject::setQuadrantAngle(long double quadrantAngle) {
-    if (quadrantAngle > 90.0_deg) {
-        setAngle(quadrantAngle);
-    } else {
+void GameObject::setQuadrantAngle(long double quadrantAngle)
+{
+    assert(quadrantAngle >= 0.0 && quadrantAngle <= 90.0);
+
+    // if (quadrantAngle > 90.0_deg) {
+    //     setAngle(quadrantAngle);
+    // }
+    // else {
         mQuadrantAngle = quadrantAngle;
-    }
+    // }
 }
 
 Quadrant GameObject::quadrant() const { return mQuadrant; }
 
 void GameObject::setQuadrant(Quadrant quadrant) { mQuadrant = quadrant; }
 
-double GameObject::width() const { return mWidth; }
+namespace impl{
 
-double GameObject::height() const { return mHeight; }
+Quadrant calcQuadrant(long double angle)
+{
+    assert(angle >=0.0 && angle <= 360.0);
 
-double GameObject::maxPositionX() const { return mMaxPositionX; }
-
-double GameObject::maxPositionY() const { return mMaxPositionY; }
-
-bool isInQuadrantI(long double angle) {
-    return angle >= 0.0_deg && angle <= 90.0_deg;
-}
-
-bool isInQuadrantII(long double angle) {
-    return angle > 90.0_deg && angle <= 180.0_deg;
-}
-
-bool isInQuadrantIII(long double angle) {
-    return angle > 180.0_deg && angle <= 270.0_deg;
-}
-
-bool isInQuadrantIV(long double angle) {
-    return angle > 270.0_deg && angle <= 360.0_deg;
-}
-
-Quadrant calcQuadrant(long double angle) {
     if (isInQuadrantI(angle)) {
         return Quadrant::I;
     }
@@ -87,19 +95,46 @@ Quadrant calcQuadrant(long double angle) {
     return Quadrant::IV;
 }
 
-long double angleToQuadrantAngle(long double angle, Quadrant quadrant) {
+bool isInQuadrantI(long double angle)
+{
+    return angle >= 0.0_deg && angle <= 90.0_deg;
+}
+
+bool isInQuadrantII(long double angle)
+{
+    return angle > 90.0_deg && angle <= 180.0_deg;
+}
+
+bool isInQuadrantIII(long double angle)
+{
+    return angle > 180.0_deg && angle <= 270.0_deg;
+}
+
+bool isInQuadrantIV(long double angle)
+{
+    return angle > 270.0_deg && angle <= 360.0_deg;
+}
+
+long double angleToQuadrantAngle(long double angle, Quadrant quadrant)
+{
     return angle - 90.0_deg * static_cast<int>(quadrant);
 }
 
-long double qudrantAngleToAngle(long double quadrantAngle, Quadrant quadrant) {
+long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant)
+{
     return quadrantAngle + 90.0_deg * static_cast<int>(quadrant);
 }
 
-long double calcAngleIfOver360(long double angle) {
+long double calcAngleIfOver360(long double angle)
+{
+    assert(angle > 0);
+
     while (angle > 360.0_deg) {
         angle -= 360.0_deg;
     }
     return angle;
+}
+
 }
 
 } // namespace bricks

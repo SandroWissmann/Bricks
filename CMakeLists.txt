@@ -26,6 +26,8 @@ add_executable(test
     test/NearlyEqual_test.cpp
     src/NearlyEqual.cpp
     test/OperatorDegree_test.cpp
+    test/GameObject_test.cpp
+    src/GameObject.cpp
 )
 target_link_libraries(test 
     gtest_main 
