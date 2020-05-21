@@ -3,6 +3,7 @@
 #include "OperatorDegree.h"
 
 #include <cassert>
+#include <algorithm>
 
 namespace bricks {
 
@@ -28,7 +29,13 @@ GameObject::~GameObject() = default;
 
 Point GameObject::topLeft() const { return mTopLeft; }
 
-void GameObject::setTopLeft(Point topLeft) { mTopLeft = topLeft; }
+void GameObject::setTopLeft(Point topLeft) 
+{
+    topLeft.x = std::clamp(topLeft.x + mWidth, mWidth, mMaxPositionX) - mWidth;
+    topLeft.y = std::clamp(topLeft.y + mHeight, mHeight, mMaxPositionY) - mHeight;
+
+    mTopLeft = topLeft; 
+}
 
 Point GameObject::bottomRight() const
 {

@@ -50,6 +50,10 @@ TEST_F(GameObjectTest, topLeft)
     EXPECT_EQ(obj.topLeft().y, 50.5);
 }
 
+TEST_F(GameObjectTest, topLeftGetsClampedOnX)
+{
+}
+
 TEST_F(GameObjectTest, bottomRight)
 {
     EXPECT_EQ(obj.bottomRight().x, 10.1 + obj.width());
