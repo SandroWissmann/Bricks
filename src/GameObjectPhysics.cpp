@@ -4,6 +4,7 @@
 #include "NearlyEqual.h"
 #include "OperatorDegree.h"
 #include "Point.h"
+#include "Angle.h"
 
 #include <algorithm>
 #include <random>
@@ -15,22 +16,21 @@ void move(GameObject &a, double elapsedTimeInMS, double gravity)
     auto p = a.topLeft();
 
     if (a.velocity() != 0.0) {
-        p = calcNewPosition(a.topLeft(), a.velocity(), a.quadrant(),
-                            a.quadrantAngle(), elapsedTimeInMS);
+        p = calcNewPosition(a.topLeft(), a.velocity(), a.angle(), elapsedTimeInMS);
     }
 
     if (gravity != 0.0) {
-        p = calcNewPosition(p, gravity, Quadrant::I, 90.0_deg, elapsedTimeInMS);
+        p = calcNewPosition(p, gravity, Angle{90.0_deg}, elapsedTimeInMS);
     }
 
     a.setTopLeft(p);
 }
 
-Point calcNewPosition(const Point &p, double velocity, Quadrant quadrant,
-                      double quadrantAngle, double elapsedTimeInMS)
+Point calcNewPosition(const Point &p, double velocity, Angle angle, 
+    double elapsedTimeInMS)
 {
     auto distance = calcTraveldWay(elapsedTimeInMS, velocity);
-    auto traveldWay = calcDelta(quadrantAngle, quadrant, distance);
+    auto traveldWay = calcDelta(angle, distance);
 
     return Point{p.x + traveldWay.x, p.y + traveldWay.y};
 }
@@ -40,17 +40,17 @@ double calcTraveldWay(double deltaTimeMS, double velocityInS)
     return deltaTimeMS / 1000.0 * velocityInS;
 }
 
-Point calcDelta(double quadrantAngle, Quadrant quadrant, double sideC)
+Point calcDelta(Angle angle, double sideC)
 {
     if (nearlyEqual(sideC, 0.0)) {
         return Point{0, 0};
     }
 
-    auto sideA = sin(quadrantAngle) * sideC;
-    auto sideB = cos(quadrantAngle) * sideC;
+    auto sideA = sin(angle.quadrantAngle()) * sideC;
+    auto sideB = cos(angle.quadrantAngle()) * sideC;
 
     Point ret;
-    switch (quadrant) {
+    switch (angle.quadrant()) {
     case Quadrant::I:
         ret.x = sideB;
         ret.y = sideA;
@@ -73,7 +73,7 @@ Point calcDelta(double quadrantAngle, Quadrant quadrant, double sideC)
 
 bool ifHitReflect(GameObject &a, const GameObject &b)
 {
-    auto oldQuadrant = a.quadrant();
+    auto oldQuadrant = a.angle().quadrant();
 
     switch (oldQuadrant) {
     case Quadrant::I:
@@ -90,179 +90,172 @@ bool ifHitReflect(GameObject &a, const GameObject &b)
         break;
     }
 
-    return a.quadrant() != oldQuadrant;
+    return a.angle().quadrant() != oldQuadrant;
 }
 
 void ifHitReflectFromQuadrantI(GameObject &a, const GameObject &b)
 {
     if (interectsWithBottomY(a, b)) {
-        ifIntersectsWithXreflectToQuadrantIV(a, b);
+        bool reflected = true;
+        if (isInsideWithX(a, b)) {
+            reflectHorizontal(a);
+        }
+        else if (intersectsFromRigthWithX(a, b)) {
+            reflectHorizontalIncreased(a);
+        }
+        else if (intersectsFromLeftWithX(a, b)) {
+            reflectHorizontalIncreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithBottomY(a, b);
+        }
     }
     else if (interectsWithRightX(a, b)) {
-        ifIntersectsWithYreflectToQuadrantII(a, b);
+        bool reflected = true;
+        if (isInsideWithY(a, b)) {
+            reflectVertical(a);
+        }
+        else if (intersectsFromTopWithY(a, b)) {  
+            reflectVerticalIncreased(a);
+        }
+        else if (intersectsFromBottomWithY(a, b)) {  
+            reflectVerticalIncreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithRightX(a, b);          
+        }
     }
 }
 
 void ifHitReflectFromQuadrantII(GameObject &a, const GameObject &b)
 {
-    if (interectsWithLeftX(a, b)) {
-        ifIntersectsWithYreflectToQuadrantI(a, b);
+    if (interectsWithBottomY(a, b)) {
+        bool reflected = true;
+        if (isInsideWithX(a, b)) {
+            reflectHorizontal(a);
+        }
+        else if (intersectsFromRigthWithX(a, b)) {
+            reflectHorizontalDecreased(a);
+        }
+        else if (intersectsFromLeftWithX(a, b)) {
+            reflectHorizontalDecreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithBottomY(a, b);           
+        }
     }
-    else if (interectsWithBottomY(a, b)) {
-        ifIntersectsWithXreflectToQuadrantIII(a, b);
+    else if (interectsWithLeftX(a, b)) {
+        bool reflected = true;
+        if (isInsideWithY(a, b)) {
+            reflectVertical(a);
+        }
+        else if (intersectsFromTopWithY(a, b)) {
+            reflectVerticalDecreased(a);
+        }
+        else if (intersectsFromBottomWithY(a, b)) {
+            reflectVerticalDecreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithLeftX(a, b);           
+        }
     }
 }
 
 void ifHitReflectFromQuadrantIII(GameObject &a, const GameObject &b)
 {
-    if (interectsWithLeftX(a, b)) {
-        ifIntersectsWithYreflectToQuadrantIV(a, b);
+    if (interectsWithTopY(a, b)) {
+        bool reflected = true;       
+        if (isInsideWithX(a, b)) {
+            reflectHorizontal(a);
+        }
+        else if (intersectsFromRigthWithX(a, b)) {
+            reflectHorizontalIncreased(a);
+        }
+        else if (intersectsFromLeftWithX(a, b)) {
+            reflectHorizontalIncreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithTopY(a, b);            
+        }
     }
-    else if (interectsWithTopY(a, b)) {
-        ifIntersectsWithXreflectToQuadrantII(a, b);
+    else if (interectsWithLeftX(a, b)) {
+        bool reflected = true;
+        if (isInsideWithY(a, b)) {
+            reflectVertical(a);
+        }
+        else if (intersectsFromTopWithY(a, b)) {  
+            reflectVerticalIncreased(a);
+        }
+        else if (intersectsFromBottomWithY(a, b)) {  
+            reflectVerticalIncreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithLeftX(a, b);            
+        }
     }
 }
 
 void ifHitReflectFromQuadrantIV(GameObject &a, const GameObject &b)
 {
-    if (interectsWithRightX(a, b)) {
-        ifIntersectsWithYreflectToQuadrantIII(a, b);
+    if (interectsWithTopY(a, b)) {
+        bool reflected = true;
+        if (isInsideWithX(a, b)) {
+            reflectHorizontal(a);
+        }
+        else if (intersectsFromRigthWithX(a, b)) {
+            reflectHorizontalDecreased(a);
+        }
+        else if (intersectsFromLeftWithX(a, b)) {
+            reflectHorizontalDecreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithTopY(a, b);           
+        }
     }
-    else if (interectsWithTopY(a, b)) {
-        ifIntersectsWithXreflectToQuadrantI(a, b);
+    else if (interectsWithRightX(a, b)) {
+        bool reflected = true;
+        if (isInsideWithY(a, b)) {
+            reflectVertical(a);
+        }
+        else if (intersectsFromTopWithY(a, b)) {
+            reflectVerticalDecreased(a);
+        }
+        else if (intersectsFromBottomWithY(a, b)) {
+            reflectVerticalDecreased(a);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithRightX(a, b);            
+        }
     }
-}
-
-void ifIntersectsWithXreflectToQuadrantIV(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithX(a, b)) {
-        toQuadrantIV(a);
-    }
-    else if (intersectsFromRigthWithX(a, b) || intersectsFromLeftWithX(a, b)) {
-        toQuadrantIV(a);
-        a.setQuadrantAngle(increaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithBottomY(a, b);
-}
-
-void ifIntersectsWithYreflectToQuadrantII(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithY(a, b)) {
-        toQuadrantII(a);
-    }
-    else if (intersectsFromTopWithY(a, b) || intersectsFromBottomWithY(a, b)) {
-        toQuadrantII(a);
-        a.setQuadrantAngle(increaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithRightX(a, b);
-}
-
-void ifIntersectsWithXreflectToQuadrantIII(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithX(a, b)) {
-        toQuadrantIII(a);
-    }
-    else if (intersectsFromRigthWithX(a, b) || intersectsFromLeftWithX(a, b)) {
-        toQuadrantIII(a);
-        a.setQuadrantAngle(decreaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithBottomY(a, b);
-}
-
-void ifIntersectsWithYreflectToQuadrantI(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithY(a, b)) {
-        toQuadrantI(a);
-    }
-    else if (intersectsFromTopWithY(a, b) || intersectsFromBottomWithY(a, b)) {
-        toQuadrantI(a);
-        a.setQuadrantAngle(decreaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithLeftX(a, b);
-}
-
-void ifIntersectsWithXreflectToQuadrantII(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithX(a, b)) {
-        toQuadrantII(a);
-    }
-    else if (intersectsFromRigthWithX(a, b) || intersectsFromLeftWithX(a, b)) {
-        toQuadrantII(a);
-        a.setQuadrantAngle(increaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithTopY(a, b);
-}
-
-void ifIntersectsWithYreflectToQuadrantIV(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithY(a, b)) {
-        toQuadrantIV(a);
-    }
-    else if (intersectsFromTopWithY(a, b) || intersectsFromBottomWithY(a, b)) {
-        toQuadrantIV(a);
-        a.setQuadrantAngle(increaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithLeftX(a, b);
-}
-
-void ifIntersectsWithXreflectToQuadrantI(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithX(a, b)) {
-        toQuadrantI(a);
-    }
-    else if (intersectsFromRigthWithX(a, b) || intersectsFromLeftWithX(a, b)) {
-        toQuadrantI(a);
-        a.setQuadrantAngle(decreaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithTopY(a, b);
-}
-
-void ifIntersectsWithYreflectToQuadrantIII(GameObject &a, const GameObject &b)
-{
-    if (isInsideWithY(a, b)) {
-        toQuadrantIII(a);
-    }
-    else if (intersectsFromTopWithY(a, b) || intersectsFromBottomWithY(a, b)) {
-        toQuadrantIII(a);
-        a.setQuadrantAngle(decreaseAngle(a.quadrantAngle()));
-    }
-    else {
-        return;
-    }
-    putBeforeIntersectsWithRightX(a, b);
 }
 
 bool interectsWithRightX(const GameObject &a, const GameObject &b)
 {
     return a.bottomRight().x >= b.topLeft().x && a.topLeft().x < b.topLeft().x;
-}
-
-void putBeforeIntersectsWithRightX(GameObject &a, const GameObject &b)
-{
-    Point p = a.topLeft();
-    p.x = b.topLeft().x - a.width();
-    a.setTopLeft(p);
 }
 
 bool interectsWithLeftX(const GameObject &a, const GameObject &b)
@@ -271,36 +264,15 @@ bool interectsWithLeftX(const GameObject &a, const GameObject &b)
            a.bottomRight().x > b.bottomRight().x;
 }
 
-void putBeforeIntersectsWithLeftX(GameObject &a, const GameObject &b)
-{
-    Point p = a.topLeft();
-    p.x = b.bottomRight().x;
-    a.setTopLeft(p);
-}
-
 bool interectsWithBottomY(const GameObject &a, const GameObject &b)
 {
     return a.bottomRight().y >= b.topLeft().y && a.topLeft().y < b.topLeft().y;
-}
-
-void putBeforeIntersectsWithBottomY(GameObject &a, const GameObject &b)
-{
-    Point p = a.topLeft();
-    p.y = b.topLeft().y - a.height();
-    a.setTopLeft(p);
 }
 
 bool interectsWithTopY(const GameObject &a, const GameObject &b)
 {
     return a.topLeft().y <= b.bottomRight().y &&
            a.bottomRight().y > b.bottomRight().y;
-}
-
-void putBeforeIntersectsWithTopY(GameObject &a, const GameObject &b)
-{
-    Point p = a.topLeft();
-    p.y = b.bottomRight().y;
-    a.setTopLeft(p);
 }
 
 bool isInsideWithY(const GameObject &a, const GameObject &b)
@@ -343,28 +315,78 @@ bool intersectsFromBottomWithY(const GameObject &a, const GameObject &b)
            a.bottomRight().y > b.bottomRight().y;
 }
 
-void toQuadrantI(GameObject &obj)
+void reflectHorizontal(GameObject &a)
 {
-    obj.setQuadrant(Quadrant::I);
-    obj.setQuadrantAngle(mirror(obj.quadrantAngle()));
+    auto angle = a.angle();
+    angle.mirrorHorizontal();
+    a.setAngle(angle);
 }
 
-void toQuadrantII(GameObject &obj)
+void reflectHorizontalIncreased(GameObject &a)
 {
-    obj.setQuadrant(Quadrant::II);
-    obj.setQuadrantAngle(mirror(obj.quadrantAngle()));
+    auto angle = a.angle();
+    angle.mirrorHorizontal();
+    angle.setQuadrantAngle(increaseAngle(angle.quadrantAngle()));
+    a.setAngle(angle);
 }
 
-void toQuadrantIII(GameObject &obj)
+void reflectHorizontalDecreased(GameObject &a)
 {
-    obj.setQuadrant(Quadrant::III);
-    obj.setQuadrantAngle(mirror(obj.quadrantAngle()));
+    auto angle = a.angle();
+    angle.mirrorHorizontal();
+    angle.setQuadrantAngle(decreaseAngle(angle.quadrantAngle()));
+    a.setAngle(angle);
 }
 
-void toQuadrantIV(GameObject &obj)
+void reflectVertical(GameObject &a)
 {
-    obj.setQuadrant(Quadrant::IV);
-    obj.setQuadrantAngle(mirror(obj.quadrantAngle()));
+    auto angle = a.angle();
+    angle.mirrorVertical();
+    a.setAngle(angle);
+}
+
+void reflectVerticalIncreased(GameObject &a)
+{
+    auto angle = a.angle();
+    angle.mirrorVertical();
+    angle.setQuadrantAngle(increaseAngle(angle.quadrantAngle()));
+    a.setAngle(angle);
+}
+
+void reflectVerticalDecreased(GameObject &a)
+{
+    auto angle = a.angle();
+    angle.mirrorVertical();
+    angle.setQuadrantAngle(decreaseAngle(angle.quadrantAngle()));
+    a.setAngle(angle);
+}
+
+void putBeforeIntersectsWithRightX(GameObject &a, const GameObject &b)
+{
+    Point p = a.topLeft();
+    p.x = b.topLeft().x - a.width();
+    a.setTopLeft(p);
+}
+
+void putBeforeIntersectsWithLeftX(GameObject &a, const GameObject &b)
+{
+    Point p = a.topLeft();
+    p.x = b.bottomRight().x;
+    a.setTopLeft(p);
+}
+
+void putBeforeIntersectsWithBottomY(GameObject &a, const GameObject &b)
+{
+    Point p = a.topLeft();
+    p.y = b.topLeft().y - a.height();
+    a.setTopLeft(p);
+}
+
+void putBeforeIntersectsWithTopY(GameObject &a, const GameObject &b)
+{
+    Point p = a.topLeft();
+    p.y = b.bottomRight().y;
+    a.setTopLeft(p);
 }
 
 long double increaseAngle(long double quadrantAngle)
@@ -377,11 +399,6 @@ long double increaseAngle(long double quadrantAngle)
 long double decreaseAngle(long double quadrantAngle)
 {
     return quadrantAngle * random(0.5L, 1.0L);
-}
-
-long double mirror(long double quadrantAngle)
-{
-    return 90.0_deg - quadrantAngle;
 }
 
 long double random(long double min, long double max)

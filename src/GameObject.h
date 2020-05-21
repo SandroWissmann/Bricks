@@ -1,11 +1,10 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include "Angle.h"
 #include "Point.h"
 
 namespace bricks {
-
-enum class Quadrant { I, II, III, IV };
 
 struct MaxPositionX {
     double value;
@@ -37,12 +36,6 @@ struct Velocity {
     double operator()() const { return value; }
 };
 
-struct Angle {
-    long double value;
-
-    long double operator()() const { return value; }
-};
-
 class GameObject {
 public:
     GameObject(Point topLeft, MaxPositionX maxPositionX,
@@ -69,14 +62,8 @@ public:
     double velocity() const;
     void setVelocity(double velocity);
 
-    long double angle() const;
-    void setAngle(long double angle);
-
-    long double quadrantAngle() const;
-    void setQuadrantAngle(long double quadrantAngle);
-
-    Quadrant quadrant() const;
-    void setQuadrant(Quadrant quadrant);
+    Angle angle() const;
+    void setAngle(Angle angle);
 
 private:
     Point mTopLeft;
@@ -87,26 +74,9 @@ private:
     const double mHeight;
 
     double mVelocity;
-    Quadrant mQuadrant;
-    long double mQuadrantAngle;
+
+    Angle mAngle;
 };
-
-namespace impl {
-
-Quadrant calcQuadrant(long double angle);
-
-bool isInQuadrantI(long double angle);
-bool isInQuadrantII(long double angle);
-bool isInQuadrantIII(long double angle);
-bool isInQuadrantIV(long double angle);
-
-long double angleToQuadrantAngle(long double angle, Quadrant quadrant);
-
-long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant);
-
-long double calcAngleIfOver360(long double angle);
-
-} // namespace impl
 
 } // namespace bricks
 #endif

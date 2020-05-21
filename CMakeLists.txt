@@ -23,14 +23,15 @@ target_link_libraries(bricks
 )
 
 add_executable(test 
-    test/NearlyEqual_test.cpp
-    src/NearlyEqual.cpp
-    test/OperatorDegree_test.cpp
-
+    test/Angle_test.cpp
+    src/Angle.cpp
     test/GameObject_test.cpp
     src/GameObject.cpp
     test/GameObjectPhysics_test.cpp
     src/GameObjectPhysics.cpp
+    test/NearlyEqual_test.cpp
+    src/NearlyEqual.cpp
+    test/OperatorDegree_test.cpp
 )
 target_link_libraries(test 
     gtest_main 

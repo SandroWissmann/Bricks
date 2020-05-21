@@ -41,9 +41,6 @@ TEST(move, newPositionCorrect_angle0)
 
     EXPECT_EQ(obj.topLeft().x, oldObj.topLeft().x + oldObj.velocity());
     EXPECT_EQ(obj.topLeft().y, oldObj.topLeft().y);
-
-    EXPECT_DOUBLE_EQ(obj.velocity(), oldObj.velocity());
-    EXPECT_DOUBLE_EQ(obj.angle(), oldObj.angle());
 }
 
 TEST(move, newPositionCorrect_angle90)
@@ -91,7 +88,7 @@ TEST(move, newPositionCorrect_angle270)
     DerivedGameObject obj{Point{10.0, 10.0},    MaxPositionX{1000.0},
                           MaxPositionY{1000.0}, Width{1.0},
                           Height{1.0},          Velocity{2.0},
-                          Angle{2700.0_deg}};
+                          Angle{270.0_deg}};
 
     DerivedGameObject oldObj = obj;
 
