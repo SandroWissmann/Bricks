@@ -30,8 +30,8 @@ Point GameObject::topLeft() const { return mTopLeft; }
 
 void GameObject::setTopLeft(Point topLeft) 
 {
-    topLeft.x = std::clamp(topLeft.x + mWidth, mWidth, mMaxPositionX) - mWidth;
-    topLeft.y = std::clamp(topLeft.y + mHeight, mHeight, mMaxPositionY) - mHeight;
+    topLeft.x = std::clamp(0.0, mWidth, mMaxPositionX - mWidth);
+    topLeft.y = std::clamp(0.0, mHeight, mMaxPositionY - mHeight);
 
     mTopLeft = topLeft; 
 }
@@ -133,7 +133,7 @@ long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant)
 
 long double calcAngleIfOver360(long double angle)
 {
-    assert(angle > 0);
+    assert(angle >= 0);
 
     while (angle > 360.0_deg) {
         angle -= 360.0_deg;

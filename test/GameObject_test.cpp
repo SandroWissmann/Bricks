@@ -44,15 +44,31 @@ TEST_F(GameObjectTest, topLeft)
     EXPECT_EQ(obj.topLeft().x, 10.1);
     EXPECT_EQ(obj.topLeft().y, 20.2);
 
-    obj.setTopLeft(Point{20.3, 50.5});
+    obj.setTopLeft(Point{20.3, 30.5});
 
     EXPECT_EQ(obj.topLeft().x, 20.3);
-    EXPECT_EQ(obj.topLeft().y, 50.5);
+    EXPECT_EQ(obj.topLeft().y, 30.5);
 }
 
-TEST_F(GameObjectTest, topLeftGetsClampedOnX)
+TEST(GameObjectTest_F, topLeftGetsClampedOnX)
 {
-    
+    DerivedGameObject obj{
+        Point{10.0, 20.0},
+        MaxPositionX{50.0},    
+        MaxPositionY{70.0},    
+        Width{10.0},   
+        Height{20.0},    
+        Velocity{0.0},     
+        Angle{0.0_deg} 
+    };
+
+    constexpr double maxPointX = 50.0 -10.0;
+    constexpr double maxPointY = 70.0 - 20.0;
+
+    obj.setTopLeft(Point{maxPointX + 10, maxPointY + 10});
+
+    EXPECT_EQ(obj.topLeft().x, maxPointX);
+    EXPECT_EQ(obj.topLeft().y, maxPointY);
 }
 
 TEST_F(GameObjectTest, bottomRight)
@@ -206,6 +222,7 @@ TEST(isInQuadrantIV, Expect_FALSE)
 TEST(calcAngleIfOver360, Expect_FALSE)
 {
     EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(0.0_deg), 0.0_deg);
-    EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(360.0_deg), 0.0_deg);
+    EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(360.0_deg), 360.0_deg);
+    EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(360.1_deg), 0.1_deg);
     EXPECT_DOUBLE_EQ(impl::calcAngleIfOver360(540.0_deg), 180.0_deg);
 }
