@@ -11,9 +11,9 @@ using namespace bricks;
 
 class DerivedGameObject : public GameObject {
 public:
-    DerivedGameObject(Point topLeft, double maxPositionX, double maxPositionY,
-                      double width, double height, double velocity,
-                      long double angle)
+    DerivedGameObject(Point topLeft, MaxPositionX maxPositionX, MaxPositionY maxPositionY,
+                      Width width, Height height, Velocity velocity,
+                      Angle angle)
         : GameObject(topLeft, maxPositionX, maxPositionY, width, height,
                      velocity, angle)
     {
@@ -30,12 +30,12 @@ class GameObjectTest : public ::testing::Test {
 protected:
     DerivedGameObject obj{
         Point{10.1, 20.2},
-        50.3,    // maxPositionX
-        70.4,    // maxPositionY
-        10.5,    // width
-        20.6,    // height
-        2.0,     // velocity
-        30.0_deg // angle
+        MaxPositionX{50.3},    
+        MaxPositionY{70.4},    
+        Width{10.5},   
+        Height{20.6},    
+        Velocity{2.0},     
+        Angle{30.0_deg} 
     };
 };
 
@@ -52,6 +52,7 @@ TEST_F(GameObjectTest, topLeft)
 
 TEST_F(GameObjectTest, topLeftGetsClampedOnX)
 {
+    
 }
 
 TEST_F(GameObjectTest, bottomRight)

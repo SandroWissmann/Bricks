@@ -7,22 +7,21 @@
 
 namespace bricks {
 
-GameObject::GameObject(Point topLeft, double maxPositionX, double maxPositionY,
-                       double width, double height, double velocity,
-                       long double angle)
-    : mTopLeft{topLeft}, mMaxPositionX(maxPositionX),
-      mMaxPositionY(maxPositionY), mWidth{width}, mHeight{height},
-      mVelocity{velocity}, mQuadrant{impl::calcQuadrant(angle)},
-      mQuadrantAngle{impl::angleToQuadrantAngle(angle, mQuadrant)}
+GameObject::GameObject(Point topLeft, MaxPositionX maxPositionX, MaxPositionY maxPositionY,
+               Width width, Height height, Velocity velocity, Angle angle)
+    : mTopLeft{topLeft}, mMaxPositionX(maxPositionX()),
+      mMaxPositionY(maxPositionY()), mWidth{width()}, mHeight{height()},
+      mVelocity{velocity()}, mQuadrant{impl::calcQuadrant(angle())},
+      mQuadrantAngle{impl::angleToQuadrantAngle(angle(), mQuadrant)}
 {
     assert(mTopLeft.x > 0);
     assert(mTopLeft.y > 0);
 
-    assert(maxPositionX > 0);
-    assert(maxPositionY > 0);
+    assert(mMaxPositionX > 0);
+    assert(mMaxPositionY > 0);
 
-    assert(width > 0);
-    assert(height > 0);
+    assert(mWidth > 0);
+    assert(mHeight > 0);
 }
 
 GameObject::~GameObject() = default;
