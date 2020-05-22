@@ -14,8 +14,8 @@ GameObject::GameObject(Point topLeft, MaxPositionX maxPositionX,
       mMaxPositionY(maxPositionY()), mWidth{width()}, mHeight{height()},
       mVelocity{velocity()}, mAngle{angle}
 {
-    assert(mTopLeft.x > 0);
-    assert(mTopLeft.y > 0);
+    assert(mTopLeft.x >= 0);
+    assert(mTopLeft.y >= 0);
 
     assert(mMaxPositionX > 0);
     assert(mMaxPositionY > 0);
