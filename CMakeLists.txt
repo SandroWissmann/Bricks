@@ -25,6 +25,8 @@ target_link_libraries(bricks
 add_executable(test 
     test/Angle_test.cpp
     src/Angle.cpp
+    test/Brick_test.cpp
+    src/Brick.cpp
     test/GameObject_test.cpp
     src/GameObject.cpp
     test/GameObjectPhysics_test.cpp
