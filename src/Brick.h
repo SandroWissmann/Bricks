@@ -5,10 +5,16 @@
 
 namespace bricks {
 
+struct Hitpoints {
+    int value;
+
+    int operator()() const { return value; }
+};
+
 	class Brick : public GameObject
 	{
 	public:
-        Brick(Point topLeft, Width width, Height height, int hitpoints);
+        Brick(Point topLeft, Width width, Height height, Hitpoints hitpoints);
 		~Brick() override = default;
 
         Brick (const Brick &) = default;
