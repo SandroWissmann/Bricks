@@ -1,15 +1,18 @@
 #include "Brick.h"
 
+#include <cassert>
+
 namespace bricks {
 
-	Brick::Brick(Point topLeft, Width width, Height height, int hitpoints)
+	Brick::Brick(Point topLeft, Width width, Height height, Hitpoints hitpoints)
 		:GameObject(topLeft, 
             MaxPositionX{topLeft.x + width()}, 
             MaxPositionY{topLeft.y + height()},
             width, height, Velocity{0.0}, Angle{0.0}),
-        mStartHitpoints{hitpoints},
-        mHitpoints{hitpoints}
+        mStartHitpoints{hitpoints()},
+        mHitpoints{mStartHitpoints}
 	{
+        assert(mHitpoints > 0);
 	}
 
     int Brick::startHitpoints() const
@@ -24,7 +27,9 @@ namespace bricks {
 
 	void Brick::decreaseHitpoints()
 	{
-		--mHitpoints;
+        if(mHitpoints > 0) { 
+		    --mHitpoints;
+        }
 	}
 
 	bool Brick::isDestroyed() const
