@@ -8,13 +8,19 @@ namespace bricks {
 struct Width {
     double value;
 
-    double operator()() const { return value; }
+    double operator()() const
+    {
+        return value;
+    }
 };
 
 struct Height {
     double value;
 
-    double operator()() const { return value; }
+    double operator()() const
+    {
+        return value;
+    }
 };
 
 class GameObject {

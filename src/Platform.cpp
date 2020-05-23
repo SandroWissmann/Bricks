@@ -1,10 +1,10 @@
 #include "Platform.h"
 
-namespace bricks{
+namespace bricks {
 
 void Platform::move(double elapsedTimeInMS)
 {
-    if(velocity() == 0.0) {
+    if (velocity() == 0.0) {
         return;
     }
     auto deltaX = elapsedTimeInMS / 1000.0 * velocity();
@@ -14,4 +14,4 @@ void Platform::move(double elapsedTimeInMS)
     setTopLeft(newPos);
 }
 
-}
+} // namespace bricks

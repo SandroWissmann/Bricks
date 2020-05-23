@@ -20,9 +20,7 @@ public:
 
 class GameObjectTest : public ::testing::Test {
 protected:
-    DerivedGameObject obj{
-        Point{10.1, 20.2}, Width{10.5},
-        Height{20.6}};
+    DerivedGameObject obj{Point{10.1, 20.2}, Width{10.5}, Height{20.6}};
 };
 
 TEST_F(GameObjectTest, topLeft)
@@ -42,6 +40,12 @@ TEST_F(GameObjectTest, bottomRight)
     EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.height());
 }
 
-TEST_F(GameObjectTest, width) { EXPECT_EQ(obj.width(), 10.5); }
+TEST_F(GameObjectTest, width)
+{
+    EXPECT_EQ(obj.width(), 10.5);
+}
 
-TEST_F(GameObjectTest, height) { EXPECT_EQ(obj.height(), 20.6); }
+TEST_F(GameObjectTest, height)
+{
+    EXPECT_EQ(obj.height(), 20.6);
+}

@@ -5,7 +5,6 @@
 
 using namespace bricks;
 
-
 class BallTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
@@ -17,13 +16,11 @@ protected:
     Angle angle{30.0_deg};
     Gravity gravity{0.0};
 
-    Ball makeBall(const Velocity& velocity, const Angle& angle, 
-        const Gravity& gravity)
+    Ball makeBall(const Velocity &velocity, const Angle &angle,
+                  const Gravity &gravity)
     {
-        return Ball{
-            point, width, height, maxPositionX, maxPositionY,
-            velocity, angle, gravity
-        };
+        return Ball{point,        width,    height, maxPositionX,
+                    maxPositionY, velocity, angle,  gravity};
     }
 };
 
@@ -141,7 +138,8 @@ TEST_F(BallTest, move_angle90_gravity)
     obj.move(timeInMS);
 
     EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y + oldObj.velocity() * 2);
+    EXPECT_DOUBLE_EQ(obj.topLeft().y,
+                     oldObj.topLeft().y + oldObj.velocity() * 2);
 }
 
 TEST_F(BallTest, move_angle120)

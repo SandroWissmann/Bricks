@@ -3,19 +3,18 @@
 
 #include "GameObject.h"
 
-namespace bricks{
+namespace bricks {
 
-    class IndestructibleBrick : public GameObject
-    {
-    public:
-        using GameObject::GameObject;
-        ~IndestructibleBrick() override = default;
+class IndestructibleBrick : public GameObject {
+public:
+    using GameObject::GameObject;
+    ~IndestructibleBrick() override = default;
 
-        IndestructibleBrick (const IndestructibleBrick &) = default;
-        IndestructibleBrick(IndestructibleBrick&&) = default;
-        IndestructibleBrick& operator=(const IndestructibleBrick& other) = default;
-        IndestructibleBrick& operator=(IndestructibleBrick&& other) = default;
-    };
-}
+    IndestructibleBrick(const IndestructibleBrick &) = default;
+    IndestructibleBrick(IndestructibleBrick &&) = default;
+    IndestructibleBrick &operator=(const IndestructibleBrick &other) = default;
+    IndestructibleBrick &operator=(IndestructibleBrick &&other) = default;
+};
+} // namespace bricks
 
-#endif 
+#endif

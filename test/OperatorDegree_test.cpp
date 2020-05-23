@@ -4,7 +4,10 @@
 
 using namespace bricks;
 
-TEST(OperatorDegree, ValuesAreEqual_0) { EXPECT_DOUBLE_EQ(0.0_deg, 0.0); }
+TEST(OperatorDegree, ValuesAreEqual_0)
+{
+    EXPECT_DOUBLE_EQ(0.0_deg, 0.0);
+}
 
 TEST(OperatorDegree, ValuesAreEqual_90)
 {

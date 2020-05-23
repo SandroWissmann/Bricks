@@ -1,3 +1,6 @@
 #include <iostream>
 
-int main() { std::cout << "test"; }
+int main()
+{
+    std::cout << "test";
+}

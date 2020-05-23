@@ -1,11 +1,11 @@
 #include "GameObjectPhysics.h"
 
+#include "Angle.h"
 #include "Ball.h"
 #include "GameObject.h"
 #include "NearlyEqual.h"
 #include "OperatorDegree.h"
 #include "Point.h"
-#include "Angle.h"
 
 #include <algorithm>
 #include <random>
@@ -50,7 +50,7 @@ void ifHitReflectFromQuadrantI(Ball &ball, const GameObject &obj)
         else {
             reflected = false;
         }
-        if(reflected) {
+        if (reflected) {
             putBeforeIntersectsWithBottomY(ball, obj);
         }
     }
@@ -59,17 +59,17 @@ void ifHitReflectFromQuadrantI(Ball &ball, const GameObject &obj)
         if (isInsideWithY(ball, obj)) {
             reflectVertical(ball);
         }
-        else if (intersectsFromTopWithY(ball, obj)) {  
+        else if (intersectsFromTopWithY(ball, obj)) {
             reflectVerticalIncreased(ball);
         }
-        else if (intersectsFromBottomWithY(ball, obj)) {  
+        else if (intersectsFromBottomWithY(ball, obj)) {
             reflectVerticalIncreased(ball);
         }
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithRightX(ball, obj);          
+        if (reflected) {
+            putBeforeIntersectsWithRightX(ball, obj);
         }
     }
 }
@@ -90,8 +90,8 @@ void ifHitReflectFromQuadrantII(Ball &ball, const GameObject &obj)
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithBottomY(ball, obj);           
+        if (reflected) {
+            putBeforeIntersectsWithBottomY(ball, obj);
         }
     }
     else if (interectsWithLeftX(ball, obj)) {
@@ -108,8 +108,8 @@ void ifHitReflectFromQuadrantII(Ball &ball, const GameObject &obj)
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithLeftX(ball, obj);           
+        if (reflected) {
+            putBeforeIntersectsWithLeftX(ball, obj);
         }
     }
 }
@@ -117,7 +117,7 @@ void ifHitReflectFromQuadrantII(Ball &ball, const GameObject &obj)
 void ifHitReflectFromQuadrantIII(Ball &ball, const GameObject &obj)
 {
     if (interectsWithTopY(ball, obj)) {
-        bool reflected = true;       
+        bool reflected = true;
         if (isInsideWithX(ball, obj)) {
             reflectHorizontal(ball);
         }
@@ -130,8 +130,8 @@ void ifHitReflectFromQuadrantIII(Ball &ball, const GameObject &obj)
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithTopY(ball, obj);            
+        if (reflected) {
+            putBeforeIntersectsWithTopY(ball, obj);
         }
     }
     else if (interectsWithLeftX(ball, obj)) {
@@ -139,17 +139,17 @@ void ifHitReflectFromQuadrantIII(Ball &ball, const GameObject &obj)
         if (isInsideWithY(ball, obj)) {
             reflectVertical(ball);
         }
-        else if (intersectsFromTopWithY(ball, obj)) {  
+        else if (intersectsFromTopWithY(ball, obj)) {
             reflectVerticalIncreased(ball);
         }
-        else if (intersectsFromBottomWithY(ball, obj)) {  
+        else if (intersectsFromBottomWithY(ball, obj)) {
             reflectVerticalIncreased(ball);
         }
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithLeftX(ball, obj);            
+        if (reflected) {
+            putBeforeIntersectsWithLeftX(ball, obj);
         }
     }
 }
@@ -170,8 +170,8 @@ void ifHitReflectFromQuadrantIV(Ball &ball, const GameObject &obj)
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithTopY(ball, obj);           
+        if (reflected) {
+            putBeforeIntersectsWithTopY(ball, obj);
         }
     }
     else if (interectsWithRightX(ball, obj)) {
@@ -188,15 +188,16 @@ void ifHitReflectFromQuadrantIV(Ball &ball, const GameObject &obj)
         else {
             reflected = false;
         }
-        if(reflected) {
-            putBeforeIntersectsWithRightX(ball, obj);            
+        if (reflected) {
+            putBeforeIntersectsWithRightX(ball, obj);
         }
     }
 }
 
 bool interectsWithRightX(const Ball &ball, const GameObject &obj)
 {
-    return ball.bottomRight().x >= obj.topLeft().x && ball.topLeft().x < obj.topLeft().x;
+    return ball.bottomRight().x >= obj.topLeft().x &&
+           ball.topLeft().x < obj.topLeft().x;
 }
 
 bool interectsWithLeftX(const Ball &ball, const GameObject &obj)
@@ -207,7 +208,8 @@ bool interectsWithLeftX(const Ball &ball, const GameObject &obj)
 
 bool interectsWithBottomY(const Ball &ball, const GameObject &obj)
 {
-    return ball.bottomRight().y >= obj.topLeft().y && ball.topLeft().y < obj.topLeft().y;
+    return ball.bottomRight().y >= obj.topLeft().y &&
+           ball.topLeft().y < obj.topLeft().y;
 }
 
 bool interectsWithTopY(const Ball &ball, const GameObject &obj)

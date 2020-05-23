@@ -40,7 +40,6 @@ TEST(AngleTest, quadrant)
     EXPECT_EQ(obj.quadrant(), Quadrant::III);
 }
 
-
 TEST(calcQuadrant, Expect_FALSE)
 {
     EXPECT_EQ(impl::calcQuadrant(0.0_deg), Quadrant::I);

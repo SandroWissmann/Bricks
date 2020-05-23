@@ -8,26 +8,35 @@ namespace bricks {
 struct MaxPositionX {
     double value;
 
-    double operator()() const { return value; }
+    double operator()() const
+    {
+        return value;
+    }
 };
 
 struct MaxPositionY {
     double value;
 
-    double operator()() const { return value; }
+    double operator()() const
+    {
+        return value;
+    }
 };
 
 struct Velocity {
     double value;
 
-    double operator()() const { return value; }
+    double operator()() const
+    {
+        return value;
+    }
 };
 
-class MoveableGameObject : public GameObject{
+class MoveableGameObject : public GameObject {
 public:
-    MoveableGameObject(Point topLeft, Width width, Height height, 
-        MaxPositionX maxPositionX, MaxPositionY maxPositionY, 
-        Velocity velocity);
+    MoveableGameObject(Point topLeft, Width width, Height height,
+                       MaxPositionX maxPositionX, MaxPositionY maxPositionY,
+                       Velocity velocity);
 
     virtual ~MoveableGameObject() = default;
 
@@ -45,6 +54,7 @@ public:
 
     double velocity() const;
     void setVelocity(double velocity);
+
 private:
     const double mMaxPositionX;
     const double mMaxPositionY;

@@ -4,7 +4,6 @@
 
 using namespace bricks;
 
-
 class PlatformTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
@@ -14,12 +13,10 @@ protected:
     MaxPositionY maxPositionY{1000.0};
     Velocity velocity{2.0};
 
-    Platform makePlatform(const Velocity& velocity)
+    Platform makePlatform(const Velocity &velocity)
     {
-        return Platform{
-            point, width, height, maxPositionX, maxPositionY,
-            velocity
-        };
+        return Platform{point,        width,        height,
+                        maxPositionX, maxPositionY, velocity};
     }
 };
 
