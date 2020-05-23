@@ -1,5 +1,6 @@
 #include "GameObjectPhysics.h"
 
+#include "Ball.h"
 #include "GameObject.h"
 #include "NearlyEqual.h"
 #include "OperatorDegree.h"
@@ -11,382 +12,322 @@
 
 namespace bricks {
 
-void move(MoveableGameObject &a, double elapsedTimeInMS, double gravity)
+bool ifHitReflect(Ball &ball, const GameObject &obj)
 {
-    auto p = a.topLeft();
-
-    if (a.velocity() != 0.0) {
-        p = calcNewPosition(a.topLeft(), a.velocity(), a.angle(), elapsedTimeInMS);
-    }
-
-    if (gravity != 0.0) {
-        p = calcNewPosition(p, gravity, Angle{90.0_deg}, elapsedTimeInMS);
-    }
-
-    a.setTopLeft(p);
-}
-
-Point calcNewPosition(const Point &p, double velocity, Angle angle, 
-    double elapsedTimeInMS)
-{
-    auto distance = calcTraveldWay(elapsedTimeInMS, velocity);
-    auto traveldWay = calcDelta(angle, distance);
-
-    return Point{p.x + traveldWay.x, p.y + traveldWay.y};
-}
-
-double calcTraveldWay(double deltaTimeMS, double velocityInS)
-{
-    return deltaTimeMS / 1000.0 * velocityInS;
-}
-
-Point calcDelta(Angle angle, double sideC)
-{
-    if (nearlyEqual(sideC, 0.0)) {
-        return Point{0, 0};
-    }
-
-    auto sideA = sin(angle.quadrantAngle()) * sideC;
-    auto sideB = cos(angle.quadrantAngle()) * sideC;
-
-    Point ret;
-    switch (angle.quadrant()) {
-    case Quadrant::I:
-        ret.x = sideB;
-        ret.y = sideA;
-        break;
-    case Quadrant::II:
-        ret.x = -sideA;
-        ret.y = sideB;
-        break;
-    case Quadrant::III:
-        ret.x = -sideB;
-        ret.y = -sideA;
-        break;
-    case Quadrant::IV:
-        ret.x = sideA;
-        ret.y = -sideB;
-        break;
-    }
-    return ret;
-}
-
-bool ifHitReflect(MoveableGameObject &a, const MoveableGameObject &b)
-{
-    auto oldQuadrant = a.angle().quadrant();
+    auto oldQuadrant = ball.angle().quadrant();
 
     switch (oldQuadrant) {
     case Quadrant::I:
-        ifHitReflectFromQuadrantI(a, b);
+        ifHitReflectFromQuadrantI(ball, obj);
         break;
     case Quadrant::II:
-        ifHitReflectFromQuadrantII(a, b);
+        ifHitReflectFromQuadrantII(ball, obj);
         break;
     case Quadrant::III:
-        ifHitReflectFromQuadrantIII(a, b);
+        ifHitReflectFromQuadrantIII(ball, obj);
         break;
     case Quadrant::IV:
-        ifHitReflectFromQuadrantIV(a, b);
+        ifHitReflectFromQuadrantIV(ball, obj);
         break;
     }
 
-    return a.angle().quadrant() != oldQuadrant;
+    return ball.angle().quadrant() != oldQuadrant;
 }
 
-void ifHitReflectFromQuadrantI(MoveableGameObject &a, const MoveableGameObject &b)
+void ifHitReflectFromQuadrantI(Ball &ball, const GameObject &obj)
 {
-    if (interectsWithBottomY(a, b)) {
+    if (interectsWithBottomY(ball, obj)) {
         bool reflected = true;
-        if (isInsideWithX(a, b)) {
-            reflectHorizontal(a);
+        if (isInsideWithX(ball, obj)) {
+            reflectHorizontal(ball);
         }
-        else if (intersectsFromRigthWithX(a, b)) {
-            reflectHorizontalIncreased(a);
+        else if (intersectsFromRigthWithX(ball, obj)) {
+            reflectHorizontalIncreased(ball);
         }
-        else if (intersectsFromLeftWithX(a, b)) {
-            reflectHorizontalIncreased(a);
+        else if (intersectsFromLeftWithX(ball, obj)) {
+            reflectHorizontalIncreased(ball);
         }
         else {
             reflected = false;
         }
         if(reflected) {
-            putBeforeIntersectsWithBottomY(a, b);
+            putBeforeIntersectsWithBottomY(ball, obj);
         }
     }
-    else if (interectsWithRightX(a, b)) {
+    else if (interectsWithRightX(ball, obj)) {
         bool reflected = true;
-        if (isInsideWithY(a, b)) {
-            reflectVertical(a);
+        if (isInsideWithY(ball, obj)) {
+            reflectVertical(ball);
         }
-        else if (intersectsFromTopWithY(a, b)) {  
-            reflectVerticalIncreased(a);
+        else if (intersectsFromTopWithY(ball, obj)) {  
+            reflectVerticalIncreased(ball);
         }
-        else if (intersectsFromBottomWithY(a, b)) {  
-            reflectVerticalIncreased(a);
+        else if (intersectsFromBottomWithY(ball, obj)) {  
+            reflectVerticalIncreased(ball);
         }
         else {
             reflected = false;
         }
         if(reflected) {
-            putBeforeIntersectsWithRightX(a, b);          
-        }
-    }
-}
-
-void ifHitReflectFromQuadrantII(MoveableGameObject &a, const MoveableGameObject &b)
-{
-    if (interectsWithBottomY(a, b)) {
-        bool reflected = true;
-        if (isInsideWithX(a, b)) {
-            reflectHorizontal(a);
-        }
-        else if (intersectsFromRigthWithX(a, b)) {
-            reflectHorizontalDecreased(a);
-        }
-        else if (intersectsFromLeftWithX(a, b)) {
-            reflectHorizontalDecreased(a);
-        }
-        else {
-            reflected = false;
-        }
-        if(reflected) {
-            putBeforeIntersectsWithBottomY(a, b);           
-        }
-    }
-    else if (interectsWithLeftX(a, b)) {
-        bool reflected = true;
-        if (isInsideWithY(a, b)) {
-            reflectVertical(a);
-        }
-        else if (intersectsFromTopWithY(a, b)) {
-            reflectVerticalDecreased(a);
-        }
-        else if (intersectsFromBottomWithY(a, b)) {
-            reflectVerticalDecreased(a);
-        }
-        else {
-            reflected = false;
-        }
-        if(reflected) {
-            putBeforeIntersectsWithLeftX(a, b);           
+            putBeforeIntersectsWithRightX(ball, obj);          
         }
     }
 }
 
-void ifHitReflectFromQuadrantIII(MoveableGameObject &a, const MoveableGameObject &b)
+void ifHitReflectFromQuadrantII(Ball &ball, const GameObject &obj)
 {
-    if (interectsWithTopY(a, b)) {
+    if (interectsWithBottomY(ball, obj)) {
+        bool reflected = true;
+        if (isInsideWithX(ball, obj)) {
+            reflectHorizontal(ball);
+        }
+        else if (intersectsFromRigthWithX(ball, obj)) {
+            reflectHorizontalDecreased(ball);
+        }
+        else if (intersectsFromLeftWithX(ball, obj)) {
+            reflectHorizontalDecreased(ball);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithBottomY(ball, obj);           
+        }
+    }
+    else if (interectsWithLeftX(ball, obj)) {
+        bool reflected = true;
+        if (isInsideWithY(ball, obj)) {
+            reflectVertical(ball);
+        }
+        else if (intersectsFromTopWithY(ball, obj)) {
+            reflectVerticalDecreased(ball);
+        }
+        else if (intersectsFromBottomWithY(ball, obj)) {
+            reflectVerticalDecreased(ball);
+        }
+        else {
+            reflected = false;
+        }
+        if(reflected) {
+            putBeforeIntersectsWithLeftX(ball, obj);           
+        }
+    }
+}
+
+void ifHitReflectFromQuadrantIII(Ball &ball, const GameObject &obj)
+{
+    if (interectsWithTopY(ball, obj)) {
         bool reflected = true;       
-        if (isInsideWithX(a, b)) {
-            reflectHorizontal(a);
+        if (isInsideWithX(ball, obj)) {
+            reflectHorizontal(ball);
         }
-        else if (intersectsFromRigthWithX(a, b)) {
-            reflectHorizontalIncreased(a);
+        else if (intersectsFromRigthWithX(ball, obj)) {
+            reflectHorizontalIncreased(ball);
         }
-        else if (intersectsFromLeftWithX(a, b)) {
-            reflectHorizontalIncreased(a);
+        else if (intersectsFromLeftWithX(ball, obj)) {
+            reflectHorizontalIncreased(ball);
         }
         else {
             reflected = false;
         }
         if(reflected) {
-            putBeforeIntersectsWithTopY(a, b);            
+            putBeforeIntersectsWithTopY(ball, obj);            
         }
     }
-    else if (interectsWithLeftX(a, b)) {
+    else if (interectsWithLeftX(ball, obj)) {
         bool reflected = true;
-        if (isInsideWithY(a, b)) {
-            reflectVertical(a);
+        if (isInsideWithY(ball, obj)) {
+            reflectVertical(ball);
         }
-        else if (intersectsFromTopWithY(a, b)) {  
-            reflectVerticalIncreased(a);
+        else if (intersectsFromTopWithY(ball, obj)) {  
+            reflectVerticalIncreased(ball);
         }
-        else if (intersectsFromBottomWithY(a, b)) {  
-            reflectVerticalIncreased(a);
+        else if (intersectsFromBottomWithY(ball, obj)) {  
+            reflectVerticalIncreased(ball);
         }
         else {
             reflected = false;
         }
         if(reflected) {
-            putBeforeIntersectsWithLeftX(a, b);            
+            putBeforeIntersectsWithLeftX(ball, obj);            
         }
     }
 }
 
-void ifHitReflectFromQuadrantIV(MoveableGameObject &a, const MoveableGameObject &b)
+void ifHitReflectFromQuadrantIV(Ball &ball, const GameObject &obj)
 {
-    if (interectsWithTopY(a, b)) {
+    if (interectsWithTopY(ball, obj)) {
         bool reflected = true;
-        if (isInsideWithX(a, b)) {
-            reflectHorizontal(a);
+        if (isInsideWithX(ball, obj)) {
+            reflectHorizontal(ball);
         }
-        else if (intersectsFromRigthWithX(a, b)) {
-            reflectHorizontalDecreased(a);
+        else if (intersectsFromRigthWithX(ball, obj)) {
+            reflectHorizontalDecreased(ball);
         }
-        else if (intersectsFromLeftWithX(a, b)) {
-            reflectHorizontalDecreased(a);
+        else if (intersectsFromLeftWithX(ball, obj)) {
+            reflectHorizontalDecreased(ball);
         }
         else {
             reflected = false;
         }
         if(reflected) {
-            putBeforeIntersectsWithTopY(a, b);           
+            putBeforeIntersectsWithTopY(ball, obj);           
         }
     }
-    else if (interectsWithRightX(a, b)) {
+    else if (interectsWithRightX(ball, obj)) {
         bool reflected = true;
-        if (isInsideWithY(a, b)) {
-            reflectVertical(a);
+        if (isInsideWithY(ball, obj)) {
+            reflectVertical(ball);
         }
-        else if (intersectsFromTopWithY(a, b)) {
-            reflectVerticalDecreased(a);
+        else if (intersectsFromTopWithY(ball, obj)) {
+            reflectVerticalDecreased(ball);
         }
-        else if (intersectsFromBottomWithY(a, b)) {
-            reflectVerticalDecreased(a);
+        else if (intersectsFromBottomWithY(ball, obj)) {
+            reflectVerticalDecreased(ball);
         }
         else {
             reflected = false;
         }
         if(reflected) {
-            putBeforeIntersectsWithRightX(a, b);            
+            putBeforeIntersectsWithRightX(ball, obj);            
         }
     }
 }
 
-bool interectsWithRightX(const MoveableGameObject &a, const MoveableGameObject &b)
+bool interectsWithRightX(const Ball &ball, const GameObject &obj)
 {
-    return a.bottomRight().x >= b.topLeft().x && a.topLeft().x < b.topLeft().x;
+    return ball.bottomRight().x >= obj.topLeft().x && ball.topLeft().x < obj.topLeft().x;
 }
 
-bool interectsWithLeftX(const MoveableGameObject &a, const MoveableGameObject &b)
+bool interectsWithLeftX(const Ball &ball, const GameObject &obj)
 {
-    return a.topLeft().x <= b.bottomRight().x &&
-           a.bottomRight().x > b.bottomRight().x;
+    return ball.topLeft().x <= obj.bottomRight().x &&
+           ball.bottomRight().x > obj.bottomRight().x;
 }
 
-bool interectsWithBottomY(const MoveableGameObject &a, const MoveableGameObject &b)
+bool interectsWithBottomY(const Ball &ball, const GameObject &obj)
 {
-    return a.bottomRight().y >= b.topLeft().y && a.topLeft().y < b.topLeft().y;
+    return ball.bottomRight().y >= obj.topLeft().y && ball.topLeft().y < obj.topLeft().y;
 }
 
-bool interectsWithTopY(const MoveableGameObject &a, const MoveableGameObject &b)
+bool interectsWithTopY(const Ball &ball, const GameObject &obj)
 {
-    return a.topLeft().y <= b.bottomRight().y &&
-           a.bottomRight().y > b.bottomRight().y;
+    return ball.topLeft().y <= obj.bottomRight().y &&
+           ball.bottomRight().y > obj.bottomRight().y;
 }
 
-bool isInsideWithY(const MoveableGameObject &a, const MoveableGameObject &b)
+bool isInsideWithY(const Ball &ball, const GameObject &obj)
 {
-    return a.topLeft().y >= b.topLeft().y &&
-           a.bottomRight().y <= b.bottomRight().y;
+    return ball.topLeft().y >= obj.topLeft().y &&
+           ball.bottomRight().y <= obj.bottomRight().y;
 }
 
-bool isInsideWithX(const MoveableGameObject &a, const MoveableGameObject &b)
+bool isInsideWithX(const Ball &ball, const GameObject &obj)
 {
-    return a.topLeft().x >= b.topLeft().x &&
-           a.bottomRight().x <= b.bottomRight().x;
+    return ball.topLeft().x >= obj.topLeft().x &&
+           ball.bottomRight().x <= obj.bottomRight().x;
 }
 
-bool intersectsFromRigthWithX(const MoveableGameObject &a, const MoveableGameObject &b)
+bool intersectsFromRigthWithX(const Ball &ball, const GameObject &obj)
 {
-    return a.bottomRight().x >= b.topLeft().x &&
-           a.bottomRight().x <= b.bottomRight().x &&
-           a.topLeft().x < b.topLeft().x;
+    return ball.bottomRight().x >= obj.topLeft().x &&
+           ball.bottomRight().x <= obj.bottomRight().x &&
+           ball.topLeft().x < obj.topLeft().x;
 }
 
-bool intersectsFromLeftWithX(const MoveableGameObject &a, const MoveableGameObject &b)
+bool intersectsFromLeftWithX(const Ball &ball, const GameObject &obj)
 {
-    return a.topLeft().x >= b.topLeft().x &&
-           a.topLeft().x <= b.bottomRight().x &&
-           a.bottomRight().x > b.bottomRight().x;
+    return ball.topLeft().x >= obj.topLeft().x &&
+           ball.topLeft().x <= obj.bottomRight().x &&
+           ball.bottomRight().x > obj.bottomRight().x;
 }
 
-bool intersectsFromTopWithY(const MoveableGameObject &a, const MoveableGameObject &b)
+bool intersectsFromTopWithY(const Ball &ball, const GameObject &obj)
 {
-    return a.bottomRight().y >= b.topLeft().y &&
-           a.bottomRight().y <= b.bottomRight().y &&
-           a.topLeft().y < b.topLeft().y;
+    return ball.bottomRight().y >= obj.topLeft().y &&
+           ball.bottomRight().y <= obj.bottomRight().y &&
+           ball.topLeft().y < obj.topLeft().y;
 }
 
-bool intersectsFromBottomWithY(const MoveableGameObject &a, const MoveableGameObject &b)
+bool intersectsFromBottomWithY(const Ball &ball, const GameObject &obj)
 {
-    return a.topLeft().y >= b.topLeft().y &&
-           a.topLeft().y <= b.bottomRight().y &&
-           a.bottomRight().y > b.bottomRight().y;
+    return ball.topLeft().y >= obj.topLeft().y &&
+           ball.topLeft().y <= obj.bottomRight().y &&
+           ball.bottomRight().y > obj.bottomRight().y;
 }
 
-void reflectHorizontal(MoveableGameObject &a)
+void reflectHorizontal(Ball &ball)
 {
-    auto angle = a.angle();
+    auto angle = ball.angle();
     angle.mirrorHorizontal();
-    a.setAngle(angle);
+    ball.setAngle(angle);
 }
 
-void reflectHorizontalIncreased(MoveableGameObject &a)
+void reflectHorizontalIncreased(Ball &ball)
 {
-    auto angle = a.angle();
+    auto angle = ball.angle();
     angle.mirrorHorizontal();
     angle.setQuadrantAngle(increaseAngle(angle.quadrantAngle()));
-    a.setAngle(angle);
+    ball.setAngle(angle);
 }
 
-void reflectHorizontalDecreased(MoveableGameObject &a)
+void reflectHorizontalDecreased(Ball &ball)
 {
-    auto angle = a.angle();
+    auto angle = ball.angle();
     angle.mirrorHorizontal();
     angle.setQuadrantAngle(decreaseAngle(angle.quadrantAngle()));
-    a.setAngle(angle);
+    ball.setAngle(angle);
 }
 
-void reflectVertical(MoveableGameObject &a)
+void reflectVertical(Ball &ball)
 {
-    auto angle = a.angle();
+    auto angle = ball.angle();
     angle.mirrorVertical();
-    a.setAngle(angle);
+    ball.setAngle(angle);
 }
 
-void reflectVerticalIncreased(MoveableGameObject &a)
+void reflectVerticalIncreased(Ball &ball)
 {
-    auto angle = a.angle();
+    auto angle = ball.angle();
     angle.mirrorVertical();
     angle.setQuadrantAngle(increaseAngle(angle.quadrantAngle()));
-    a.setAngle(angle);
+    ball.setAngle(angle);
 }
 
-void reflectVerticalDecreased(MoveableGameObject &a)
+void reflectVerticalDecreased(Ball &ball)
 {
-    auto angle = a.angle();
+    auto angle = ball.angle();
     angle.mirrorVertical();
     angle.setQuadrantAngle(decreaseAngle(angle.quadrantAngle()));
-    a.setAngle(angle);
+    ball.setAngle(angle);
 }
 
-void putBeforeIntersectsWithRightX(MoveableGameObject &a, const MoveableGameObject &b)
+void putBeforeIntersectsWithRightX(Ball &ball, const GameObject &obj)
 {
-    Point p = a.topLeft();
-    p.x = b.topLeft().x - a.width();
-    a.setTopLeft(p);
+    Point p = ball.topLeft();
+    p.x = obj.topLeft().x - ball.width();
+    ball.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithLeftX(MoveableGameObject &a, const MoveableGameObject &b)
+void putBeforeIntersectsWithLeftX(Ball &ball, const GameObject &obj)
 {
-    Point p = a.topLeft();
-    p.x = b.bottomRight().x;
-    a.setTopLeft(p);
+    Point p = ball.topLeft();
+    p.x = obj.bottomRight().x;
+    ball.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithBottomY(MoveableGameObject &a, const MoveableGameObject &b)
+void putBeforeIntersectsWithBottomY(Ball &ball, const GameObject &obj)
 {
-    Point p = a.topLeft();
-    p.y = b.topLeft().y - a.height();
-    a.setTopLeft(p);
+    Point p = ball.topLeft();
+    p.y = obj.topLeft().y - ball.height();
+    ball.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithTopY(MoveableGameObject &a, const MoveableGameObject &b)
+void putBeforeIntersectsWithTopY(Ball &ball, const GameObject &obj)
 {
-    Point p = a.topLeft();
-    p.y = b.bottomRight().y;
-    a.setTopLeft(p);
+    Point p = ball.topLeft();
+    p.y = obj.bottomRight().y;
+    ball.setTopLeft(p);
 }
 
 long double increaseAngle(long double quadrantAngle)

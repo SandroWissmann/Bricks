@@ -5,47 +5,40 @@ namespace bricks {
 
 struct Point;
 class Angle;
-class MoveableGameObject;
+class Ball;
+class GameObject;
 
-void move(MoveableGameObject &a, double elapsedTimeInMS, double gravity = 0.0);
+bool ifHitReflect(Ball &ball, const GameObject &obj);
 
-Point calcNewPosition(const Point &p, double velocity, Angle angle, 
-    double elapsedTimeInMS);
+void ifHitReflectFromQuadrantI(Ball &ball, const GameObject &obj);
+void ifHitReflectFromQuadrantII(Ball &ball, const GameObject &obj);
+void ifHitReflectFromQuadrantIII(Ball &ball, const GameObject &obj);
+void ifHitReflectFromQuadrantIV(Ball &ball, const GameObject &obj);
 
-double calcTraveldWay(double deltaTimeMS, double velocityInS);
-Point calcDelta(Angle angle, double sideC);
+bool interectsWithRightX(const Ball &ball, const GameObject &obj);
+bool interectsWithLeftX(const Ball &ball, const GameObject &obj);
+bool interectsWithBottomY(const Ball &ball, const GameObject &obj);
+bool interectsWithTopY(const Ball &ball, const GameObject &obj);
 
-bool ifHitReflect(MoveableGameObject &a, const MoveableGameObject &b);
+bool isInsideWithY(const Ball &ball, const GameObject &obj);
+bool isInsideWithX(const Ball &ball, const GameObject &obj);
 
-void ifHitReflectFromQuadrantI(MoveableGameObject &a, const MoveableGameObject &b);
-void ifHitReflectFromQuadrantII(MoveableGameObject &a, const MoveableGameObject &b);
-void ifHitReflectFromQuadrantIII(MoveableGameObject &a, const MoveableGameObject &b);
-void ifHitReflectFromQuadrantIV(MoveableGameObject &a, const MoveableGameObject &b);
+bool intersectsFromRigthWithX(const Ball &ball, const GameObject &obj);
+bool intersectsFromLeftWithX(const Ball &ball, const GameObject &obj);
+bool intersectsFromTopWithY(const Ball &ball, const GameObject &obj);
+bool intersectsFromBottomWithY(const Ball &ball, const GameObject &obj);
 
-bool interectsWithRightX(const MoveableGameObject &a, const MoveableGameObject &b);
-bool interectsWithLeftX(const MoveableGameObject &a, const MoveableGameObject &b);
-bool interectsWithBottomY(const MoveableGameObject &a, const MoveableGameObject &b);
-bool interectsWithTopY(const MoveableGameObject &a, const MoveableGameObject &b);
+void reflectHorizontal(Ball &ball);
+void reflectHorizontalIncreased(Ball &ball);
+void reflectHorizontalDecreased(Ball &ball);
+void reflectVertical(Ball &ball);
+void reflectVerticalIncreased(Ball &ball);
+void reflectVerticalDecreased(Ball &ball);
 
-bool isInsideWithY(const MoveableGameObject &a, const MoveableGameObject &b);
-bool isInsideWithX(const MoveableGameObject &a, const MoveableGameObject &b);
-
-bool intersectsFromRigthWithX(const MoveableGameObject &a, const MoveableGameObject &b);
-bool intersectsFromLeftWithX(const MoveableGameObject &a, const MoveableGameObject &b);
-bool intersectsFromTopWithY(const MoveableGameObject &a, const MoveableGameObject &b);
-bool intersectsFromBottomWithY(const MoveableGameObject &a, const MoveableGameObject &b);
-
-void reflectHorizontal(MoveableGameObject &a);
-void reflectHorizontalIncreased(MoveableGameObject &a);
-void reflectHorizontalDecreased(MoveableGameObject &a);
-void reflectVertical(MoveableGameObject &a);
-void reflectVerticalIncreased(MoveableGameObject &a);
-void reflectVerticalDecreased(MoveableGameObject &a);
-
-void putBeforeIntersectsWithRightX(MoveableGameObject &a, const MoveableGameObject &b);
-void putBeforeIntersectsWithLeftX(MoveableGameObject &a, const MoveableGameObject &b);
-void putBeforeIntersectsWithBottomY(MoveableGameObject &a, const MoveableGameObject &b);
-void putBeforeIntersectsWithTopY(MoveableGameObject &a, const MoveableGameObject &b);
+void putBeforeIntersectsWithRightX(Ball &ball, const GameObject &obj);
+void putBeforeIntersectsWithLeftX(Ball &ball, const GameObject &obj);
+void putBeforeIntersectsWithBottomY(Ball &ball, const GameObject &obj);
+void putBeforeIntersectsWithTopY(Ball &ball, const GameObject &obj);
 
 long double increaseAngle(long double quadrantAngle);
 
