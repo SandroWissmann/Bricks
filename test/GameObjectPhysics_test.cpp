@@ -173,7 +173,7 @@ TEST(move, newPositionCorrect_angle230)
     move(obj, timeInMS);
 
     EXPECT_DOUBLE_EQ(obj.topLeft().x, 8.7144247806269206);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 8);
+    EXPECT_DOUBLE_EQ(obj.topLeft().y, 8.4679111137620442);
 }
 
 TEST(move, newPositionCorrect_angle270)
@@ -207,5 +207,5 @@ TEST(move, newPositionCorrect_angle315)
     move(obj, timeInMS);
 
     EXPECT_DOUBLE_EQ(obj.topLeft().x, 11.414213562373096);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 8.58579);
+    EXPECT_DOUBLE_EQ(obj.topLeft().y, 8.5857864376269042);
 }
