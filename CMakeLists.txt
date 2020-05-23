@@ -31,6 +31,8 @@ add_executable(test
     src/Brick.cpp
     test/GameObject_test.cpp
     src/GameObject.cpp
+    test/IsNumber_test.cpp
+    src/IsNumber.cpp
     test/MoveableGameObject_test.cpp
     src/MoveableGameObject.cpp
     test/NearlyEqual_test.cpp
@@ -39,6 +41,8 @@ add_executable(test
 
     test/Platform_test.cpp
     src/Platform.cpp
+    test/Point_test.cpp
+    src/Point.cpp
 )
 
 #    test/GameObjectPhysics_test.cpp
