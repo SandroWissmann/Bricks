@@ -1,22 +1,9 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "Angle.h"
 #include "Point.h"
 
 namespace bricks {
-
-struct MaxPositionX {
-    double value;
-
-    double operator()() const { return value; }
-};
-
-struct MaxPositionY {
-    double value;
-
-    double operator()() const { return value; }
-};
 
 struct Width {
     double value;
@@ -30,17 +17,9 @@ struct Height {
     double operator()() const { return value; }
 };
 
-struct Velocity {
-    double value;
-
-    double operator()() const { return value; }
-};
-
 class GameObject {
 public:
-    GameObject(Point topLeft, MaxPositionX maxPositionX,
-               MaxPositionY maxPositionY, Width width, Height height,
-               Velocity velocity, Angle angle);
+    GameObject(Point topLeft, Width width, Height height);
 
     virtual ~GameObject() = 0;
 
@@ -53,30 +32,16 @@ public:
     void setTopLeft(Point topLeft);
     Point bottomRight() const;
 
-    double maxPositionX() const;
-    double maxPositionY() const;
-
     double width() const;
     double height() const;
 
-    double velocity() const;
-    void setVelocity(double velocity);
-
-    Angle angle() const;
-    void setAngle(Angle angle);
-
 private:
     Point mTopLeft;
-    const double mMaxPositionX;
-    const double mMaxPositionY;
 
     const double mWidth;
     const double mHeight;
-
-    double mVelocity;
-
-    Angle mAngle;
 };
 
 } // namespace bricks
+
 #endif

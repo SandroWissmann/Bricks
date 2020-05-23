@@ -5,9 +5,9 @@ namespace bricks {
 
 struct Point;
 class Angle;
-class GameObject;
+class MoveableGameObject;
 
-void move(GameObject &a, double elapsedTimeInMS, double gravity = 0.0);
+void move(MoveableGameObject &a, double elapsedTimeInMS, double gravity = 0.0);
 
 Point calcNewPosition(const Point &p, double velocity, Angle angle, 
     double elapsedTimeInMS);
@@ -15,37 +15,37 @@ Point calcNewPosition(const Point &p, double velocity, Angle angle,
 double calcTraveldWay(double deltaTimeMS, double velocityInS);
 Point calcDelta(Angle angle, double sideC);
 
-bool ifHitReflect(GameObject &a, const GameObject &b);
+bool ifHitReflect(MoveableGameObject &a, const MoveableGameObject &b);
 
-void ifHitReflectFromQuadrantI(GameObject &a, const GameObject &b);
-void ifHitReflectFromQuadrantII(GameObject &a, const GameObject &b);
-void ifHitReflectFromQuadrantIII(GameObject &a, const GameObject &b);
-void ifHitReflectFromQuadrantIV(GameObject &a, const GameObject &b);
+void ifHitReflectFromQuadrantI(MoveableGameObject &a, const MoveableGameObject &b);
+void ifHitReflectFromQuadrantII(MoveableGameObject &a, const MoveableGameObject &b);
+void ifHitReflectFromQuadrantIII(MoveableGameObject &a, const MoveableGameObject &b);
+void ifHitReflectFromQuadrantIV(MoveableGameObject &a, const MoveableGameObject &b);
 
-bool interectsWithRightX(const GameObject &a, const GameObject &b);
-bool interectsWithLeftX(const GameObject &a, const GameObject &b);
-bool interectsWithBottomY(const GameObject &a, const GameObject &b);
-bool interectsWithTopY(const GameObject &a, const GameObject &b);
+bool interectsWithRightX(const MoveableGameObject &a, const MoveableGameObject &b);
+bool interectsWithLeftX(const MoveableGameObject &a, const MoveableGameObject &b);
+bool interectsWithBottomY(const MoveableGameObject &a, const MoveableGameObject &b);
+bool interectsWithTopY(const MoveableGameObject &a, const MoveableGameObject &b);
 
-bool isInsideWithY(const GameObject &a, const GameObject &b);
-bool isInsideWithX(const GameObject &a, const GameObject &b);
+bool isInsideWithY(const MoveableGameObject &a, const MoveableGameObject &b);
+bool isInsideWithX(const MoveableGameObject &a, const MoveableGameObject &b);
 
-bool intersectsFromRigthWithX(const GameObject &a, const GameObject &b);
-bool intersectsFromLeftWithX(const GameObject &a, const GameObject &b);
-bool intersectsFromTopWithY(const GameObject &a, const GameObject &b);
-bool intersectsFromBottomWithY(const GameObject &a, const GameObject &b);
+bool intersectsFromRigthWithX(const MoveableGameObject &a, const MoveableGameObject &b);
+bool intersectsFromLeftWithX(const MoveableGameObject &a, const MoveableGameObject &b);
+bool intersectsFromTopWithY(const MoveableGameObject &a, const MoveableGameObject &b);
+bool intersectsFromBottomWithY(const MoveableGameObject &a, const MoveableGameObject &b);
 
-void reflectHorizontal(GameObject &a);
-void reflectHorizontalIncreased(GameObject &a);
-void reflectHorizontalDecreased(GameObject &a);
-void reflectVertical(GameObject &a);
-void reflectVerticalIncreased(GameObject &a);
-void reflectVerticalDecreased(GameObject &a);
+void reflectHorizontal(MoveableGameObject &a);
+void reflectHorizontalIncreased(MoveableGameObject &a);
+void reflectHorizontalDecreased(MoveableGameObject &a);
+void reflectVertical(MoveableGameObject &a);
+void reflectVerticalIncreased(MoveableGameObject &a);
+void reflectVerticalDecreased(MoveableGameObject &a);
 
-void putBeforeIntersectsWithRightX(GameObject &a, const GameObject &b);
-void putBeforeIntersectsWithLeftX(GameObject &a, const GameObject &b);
-void putBeforeIntersectsWithBottomY(GameObject &a, const GameObject &b);
-void putBeforeIntersectsWithTopY(GameObject &a, const GameObject &b);
+void putBeforeIntersectsWithRightX(MoveableGameObject &a, const MoveableGameObject &b);
+void putBeforeIntersectsWithLeftX(MoveableGameObject &a, const MoveableGameObject &b);
+void putBeforeIntersectsWithBottomY(MoveableGameObject &a, const MoveableGameObject &b);
+void putBeforeIntersectsWithTopY(MoveableGameObject &a, const MoveableGameObject &b);
 
 long double increaseAngle(long double quadrantAngle);
 

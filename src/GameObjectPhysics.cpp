@@ -11,7 +11,7 @@
 
 namespace bricks {
 
-void move(GameObject &a, double elapsedTimeInMS, double gravity)
+void move(MoveableGameObject &a, double elapsedTimeInMS, double gravity)
 {
     auto p = a.topLeft();
 
@@ -71,7 +71,7 @@ Point calcDelta(Angle angle, double sideC)
     return ret;
 }
 
-bool ifHitReflect(GameObject &a, const GameObject &b)
+bool ifHitReflect(MoveableGameObject &a, const MoveableGameObject &b)
 {
     auto oldQuadrant = a.angle().quadrant();
 
@@ -93,7 +93,7 @@ bool ifHitReflect(GameObject &a, const GameObject &b)
     return a.angle().quadrant() != oldQuadrant;
 }
 
-void ifHitReflectFromQuadrantI(GameObject &a, const GameObject &b)
+void ifHitReflectFromQuadrantI(MoveableGameObject &a, const MoveableGameObject &b)
 {
     if (interectsWithBottomY(a, b)) {
         bool reflected = true;
@@ -133,7 +133,7 @@ void ifHitReflectFromQuadrantI(GameObject &a, const GameObject &b)
     }
 }
 
-void ifHitReflectFromQuadrantII(GameObject &a, const GameObject &b)
+void ifHitReflectFromQuadrantII(MoveableGameObject &a, const MoveableGameObject &b)
 {
     if (interectsWithBottomY(a, b)) {
         bool reflected = true;
@@ -173,7 +173,7 @@ void ifHitReflectFromQuadrantII(GameObject &a, const GameObject &b)
     }
 }
 
-void ifHitReflectFromQuadrantIII(GameObject &a, const GameObject &b)
+void ifHitReflectFromQuadrantIII(MoveableGameObject &a, const MoveableGameObject &b)
 {
     if (interectsWithTopY(a, b)) {
         bool reflected = true;       
@@ -213,7 +213,7 @@ void ifHitReflectFromQuadrantIII(GameObject &a, const GameObject &b)
     }
 }
 
-void ifHitReflectFromQuadrantIV(GameObject &a, const GameObject &b)
+void ifHitReflectFromQuadrantIV(MoveableGameObject &a, const MoveableGameObject &b)
 {
     if (interectsWithTopY(a, b)) {
         bool reflected = true;
@@ -253,76 +253,76 @@ void ifHitReflectFromQuadrantIV(GameObject &a, const GameObject &b)
     }
 }
 
-bool interectsWithRightX(const GameObject &a, const GameObject &b)
+bool interectsWithRightX(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.bottomRight().x >= b.topLeft().x && a.topLeft().x < b.topLeft().x;
 }
 
-bool interectsWithLeftX(const GameObject &a, const GameObject &b)
+bool interectsWithLeftX(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.topLeft().x <= b.bottomRight().x &&
            a.bottomRight().x > b.bottomRight().x;
 }
 
-bool interectsWithBottomY(const GameObject &a, const GameObject &b)
+bool interectsWithBottomY(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.bottomRight().y >= b.topLeft().y && a.topLeft().y < b.topLeft().y;
 }
 
-bool interectsWithTopY(const GameObject &a, const GameObject &b)
+bool interectsWithTopY(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.topLeft().y <= b.bottomRight().y &&
            a.bottomRight().y > b.bottomRight().y;
 }
 
-bool isInsideWithY(const GameObject &a, const GameObject &b)
+bool isInsideWithY(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.topLeft().y >= b.topLeft().y &&
            a.bottomRight().y <= b.bottomRight().y;
 }
 
-bool isInsideWithX(const GameObject &a, const GameObject &b)
+bool isInsideWithX(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.topLeft().x >= b.topLeft().x &&
            a.bottomRight().x <= b.bottomRight().x;
 }
 
-bool intersectsFromRigthWithX(const GameObject &a, const GameObject &b)
+bool intersectsFromRigthWithX(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.bottomRight().x >= b.topLeft().x &&
            a.bottomRight().x <= b.bottomRight().x &&
            a.topLeft().x < b.topLeft().x;
 }
 
-bool intersectsFromLeftWithX(const GameObject &a, const GameObject &b)
+bool intersectsFromLeftWithX(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.topLeft().x >= b.topLeft().x &&
            a.topLeft().x <= b.bottomRight().x &&
            a.bottomRight().x > b.bottomRight().x;
 }
 
-bool intersectsFromTopWithY(const GameObject &a, const GameObject &b)
+bool intersectsFromTopWithY(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.bottomRight().y >= b.topLeft().y &&
            a.bottomRight().y <= b.bottomRight().y &&
            a.topLeft().y < b.topLeft().y;
 }
 
-bool intersectsFromBottomWithY(const GameObject &a, const GameObject &b)
+bool intersectsFromBottomWithY(const MoveableGameObject &a, const MoveableGameObject &b)
 {
     return a.topLeft().y >= b.topLeft().y &&
            a.topLeft().y <= b.bottomRight().y &&
            a.bottomRight().y > b.bottomRight().y;
 }
 
-void reflectHorizontal(GameObject &a)
+void reflectHorizontal(MoveableGameObject &a)
 {
     auto angle = a.angle();
     angle.mirrorHorizontal();
     a.setAngle(angle);
 }
 
-void reflectHorizontalIncreased(GameObject &a)
+void reflectHorizontalIncreased(MoveableGameObject &a)
 {
     auto angle = a.angle();
     angle.mirrorHorizontal();
@@ -330,7 +330,7 @@ void reflectHorizontalIncreased(GameObject &a)
     a.setAngle(angle);
 }
 
-void reflectHorizontalDecreased(GameObject &a)
+void reflectHorizontalDecreased(MoveableGameObject &a)
 {
     auto angle = a.angle();
     angle.mirrorHorizontal();
@@ -338,14 +338,14 @@ void reflectHorizontalDecreased(GameObject &a)
     a.setAngle(angle);
 }
 
-void reflectVertical(GameObject &a)
+void reflectVertical(MoveableGameObject &a)
 {
     auto angle = a.angle();
     angle.mirrorVertical();
     a.setAngle(angle);
 }
 
-void reflectVerticalIncreased(GameObject &a)
+void reflectVerticalIncreased(MoveableGameObject &a)
 {
     auto angle = a.angle();
     angle.mirrorVertical();
@@ -353,7 +353,7 @@ void reflectVerticalIncreased(GameObject &a)
     a.setAngle(angle);
 }
 
-void reflectVerticalDecreased(GameObject &a)
+void reflectVerticalDecreased(MoveableGameObject &a)
 {
     auto angle = a.angle();
     angle.mirrorVertical();
@@ -361,28 +361,28 @@ void reflectVerticalDecreased(GameObject &a)
     a.setAngle(angle);
 }
 
-void putBeforeIntersectsWithRightX(GameObject &a, const GameObject &b)
+void putBeforeIntersectsWithRightX(MoveableGameObject &a, const MoveableGameObject &b)
 {
     Point p = a.topLeft();
     p.x = b.topLeft().x - a.width();
     a.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithLeftX(GameObject &a, const GameObject &b)
+void putBeforeIntersectsWithLeftX(MoveableGameObject &a, const MoveableGameObject &b)
 {
     Point p = a.topLeft();
     p.x = b.bottomRight().x;
     a.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithBottomY(GameObject &a, const GameObject &b)
+void putBeforeIntersectsWithBottomY(MoveableGameObject &a, const MoveableGameObject &b)
 {
     Point p = a.topLeft();
     p.y = b.topLeft().y - a.height();
     a.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithTopY(GameObject &a, const GameObject &b)
+void putBeforeIntersectsWithTopY(MoveableGameObject &a, const MoveableGameObject &b)
 {
     Point p = a.topLeft();
     p.y = b.bottomRight().y;
