@@ -29,7 +29,7 @@ public:
     GameObject &operator=(GameObject &&other) = default;
 
     Point topLeft() const;
-    void setTopLeft(Point topLeft);
+    virtual void setTopLeft(Point topLeft);
     Point bottomRight() const;
 
     double width() const;
