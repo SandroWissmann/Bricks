@@ -23,8 +23,25 @@ target_link_libraries(bricks
 )
 
 add_executable(test 
-    test/Angle_test.cpp
-    src/Angle.cpp
+    test/types/Angle_test.cpp
+    src/types/Angle.cpp
+    test/types/Gravity_test.cpp
+    src/types/Gravity.cpp
+    test/types/Height_test.cpp
+    src/types/Height.cpp
+    test/types/Hitpoints_test.cpp
+    src/types/Hitpoints.cpp
+    test/types/MaxPositionX_test.cpp
+    src/types/MaxPositionX.cpp
+    test/types/MaxPositionY_test.cpp
+    src/types/MaxPositionY.cpp
+    test/types/Point_test.cpp
+    src/types/Point.cpp
+    test/types/Velocity_test.cpp
+    src/types/Velocity.cpp
+    test/types/Width_test.cpp
+    src/types/Width.cpp
+    
     test/Ball_test.cpp
     src/Ball.cpp
     test/Brick_test.cpp
@@ -41,8 +58,6 @@ add_executable(test
 
     test/Platform_test.cpp
     src/Platform.cpp
-    test/Point_test.cpp
-    src/Point.cpp
 )
 
 #    test/GameObjectPhysics_test.cpp

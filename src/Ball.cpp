@@ -5,6 +5,16 @@
 
 namespace bricks {
 
+using Point = types::Point;
+using Width = types::Width;
+using Height = types::Height;
+using MaxPositionX = types::MaxPositionX;
+using MaxPositionY = types::MaxPositionY;
+using Velocity = types::Velocity;
+using Angle = types::Angle;
+using Gravity = types::Gravity;
+using Quadrant = types::Quadrant;
+
 Ball::Ball(Point topLeft, Width width, Height height, MaxPositionX maxPositionX,
            MaxPositionY maxPositionY, Velocity velocity, Angle angle,
            Gravity gravity)
@@ -19,7 +29,7 @@ Angle Ball::angle() const
     return mAngle;
 }
 
-void Ball::setAngle(Angle angle)
+void Ball::setAngle(types::Angle angle)
 {
     mAngle = angle;
 }

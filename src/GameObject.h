@@ -1,31 +1,15 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "Point.h"
+#include "types/Point.h"
+#include "types/Width.h"
+#include "types/Height.h"
 
 namespace bricks {
 
-struct Width {
-    double value;
-
-    double operator()() const
-    {
-        return value;
-    }
-};
-
-struct Height {
-    double value;
-
-    double operator()() const
-    {
-        return value;
-    }
-};
-
 class GameObject {
 public:
-    GameObject(Point topLeft, Width width, Height height);
+    GameObject(types::Point topLeft, types::Width width, types::Height height);
 
     virtual ~GameObject() = 0;
 
@@ -34,15 +18,15 @@ public:
     GameObject &operator=(const GameObject &other) = default;
     GameObject &operator=(GameObject &&other) = default;
 
-    Point topLeft() const;
-    virtual void setTopLeft(Point topLeft);
-    Point bottomRight() const;
+    types::Point topLeft() const;
+    virtual void setTopLeft(types::Point topLeft);
+    types::Point bottomRight() const;
 
     double width() const;
     double height() const;
 
 private:
-    Point mTopLeft;
+    types::Point mTopLeft;
 
     const double mWidth;
     const double mHeight;

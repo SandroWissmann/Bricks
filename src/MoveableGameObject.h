@@ -3,40 +3,17 @@
 
 #include "GameObject.h"
 
+#include "types/MaxPositionX.h"
+#include "types/MaxPositionY.h"
+#include "types/Velocity.h"
+
 namespace bricks {
-
-struct MaxPositionX {
-    double value;
-
-    double operator()() const
-    {
-        return value;
-    }
-};
-
-struct MaxPositionY {
-    double value;
-
-    double operator()() const
-    {
-        return value;
-    }
-};
-
-struct Velocity {
-    double value;
-
-    double operator()() const
-    {
-        return value;
-    }
-};
 
 class MoveableGameObject : public GameObject {
 public:
-    MoveableGameObject(Point topLeft, Width width, Height height,
-                       MaxPositionX maxPositionX, MaxPositionY maxPositionY,
-                       Velocity velocity);
+    MoveableGameObject(types::Point topLeft, types::Width width, types::Height height,
+                       types::MaxPositionX maxPositionX, types::MaxPositionY maxPositionY,
+                       types::Velocity velocity);
 
     virtual ~MoveableGameObject() = default;
 
@@ -47,7 +24,7 @@ public:
 
     virtual void move(double elapsedTimeInMS) = 0;
 
-    void setTopLeft(Point topLeft) override;
+    void setTopLeft(types::Point topLeft) override;
 
     double maxPositionX() const;
     double maxPositionY() const;

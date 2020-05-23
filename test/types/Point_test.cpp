@@ -1,11 +1,11 @@
 #include "gtest/gtest.h"
 
-#include "../src/Point.h"
+#include "../../src/types/Point.h"
 
 #include <iostream>
 #include <sstream>
 
-using namespace bricks;
+using namespace bricks::types;
 
 TEST(PointTest, operatorIsWorks1)
 {

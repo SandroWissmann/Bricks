@@ -1,10 +1,10 @@
 #include "Point.h"
 
-#include "IsNumber.h"
+#include "../IsNumber.h"
 
 #include <iostream>
 
-namespace bricks{
+namespace bricks::types{
 
     std::istream& operator>>(std::istream& is, Point& obj)
     {

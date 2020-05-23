@@ -3,6 +3,7 @@
 #include "../src/Platform.h"
 
 using namespace bricks;
+using namespace bricks::types;
 
 class PlatformTest : public ::testing::Test {
 protected:

@@ -4,6 +4,11 @@
 
 namespace bricks {
 
+    using Point = types::Point;
+    using Width = types::Width;
+    using Height = types::Height;
+    using Hitpoints = types::Hitpoints;
+
 Brick::Brick(Point topLeft, Width width, Height height, Hitpoints hitpoints)
     : GameObject(topLeft, width, height), mStartHitpoints{hitpoints()},
       mHitpoints{mStartHitpoints}

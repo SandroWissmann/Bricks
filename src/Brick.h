@@ -3,20 +3,13 @@
 
 #include "GameObject.h"
 
+#include "types/Hitpoints.h"
+
 namespace bricks {
-
-struct Hitpoints {
-    int value;
-
-    int operator()() const
-    {
-        return value;
-    }
-};
 
 class Brick : public GameObject {
 public:
-    Brick(Point topLeft, Width width, Height height, Hitpoints hitpoints);
+    Brick(types::Point topLeft, types::Width width, types::Height height, types::Hitpoints hitpoints);
     ~Brick() override = default;
 
     Brick(const Brick &) = default;

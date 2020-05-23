@@ -4,7 +4,9 @@
 
 namespace bricks {
 
-GameObject::GameObject(Point topLeft, Width width, Height height)
+    using Point = types::Point;
+
+GameObject::GameObject(Point topLeft, types::Width width, types::Height height)
     : mTopLeft{topLeft}, mWidth{width()}, mHeight{height()}
 {
     assert(mTopLeft.x >= 0);

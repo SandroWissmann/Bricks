@@ -5,7 +5,14 @@
 
 namespace bricks {
 
-MoveableGameObject::MoveableGameObject(Point topLeft, Width width,
+using Point = types::Point;
+using Width = types::Width;
+using Height = types::Height;
+using MaxPositionX = types::MaxPositionX;
+using MaxPositionY = types::MaxPositionY;
+using Velocity = types::Velocity;
+
+MoveableGameObject::MoveableGameObject(Point topLeft, types::Width width,
                                        Height height, MaxPositionX maxPositionX,
                                        MaxPositionY maxPositionY,
                                        Velocity velocity)

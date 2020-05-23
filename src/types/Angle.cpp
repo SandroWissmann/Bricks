@@ -4,7 +4,7 @@
 
 #include <cassert>
 
-namespace bricks {
+namespace bricks::types {
 
 Angle::Angle(long double angle)
     : mQuadrant{impl::calcQuadrant(angle)},

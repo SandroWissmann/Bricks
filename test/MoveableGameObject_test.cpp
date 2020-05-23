@@ -3,6 +3,7 @@
 #include "../src/MoveableGameObject.h"
 
 using namespace bricks;
+using namespace bricks::types;
 
 class DerivedGameObject : public MoveableGameObject {
 public:

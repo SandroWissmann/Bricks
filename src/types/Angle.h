@@ -1,7 +1,7 @@
-#ifndef ANGLE_H
-#define ANGLE_H
+#ifndef TYPES_ANGLE_H
+#define TYPES_ANGLE_H
 
-namespace bricks {
+namespace bricks::types {
 
 enum class Quadrant { I, II, III, IV };
 

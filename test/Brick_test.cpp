@@ -3,6 +3,7 @@
 #include "../src/Brick.h"
 
 using namespace bricks;
+using namespace bricks::types;
 
 TEST(BrickTest, startHitpoints)
 {

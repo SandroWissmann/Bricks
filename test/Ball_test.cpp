@@ -4,6 +4,7 @@
 #include "../src/OperatorDegree.h"
 
 using namespace bricks;
+using namespace bricks::types;
 
 class BallTest : public ::testing::Test {
 protected:
