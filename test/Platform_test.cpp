@@ -1,0 +1,46 @@
+#include "gtest/gtest.h"
+
+#include "../src/Platform.h"
+
+using namespace bricks;
+
+
+class PlatformTest : public ::testing::Test {
+protected:
+    Point point{10.0, 10.0};
+    Width width{1.0};
+    Height height{1.0};
+    MaxPositionX maxPositionX{1000.0};
+    MaxPositionY maxPositionY{1000.0};
+    Velocity velocity{2.0};
+
+    Platform makePlatform(const Velocity& velocity)
+    {
+        return Platform{
+            point, width, height, maxPositionX, maxPositionY,
+            velocity
+        };
+    }
+};
+
+TEST_F(PlatformTest, move_positive)
+{
+    auto obj = makePlatform(Velocity{2.0});
+    auto oldObj = obj;
+    auto timeInMS = 1000;
+    obj.move(timeInMS);
+
+    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x + oldObj.velocity());
+    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y);
+}
+
+TEST_F(PlatformTest, move_negative)
+{
+    auto obj = makePlatform(Velocity{-2.0});
+    auto oldObj = obj;
+    auto timeInMS = 1000;
+    obj.move(timeInMS);
+
+    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x + oldObj.velocity());
+    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y);
+}

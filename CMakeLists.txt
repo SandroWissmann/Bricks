@@ -36,6 +36,9 @@ add_executable(test
     test/NearlyEqual_test.cpp
     src/NearlyEqual.cpp
     test/OperatorDegree_test.cpp
+
+    test/Platform_test.cpp
+    src/Platform.cpp
 )
 
 #    test/GameObjectPhysics_test.cpp
