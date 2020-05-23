@@ -29,12 +29,17 @@ add_executable(test
     src/Brick.cpp
     test/GameObject_test.cpp
     src/GameObject.cpp
-    test/GameObjectPhysics_test.cpp
-    src/GameObjectPhysics.cpp
+    test/MoveableGameObject_test.cpp
+    src/MoveableGameObject.cpp
     test/NearlyEqual_test.cpp
     src/NearlyEqual.cpp
     test/OperatorDegree_test.cpp
 )
+
+#    test/GameObjectPhysics_test.cpp
+#    src/GameObjectPhysics.cpp
+
+
 target_link_libraries(test 
     gtest_main 
 )
