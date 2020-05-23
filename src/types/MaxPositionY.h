@@ -9,5 +9,5 @@ struct MaxPositionY {
     double value;
 };
 
-}
+} // namespace bricks::types
 #endif

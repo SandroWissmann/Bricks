@@ -2,8 +2,8 @@
 
 namespace bricks::types {
 
-    double MaxPositionX::operator()() const
-    {
-        return value;
-    }
+double MaxPositionX::operator()() const
+{
+    return value;
 }
+} // namespace bricks::types

@@ -2,8 +2,8 @@
 
 namespace bricks::types {
 
-    double Velocity::operator()() const
-    {
-        return value;
-    }
+double Velocity::operator()() const
+{
+    return value;
 }
+} // namespace bricks::types

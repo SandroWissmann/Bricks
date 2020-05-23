@@ -1,9 +1,9 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include "types/Height.h"
 #include "types/Point.h"
 #include "types/Width.h"
-#include "types/Height.h"
 
 namespace bricks {
 

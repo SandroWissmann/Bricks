@@ -1,17 +1,17 @@
 #ifndef BALL_H
 #define BALL_H
 
+#include "MoveableGameObject.h"
 #include "types/Angle.h"
 #include "types/Gravity.h"
-#include "MoveableGameObject.h"
 
 namespace bricks {
 
 class Ball : public MoveableGameObject {
 public:
-    Ball(types::Point topLeft, types::Width width, types::Height height, types::MaxPositionX maxPositionX,
-         types::MaxPositionY maxPositionY, types::Velocity velocity, types::Angle angle,
-         types::Gravity gravity);
+    Ball(types::Point topLeft, types::Width width, types::Height height,
+         types::MaxPositionX maxPositionX, types::MaxPositionY maxPositionY,
+         types::Velocity velocity, types::Angle angle, types::Gravity gravity);
 
     ~Ball() override = default;
 
@@ -37,8 +37,8 @@ private:
     bool mIsActive;
 };
 
-types::Point calcNewPosition(const types::Point &p, double velocity, types::Angle angle,
-                      double elapsedTimeInMS);
+types::Point calcNewPosition(const types::Point &p, double velocity,
+                             types::Angle angle, double elapsedTimeInMS);
 
 double calcTraveldWay(double deltaTimeMS, double velocityInS);
 

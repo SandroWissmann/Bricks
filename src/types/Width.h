@@ -9,5 +9,5 @@ struct Width {
     double value;
 };
 
-}
+} // namespace bricks::types
 #endif

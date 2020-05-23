@@ -2,8 +2,8 @@
 
 namespace bricks::types {
 
-    double Gravity::operator()() const
-    {
-        return value;
-    }
+double Gravity::operator()() const
+{
+    return value;
 }
+} // namespace bricks::types

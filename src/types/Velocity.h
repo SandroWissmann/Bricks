@@ -9,5 +9,5 @@ struct Velocity {
     double value;
 };
 
-}
+} // namespace bricks::types
 #endif

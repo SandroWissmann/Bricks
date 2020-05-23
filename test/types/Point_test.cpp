@@ -9,9 +9,7 @@ using namespace bricks::types;
 
 TEST(PointTest, operatorIsWorks1)
 {
-    std::string test {
-        "X 3.5 Y 5.2"
-    };
+    std::string test{"X 3.5 Y 5.2"};
 
     std::istringstream ist{test};
 
@@ -26,9 +24,7 @@ TEST(PointTest, operatorIsWorks1)
 
 TEST(PointTest, operatorIsWorks2)
 {
-    std::string test {
-        "X 3 Y 5"
-    };
+    std::string test{"X 3 Y 5"};
 
     std::istringstream ist{test};
 
@@ -41,12 +37,9 @@ TEST(PointTest, operatorIsWorks2)
     EXPECT_EQ(p.y, 5.0);
 }
 
-
 TEST(PointTest, operatorIsFails1)
 {
-    std::string test {
-        " 3.5 Y 5.2"
-    };
+    std::string test{" 3.5 Y 5.2"};
 
     std::istringstream ist{test};
 
@@ -56,12 +49,9 @@ TEST(PointTest, operatorIsFails1)
     EXPECT_TRUE(ist.fail());
 }
 
-
 TEST(PointTest, operatorIsFails2)
 {
-    std::string test {
-        "X 3.5  5.2"
-    };
+    std::string test{"X 3.5  5.2"};
 
     std::istringstream ist{test};
 
@@ -73,9 +63,7 @@ TEST(PointTest, operatorIsFails2)
 
 TEST(PointTest, operatorIsFails3)
 {
-    std::string test {
-        "Y 3.5 X 5.2"
-    };
+    std::string test{"Y 3.5 X 5.2"};
 
     std::istringstream ist{test};
 

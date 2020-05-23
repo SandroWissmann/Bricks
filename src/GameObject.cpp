@@ -4,7 +4,7 @@
 
 namespace bricks {
 
-    using Point = types::Point;
+using Point = types::Point;
 
 GameObject::GameObject(Point topLeft, types::Width width, types::Height height)
     : mTopLeft{topLeft}, mWidth{width()}, mHeight{height()}

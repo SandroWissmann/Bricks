@@ -9,5 +9,5 @@ struct Height {
     double value;
 };
 
-}
+} // namespace bricks::types
 #endif

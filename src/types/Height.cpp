@@ -2,8 +2,8 @@
 
 namespace bricks::types {
 
-    double Height::operator()() const
-    {
-        return value;
-    }
+double Height::operator()() const
+{
+    return value;
 }
+} // namespace bricks::types

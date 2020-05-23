@@ -147,4 +147,4 @@ long double calcAngleIfOver360(long double angle)
 }
 
 } // namespace impl
-} // namespace bricks
+} // namespace bricks::types

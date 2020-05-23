@@ -11,8 +11,9 @@ namespace bricks {
 
 class MoveableGameObject : public GameObject {
 public:
-    MoveableGameObject(types::Point topLeft, types::Width width, types::Height height,
-                       types::MaxPositionX maxPositionX, types::MaxPositionY maxPositionY,
+    MoveableGameObject(types::Point topLeft, types::Width width,
+                       types::Height height, types::MaxPositionX maxPositionX,
+                       types::MaxPositionY maxPositionY,
                        types::Velocity velocity);
 
     virtual ~MoveableGameObject() = default;

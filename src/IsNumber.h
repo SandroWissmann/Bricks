@@ -5,9 +5,8 @@
 
 namespace bricks {
 
-template <typename T>
-bool isNumber(const std::string& s);
+template <typename T> bool isNumber(const std::string &s);
 
-}  // namespace bricks
+} // namespace bricks
 
 #endif

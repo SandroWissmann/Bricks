@@ -9,5 +9,5 @@ struct Gravity {
     double value;
 };
 
-}
+} // namespace bricks::types
 #endif

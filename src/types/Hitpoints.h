@@ -9,5 +9,5 @@ struct Hitpoints {
     int value;
 };
 
-}
+} // namespace bricks::types
 #endif

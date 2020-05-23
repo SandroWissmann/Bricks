@@ -10,7 +10,7 @@ struct Point {
     double y{0.0};
 };
 
-std::istream& operator>>(std::istream& is, Point& obj);
+std::istream &operator>>(std::istream &is, Point &obj);
 
-} // namespace bricks
+} // namespace bricks::types
 #endif
