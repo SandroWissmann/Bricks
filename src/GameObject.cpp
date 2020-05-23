@@ -14,6 +14,8 @@ namespace bricks {
         assert(mHeight > 0);
     }
 
+    GameObject::~GameObject() = default;
+
     Point GameObject::topLeft() const
     {
         return mTopLeft;

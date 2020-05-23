@@ -25,6 +25,16 @@ void MoveableGameObject::setTopLeft(Point topLeft)
     GameObject::setTopLeft(topLeft);
 }
 
+double MoveableGameObject::maxPositionX() const
+{
+    return mMaxPositionX;
+}
+
+double MoveableGameObject::maxPositionY() const
+{
+    return mMaxPositionY;
+}
+
 double MoveableGameObject::velocity() const { return mVelocity; }
 
 void MoveableGameObject::setVelocity(double velocity) { mVelocity = velocity; }
