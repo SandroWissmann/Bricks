@@ -8,7 +8,7 @@ namespace bricks{
     class IndestructibleBrick : public GameObject
     {
     public:
-        IndestructibleBrick(Point topLeft, Width width, Height height);
+        using GameObject::GameObject;
         ~IndestructibleBrick() override = default;
 
         IndestructibleBrick (const IndestructibleBrick &) = default;
