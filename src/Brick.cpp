@@ -6,11 +6,11 @@ namespace bricks {
 
 using Point = types::Point;
 using Length = types::Length;
-using Height = types::Height;
+using Width = types::Width;
 using Hitpoints = types::Hitpoints;
 
-Brick::Brick(Point topLeft, Length length, Height height, Hitpoints hitpoints)
-    : GameObject(topLeft, length, height), mStartHitpoints{hitpoints()},
+Brick::Brick(Point topLeft, Length length, Width width, Hitpoints hitpoints)
+    : GameObject(topLeft, length, width), mStartHitpoints{hitpoints()},
       mHitpoints{mStartHitpoints}
 {
     assert(mHitpoints > 0);

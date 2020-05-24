@@ -3,13 +3,13 @@
 
 #include "types/Point.h"
 #include "types/Length.h"
-#include "types/Height.h"
+#include "types/Width.h"
 
 namespace bricks {
 
 class GameObject {
 public:
-    GameObject(types::Point topLeft, types::Length length, types::Height height);
+    GameObject(types::Point topLeft, types::Length length, types::Width width);
 
     virtual ~GameObject() = 0;
 
@@ -23,13 +23,13 @@ public:
     types::Point bottomRight() const;
 
     double length() const;
-    double height() const;
+    double width() const;
 
 private:
     types::Point mTopLeft;
 
+    const double mLength;
     const double mWidth;
-    const double mHeight;
 };
 
 } // namespace bricks

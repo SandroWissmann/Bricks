@@ -6,14 +6,14 @@ namespace bricks {
 
 using Point = types::Point;
 
-GameObject::GameObject(Point topLeft, types::Length length, types::Height height)
-    : mTopLeft{topLeft}, mWidth{length()}, mHeight{height()}
+GameObject::GameObject(Point topLeft, types::Length length, types::Width width)
+    : mTopLeft{topLeft}, mLength{length()}, mWidth{width()}
 {
     assert(mTopLeft.x >= 0);
     assert(mTopLeft.y >= 0);
 
+    assert(mLength > 0);
     assert(mWidth > 0);
-    assert(mHeight > 0);
 }
 
 GameObject::~GameObject() = default;
@@ -32,16 +32,16 @@ void GameObject::setTopLeft(Point topLeft)
 
 Point GameObject::bottomRight() const
 {
-    return Point{mTopLeft.x + mWidth, mTopLeft.y + mHeight};
+    return Point{mTopLeft.x + mLength, mTopLeft.y + mWidth};
 }
 
 double GameObject::length() const
 {
-    return mWidth;
+    return mLength;
 }
 
-double GameObject::height() const
+double GameObject::width() const
 {
-    return mHeight;
+    return mWidth;
 }
 } // namespace bricks

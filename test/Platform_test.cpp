@@ -9,14 +9,14 @@ class PlatformTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
     Length length{1.0};
-    Height height{1.0};
+    Width width{1.0};
     MaxPositionX maxPositionX{1000.0};
     MaxPositionY maxPositionY{1000.0};
     Velocity velocity{2.0};
 
     Platform makePlatform(const Velocity &velocity)
     {
-        return Platform{point,        length,        height,
+        return Platform{point,        length,        width,
                         maxPositionX, maxPositionY, velocity};
     }
 };

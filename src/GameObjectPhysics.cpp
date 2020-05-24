@@ -325,7 +325,7 @@ void putBeforeIntersectsWithLeftX(Ball &ball, const GameObject &obj)
 void putBeforeIntersectsWithBottomY(Ball &ball, const GameObject &obj)
 {
     Point p = ball.topLeft();
-    p.y = obj.topLeft().y - ball.height();
+    p.y = obj.topLeft().y - ball.width();
     ball.setTopLeft(p);
 }
 

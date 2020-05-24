@@ -27,13 +27,12 @@ add_executable(test
     src/types/Angle.cpp
     test/types/Gravity_test.cpp
     src/types/Gravity.cpp
-    test/types/Height_test.cpp
-    src/types/Height.cpp
     test/types/Hitpoints_test.cpp
     src/types/Hitpoints.cpp
     test/types/Length_test.cpp
     src/types/Length.cpp
-
+    test/types/Width_test.cpp
+    src/types/Width.cpp
     test/types/MaxPositionX_test.cpp
     src/types/MaxPositionX.cpp
     test/types/MaxPositionY_test.cpp

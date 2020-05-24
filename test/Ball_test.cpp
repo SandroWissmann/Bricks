@@ -10,7 +10,7 @@ class BallTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
     Length length{1.0};
-    Height height{1.0};
+    Width width{1.0};
     MaxPositionX maxPositionX{1000.0};
     MaxPositionY maxPositionY{1000.0};
     Velocity velocity{2.0};
@@ -20,7 +20,7 @@ protected:
     Ball makeBall(const Velocity &velocity, const Angle &angle,
                   const Gravity &gravity)
     {
-        return Ball{point,        length,    height, maxPositionX,
+        return Ball{point,        length,    width, maxPositionX,
                     maxPositionY, velocity, angle,  gravity};
     }
 };

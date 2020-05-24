@@ -1,5 +1,5 @@
-#ifndef TYPES_WIDTH_H
-#define TYPES_WIDTH_H
+#ifndef TYPES_LENGTH_H
+#define TYPES_LENGTH_H
 
 #include <iosfwd>
 

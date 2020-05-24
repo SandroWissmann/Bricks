@@ -7,8 +7,8 @@ using namespace bricks::types;
 
 class DerivedGameObject : public GameObject {
 public:
-    DerivedGameObject(Point topLeft, Length length, Height height)
-        : GameObject(topLeft, length, height)
+    DerivedGameObject(Point topLeft, Length length, Width width)
+        : GameObject(topLeft, length, width)
     {
     }
 
@@ -21,7 +21,7 @@ public:
 
 class GameObjectTest : public ::testing::Test {
 protected:
-    DerivedGameObject obj{Point{10.1, 20.2}, Length{10.5}, Height{20.6}};
+    DerivedGameObject obj{Point{10.1, 20.2}, Length{10.5}, Width{20.6}};
 };
 
 TEST_F(GameObjectTest, topLeft)
@@ -38,7 +38,7 @@ TEST_F(GameObjectTest, topLeft)
 TEST_F(GameObjectTest, bottomRight)
 {
     EXPECT_EQ(obj.bottomRight().x, 10.1 + obj.length());
-    EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.height());
+    EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.width());
 }
 
 TEST_F(GameObjectTest, length)
@@ -46,7 +46,7 @@ TEST_F(GameObjectTest, length)
     EXPECT_EQ(obj.length(), 10.5);
 }
 
-TEST_F(GameObjectTest, height)
+TEST_F(GameObjectTest, width)
 {
-    EXPECT_EQ(obj.height(), 20.6);
+    EXPECT_EQ(obj.width(), 20.6);
 }

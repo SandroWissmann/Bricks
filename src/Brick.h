@@ -9,7 +9,7 @@ namespace bricks {
 
 class Brick : public GameObject {
 public:
-    Brick(types::Point topLeft, types::Length length, types::Height height,
+    Brick(types::Point topLeft, types::Length length, types::Width width,
           types::Hitpoints hitpoints);
     ~Brick() override = default;
 

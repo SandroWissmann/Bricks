@@ -7,16 +7,16 @@ namespace bricks {
 
 using Point = types::Point;
 using Length = types::Length;
-using Height = types::Height;
+using Width = types::Width;
 using MaxPositionX = types::MaxPositionX;
 using MaxPositionY = types::MaxPositionY;
 using Velocity = types::Velocity;
 
 MoveableGameObject::MoveableGameObject(Point topLeft, types::Length length,
-                                       Height height, MaxPositionX maxPositionX,
+                                       Width width, MaxPositionX maxPositionX,
                                        MaxPositionY maxPositionY,
                                        Velocity velocity)
-    : GameObject{topLeft, length, height}, mMaxPositionX(maxPositionX()),
+    : GameObject{topLeft, length, width}, mMaxPositionX(maxPositionX()),
       mMaxPositionY(maxPositionY()), mVelocity{velocity()}
 {
     assert(mMaxPositionX > 0);
@@ -26,7 +26,7 @@ MoveableGameObject::MoveableGameObject(Point topLeft, types::Length length,
 void MoveableGameObject::setTopLeft(Point topLeft)
 {
     topLeft.x = std::clamp(topLeft.x, 0.0, mMaxPositionX - length());
-    topLeft.y = std::clamp(topLeft.y, 0.0, mMaxPositionY - height());
+    topLeft.y = std::clamp(topLeft.y, 0.0, mMaxPositionY - width());
 
     GameObject::setTopLeft(topLeft);
 }

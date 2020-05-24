@@ -12,7 +12,7 @@ namespace bricks {
 class MoveableGameObject : public GameObject {
 public:
     MoveableGameObject(types::Point topLeft, types::Length length,
-                       types::Height height, types::MaxPositionX maxPositionX,
+                       types::Width width, types::MaxPositionX maxPositionX,
                        types::MaxPositionY maxPositionY,
                        types::Velocity velocity);
 
