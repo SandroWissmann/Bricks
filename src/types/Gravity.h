@@ -3,10 +3,14 @@
 
 namespace bricks::types {
 
-struct Gravity {
-    double operator()() const;
+class Gravity {
+public:
+    Gravity() = default;
+    Gravity(double value);
 
-    double value;
+    double operator()() const;
+private:
+    double mValue{0};
 };
 
 } // namespace bricks::types
