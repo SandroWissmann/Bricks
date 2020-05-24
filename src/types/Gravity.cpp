@@ -6,7 +6,6 @@ Gravity::Gravity(double value) : mValue{value}
 {
 }
 
-
 double Gravity::operator()() const
 {
     return mValue;

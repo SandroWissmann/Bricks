@@ -9,6 +9,7 @@ public:
     Gravity(double value);
 
     double operator()() const;
+
 private:
     double mValue{0};
 };

@@ -1,8 +1,8 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "types/Point.h"
 #include "types/Length.h"
+#include "types/Point.h"
 #include "types/Width.h"
 
 namespace bricks {

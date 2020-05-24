@@ -29,7 +29,7 @@ public:
 TEST(MoveableGameObjectTest_F, topLeftGetsClampedOnX)
 {
     DerivedGameObject obj{Point{10.0, 20.0},  Length{10.0},
-                          Width{20.0},       MaxPositionX{50.0},
+                          Width{20.0},        MaxPositionX{50.0},
                           MaxPositionY{70.0}, Velocity{0.0}};
 
     constexpr double maxPointX = 50.0 - 10.0;
@@ -44,7 +44,7 @@ TEST(MoveableGameObjectTest_F, topLeftGetsClampedOnX)
 class MoveableGameObjectTest : public ::testing::Test {
 protected:
     DerivedGameObject obj{Point{10.1, 20.2},  Length{10.5},
-                          Width{20.6},       MaxPositionX{50.3},
+                          Width{20.6},        MaxPositionX{50.3},
                           MaxPositionY{70.4}, Velocity{2.0}};
 };
 

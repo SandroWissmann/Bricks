@@ -18,7 +18,7 @@ using Quadrant = types::Quadrant;
 Ball::Ball(Point topLeft, Length length, Width width, MaxPositionX maxPositionX,
            MaxPositionY maxPositionY, Velocity velocity, Angle angle,
            Gravity gravity)
-    : MoveableGameObject{topLeft,      length,        width,
+    : MoveableGameObject{topLeft,      length,       width,
                          maxPositionX, maxPositionY, velocity},
       mAngle{angle}, mGravity{gravity()}, mIsActive{false}
 {

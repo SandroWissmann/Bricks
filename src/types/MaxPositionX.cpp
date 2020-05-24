@@ -6,7 +6,6 @@ MaxPositionX::MaxPositionX(double value) : mValue{value}
 {
 }
 
-
 double MaxPositionX::operator()() const
 {
     return mValue;

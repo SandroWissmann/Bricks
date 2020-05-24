@@ -9,6 +9,7 @@ public:
     MaxPositionY(double value);
 
     double operator()() const;
+
 private:
     double mValue{0.0};
 };

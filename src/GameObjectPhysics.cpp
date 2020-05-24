@@ -15,7 +15,6 @@ namespace bricks {
 using Point = types::Point;
 using Quadrant = types::Quadrant;
 
-
 bool ifHitReflect(Ball &ball, const GameObject &obj)
 {
     auto oldQuadrant = ball.angle().quadrant();

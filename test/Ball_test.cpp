@@ -20,8 +20,8 @@ protected:
     Ball makeBall(const Velocity &velocity, const Angle &angle,
                   const Gravity &gravity)
     {
-        return Ball{point,        length,    width, maxPositionX,
-                    maxPositionY, velocity, angle,  gravity};
+        return Ball{point,        length,   width, maxPositionX,
+                    maxPositionY, velocity, angle, gravity};
     }
 };
 

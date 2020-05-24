@@ -10,12 +10,11 @@ using namespace bricks;
 TEST(LevelTest, operatorIsWorks1)
 {
     std::string test{
-       R"(# 
+        R"(# 
 X 1.2 Y 3.4 L 5.6 W 7.8 HP 9
 #
 X 9.8 Y 7.6 L 5.4 W 3.2
-#)" 
-    };
+#)"};
 
     std::istringstream ist{test};
 
