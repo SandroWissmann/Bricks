@@ -13,7 +13,7 @@ Brick::Brick(Point topLeft, Length length, Width width, Hitpoints hitpoints)
     : GameObject(topLeft, length, width), mStartHitpoints{hitpoints()},
       mHitpoints{mStartHitpoints}
 {
-    assert(mHitpoints > 0);
+    assert(mHitpoints > 0 && mHitpoints < 10);
 }
 
 int Brick::startHitpoints() const
