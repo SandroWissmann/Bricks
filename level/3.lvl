@@ -1,80 +1,80 @@
 #
 # Format Brick: 
-# PointX PointY Length Width HP 
+# PointX PointY Length Width HP
 #
 # Format Indestructible Brick:
 # PointX PointY Length Width
 # 
-X 1.0 Y 3.0 L 3.0 W 1.0 H 9
-X 4.0 Y 3.0 L 3.0 W 1.0 H 9
-X 7.0 Y 3.0 L 3.0 W 1.0 H 9
+X 1.0 Y 3.0 L 3.0 W 1.0 HP 9
+X 4.0 Y 3.0 L 3.0 W 1.0 HP 9
+X 7.0 Y 3.0 L 3.0 W 1.0 HP 9
 #
-X 10.0 Y 3.0 L 6.0 W 9.0 H 1
+X 10.0 Y 3.0 L 6.0 W 9.0 HP 1
 #
-X 16.0 Y 3.0 L 3.0 W 1.0 H 9
-X 19.0 Y 3.0 L 3.0 W 1.0 H 9
-X 22.0 Y 3.0 L 3.0 W 1.0 H 9
+X 16.0 Y 3.0 L 3.0 W 1.0 HP 9
+X 19.0 Y 3.0 L 3.0 W 1.0 HP 9
+X 22.0 Y 3.0 L 3.0 W 1.0 HP 9
 #
-X 1.0 Y 4.0 L 3.0 W 1.0 H 8
-X 4.0 Y 4.0 L 3.0 W 1.0 H 8
-X 7.0 Y 4.0 L 3.0 W 1.0 H 8
+X 1.0 Y 4.0 L 3.0 W 1.0 HP 8
+X 4.0 Y 4.0 L 3.0 W 1.0 HP 8
+X 7.0 Y 4.0 L 3.0 W 1.0 HP 8
 #
-X 16.0 Y 4.0 L 3.0 W 1.0 H 8
-X 19.0 Y 4.0 L 3.0 W 1.0 H 8
-X 22.0 Y 4.0 L 3.0 W 1.0 H 8
+X 16.0 Y 4.0 L 3.0 W 1.0 HP 8
+X 19.0 Y 4.0 L 3.0 W 1.0 HP 8
+X 22.0 Y 4.0 L 3.0 W 1.0 HP 8
 #
-X 1.0 Y 5.0 L 3.0 W 1.0 H 7
-X 4.0 Y 5.0 L 3.0 W 1.0 H 7
-X 7.0 Y 5.0 L 3.0 W 1.0 H 7
+X 1.0 Y 5.0 L 3.0 W 1.0 HP 7
+X 4.0 Y 5.0 L 3.0 W 1.0 HP 7
+X 7.0 Y 5.0 L 3.0 W 1.0 HP 7
 #
-X 16.0 Y 5.0 L 3.0 W 1.0 H 7
-X 19.0 Y 5.0 L 3.0 W 1.0 H 7
-X 22.0 Y 5.0 L 3.0 W 1.0 H 7
+X 16.0 Y 5.0 L 3.0 W 1.0 HP 7
+X 19.0 Y 5.0 L 3.0 W 1.0 HP 7
+X 22.0 Y 5.0 L 3.0 W 1.0 HP 7
 #
-X 1.0 Y 6.0 L 3.0 W 1.0 H 6
-X 4.0 Y 6.0 L 3.0 W 1.0 H 6
-X 7.0 Y 6.0 L 3.0 W 1.0 H 6
+X 1.0 Y 6.0 L 3.0 W 1.0 HP 6
+X 4.0 Y 6.0 L 3.0 W 1.0 HP 6
+X 7.0 Y 6.0 L 3.0 W 1.0 HP 6
 #
-X 16.0 Y 6.0 L 3.0 W 1.0 H 6
-X 19.0 Y 6.0 L 3.0 W 1.0 H 6
-X 22.0 Y 6.0 L 3.0 W 1.0 H 6
+X 16.0 Y 6.0 L 3.0 W 1.0 HP 6
+X 19.0 Y 6.0 L 3.0 W 1.0 HP 6
+X 22.0 Y 6.0 L 3.0 W 1.0 HP 6
 #
-X 1.0 Y 7.0 L 3.0 W 1.0 H 5
-X 4.0 Y 7.0 L 3.0 W 1.0 H 5
-X 7.0 Y 7.0 L 3.0 W 1.0 H 5
+X 1.0 Y 7.0 L 3.0 W 1.0 HP 5
+X 4.0 Y 7.0 L 3.0 W 1.0 HP 5
+X 7.0 Y 7.0 L 3.0 W 1.0 HP 5
 #
-X 16.0 Y 7.0 L 3.0 W 1.0 H 5
-X 19.0 Y 7.0 L 3.0 W 1.0 H 5
-X 22.0 Y 7.0 L 3.0 W 1.0 H 5
+X 16.0 Y 7.0 L 3.0 W 1.0 HP 5
+X 19.0 Y 7.0 L 3.0 W 1.0 HP 5
+X 22.0 Y 7.0 L 3.0 W 1.0 HP 5
 #
-X 1.0 Y 8.0 L 3.0 W 1.0 H 4
-X 4.0 Y 8.0 L 3.0 W 1.0 H 4
-X 7.0 Y 8.0 L 3.0 W 1.0 H 4
+X 1.0 Y 8.0 L 3.0 W 1.0 HP 4
+X 4.0 Y 8.0 L 3.0 W 1.0 HP 4
+X 7.0 Y 8.0 L 3.0 W 1.0 HP 4
 #
-X 16.0 Y 8.0 L 3.0 W 1.0 H 4
-X 19.0 Y 8.0 L 3.0 W 1.0 H 4
-X 22.0 Y 8.0 L 3.0 W 1.0 H 4
+X 16.0 Y 8.0 L 3.0 W 1.0 HP 4
+X 19.0 Y 8.0 L 3.0 W 1.0 HP 4
+X 22.0 Y 8.0 L 3.0 W 1.0 HP 4
 #
-X 1.0 Y 9.0 L 3.0 W 1.0 H 3
-X 4.0 Y 9.0 L 3.0 W 1.0 H 3
-X 7.0 Y 9.0 L 3.0 W 1.0 H 3
+X 1.0 Y 9.0 L 3.0 W 1.0 HP 3
+X 4.0 Y 9.0 L 3.0 W 1.0 HP 3
+X 7.0 Y 9.0 L 3.0 W 1.0 HP 3
 #
-X 16.0 Y 9.0 L 3.0 W 1.0 H 3
-X 19.0 Y 9.0 L 3.0 W 1.0 H 3
-X 22.0 Y 9.0 L 3.0 W 1.0 H 3
+X 16.0 Y 9.0 L 3.0 W 1.0 HP 3
+X 19.0 Y 9.0 L 3.0 W 1.0 HP 3
+X 22.0 Y 9.0 L 3.0 W 1.0 HP 3
 #
-X 1.0 Y 10.0 L 3.0 W 1.0 H 2
-X 4.0 Y 10.0 L 3.0 W 1.0 H 2
-X 7.0 Y 10.0 L 3.0 W 1.0 H 2
+X 1.0 Y 10.0 L 3.0 W 1.0 HP 2
+X 4.0 Y 10.0 L 3.0 W 1.0 HP 2
+X 7.0 Y 10.0 L 3.0 W 1.0 HP 2
 #
-X 16.0 Y 10.0 L 3.0 W 1.0 H 2
-X 19.0 Y 10.0 L 3.0 W 1.0 H 2
-X 22.0 Y 10.0 L 3.0 W 1.0 H 2
+X 16.0 Y 10.0 L 3.0 W 1.0 HP 2
+X 19.0 Y 10.0 L 3.0 W 1.0 HP 2
+X 22.0 Y 10.0 L 3.0 W 1.0 HP 2
 #
-X 1.0 Y 11.0 L 3.0 W 1.0 H 1
-X 4.0 Y 11.0 L 3.0 W 1.0 H 1
-X 7.0 Y 11.0 L 3.0 W 1.0 H 1
+X 1.0 Y 11.0 L 3.0 W 1.0 HP 1
+X 4.0 Y 11.0 L 3.0 W 1.0 HP 1
+X 7.0 Y 11.0 L 3.0 W 1.0 HP 1
 #
-X 16.0 Y 11.0 L 3.0 W 1.0 H 1
-X 19.0 Y 11.0 L 3.0 W 1.0 H 1
-X 22.0 Y 11.0 L 3.0 W 1.0 H 1
+X 16.0 Y 11.0 L 3.0 W 1.0 HP 1
+X 19.0 Y 11.0 L 3.0 W 1.0 HP 1
+X 22.0 Y 11.0 L 3.0 W 1.0 HP 1

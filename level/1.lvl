@@ -1,31 +1,31 @@
 #
 # Format Brick: 
-# PointX PointY Length Width HP 
+# PointX PointY Length Width HP
 #
 # Format Indestructible Brick:
 # PointX PointY Length Width
 # 
-X 4.0 Y 2.0 L 3.0 W 1.0 H 1
-X 7.0 Y 2.0 L 3.0 W 1.0 H 1
-X 10.0 Y 2.0 L 3.0 W 1.0 H 1
-X 13.0 Y 2.0 L 3.0 W 1.0 H 1
-X 16.0 Y 2.0 L 3.0 W 1.0 H 1
-X 19.0 Y 2.0 L 3.0 W 1.0 H 1
+X 4.0 Y 2.0 L 3.0 W 1.0 HP 1
+X 7.0 Y 2.0 L 3.0 W 1.0 HP 1
+X 10.0 Y 2.0 L 3.0 W 1.0 HP 1
+X 13.0 Y 2.0 L 3.0 W 1.0 HP 1
+X 16.0 Y 2.0 L 3.0 W 1.0 HP 1
+X 19.0 Y 2.0 L 3.0 W 1.0 HP 1
 #
-X 4.0 Y 3.0 L 3.0 W 1.0 H 1
-X 19.0 Y 3.0 L 3.0 W 1.0 H 1
+X 4.0 Y 3.0 L 3.0 W 1.0 HP 1
+X 19.0 Y 3.0 L 3.0 W 1.0 HP 1
 #
-X 4.0 Y 4.0 L 3.0 W 1.0 H 1
-X 10.0 Y 4.0 L 3.0 W 1.0 H 2
-X 13.0 Y 4.0 L 3.0 W 1.0 H 2
-X 19.0 Y 4.0 L 3.0 W 1.0 H 1
+X 4.0 Y 4.0 L 3.0 W 1.0 HP 1
+X 10.0 Y 4.0 L 3.0 W 1.0 HP 2
+X 13.0 Y 4.0 L 3.0 W 1.0 HP 2
+X 19.0 Y 4.0 L 3.0 W 1.0 HP 1
 #
-X 4.0 Y 5.0 L 3.0 W 1.0 H 1
-X 19.0 Y 5.0 L 3.0 W 1.0 H 1
+X 4.0 Y 5.0 L 3.0 W 1.0 HP 1
+X 19.0 Y 5.0 L 3.0 W 1.0 HP 1
 #
-X 4.0 Y 6.0 L 3.0 W 1.0 H 1
-X 7.0 Y 6.0 L 3.0 W 1.0 H 1
-X 10.0 Y 6.0 L 3.0 W 1.0 H 1
-X 13.0 Y 6.0 L 3.0 W 1.0 H 1
-X 16.0 Y 6.0 L 3.0 W 1.0 H 1
-X 19.0 Y 6.0 L 3.0 W 1.0 H 1
+X 4.0 Y 6.0 L 3.0 W 1.0 HP 1
+X 7.0 Y 6.0 L 3.0 W 1.0 HP 1
+X 10.0 Y 6.0 L 3.0 W 1.0 HP 1
+X 13.0 Y 6.0 L 3.0 W 1.0 HP 1
+X 16.0 Y 6.0 L 3.0 W 1.0 HP 1
+X 19.0 Y 6.0 L 3.0 W 1.0 HP 1
