@@ -3,10 +3,14 @@
 
 namespace bricks::types {
 
-struct Velocity {
-    double operator()() const;
+class Velocity {
+public:
+    Velocity() = default;
+    Velocity(double value);
 
-    double value;
+    double operator()() const;
+private:
+    double mValue{0};
 };
 
 } // namespace bricks::types
