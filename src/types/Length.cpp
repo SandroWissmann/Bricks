@@ -29,8 +29,8 @@ std::istream &operator>>(std::istream &is, Length &obj)
         is.setstate(std::ios_base::failbit);
         return is;
     }
-    auto w = std::stod(s);
-    obj = std::move(Length{w});
+    auto l = std::stod(s);
+    obj = std::move(Length{l});
 
     return is;
 }
