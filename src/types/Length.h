@@ -5,10 +5,10 @@
 
 namespace bricks::types {
 
-class Width {
+class Length {
 public:
-    Width() = default;
-    Width(double value);
+    Length() = default;
+    Length(double value);
 
     double operator()() const;
 
@@ -16,7 +16,7 @@ private:
     double mValue{0.0};
 };
 
-std::istream &operator>>(std::istream &is, Width &obj);
+std::istream &operator>>(std::istream &is, Length &obj);
 
 } // namespace bricks::types
 #endif

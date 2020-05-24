@@ -31,6 +31,9 @@ add_executable(test
     src/types/Height.cpp
     test/types/Hitpoints_test.cpp
     src/types/Hitpoints.cpp
+    test/types/Length_test.cpp
+    src/types/Length.cpp
+
     test/types/MaxPositionX_test.cpp
     src/types/MaxPositionX.cpp
     test/types/MaxPositionY_test.cpp
@@ -39,8 +42,6 @@ add_executable(test
     src/types/Point.cpp
     test/types/Velocity_test.cpp
     src/types/Velocity.cpp
-    test/types/Width_test.cpp
-    src/types/Width.cpp
     
     test/Ball_test.cpp
     src/Ball.cpp

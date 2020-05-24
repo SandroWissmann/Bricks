@@ -1,4 +1,4 @@
-#include "Width.h"
+#include "Length.h"
 
 #include "../IsNumber.h"
 
@@ -6,20 +6,20 @@
 
 namespace bricks::types {
 
-Width::Width(double value) : mValue{value}
+Length::Length(double value) : mValue{value}
 {
 }
 
-double Width::operator()() const
+double Length::operator()() const
 {
     return mValue;
 }
 
-std::istream &operator>>(std::istream &is, Width &obj)
+std::istream &operator>>(std::istream &is, Length &obj)
 {
     std::string s;
     is >> s;
-    if (s != "W") {
+    if (s != "L") {
         is.setstate(std::ios_base::failbit);
         return is;
     }
@@ -30,7 +30,7 @@ std::istream &operator>>(std::istream &is, Width &obj)
         return is;
     }
     auto w = std::stod(s);
-    obj = std::move(Width{w});
+    obj = std::move(Length{w});
 
     return is;
 }

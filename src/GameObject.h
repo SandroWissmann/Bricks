@@ -1,15 +1,15 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "types/Height.h"
 #include "types/Point.h"
-#include "types/Width.h"
+#include "types/Length.h"
+#include "types/Height.h"
 
 namespace bricks {
 
 class GameObject {
 public:
-    GameObject(types::Point topLeft, types::Width width, types::Height height);
+    GameObject(types::Point topLeft, types::Length length, types::Height height);
 
     virtual ~GameObject() = 0;
 
@@ -22,7 +22,7 @@ public:
     virtual void setTopLeft(types::Point topLeft);
     types::Point bottomRight() const;
 
-    double width() const;
+    double length() const;
     double height() const;
 
 private:

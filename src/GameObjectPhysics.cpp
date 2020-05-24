@@ -12,6 +12,10 @@
 
 namespace bricks {
 
+using Point = types::Point;
+using Quadrant = types::Quadrant;
+
+
 bool ifHitReflect(Ball &ball, const GameObject &obj)
 {
     auto oldQuadrant = ball.angle().quadrant();
@@ -307,7 +311,7 @@ void reflectVerticalDecreased(Ball &ball)
 void putBeforeIntersectsWithRightX(Ball &ball, const GameObject &obj)
 {
     Point p = ball.topLeft();
-    p.x = obj.topLeft().x - ball.width();
+    p.x = obj.topLeft().x - ball.length();
     ball.setTopLeft(p);
 }
 

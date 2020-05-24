@@ -7,10 +7,10 @@ using namespace bricks::types;
 
 class DerivedGameObject : public MoveableGameObject {
 public:
-    DerivedGameObject(Point topLeft, Width width, Height height,
+    DerivedGameObject(Point topLeft, Length length, Height height,
                       MaxPositionX maxPositionX, MaxPositionY maxPositionY,
                       Velocity velocity)
-        : MoveableGameObject(topLeft, width, height, maxPositionX, maxPositionY,
+        : MoveableGameObject(topLeft, length, height, maxPositionX, maxPositionY,
                              velocity)
     {
     }
@@ -28,7 +28,7 @@ public:
 
 TEST(MoveableGameObjectTest_F, topLeftGetsClampedOnX)
 {
-    DerivedGameObject obj{Point{10.0, 20.0},  Width{10.0},
+    DerivedGameObject obj{Point{10.0, 20.0},  Length{10.0},
                           Height{20.0},       MaxPositionX{50.0},
                           MaxPositionY{70.0}, Velocity{0.0}};
 
@@ -43,7 +43,7 @@ TEST(MoveableGameObjectTest_F, topLeftGetsClampedOnX)
 
 class MoveableGameObjectTest : public ::testing::Test {
 protected:
-    DerivedGameObject obj{Point{10.1, 20.2},  Width{10.5},
+    DerivedGameObject obj{Point{10.1, 20.2},  Length{10.5},
                           Height{20.6},       MaxPositionX{50.3},
                           MaxPositionY{70.4}, Velocity{2.0}};
 };

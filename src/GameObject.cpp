@@ -6,8 +6,8 @@ namespace bricks {
 
 using Point = types::Point;
 
-GameObject::GameObject(Point topLeft, types::Width width, types::Height height)
-    : mTopLeft{topLeft}, mWidth{width()}, mHeight{height()}
+GameObject::GameObject(Point topLeft, types::Length length, types::Height height)
+    : mTopLeft{topLeft}, mWidth{length()}, mHeight{height()}
 {
     assert(mTopLeft.x >= 0);
     assert(mTopLeft.y >= 0);
@@ -35,7 +35,7 @@ Point GameObject::bottomRight() const
     return Point{mTopLeft.x + mWidth, mTopLeft.y + mHeight};
 }
 
-double GameObject::width() const
+double GameObject::length() const
 {
     return mWidth;
 }
