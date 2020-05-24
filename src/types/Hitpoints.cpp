@@ -29,7 +29,7 @@ std::istream &operator>>(std::istream &is, Hitpoints &obj)
         is.setstate(std::ios_base::failbit);
         return is;
     }
-    auto hp = std::stod(s);
+    auto hp = std::stoi(s);
     obj = std::move(Hitpoints{hp});
 
     return is;
