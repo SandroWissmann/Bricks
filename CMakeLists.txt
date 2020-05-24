@@ -50,6 +50,8 @@ add_executable(test
     src/GameObject.cpp
     test/IsNumber_test.cpp
     src/IsNumber.cpp
+    test/Level_test.cpp
+    src/Level.cpp
     test/MoveableGameObject_test.cpp
     src/MoveableGameObject.cpp
     test/NearlyEqual_test.cpp
