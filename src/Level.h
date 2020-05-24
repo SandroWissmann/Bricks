@@ -14,10 +14,11 @@ namespace bricks {
         std::vector<IndestructibleBrick> indestructibleBricks;
     };
 
+    Level readFromFile(const std::string& filename);
+
     std::istream &operator>>(std::istream &is, Level &obj);
 
     namespace impl {
-
         bool isComment(const std::string line);
     }
 }

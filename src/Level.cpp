@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 namespace bricks {
 
@@ -14,6 +15,20 @@ namespace bricks {
     using Length = types::Length;
     using Width = types::Width;
     using Hitpoints = types::Hitpoints;
+
+    Level readFromFile(const std::string& filename)
+    {
+        std::ifstream ifs{filename};
+        if(!ifs.is_open()) {
+            throw std::runtime_error(
+                "File:" + filename + "could not be opend\n");
+        }
+        Level level;
+        ifs >> level;
+        if(!ifs) {
+            std::runtime_error("Could not read level from file: " + filename + "\n");
+        }
+    }
 
     std::istream &operator>>(std::istream &is, Level &obj)
     {      
