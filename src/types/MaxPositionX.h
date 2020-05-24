@@ -3,10 +3,14 @@
 
 namespace bricks::types {
 
-struct MaxPositionX {
-    double operator()() const;
+class MaxPositionX {
+public:
+    MaxPositionX() = default;
+    MaxPositionX(double value);
 
-    double value;
+    double operator()() const;
+private:
+    double mValue{0.0};
 };
 
 } // namespace bricks::types
