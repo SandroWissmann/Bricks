@@ -32,6 +32,7 @@ private:
     void render(const Platform &platform);
     void render(const Brick& brick);
     void render(const IndestructibleBrick& indestructibleBrick);
+    void render(const GameObject& obj, const RGBColor& color);
 
     SDL_Rect toSDLRect(const GameObject& obj) const;
     void setDrawColor(const RGBColor& color);

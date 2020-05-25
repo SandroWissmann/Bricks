@@ -94,32 +94,31 @@ void Renderer::render(const Ball &ball, const Platform &platform,
     void Renderer::render(const Ball &ball)
     {
         RGBColor lightBlue{0xCC,0xFF,0xFF};
-        setDrawColor(lightBlue);
-        auto rect = toSDLRect(ball);
-        SDL_RenderFillRect(mSdlRenderer, &rect);
+        render(ball, lightBlue);
     }
 
     void Renderer::render(const Platform &platform)
     {
         RGBColor gray{0xBF, 0xBF,0xBF};
-        setDrawColor(gray);
-        auto rect = toSDLRect(platform);
-        SDL_RenderFillRect(mSdlRenderer, &rect);
+        render(platform, gray);
     }
 
     void Renderer::render(const Brick& brick)
     {
         auto color = getBrickDrawColor(brick);
-        getBrickDrawColor(brick);
-        auto rect = toSDLRect(brick);
-        SDL_RenderFillRect(mSdlRenderer, &rect);
+        render(brick, color);
     }
 
     void Renderer::render(const IndestructibleBrick& indestructibleBrick)
     {
         RGBColor red{0xFF, 0x00, 0x00};
-        setDrawColor(red);
-        auto rect = toSDLRect(indestructibleBrick);
+        render(indestructibleBrick, red);
+    }
+
+    void Renderer::render(const GameObject& obj, const RGBColor& color)
+    {
+        setDrawColor(color);
+        auto rect = toSDLRect(obj);
         SDL_RenderFillRect(mSdlRenderer, &rect);
     }
 
