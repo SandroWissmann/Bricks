@@ -3,8 +3,6 @@
 
 namespace bricks {
 
-struct Point;
-class Angle;
 class Ball;
 class GameObject;
 
