@@ -28,6 +28,7 @@ Level readFromFile(const std::string &filename)
         std::runtime_error("Could not read level from file: " + filename +
                            "\n");
     }
+    return level;
 }
 
 std::istream &operator>>(std::istream &is, Level &obj)
