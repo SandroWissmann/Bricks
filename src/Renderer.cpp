@@ -6,10 +6,13 @@
 #include "Platform.h"
 #include "Level.h"
 
+#include <array>
+#include <cassert>
 #include <stdexcept>
 #include <string>
 
 #include <iostream>
+
 
 namespace bricks {
 
@@ -78,8 +81,8 @@ void Renderer::render(const Ball &ball, const Platform &platform,
 
     void Renderer::clearScreen()
     {
-        // clear screen
-        SDL_SetRenderDrawColor(mSdlRenderer, 0x1E, 0x1E, 0x1E, 0xFF);
+        RGBColor white{0x1E,0x1E,0x1E};
+        setDrawColor(white);
         SDL_RenderClear(mSdlRenderer);
     }
 
@@ -90,27 +93,33 @@ void Renderer::render(const Ball &ball, const Platform &platform,
 
     void Renderer::render(const Ball &ball)
     {
+        RGBColor lightBlue{0xCC,0xFF,0xFF};
+        setDrawColor(lightBlue);
         auto rect = toSDLRect(ball);
-        SDL_SetRenderDrawColor(mSdlRenderer, 0xCC, 0xFF, 0xFF, 0xFF);
         SDL_RenderFillRect(mSdlRenderer, &rect);
     }
 
     void Renderer::render(const Platform &platform)
     {
+        RGBColor gray{0xBF, 0xBF,0xBF};
+        setDrawColor(gray);
         auto rect = toSDLRect(platform);
-        SDL_SetRenderDrawColor(mSdlRenderer, 0xBF, 0xBF, 0xBF, 0xFF);
         SDL_RenderFillRect(mSdlRenderer, &rect);
     }
 
     void Renderer::render(const Brick& brick)
     {
-        
+        auto color = getBrickDrawColor(brick);
+        getBrickDrawColor(brick);
+        auto rect = toSDLRect(brick);
+        SDL_RenderFillRect(mSdlRenderer, &rect);
     }
 
     void Renderer::render(const IndestructibleBrick& indestructibleBrick)
     {
+        RGBColor red{0xFF, 0x00, 0x00};
+        setDrawColor(red);
         auto rect = toSDLRect(indestructibleBrick);
-        SDL_SetRenderDrawColor(mSdlRenderer, 0xFF, 0x00, 0x00, 0xFF);
         SDL_RenderFillRect(mSdlRenderer, &rect);
     }
 
@@ -125,4 +134,30 @@ void Renderer::render(const Ball &ball, const Platform &platform,
         return rect;
     }
 
+    void Renderer::setDrawColor(const RGBColor& color)
+    {
+        SDL_SetRenderDrawColor(mSdlRenderer, color.r(), color.g(), color.b(), 
+            color.a());
+    }
+
+    RGBColor getBrickColor(const Brick& brick)
+    {
+        auto hp = brick.hitpoints();
+
+        assert(hp >= 0 && hp <= 9);
+
+        constexpr std::array<RGBColor, 9> colors {
+            RGBColor{0xFD, 0xEF, 0x42},
+            RGBColor{0x99, 0xFF, 0x00},
+            RGBColor{0x00, 0x7E, 0x56},
+            RGBColor{0x00, 0x5A, 0x7E},
+            RGBColor{0x46, 0x3A, 0xCB},
+            RGBColor{0xF4, 0x0b, 0xEC},
+            RGBColor{0xA4, 0x4E, 0xFE},
+            RGBColor{0xFF, 0x7B, 0x00},
+            RGBColor{0xF4, 0x46, 0x11}
+        };
+
+        return RGBColor{colors.at(static_cast<std::size_t>(hp - 1))};
+    }
 } // namespace bricks
