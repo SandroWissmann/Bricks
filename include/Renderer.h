@@ -23,13 +23,15 @@ public:
              const std::size_t gridWidth, const std::size_t gridHeight);
     ~Renderer();
 
-    void render(const Ball &ball, const Platform &platform, const Level &level);
+    void render(const Ball &ball, const Platform &platform, 
+        const std::vector<Wall>& walls, const Level &level);
 private:
     void clearScreen();
     void updateScreen();
 
     void render(const Ball &ball);
     void render(const Platform &platform);
+    void render(const Wall &wall);
     void render(const Brick& brick);
     void render(const IndestructibleBrick& indestructibleBrick);
     void render(const GameObject& obj, const RGBColor& color);

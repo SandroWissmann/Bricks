@@ -1,5 +1,5 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef WALL_H
+#define WALL_H
 
 #include "GameObject.h"
 

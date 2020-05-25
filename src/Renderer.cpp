@@ -5,6 +5,7 @@
 #include "IndestructibleBrick.h"
 #include "Platform.h"
 #include "Level.h"
+#include "Wall.h"
 
 #include <array>
 #include <cassert>
@@ -54,12 +55,15 @@ Renderer::~Renderer()
     SDL_Quit();
 }
 
-void Renderer::render(const Ball &ball, const Platform &platform,
-                      const Level &level)
+void Renderer::render(const Ball &ball, const Platform &platform, 
+    const std::vector<Wall>& walls, const Level &level)
 {
     clearScreen();
     render(ball);
     render(platform);
+    for(const auto& wall : walls) {
+        render(wall);
+    }
     for(const auto& brick : level.bricks) {
         render(brick);
     }
@@ -91,6 +95,12 @@ void Renderer::render(const Ball &ball, const Platform &platform,
     {
         RGBColor gray{0xBF, 0xBF,0xBF};
         render(platform, gray);
+    }
+
+    void Renderer::render(const Wall &wall)
+    {
+        RGBColor brown{0xBF, 0x80,0x40};
+        render(wall, brown);
     }
 
     void Renderer::render(const Brick& brick)
@@ -129,7 +139,7 @@ void Renderer::render(const Ball &ball, const Platform &platform,
             color.a());
     }
 
-    RGBColor getBrickColor(const Brick& brick)
+    RGBColor Renderer::getBrickDrawColor(const Brick& brick)
     {
         auto hp = brick.hitpoints();
 

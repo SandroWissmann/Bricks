@@ -3,6 +3,7 @@
 #include "Platform.h"
 #include "Ball.h"
 #include "Level.h"
+#include "Wall.h"
 
 #include "OperatorDegree.h"
 
@@ -19,7 +20,7 @@ int main()
     Renderer renderer{screenWidth, screenHeight, boardWith, boardHeight};
 
     bricks::Platform platform{
-        types::Point{ boardWith / 2.0 - 4.0 , boardHeight -1.0},
+        types::Point{ (boardWith / 2.0) - 2.0 , boardHeight -1.0},
         types::Length{4.0},
         types::Width{0.5},
         types::MaxPositionX{boardWith},
@@ -38,10 +39,28 @@ int main()
         types::Gravity{}
     };
 
+    std::vector<Wall> walls{
+        Wall{
+            types::Point{0.0, 0.0},
+            types::Length{1.0},
+            types::Width{boardHeight}
+        },
+        Wall{
+            types::Point{boardWith - 1.0},
+            types::Length{1.0},
+            types::Width{boardHeight}
+        },
+        Wall{
+            types::Point{1, 0},
+            types::Length{ boardWith - 2.0 * 1.0},
+            types::Width{1.0}
+        }
+    };
+
     bricks::Level level;
 
     while(true) {
-        renderer.render(ball, platform, level);
+        renderer.render(ball, platform, walls, level);
 
         std::this_thread::sleep_for(std::chrono::milliseconds{100});
     }
