@@ -1,19 +1,19 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
-#include "MoveableGameObject.h"
+#include "GameObject.h"
 
 namespace bricks {
 
-class Platform : public GameObject {
+class Wall : public GameObject {
 public:
     using GameObject::GameObject;
-    ~Platform() override = default;
+    ~Wall() override = default;
 
-    Platform(const Platform &) = default;
-    Platform(Platform &&) = default;
-    Platform &operator=(const Platform &other) = default;
-    Platform &operator=(Platform &&other) = default;
+    Wall(const Wall &) = default;
+    Wall(Wall &&) = default;
+    Wall &operator=(const Wall &other) = default;
+    Wall &operator=(Wall &&other) = default;
 };
 } // namespace bricks
 #endif
