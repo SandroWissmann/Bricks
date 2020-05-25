@@ -1,6 +1,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include "RGBColor.h"
+
 #include <SDL.h>
 
 #include <vector>
@@ -32,6 +34,8 @@ private:
     void render(const IndestructibleBrick& indestructibleBrick);
 
     SDL_Rect toSDLRect(const GameObject& obj) const;
+    void setDrawColor(const RGBColor& color);
+    RGBColor getBrickDrawColor(const Brick& brick);
 
     SDL_Window *mSdlWindow;
     SDL_Renderer *mSdlRenderer;
