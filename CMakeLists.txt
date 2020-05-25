@@ -16,7 +16,33 @@ include_directories(${SDL2_INCLUDE_DIRS} src)
 
 add_subdirectory(thirdparty/googletest)
 
-add_executable(bricks src/main.cpp)
+add_executable(bricks 
+src/types/Angle.cpp
+src/types/Gravity.cpp
+src/types/Hitpoints.cpp
+src/types/Length.cpp
+src/types/MaxPositionX.cpp
+src/types/MaxPositionY.cpp
+src/types/Point.cpp
+src/types/Velocity.cpp
+src/types/Width.cpp
+
+src/Ball.cpp
+src/Brick.cpp
+src/GameObject.cpp
+src/GameObjectPhysics.cpp
+src/IsNumber.cpp
+src/Level.cpp
+src/main.cpp
+src/MoveableGameObject.cpp
+src/NearlyEqual.cpp
+src/Platform.cpp
+src/Renderer.cpp
+)
+
+
+
+
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(bricks 
     ${SDL2_LIBRARIES}
