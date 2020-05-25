@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
-#include "../src/Ball.h"
-#include "../src/OperatorDegree.h"
+#include "../include/Ball.h"
+#include "../include/OperatorDegree.h"
 
 using namespace bricks;
 using namespace bricks::types;

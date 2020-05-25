@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/types/Velocity.h"
+#include "../../include/types/Velocity.h"
 
 #include <iostream>
 #include <sstream>

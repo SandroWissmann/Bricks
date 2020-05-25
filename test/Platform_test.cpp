@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../src/Platform.h"
+#include "../include/Platform.h"
 
 using namespace bricks;
 using namespace bricks::types;

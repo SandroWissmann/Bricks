@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../src/IsNumber.h"
+#include "../include/IsNumber.h"
 
 using namespace bricks;
 

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../src/OperatorDegree.h"
+#include "../include/OperatorDegree.h"
 
 using namespace bricks;
 

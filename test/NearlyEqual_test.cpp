@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../src/NearlyEqual.h"
+#include "../include/NearlyEqual.h"
 
 using namespace bricks;
 

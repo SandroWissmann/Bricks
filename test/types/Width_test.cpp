@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/types/Width.h"
+#include "../../include/types/Width.h"
 
 #include <iostream>
 #include <sstream>

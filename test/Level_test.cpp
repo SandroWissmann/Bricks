@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../src/Level.h"
+#include "../include/Level.h"
 
 #include <iostream>
 #include <sstream>

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/types/Point.h"
+#include "../../include/types/Point.h"
 
 #include <iostream>
 #include <sstream>

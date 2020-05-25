@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/types/Gravity.h"
+#include "../../include/types/Gravity.h"
 
 #include <iostream>
 #include <sstream>

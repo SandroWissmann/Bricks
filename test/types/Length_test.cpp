@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/types/Length.h"
+#include "../../include/types/Length.h"
 
 #include <iostream>
 #include <sstream>

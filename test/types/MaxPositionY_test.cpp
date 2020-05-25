@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/types/MaxPositionY.h"
+#include "../../include/types/MaxPositionY.h"
 
 #include <iostream>
 #include <sstream>

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../src/Brick.h"
+#include "../include/Brick.h"
 
 using namespace bricks;
 using namespace bricks::types;
