@@ -57,25 +57,15 @@ Renderer::~Renderer()
 void Renderer::render(const Ball &ball, const Platform &platform,
                       const Level &level)
 {
-    SDL_Rect block;
-    block.w = mScreenWidth / mGridWidth;
-    block.h = mScreenHeight / mGridHeight;
-
     clearScreen();
-
     render(ball);
-
     render(platform);
-
-
     for(const auto& brick : level.bricks) {
         render(brick);
     }
-
     for(const auto& indestructibleBrick : level.indestructibleBricks) {
         render(indestructibleBrick);
     }
-
     updateScreen();
 }
 
