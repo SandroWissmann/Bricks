@@ -11,6 +11,9 @@ class Ball;
 class Platform;
 class Wall;
 class Level;
+class Brick;
+class IndestructibleBrick;
+class GameObject;
 
 class Renderer {
 public:
@@ -19,8 +22,17 @@ public:
     ~Renderer();
 
     void render(const Ball &ball, const Platform &platform, const Level &level);
-
 private:
+    void clearScreen();
+    void updateScreen();
+
+    void render(const Ball &ball);
+    void render(const Platform &platform);
+    void render(const Brick& brick);
+    void render(const IndestructibleBrick& indestructibleBrick);
+
+    SDL_Rect toSDLRect(const GameObject& obj) const;
+
     SDL_Window *mSdlWindow;
     SDL_Renderer *mSdlRenderer;
 
@@ -28,6 +40,8 @@ private:
     const std::size_t mScreenHeight;
     const std::size_t mGridWidth;
     const std::size_t mGridHeight;
+    const double mWidthFactor;
+    const double mHeightFactor;
 };
 
 } // namespace bricks

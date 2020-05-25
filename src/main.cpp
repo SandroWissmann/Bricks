@@ -12,8 +12,8 @@ using namespace bricks;
 
 int main()
 {
-    constexpr std::size_t screenWidth{520};
-    constexpr std::size_t screenHeight{360};
+    constexpr std::size_t screenWidth{780};
+    constexpr std::size_t screenHeight{540};
     constexpr std::size_t boardWith{26};
     constexpr std::size_t boardHeight{18};
     Renderer renderer{screenWidth, screenHeight, boardWith, boardHeight};
