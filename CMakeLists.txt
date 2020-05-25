@@ -12,7 +12,7 @@ set(LIBRARY_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/lib")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} src)
+include_directories(${SDL2_INCLUDE_DIRS} include include/types)
 
 add_subdirectory(thirdparty/googletest)
 
@@ -86,6 +86,7 @@ add_executable(test
 
     test/Platform_test.cpp
     src/Platform.cpp
+    test/RGBColor_test.cpp
 )
 
 #    test/GameObjectPhysics_test.cpp
