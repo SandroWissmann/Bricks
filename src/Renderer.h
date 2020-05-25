@@ -5,12 +5,12 @@
 
 #include <vector>
 
+namespace bricks {
+
 class Ball;
 class Platform;
 class Wall;
 class Level;
-
-namespace bricks {
 
 class Renderer {
 public:
@@ -18,7 +18,7 @@ public:
              const std::size_t gridWidth, const std::size_t gridHeight);
     ~Renderer();
 
-    void Render(const Ball &ball, const Platform &platform, const Level &level);
+    void render(const Ball &ball, const Platform &platform, const Level &level);
 
 private:
     SDL_Window *mSdlWindow;
