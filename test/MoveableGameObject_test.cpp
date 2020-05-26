@@ -7,6 +7,12 @@ using namespace bricks::types;
 
 class DerivedGameObject : public MoveableGameObject {
 public:
+    DerivedGameObject()
+        :MoveableGameObject()
+        {
+        }
+
+
     DerivedGameObject(Point topLeft, Length length, Width width,
                       MaxPositionX maxPositionX, MaxPositionY maxPositionY,
                       Velocity velocity)
@@ -25,6 +31,19 @@ public:
     DerivedGameObject &operator=(const DerivedGameObject &other) = default;
     DerivedGameObject &operator=(DerivedGameObject &&other) = default;
 };
+
+TEST(MoveableGameObjectTest_F, defaultConstructor)
+{
+    DerivedGameObject obj;
+
+    EXPECT_EQ(obj.topLeft().x, 0.0);
+    EXPECT_EQ(obj.topLeft().y, 0.0);
+    EXPECT_EQ(obj.length(), 0.0);
+    EXPECT_EQ(obj.width(), 0.0);
+    EXPECT_EQ(obj.maxPositionX(), 0.0);
+    EXPECT_EQ(obj.maxPositionY(), 0.0);
+    EXPECT_EQ(obj.velocity(), 0.0);
+}
 
 TEST(MoveableGameObjectTest_F, topLeftGetsClampedOnX)
 {
