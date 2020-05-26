@@ -6,6 +6,21 @@
 using namespace bricks;
 using namespace bricks::types;
 
+TEST(BallTest_, defaultConstructor)
+{
+    Ball ball;
+
+    EXPECT_EQ(ball.topLeft().x, 0.0);
+    EXPECT_EQ(ball.topLeft().y, 0.0);
+    EXPECT_EQ(ball.length(), 0.0);
+    EXPECT_EQ(ball.width(), 0.0);
+    EXPECT_EQ(ball.maxPositionX(), 0.0);
+    EXPECT_EQ(ball.maxPositionY(), 0.0);
+    EXPECT_EQ(ball.velocity(), 0.0);
+    EXPECT_EQ(ball.angle().angle(), 0.0);
+    EXPECT_EQ(ball.gravity(), 0.0);
+}
+
 class BallTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
