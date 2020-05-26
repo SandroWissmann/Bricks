@@ -6,6 +6,12 @@
 
 namespace bricks::types {
 
+Angle::Angle()
+   : mQuadrant{impl::calcQuadrant(0.0)},
+      mQuadrantAngle{impl::angleToQuadrantAngle(0.0, mQuadrant)}
+{
+}
+
 Angle::Angle(long double angle)
     : mQuadrant{impl::calcQuadrant(angle)},
       mQuadrantAngle{impl::angleToQuadrantAngle(angle, mQuadrant)}

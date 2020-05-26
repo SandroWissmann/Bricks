@@ -7,6 +7,7 @@ enum class Quadrant { I, II, III, IV };
 
 class Angle {
 public:
+    Angle();
     Angle(long double angle);
 
     long double angle() const;
