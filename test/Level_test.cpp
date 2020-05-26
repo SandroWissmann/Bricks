@@ -10,7 +10,8 @@ using namespace bricks;
 TEST(LevelTest, operatorIsWorks1)
 {
     std::string test{
-        R"(# 
+        R"(W 10 H 20
+# 
 X 1.2 Y 3.4 L 5.6 W 7.8 HP 9
 #
 X 9.8 Y 7.6 L 5.4 W 3.2
@@ -22,6 +23,9 @@ X 9.8 Y 7.6 L 5.4 W 3.2
     ist >> level;
 
     EXPECT_EQ(ist.rdbuf()->in_avail(), 0);
+
+    EXPECT_EQ(level.gridWidth(), 10);
+    EXPECT_EQ(level.gridHeight(), 20);
 
     auto bricks = level.bricks;
     auto indestructibleBricks = level.indestructibleBricks;
