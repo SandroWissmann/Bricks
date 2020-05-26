@@ -21,10 +21,32 @@ using Hitpoints = types::Hitpoints;
 using GridWidth = types::GridWidth;
 using GridHeight = types::GridHeight;
 
-    Level::Level(const GridWidth& gridWidth, const GridHeight& gridHeight,
+    Level::Level()
+    :mGridWidth{},
+    mGridHeight{},
+    leftWall{},
+    rightWall{},
+    topWall{},
+   /* platform{}, 
+    ball{}, */
+    bricks{}, 
+    indestructibleBricks{}
+    {
+    }
+
+    Level::Level(
+        const GridWidth& gridWidth, 
+    const GridHeight& gridHeight,
     const std::vector<Brick>& bricks_, 
     const std::vector<IndestructibleBrick>& indestructibleBricks_)
-        :mGridWidth{gridWidth()}, mGridHeight{gridHeight()}, bricks{bricks_},
+        :mGridWidth{gridWidth()}, 
+        mGridHeight{gridHeight()}, 
+        leftWall{},
+        rightWall{},
+        topWall{},
+        /*platform{},
+        ball{}, */
+        bricks{bricks_},
         indestructibleBricks{indestructibleBricks_}
     {
         assert(mGridWidth > 0);

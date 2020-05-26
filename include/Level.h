@@ -1,6 +1,9 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include "Ball.h"
+#include "Platform.h"
+#include "Wall.h"
 #include "Brick.h"
 #include "IndestructibleBrick.h"
 
@@ -16,19 +19,26 @@ namespace types{
 
 class Level {
 public:
-    Level() = default;
+    Level();
     Level(const types::GridWidth& gridWidth, const types::GridHeight& gridHeight,
     const std::vector<Brick>& bricks_, 
     const std::vector<IndestructibleBrick>& indestructibleBricks_);
-
-    std::vector<Brick> bricks;
-    std::vector<IndestructibleBrick> indestructibleBricks;
 
     int gridWidth() const;
     int gridHeight() const;
 private:
     int mGridWidth{0};
     int mGridHeight{0};
+    Wall leftWall;
+    Wall rightWall;
+    Wall topWall;
+
+public:
+    /*Platform platform;
+    Ball ball; */
+
+    std::vector<Brick> bricks;
+    std::vector<IndestructibleBrick> indestructibleBricks;
 };
 
 Level readFromFile(const std::string &filename);
