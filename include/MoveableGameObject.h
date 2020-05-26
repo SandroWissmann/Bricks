@@ -11,6 +11,8 @@ namespace bricks {
 
 class MoveableGameObject : public GameObject {
 public:
+    MoveableGameObject();
+
     MoveableGameObject(types::Point topLeft, types::Length length,
                        types::Width width, types::MaxPositionX maxPositionX,
                        types::MaxPositionY maxPositionY,
@@ -34,8 +36,8 @@ public:
     void setVelocity(double velocity);
 
 private:
-    const double mMaxPositionX;
-    const double mMaxPositionY;
+    double mMaxPositionX;
+    double mMaxPositionY;
 
     double mVelocity;
 };
