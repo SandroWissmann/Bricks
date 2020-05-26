@@ -5,6 +5,19 @@
 using namespace bricks;
 using namespace bricks::types;
 
+TEST(PlatformTest_, defaultConstructor)
+{
+    Platform platform;
+
+    EXPECT_EQ(platform.topLeft().x, 0.0);
+    EXPECT_EQ(platform.topLeft().y, 0.0);
+    EXPECT_EQ(platform.length(), 0.0);
+    EXPECT_EQ(platform.width(), 0.0);
+    EXPECT_EQ(platform.maxPositionX(), 0.0);
+    EXPECT_EQ(platform.maxPositionY(), 0.0);
+    EXPECT_EQ(platform.velocity(), 0.0);
+}
+
 class PlatformTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
