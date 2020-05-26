@@ -5,6 +5,16 @@
 using namespace bricks;
 using namespace bricks::types;
 
+TEST(BrickTest, defaultConstructor)
+{
+    Brick brick;
+
+    EXPECT_EQ(brick.topLeft().x, 0.0);
+    EXPECT_EQ(brick.topLeft().y, 0.0);
+    EXPECT_EQ(brick.length(), 0.0);
+    EXPECT_EQ(brick.width(), 0.0);
+}
+
 TEST(BrickTest, startHitpoints)
 {
     Brick obj{Point{0, 0}, Length{1}, Width{1}, Hitpoints{2}};
