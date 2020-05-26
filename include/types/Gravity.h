@@ -6,7 +6,7 @@ namespace bricks::types {
 class Gravity {
 public:
     Gravity() = default;
-    Gravity(double value);
+    explicit Gravity(double value);
 
     double operator()() const;
 

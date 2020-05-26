@@ -8,7 +8,7 @@ namespace bricks::types {
 class Hitpoints {
 public:
     Hitpoints() = default;
-    Hitpoints(int value);
+    explicit Hitpoints(int value);
 
     int operator()() const;
 

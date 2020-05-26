@@ -6,7 +6,7 @@ namespace bricks::types {
 class MaxPositionY {
 public:
     MaxPositionY() = default;
-    MaxPositionY(double value);
+    explicit MaxPositionY(double value);
 
     double operator()() const;
 

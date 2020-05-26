@@ -8,7 +8,7 @@ namespace bricks::types {
 class GridWidth {
 public:
     GridWidth() = default;
-    GridWidth(int value);
+    explicit GridWidth(int value);
 
     int operator()() const;
 

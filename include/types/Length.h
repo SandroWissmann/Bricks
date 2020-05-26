@@ -8,7 +8,7 @@ namespace bricks::types {
 class Length {
 public:
     Length() = default;
-    Length(double value);
+    explicit Length(double value);
 
     double operator()() const;
 

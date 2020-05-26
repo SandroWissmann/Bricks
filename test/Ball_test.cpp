@@ -46,7 +46,7 @@ TEST_F(BallTest, angle)
 
     EXPECT_DOUBLE_EQ(obj.angle().angle(), 30.0_deg);
 
-    obj.setAngle(65.0_deg);
+    obj.setAngle(Angle{65.0_deg});
 
     EXPECT_DOUBLE_EQ(obj.angle().angle(), 65.0_deg);
 }

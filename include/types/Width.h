@@ -8,7 +8,7 @@ namespace bricks::types {
 class Width {
 public:
     Width() = default;
-    Width(double value);
+    explicit Width(double value);
 
     double operator()() const;
 

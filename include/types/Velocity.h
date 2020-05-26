@@ -6,7 +6,7 @@ namespace bricks::types {
 class Velocity {
 public:
     Velocity() = default;
-    Velocity(double value);
+    explicit Velocity(double value);
 
     double operator()() const;
 
