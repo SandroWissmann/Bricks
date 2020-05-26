@@ -7,6 +7,11 @@ using namespace bricks::types;
 
 class DerivedGameObject : public GameObject {
 public:
+    DerivedGameObject()
+        :GameObject{}
+        {
+        }
+
     DerivedGameObject(Point topLeft, Length length, Width width)
         : GameObject(topLeft, length, width)
     {
@@ -18,6 +23,16 @@ public:
     DerivedGameObject &operator=(const DerivedGameObject &other) = default;
     DerivedGameObject &operator=(DerivedGameObject &&other) = default;
 };
+
+TEST(GameObjectTest_, defaultConstructor)
+{
+    DerivedGameObject obj;
+
+    EXPECT_EQ(obj.topLeft().x, 0.0);
+    EXPECT_EQ(obj.topLeft().y, 0.0);
+    EXPECT_EQ(obj.length(), 0.0);
+    EXPECT_EQ(obj.width(), 0.0);
+}
 
 class GameObjectTest : public ::testing::Test {
 protected:
