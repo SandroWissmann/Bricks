@@ -19,6 +19,8 @@ add_subdirectory(thirdparty/googletest)
 add_executable(bricks 
 src/types/Angle.cpp
 src/types/Gravity.cpp
+src/types/GridHeight.cpp
+src/types/GridWidth.cpp
 src/types/Hitpoints.cpp
 src/types/Length.cpp
 src/types/MaxPositionX.cpp
@@ -53,6 +55,10 @@ add_executable(test
     src/types/Angle.cpp
     test/types/Gravity_test.cpp
     src/types/Gravity.cpp
+    test/types/GridHeight_test.cpp
+    src/types/GridHeight.cpp
+    test/types/GridWidth_test.cpp
+    src/types/GridWidth.cpp
     test/types/Hitpoints_test.cpp
     src/types/Hitpoints.cpp
     test/types/Length_test.cpp
