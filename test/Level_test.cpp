@@ -7,6 +7,16 @@
 
 using namespace bricks;
 
+TEST(LevelTest, defaultConstructor)
+{
+    Level level;
+
+    EXPECT_EQ(level.gridWidth(), 0);
+    EXPECT_EQ(level.gridHeight(), 0);
+    EXPECT_TRUE(level.bricks.empty());    
+    EXPECT_TRUE(level.indestructibleBricks.empty());   
+}
+
 TEST(LevelTest, operatorIsWorks1)
 {
     std::string test{
