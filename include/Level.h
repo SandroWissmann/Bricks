@@ -15,6 +15,7 @@ namespace bricks {
 namespace types{
     class GridWidth;
     class GridHeight;
+    struct Point;
 }
 
 class Level {
@@ -27,6 +28,12 @@ public:
     int gridWidth() const;
     int gridHeight() const;
 private:
+    Wall makeLeftWall();
+    Wall makeRightWall();
+    Wall makeTopWall();
+    Platform makePlatform();
+    Ball makeBall();
+
     int mGridWidth{0};
     int mGridHeight{0};
     Wall leftWall;
@@ -47,6 +54,11 @@ std::istream &operator>>(std::istream &is, Level &obj);
 
 namespace impl {
 bool isComment(const std::string line);
+
+    types::Point platformInitPosition(
+        double platformWidth, double gridWidth, double gridHeight);
+    types::Point ballInitPosition(
+        double gridWidth, double gridHeight);
 }
 } // namespace bricks
 
