@@ -34,8 +34,8 @@ private:
     Wall topWall;
 
 public:
-    /*Platform platform;
-    Ball ball; */
+    Platform platform;
+    Ball ball; 
 
     std::vector<Brick> bricks;
     std::vector<IndestructibleBrick> indestructibleBricks;

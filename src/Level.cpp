@@ -27,8 +27,8 @@ using GridHeight = types::GridHeight;
     leftWall{},
     rightWall{},
     topWall{},
-   /* platform{}, 
-    ball{}, */
+    platform{}, 
+    ball{}, 
     bricks{}, 
     indestructibleBricks{}
     {
@@ -44,8 +44,8 @@ using GridHeight = types::GridHeight;
         leftWall{},
         rightWall{},
         topWall{},
-        /*platform{},
-        ball{}, */
+        platform{},
+        ball{}, 
         bricks{bricks_},
         indestructibleBricks{indestructibleBricks_}
     {
