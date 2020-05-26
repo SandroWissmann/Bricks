@@ -9,6 +9,7 @@ namespace bricks {
 
 class GameObject {
 public:
+    GameObject();
     GameObject(types::Point topLeft, types::Length length, types::Width width);
 
     virtual ~GameObject() = 0;
@@ -28,8 +29,8 @@ public:
 private:
     types::Point mTopLeft;
 
-    const double mLength;
-    const double mWidth;
+    double mLength;
+    double mWidth;
 };
 
 } // namespace bricks
