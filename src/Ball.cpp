@@ -15,6 +15,11 @@ using Angle = types::Angle;
 using Gravity = types::Gravity;
 using Quadrant = types::Quadrant;
 
+Ball::Ball()
+    :MoveableGameObject{},mAngle{0.0}, mGravity{}, mIsActive{false}
+{
+}
+
 Ball::Ball(Point topLeft, Length length, Width width, MaxPositionX maxPositionX,
            MaxPositionY maxPositionY, Velocity velocity, Angle angle,
            Gravity gravity)

@@ -9,6 +9,8 @@ namespace bricks {
 
 class Ball : public MoveableGameObject {
 public:
+    Ball();
+
     Ball(types::Point topLeft, types::Length length, types::Width width,
          types::MaxPositionX maxPositionX, types::MaxPositionY maxPositionY,
          types::Velocity velocity, types::Angle angle, types::Gravity gravity);
