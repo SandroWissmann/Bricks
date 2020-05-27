@@ -33,6 +33,7 @@ src/Ball.cpp
 src/Brick.cpp
 src/GameObject.cpp
 src/GameObjectPhysics.cpp
+src/GetEvent.cpp
 src/IsNumber.cpp
 src/Level.cpp
 src/main.cpp
@@ -40,6 +41,7 @@ src/MoveableGameObject.cpp
 src/NearlyEqual.cpp
 src/Platform.cpp
 src/Renderer.cpp
+src/TimeMeasure.cpp
 )
 
 
