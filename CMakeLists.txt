@@ -82,6 +82,8 @@ add_executable(test
     src/Brick.cpp
     test/GameObject_test.cpp
     src/GameObject.cpp
+    test/GameObjectPhysics_test.cpp
+    src/GameObjectPhysics.cpp
     test/IsNumber_test.cpp
     src/IsNumber.cpp
     test/Level_test.cpp

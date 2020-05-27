@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
-#include "../include/GameObjectPhysics.h"
 #include "../include/Ball.h"
 #include "../include/Brick.h"
+#include "../include/GameObjectPhysics.h"
 #include "../include/OperatorDegree.h"
 
 using namespace bricks;
@@ -10,8 +10,14 @@ using namespace bricks::types;
 
 Ball makeBall(Point p, Length l, Width w)
 {
-    return Ball{p,l, w, MaxPositionX{1000}, MaxPositionY{1000}, 
-        Velocity{10}, Angle{0.0_deg}, Gravity{0}};
+    return Ball{p,
+                l,
+                w,
+                MaxPositionX{1000},
+                MaxPositionY{1000},
+                Velocity{10},
+                Angle{0.0_deg},
+                Gravity{0}};
 }
 
 Brick makeBrick(Point p, Length l, Width w)
@@ -21,8 +27,8 @@ Brick makeBrick(Point p, Length l, Width w)
 
 class CollisionTest : public ::testing::Test {
 protected:
-
-    virtual void SetUp() {
+    virtual void SetUp()
+    {
         brickTopLeft = makeBrick(Point{0.0, 0.0}, Length{2}, Width{2});
         brickTop = makeBrick(Point{0.0, 0.0}, Length{5}, Width{2});
         brickTopRight = makeBrick(Point{3.0, 0.0}, Length{2}, Width{2});
@@ -34,7 +40,7 @@ protected:
 
         ball = makeBall(Point{1.0, 1.0}, Length{3}, Width{3});
     }
-    
+
     Brick brickTopLeft;
     Brick brickTop;
     Brick brickTopRight;
@@ -118,3 +124,80 @@ TEST_F(CollisionTest, isInsideWithY)
     EXPECT_FALSE(isInsideWithY(ball, brickBottomLeft));
     EXPECT_TRUE(isInsideWithY(ball, brickLeft));
 }
+
+TEST_F(CollisionTest, notThroughWithRightX)
+{
+    EXPECT_FALSE(notThroughWithRightX(ball, brickTopLeft));
+    EXPECT_TRUE(notThroughWithRightX(ball, brickTop));
+    EXPECT_TRUE(notThroughWithRightX(ball, brickTopRight));
+    EXPECT_TRUE(notThroughWithRightX(ball, brickRight));
+    EXPECT_TRUE(notThroughWithRightX(ball, brickBottomRight));
+    EXPECT_TRUE(notThroughWithRightX(ball, brickBottom));
+    EXPECT_FALSE(notThroughWithRightX(ball, brickBottomLeft));
+    EXPECT_FALSE(notThroughWithRightX(ball, brickLeft));
+}
+
+TEST_F(CollisionTest, notThroughWithLeftX)
+{
+    EXPECT_TRUE(notThroughWithLeftX(ball, brickTopLeft));
+    EXPECT_TRUE(notThroughWithLeftX(ball, brickTop));
+    EXPECT_FALSE(notThroughWithLeftX(ball, brickTopRight));
+    EXPECT_FALSE(notThroughWithLeftX(ball, brickRight));
+    EXPECT_FALSE(notThroughWithLeftX(ball, brickBottomRight));
+    EXPECT_TRUE(notThroughWithLeftX(ball, brickBottom));
+    EXPECT_TRUE(notThroughWithLeftX(ball, brickBottomLeft));
+    EXPECT_TRUE(notThroughWithLeftX(ball, brickLeft));
+}
+
+TEST_F(CollisionTest, notThroughWithTopY)
+{
+    EXPECT_TRUE(notThroughWithTopY(ball, brickTopLeft));
+    EXPECT_TRUE(notThroughWithTopY(ball, brickTop));
+    EXPECT_TRUE(notThroughWithTopY(ball, brickTopRight));
+    EXPECT_TRUE(notThroughWithTopY(ball, brickRight));
+    EXPECT_FALSE(notThroughWithTopY(ball, brickBottomRight));
+    EXPECT_FALSE(notThroughWithTopY(ball, brickBottom));
+    EXPECT_FALSE(notThroughWithTopY(ball, brickBottomLeft));
+    EXPECT_TRUE(notThroughWithTopY(ball, brickLeft));
+}
+
+TEST_F(CollisionTest, notThroughWithBottomY)
+{
+    EXPECT_FALSE(notThroughWithBottomY(ball, brickTopLeft));
+    EXPECT_FALSE(notThroughWithBottomY(ball, brickTop));
+    EXPECT_FALSE(notThroughWithBottomY(ball, brickTopRight));
+    EXPECT_TRUE(notThroughWithBottomY(ball, brickRight));
+    EXPECT_TRUE(notThroughWithBottomY(ball, brickBottomRight));
+    EXPECT_TRUE(notThroughWithBottomY(ball, brickBottom));
+    EXPECT_TRUE(notThroughWithBottomY(ball, brickBottomLeft));
+    EXPECT_TRUE(notThroughWithBottomY(ball, brickLeft));
+}
+
+TEST_F(CollisionTest, putBeforeIntersectsWithRightX)
+{
+    EXPECT_FALSE(ball.bottomRight().x == brickRight.topLeft().x);
+    putBeforeIntersectsWithRightX(ball, brickRight);
+    EXPECT_TRUE(ball.bottomRight().x == brickRight.topLeft().x);
+}
+
+TEST_F(CollisionTest, putBeforeIntersectsWithLeftX)
+{
+    EXPECT_FALSE(ball.topLeft().x == brickLeft.bottomRight().x);
+    putBeforeIntersectsWithLeftX(ball, brickLeft);
+    EXPECT_TRUE(ball.topLeft().x == brickLeft.bottomRight().x);
+}
+
+TEST_F(CollisionTest, putBeforeIntersectsWithBottomY)
+{
+    EXPECT_FALSE(ball.bottomRight().y == brickBottom.topLeft().y);
+    putBeforeIntersectsWithBottomY(ball, brickBottom);
+    EXPECT_TRUE(ball.bottomRight().y == brickBottom.topLeft().y);
+}
+
+TEST_F(CollisionTest, putBeforeIntersectsWithTopY)
+{
+    EXPECT_FALSE(ball.topLeft().y == brickTop.bottomRight().y);
+    putBeforeIntersectsWithTopY(ball, brickTop);
+    EXPECT_TRUE(ball.topLeft().y == brickTop.bottomRight().y);
+}
+
