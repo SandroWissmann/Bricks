@@ -6,7 +6,6 @@ namespace bricks{
     enum class Event{
         none,
         quit,
-        keydown,
         left,
         right,
         space,
