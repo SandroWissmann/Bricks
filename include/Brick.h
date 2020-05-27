@@ -26,7 +26,7 @@ public:
     bool isDestroyed() const;
 
 private:
-    const int mStartHitpoints;
+    int mStartHitpoints;
     int mHitpoints;
 };
 } // namespace bricks
