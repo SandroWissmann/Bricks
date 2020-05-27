@@ -43,9 +43,9 @@ static constexpr auto ballGravity{1.5};
     Level::Level()
     :mGridWidth{},
     mGridHeight{},
-    leftWall{},
-    rightWall{},
-    topWall{},
+    mLeftWall{},
+    mRightWall{},
+    mTopWall{},
     platform{}, 
     ball{}, 
     bricks{}, 
@@ -60,11 +60,11 @@ static constexpr auto ballGravity{1.5};
     const std::vector<IndestructibleBrick>& indestructibleBricks_)
         :mGridWidth{gridWidth()}, 
         mGridHeight{gridHeight()}, 
-        leftWall{},
-        rightWall{},
-        topWall{},
-        platform{},
-        ball{}, 
+        mLeftWall{makeLeftWall()},
+        mRightWall{makeRightWall()},
+        mTopWall{makeTopWall()},
+        platform{makePlatform()},
+        ball{makeBall()}, 
         bricks{bricks_},
         indestructibleBricks{indestructibleBricks_}
     {
@@ -80,6 +80,21 @@ int Level::gridWidth() const
 int Level::gridHeight() const
 {
     return mGridHeight;
+}
+
+Wall Level::leftWall() const
+{
+    return mLeftWall;
+}
+
+Wall Level::rightWall() const
+{
+    return mRightWall;
+}
+
+Wall Level::topWall() const
+{
+    return mTopWall;
 }
 
 Wall Level::makeLeftWall()

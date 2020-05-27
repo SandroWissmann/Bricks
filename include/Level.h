@@ -27,6 +27,10 @@ public:
 
     int gridWidth() const;
     int gridHeight() const;
+
+    Wall leftWall() const;
+    Wall rightWall() const;
+    Wall topWall() const;
 private:
     Wall makeLeftWall();
     Wall makeRightWall();
@@ -36,9 +40,9 @@ private:
 
     int mGridWidth{0};
     int mGridHeight{0};
-    Wall leftWall;
-    Wall rightWall;
-    Wall topWall;
+    Wall mLeftWall;
+    Wall mRightWall;
+    Wall mTopWall;
 
 public:
     Platform platform;
