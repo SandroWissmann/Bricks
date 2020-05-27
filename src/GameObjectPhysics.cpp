@@ -235,18 +235,18 @@ bool isInsideWithX(const Ball &ball, const GameObject &obj)
            ball.bottomRight().x <= obj.bottomRight().x;
 }
 
-bool intersectsFromRigthWithX(const Ball &ball, const GameObject &obj)
+bool intersectsFromRigthWithX(const GameObject &a, const GameObject &b)
 {
-    return ball.bottomRight().x >= obj.topLeft().x &&
-           ball.bottomRight().x <= obj.bottomRight().x &&
-           ball.topLeft().x < obj.topLeft().x;
+    return a.bottomRight().x >= b.topLeft().x &&
+           a.bottomRight().x <= b.bottomRight().x &&
+           a.topLeft().x < b.topLeft().x;
 }
 
-bool intersectsFromLeftWithX(const Ball &ball, const GameObject &obj)
+bool intersectsFromLeftWithX(const GameObject &a, const GameObject &b)
 {
-    return ball.topLeft().x >= obj.topLeft().x &&
-           ball.topLeft().x <= obj.bottomRight().x &&
-           ball.bottomRight().x > obj.bottomRight().x;
+    return a.topLeft().x >= b.topLeft().x &&
+           a.topLeft().x <= b.bottomRight().x &&
+           a.bottomRight().x > b.bottomRight().x;
 }
 
 bool intersectsFromTopWithY(const Ball &ball, const GameObject &obj)
@@ -309,18 +309,18 @@ void reflectVerticalDecreased(Ball &ball)
     ball.setAngle(angle);
 }
 
-void putBeforeIntersectsWithRightX(Ball &ball, const GameObject &obj)
+void putBeforeIntersectsWithRightX(GameObject &a, const GameObject &b)
 {
-    Point p = ball.topLeft();
-    p.x = obj.topLeft().x - ball.length();
-    ball.setTopLeft(p);
+    Point p = a.topLeft();
+    p.x = b.topLeft().x - a.length();
+    a.setTopLeft(p);
 }
 
-void putBeforeIntersectsWithLeftX(Ball &ball, const GameObject &obj)
+void putBeforeIntersectsWithLeftX(GameObject &a, const GameObject &b)
 {
-    Point p = ball.topLeft();
-    p.x = obj.bottomRight().x;
-    ball.setTopLeft(p);
+    Point p = a.topLeft();
+    p.x = b.bottomRight().x;
+    a.setTopLeft(p);
 }
 
 void putBeforeIntersectsWithBottomY(Ball &ball, const GameObject &obj)

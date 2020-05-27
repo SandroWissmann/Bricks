@@ -21,8 +21,8 @@ bool interectsWithTopY(const Ball &ball, const GameObject &obj);
 bool isInsideWithY(const Ball &ball, const GameObject &obj);
 bool isInsideWithX(const Ball &ball, const GameObject &obj);
 
-bool intersectsFromRigthWithX(const Ball &ball, const GameObject &obj);
-bool intersectsFromLeftWithX(const Ball &ball, const GameObject &obj);
+bool intersectsFromRigthWithX(const GameObject &a, const GameObject &b);
+bool intersectsFromLeftWithX(const GameObject &a, const GameObject &b);
 bool intersectsFromTopWithY(const Ball &ball, const GameObject &obj);
 bool intersectsFromBottomWithY(const Ball &ball, const GameObject &obj);
 
@@ -33,8 +33,8 @@ void reflectVertical(Ball &ball);
 void reflectVerticalIncreased(Ball &ball);
 void reflectVerticalDecreased(Ball &ball);
 
-void putBeforeIntersectsWithRightX(Ball &ball, const GameObject &obj);
-void putBeforeIntersectsWithLeftX(Ball &ball, const GameObject &obj);
+void putBeforeIntersectsWithRightX(GameObject &a, const GameObject &b);
+void putBeforeIntersectsWithLeftX(GameObject &a, const GameObject &b);
 void putBeforeIntersectsWithBottomY(Ball &ball, const GameObject &obj);
 void putBeforeIntersectsWithTopY(Ball &ball, const GameObject &obj);
 
