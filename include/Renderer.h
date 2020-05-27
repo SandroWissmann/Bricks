@@ -23,8 +23,7 @@ public:
              const std::size_t gridWidth, const std::size_t gridHeight);
     ~Renderer();
 
-    void render(const Ball &ball, const Platform &platform, 
-        const std::vector<Wall>& walls, const Level &level);
+    void render(const Level &level);
 private:
     void clearScreen();
     void updateScreen();

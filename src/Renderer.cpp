@@ -55,15 +55,15 @@ Renderer::~Renderer()
     SDL_Quit();
 }
 
-void Renderer::render(const Ball &ball, const Platform &platform, 
-    const std::vector<Wall>& walls, const Level &level)
+void Renderer::render(const Level &level)
 {
     clearScreen();
-    render(ball);
-    render(platform);
-    for(const auto& wall : walls) {
-        render(wall);
-    }
+    render(level.ball);
+    render(level.platform);
+    render(level.leftWall());
+    render(level.rightWall());
+    render(level.topWall());
+
     for(const auto& brick : level.bricks) {
         render(brick);
     }
