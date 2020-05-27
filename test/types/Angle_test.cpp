@@ -12,7 +12,7 @@ TEST(AngleTest, defaultConstructor)
 {
     Angle obj;
     EXPECT_EQ(obj.angle(), 0.0);
-    EXPECT_EQ(obj.quadrant(), Quadrant::I);  
+    EXPECT_EQ(obj.quadrant(), Quadrant::I);
     EXPECT_EQ(obj.quadrantAngle(), 0.0);
 }
 

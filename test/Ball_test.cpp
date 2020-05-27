@@ -32,8 +32,8 @@ protected:
     Angle angle{30.0_deg};
     Gravity gravity{0.0};
 
-    Ball makeBall(const Velocity &velocity, const Angle &angle,
-                  const Gravity &gravity)
+    Ball makeBall(const Velocity& velocity, const Angle& angle,
+                  const Gravity& gravity)
     {
         return Ball{point,        length,   width, maxPositionX,
                     maxPositionY, velocity, angle, gravity};

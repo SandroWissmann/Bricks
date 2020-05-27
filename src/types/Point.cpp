@@ -6,7 +6,7 @@
 
 namespace bricks::types {
 
-std::istream &operator>>(std::istream &is, Point &obj)
+std::istream& operator>>(std::istream& is, Point& obj)
 {
     std::string s;
     is >> s;

@@ -9,8 +9,7 @@ using Length = types::Length;
 using Width = types::Width;
 using Hitpoints = types::Hitpoints;
 
-Brick::Brick()
-    :GameObject{}, mStartHitpoints{0}, mHitpoints{mStartHitpoints}
+Brick::Brick() : GameObject{}, mStartHitpoints{0}, mHitpoints{mStartHitpoints}
 {
 }
 

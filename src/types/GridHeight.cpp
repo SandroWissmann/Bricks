@@ -15,7 +15,7 @@ int GridHeight::operator()() const
     return mValue;
 }
 
-std::istream &operator>>(std::istream &is, GridHeight &obj)
+std::istream& operator>>(std::istream& is, GridHeight& obj)
 {
     std::string s;
     is >> s;

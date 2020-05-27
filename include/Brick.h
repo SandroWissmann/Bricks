@@ -14,10 +14,10 @@ public:
           types::Hitpoints hitpoints);
     ~Brick() override = default;
 
-    Brick(const Brick &) = default;
-    Brick(Brick &&) = default;
-    Brick &operator=(const Brick &other) = default;
-    Brick &operator=(Brick &&other) = default;
+    Brick(const Brick&) = default;
+    Brick(Brick&&) = default;
+    Brick& operator=(const Brick& other) = default;
+    Brick& operator=(Brick&& other) = default;
 
     int startHitpoints() const;
     int hitpoints() const;

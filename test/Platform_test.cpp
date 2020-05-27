@@ -27,7 +27,7 @@ protected:
     MaxPositionY maxPositionY{1000.0};
     Velocity velocity{2.0};
 
-    Platform makePlatform(const Velocity &velocity)
+    Platform makePlatform(const Velocity& velocity)
     {
         return Platform{point,        length,       width,
                         maxPositionX, maxPositionY, velocity};

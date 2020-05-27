@@ -15,8 +15,7 @@ using Angle = types::Angle;
 using Gravity = types::Gravity;
 using Quadrant = types::Quadrant;
 
-Ball::Ball()
-    :MoveableGameObject{},mAngle{0.0}, mGravity{}, mIsActive{false}
+Ball::Ball() : MoveableGameObject{}, mAngle{0.0}, mGravity{}, mIsActive{false}
 {
 }
 
@@ -79,7 +78,7 @@ void Ball::move(double elapsedTimeInMS)
     setTopLeft(newPos);
 }
 
-Point calcNewPosition(const Point &p, double velocity, Angle angle,
+Point calcNewPosition(const Point& p, double velocity, Angle angle,
                       double elapsedTimeInMS)
 {
     auto distance = calcTraveldWay(elapsedTimeInMS, velocity);

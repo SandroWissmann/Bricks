@@ -16,7 +16,7 @@ private:
     int mValue{0};
 };
 
-std::istream &operator>>(std::istream &is, Hitpoints &obj);
+std::istream& operator>>(std::istream& is, Hitpoints& obj);
 
 } // namespace bricks::types
 #endif

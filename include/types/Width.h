@@ -16,7 +16,7 @@ private:
     double mValue{0.0};
 };
 
-std::istream &operator>>(std::istream &is, Width &obj);
+std::istream& operator>>(std::istream& is, Width& obj);
 
 } // namespace bricks::types
 #endif

@@ -15,7 +15,7 @@ int GridWidth::operator()() const
     return mValue;
 }
 
-std::istream &operator>>(std::istream &is, GridWidth &obj)
+std::istream& operator>>(std::istream& is, GridWidth& obj)
 {
     std::string s;
     is >> s;

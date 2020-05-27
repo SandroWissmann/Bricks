@@ -15,7 +15,7 @@ int Hitpoints::operator()() const
     return mValue;
 }
 
-std::istream &operator>>(std::istream &is, Hitpoints &obj)
+std::istream& operator>>(std::istream& is, Hitpoints& obj)
 {
     std::string s;
     is >> s;

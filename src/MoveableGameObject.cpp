@@ -13,7 +13,7 @@ using MaxPositionY = types::MaxPositionY;
 using Velocity = types::Velocity;
 
 MoveableGameObject::MoveableGameObject()
-    :GameObject{}, mMaxPositionX{0.0}, mMaxPositionY{0.0}, mVelocity{0.0}
+    : GameObject{}, mMaxPositionX{0.0}, mMaxPositionY{0.0}, mVelocity{0.0}
 {
     mMaxPositionX = 0.0;
     mMaxPositionY = 0.0;

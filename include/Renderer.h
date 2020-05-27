@@ -23,14 +23,15 @@ public:
              const std::size_t gridWidth, const std::size_t gridHeight);
     ~Renderer();
 
-    void render(const Level &level);
+    void render(const Level& level);
+
 private:
     void clearScreen();
     void updateScreen();
 
-    void render(const Ball &ball);
-    void render(const Platform &platform);
-    void render(const Wall &wall);
+    void render(const Ball& ball);
+    void render(const Platform& platform);
+    void render(const Wall& wall);
     void render(const Brick& brick);
     void render(const IndestructibleBrick& indestructibleBrick);
     void render(const GameObject& obj, const RGBColor& color);
@@ -39,8 +40,8 @@ private:
     void setDrawColor(const RGBColor& color);
     RGBColor getBrickDrawColor(const Brick& brick);
 
-    SDL_Window *mSdlWindow;
-    SDL_Renderer *mSdlRenderer;
+    SDL_Window* mSdlWindow;
+    SDL_Renderer* mSdlRenderer;
 
     const std::size_t mScreenWidth;
     const std::size_t mScreenHeight;

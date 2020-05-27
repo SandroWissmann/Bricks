@@ -20,10 +20,10 @@ public:
 
     virtual ~MoveableGameObject() = default;
 
-    MoveableGameObject(const MoveableGameObject &) = default;
-    MoveableGameObject(MoveableGameObject &&) = default;
-    MoveableGameObject &operator=(const MoveableGameObject &other) = default;
-    MoveableGameObject &operator=(MoveableGameObject &&other) = default;
+    MoveableGameObject(const MoveableGameObject&) = default;
+    MoveableGameObject(MoveableGameObject&&) = default;
+    MoveableGameObject& operator=(const MoveableGameObject& other) = default;
+    MoveableGameObject& operator=(MoveableGameObject&& other) = default;
 
     virtual void move(double elapsedTimeInMS) = 0;
 

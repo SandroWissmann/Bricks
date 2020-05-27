@@ -7,10 +7,9 @@ using namespace bricks::types;
 
 class DerivedGameObject : public GameObject {
 public:
-    DerivedGameObject()
-        :GameObject{}
-        {
-        }
+    DerivedGameObject() : GameObject{}
+    {
+    }
 
     DerivedGameObject(Point topLeft, Length length, Width width)
         : GameObject(topLeft, length, width)
@@ -18,10 +17,10 @@ public:
     }
 
     ~DerivedGameObject() override = default;
-    DerivedGameObject(const DerivedGameObject &) = default;
-    DerivedGameObject(DerivedGameObject &&) = default;
-    DerivedGameObject &operator=(const DerivedGameObject &other) = default;
-    DerivedGameObject &operator=(DerivedGameObject &&other) = default;
+    DerivedGameObject(const DerivedGameObject&) = default;
+    DerivedGameObject(DerivedGameObject&&) = default;
+    DerivedGameObject& operator=(const DerivedGameObject& other) = default;
+    DerivedGameObject& operator=(DerivedGameObject&& other) = default;
 };
 
 TEST(GameObjectTest_, defaultConstructor)

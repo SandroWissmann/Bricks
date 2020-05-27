@@ -7,11 +7,9 @@ using namespace bricks::types;
 
 class DerivedGameObject : public MoveableGameObject {
 public:
-    DerivedGameObject()
-        :MoveableGameObject()
-        {
-        }
-
+    DerivedGameObject() : MoveableGameObject()
+    {
+    }
 
     DerivedGameObject(Point topLeft, Length length, Width width,
                       MaxPositionX maxPositionX, MaxPositionY maxPositionY,
@@ -26,10 +24,10 @@ public:
     }
 
     ~DerivedGameObject() override = default;
-    DerivedGameObject(const DerivedGameObject &) = default;
-    DerivedGameObject(DerivedGameObject &&) = default;
-    DerivedGameObject &operator=(const DerivedGameObject &other) = default;
-    DerivedGameObject &operator=(DerivedGameObject &&other) = default;
+    DerivedGameObject(const DerivedGameObject&) = default;
+    DerivedGameObject(DerivedGameObject&&) = default;
+    DerivedGameObject& operator=(const DerivedGameObject& other) = default;
+    DerivedGameObject& operator=(DerivedGameObject&& other) = default;
 };
 
 TEST(MoveableGameObjectTest_F, defaultConstructor)

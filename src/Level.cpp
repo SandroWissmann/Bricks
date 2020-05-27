@@ -1,11 +1,11 @@
 #include "Level.h"
 
+#include "types/GridHeight.h"
+#include "types/GridWidth.h"
 #include "types/Hitpoints.h"
 #include "types/Length.h"
 #include "types/Point.h"
 #include "types/Width.h"
-#include "types/GridWidth.h"
-#include "types/GridHeight.h"
 
 #include "OperatorDegree.h"
 
@@ -28,49 +28,35 @@ using Hitpoints = types::Hitpoints;
 using GridWidth = types::GridWidth;
 using GridHeight = types::GridHeight;
 
-static constexpr auto wallThickness{ 1.0 };
+static constexpr auto wallThickness{1.0};
 
-static constexpr auto platformWidth{ 4.0 };
+static constexpr auto platformWidth{4.0};
 static constexpr auto platformHeight{0.5};
 static constexpr auto platformVelocity{18.0};
 
-static constexpr auto ballWidth{ 0.75 };
+static constexpr auto ballWidth{0.75};
 static constexpr auto ballHeight{0.75};
 static constexpr auto ballVelocity{16.0};
 static constexpr auto ballAngle{135.0_deg};
 static constexpr auto ballGravity{1.5};
 
-    Level::Level()
-    :mGridWidth{},
-    mGridHeight{},
-    mLeftWall{},
-    mRightWall{},
-    mTopWall{},
-    platform{}, 
-    ball{}, 
-    bricks{}, 
-    indestructibleBricks{}
-    {
-    }
+Level::Level()
+    : mGridWidth{}, mGridHeight{}, mLeftWall{}, mRightWall{}, mTopWall{},
+      platform{}, ball{}, bricks{}, indestructibleBricks{}
+{
+}
 
-    Level::Level(
-        const GridWidth& gridWidth, 
-    const GridHeight& gridHeight,
-    const std::vector<Brick>& bricks_, 
-    const std::vector<IndestructibleBrick>& indestructibleBricks_)
-        :mGridWidth{gridWidth()}, 
-        mGridHeight{gridHeight()}, 
-        mLeftWall{makeLeftWall()},
-        mRightWall{makeRightWall()},
-        mTopWall{makeTopWall()},
-        platform{makePlatform()},
-        ball{makeBall()}, 
-        bricks{bricks_},
-        indestructibleBricks{indestructibleBricks_}
-    {
-        assert(mGridWidth > 0);
-        assert(mGridHeight > 0);
-    }
+Level::Level(const GridWidth& gridWidth, const GridHeight& gridHeight,
+             const std::vector<Brick>& bricks_,
+             const std::vector<IndestructibleBrick>& indestructibleBricks_)
+    : mGridWidth{gridWidth()}, mGridHeight{gridHeight()},
+      mLeftWall{makeLeftWall()}, mRightWall{makeRightWall()},
+      mTopWall{makeTopWall()}, platform{makePlatform()}, ball{makeBall()},
+      bricks{bricks_}, indestructibleBricks{indestructibleBricks_}
+{
+    assert(mGridWidth > 0);
+    assert(mGridHeight > 0);
+}
 
 int Level::gridWidth() const
 {
@@ -99,61 +85,48 @@ Wall Level::topWall() const
 
 Wall Level::makeLeftWall()
 {
-    return Wall{
-        Point{0.0, 0.0},
-        Length{wallThickness}, 
-        Width{static_cast<double>(mGridHeight)}
-    };
+    return Wall{Point{0.0, 0.0}, Length{wallThickness},
+                Width{static_cast<double>(mGridHeight)}};
 }
 
 Wall Level::makeRightWall()
 {
-    return Wall{
-        Point{mGridWidth - wallThickness, 0.0},
-        Length{wallThickness}, 
-        Width{static_cast<double>(mGridHeight)}
-    };
+    return Wall{Point{mGridWidth - wallThickness, 0.0}, Length{wallThickness},
+                Width{static_cast<double>(mGridHeight)}};
 }
 
 Wall Level::makeTopWall()
 {
-    return Wall{
-        Point{wallThickness, 0.0},
-        Length{mGridWidth - 2.0 * wallThickness}, 
-        Width{wallThickness}
-    };
+    return Wall{Point{wallThickness, 0.0},
+                Length{mGridWidth - 2.0 * wallThickness}, Width{wallThickness}};
 }
 Platform Level::makePlatform()
 {
     auto p = impl::platformInitPosition(platformWidth, mGridWidth, mGridHeight);
 
-    return Platform{
-        p,
-        Length{platformWidth},  
-        Width{platformHeight}, 
-        MaxPositionX{static_cast<double>(mGridWidth)},
-        MaxPositionY{static_cast<double>(mGridHeight)},
-        Velocity{platformVelocity}
-        };
+    return Platform{p,
+                    Length{platformWidth},
+                    Width{platformHeight},
+                    MaxPositionX{static_cast<double>(mGridWidth)},
+                    MaxPositionY{static_cast<double>(mGridHeight)},
+                    Velocity{platformVelocity}};
 }
 
 Ball Level::makeBall()
 {
     auto p = impl::ballInitPosition(mGridWidth, mGridHeight);
 
-    return Ball{
-        p,
-        Length{ballWidth},
-        Width{ballHeight},
-        MaxPositionX{static_cast<double>(mGridWidth)},
-        MaxPositionY{static_cast<double>(mGridHeight)},  
-        Velocity{ballVelocity},
-        Angle{ballAngle},
-        Gravity{ballGravity}                     
-    };
+    return Ball{p,
+                Length{ballWidth},
+                Width{ballHeight},
+                MaxPositionX{static_cast<double>(mGridWidth)},
+                MaxPositionY{static_cast<double>(mGridHeight)},
+                Velocity{ballVelocity},
+                Angle{ballAngle},
+                Gravity{ballGravity}};
 }
 
-Level readFromFile(const std::string &filename)
+Level readFromFile(const std::string& filename)
 {
     std::ifstream ifs{filename};
     if (!ifs.is_open()) {
@@ -168,7 +141,7 @@ Level readFromFile(const std::string &filename)
     return level;
 }
 
-std::istream &operator>>(std::istream &is, Level &obj)
+std::istream& operator>>(std::istream& is, Level& obj)
 {
     std::string line;
     std::getline(is, line);
@@ -204,13 +177,13 @@ std::istream &operator>>(std::istream &is, Level &obj)
             is.setstate(std::ios_base::failbit);
             return is;
         }
-        if(point.x > gridWidth()) {
+        if (point.x > gridWidth()) {
             is.setstate(std::ios_base::failbit);
-            return is;        
+            return is;
         }
-        if(point.y > gridHeight()) {
+        if (point.y > gridHeight()) {
             is.setstate(std::ios_base::failbit);
-            return is;        
+            return is;
         }
 
         Length length;
@@ -256,21 +229,14 @@ bool isComment(const std::string line)
     return false;
 }
 
-Point platformInitPosition(
-    double platformWidth, double gridWidth, double gridHeight)
+Point platformInitPosition(double platformWidth, double gridWidth,
+                           double gridHeight)
 {
-    return Point{
-        gridWidth / 2.0 - platformWidth / 2.0,
-        gridHeight - 1.0
-    };
+    return Point{gridWidth / 2.0 - platformWidth / 2.0, gridHeight - 1.0};
 }
-Point ballInitPosition(
-    double gridWidth, double gridHeight)
+Point ballInitPosition(double gridWidth, double gridHeight)
 {
-    return Point{
-        gridWidth / 2.0,
-        gridHeight - 2.0
-    };    
+    return Point{gridWidth / 2.0, gridHeight - 2.0};
 }
 
 } // namespace impl

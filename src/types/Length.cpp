@@ -15,7 +15,7 @@ double Length::operator()() const
     return mValue;
 }
 
-std::istream &operator>>(std::istream &is, Length &obj)
+std::istream& operator>>(std::istream& is, Length& obj)
 {
     std::string s;
     is >> s;

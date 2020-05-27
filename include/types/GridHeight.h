@@ -16,7 +16,7 @@ private:
     int mValue{0};
 };
 
-std::istream &operator>>(std::istream &is, GridHeight &obj);
+std::istream& operator>>(std::istream& is, GridHeight& obj);
 
 } // namespace bricks::types
 #endif

@@ -17,10 +17,10 @@ public:
 
     ~Ball() override = default;
 
-    Ball(const Ball &) = default;
-    Ball(Ball &&) = default;
-    Ball &operator=(const Ball &other) = default;
-    Ball &operator=(Ball &&other) = default;
+    Ball(const Ball&) = default;
+    Ball(Ball&&) = default;
+    Ball& operator=(const Ball& other) = default;
+    Ball& operator=(Ball&& other) = default;
 
     types::Angle angle() const;
     void setAngle(types::Angle angle);
@@ -39,7 +39,7 @@ private:
     bool mIsActive;
 };
 
-types::Point calcNewPosition(const types::Point &p, double velocity,
+types::Point calcNewPosition(const types::Point& p, double velocity,
                              types::Angle angle, double elapsedTimeInMS);
 
 double calcTraveldWay(double deltaTimeMS, double velocityInS);

@@ -7,7 +7,7 @@
 namespace bricks::types {
 
 Angle::Angle()
-   : mQuadrant{impl::calcQuadrant(0.0)},
+    : mQuadrant{impl::calcQuadrant(0.0)},
       mQuadrantAngle{impl::angleToQuadrantAngle(0.0, mQuadrant)}
 {
 }

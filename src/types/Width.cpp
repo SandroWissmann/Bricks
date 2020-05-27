@@ -15,7 +15,7 @@ double Width::operator()() const
     return mValue;
 }
 
-std::istream &operator>>(std::istream &is, Width &obj)
+std::istream& operator>>(std::istream& is, Width& obj)
 {
     std::string s;
     is >> s;

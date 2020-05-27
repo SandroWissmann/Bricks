@@ -14,10 +14,10 @@ public:
 
     virtual ~GameObject() = 0;
 
-    GameObject(const GameObject &) = default;
-    GameObject(GameObject &&) = default;
-    GameObject &operator=(const GameObject &other) = default;
-    GameObject &operator=(GameObject &&other) = default;
+    GameObject(const GameObject&) = default;
+    GameObject(GameObject&&) = default;
+    GameObject& operator=(const GameObject& other) = default;
+    GameObject& operator=(GameObject&& other) = default;
 
     types::Point topLeft() const;
     virtual void setTopLeft(types::Point topLeft);
