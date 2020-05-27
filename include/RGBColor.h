@@ -1,3 +1,6 @@
+#ifndef RGBCOLOR_H
+#define RGBCOLOR_H
+
 #include <cassert>
 
 namespace bricks {
@@ -38,3 +41,4 @@ namespace bricks {
         const int mA;
     };
 }
+#endif
