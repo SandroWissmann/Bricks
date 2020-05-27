@@ -4,6 +4,7 @@
 #include "TimeMeasure.h"
 #include "OperatorDegree.h"
 #include "GetEvent.h"
+#include "GameObjectPhysics.h"
 
 #include <thread>
 #include <string>
@@ -12,8 +13,23 @@
 
 using namespace bricks;
 
+void moveLeft(Platform& platform, double elapsedTimeInMS)
+{
+    if(auto velocity = platform.velocity(); velocity > 0) {
+        velocity *= -1;
+        platform.setVelocity(velocity);
+    }
+    platform.move(elapsedTimeInMS);
+}
 
-
+void moveRight(Platform& platform, double elapsedTimeInMS)
+{
+    if(auto velocity = platform.velocity(); velocity < 0) {
+        velocity *= -1;
+        platform.setVelocity(velocity);
+    }
+    platform.move(elapsedTimeInMS);
+}
 
 int main()
 {
@@ -43,17 +59,44 @@ int main()
 
         renderer.render(level);
 
-        int i=0;
-
         auto event = getEvent();
         if(event == Event::quit) {
             return 0;
         }
 
-        if(i != 0) {
-            std::cout << "I" << i <<'\n';
+        switch(event) {
+            case Event::quit:
+            [[fallthrough]];
+            case Event::escape:
+                return 0;
+            case Event::space:
+                if(!level.ball.isActive()) {
+                    level.ball.activate();
+                }
+                break;
+            case Event::left:
+                if(intersectsFromLeftWithX(level.platform, level.leftWall())) {
+                    putBeforeIntersectsWithLeftX(
+                        level.platform, level.leftWall());
+                }
+                else {
+                    moveLeft(level.platform, mSPerFrame);
+                }
+                break;
+            case Event::right:
+                if(intersectsFromRigthWithX(level.platform, level.rightWall())) {
+                    putBeforeIntersectsWithRightX(
+                        level.platform, level.rightWall());
+                }
+                else {
+                    moveRight(level.platform, mSPerFrame);
+                }
+                break;
         }
 
+        if(level.ball.isActive()) {
+            level.ball.move(mSPerFrame);
+        }
 
         t2 = getCurrentTime();
         elapsedTimeInMS = getElapsedTime(t1, t2);
