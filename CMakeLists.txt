@@ -31,6 +31,7 @@ src/types/Width.cpp
 
 src/Ball.cpp
 src/Brick.cpp
+src/Game.cpp
 src/GameObject.cpp
 src/GameObjectPhysics.cpp
 src/GetEvent.cpp
