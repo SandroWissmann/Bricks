@@ -10,25 +10,24 @@ Event getEvent()
     SDL_Event sdlEvent;
     while (SDL_PollEvent(&sdlEvent)) {
         if (sdlEvent.type == SDL_QUIT) {
-            event = Event::quit;
-        }
-        else if (sdlEvent.type == SDL_KEYDOWN) {
-            switch (sdlEvent.key.keysym.sym) {
-            case SDLK_LEFT:
-                event = Event::left;
-                break;
-            case SDLK_RIGHT:
-                event = Event::right;
-                break;
-            case SDLK_SPACE:
-                event = Event::space;
-                break;
-            case SDLK_ESCAPE:
-                event = Event::escape;
-                break;
-            }
+            return event = Event::quit;
         }
     }
-    return event;
+
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+
+    if(keystates[SDL_SCANCODE_LEFT]) {
+        return Event::left;
+    }
+    if(keystates[SDL_SCANCODE_RIGHT]) {
+        return Event::right;
+    }
+    if(keystates[SDL_SCANCODE_SPACE]) {
+        return Event::space;
+    }
+    if(keystates[SDL_SCANCODE_ESCAPE]) {
+        return Event::escape;
+    }
+    return Event::none;
 }
 } // namespace bricks
