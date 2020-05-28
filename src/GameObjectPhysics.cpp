@@ -17,32 +17,24 @@ using Angle = types::Angle;
 using Point = types::Point;
 using Quadrant = types::Quadrant;
 
-bool ifHitReflect(Ball& ball, const GameObject& obj)
+bool reflect(Ball& ball, const GameObject& obj)
 {
-    auto oldQuadrant = ball.angle().quadrant();
-
-    switch (oldQuadrant) {
+    switch (ball.angle().quadrant()) {
     case Quadrant::I:
-        ifHitReflectFromQuadrantI(ball, obj);
-        break;
+        return reflectFromQuadrantI(ball, obj);
     case Quadrant::II:
-        ifHitReflectFromQuadrantII(ball, obj);
-        break;
+        return reflectFromQuadrantII(ball, obj);
     case Quadrant::III:
-        ifHitReflectFromQuadrantIII(ball, obj);
-        break;
+        return reflectFromQuadrantIII(ball, obj);
     case Quadrant::IV:
-        ifHitReflectFromQuadrantIV(ball, obj);
-        break;
+        return reflectFromQuadrantIV(ball, obj);
     }
-
-    return ball.angle().quadrant() != oldQuadrant;
+    return false;
 }
 
-void ifHitReflectFromQuadrantI(Ball& ball, const GameObject& obj)
+bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
 {
     if (interectsWithBottomY(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithX(ball, obj)) {
             reflectHorizontal(ball);
         }
@@ -55,14 +47,11 @@ void ifHitReflectFromQuadrantI(Ball& ball, const GameObject& obj)
             reflectHorizontalIncreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithBottomY(ball, obj);
-        }
+        putBeforeIntersectsWithBottomY(ball, obj);
     }
     else if (interectsWithRightX(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithY(ball, obj)) {
             reflectVertical(ball);
         }
@@ -75,18 +64,16 @@ void ifHitReflectFromQuadrantI(Ball& ball, const GameObject& obj)
             reflectVerticalIncreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithRightX(ball, obj);
-        }
+        putBeforeIntersectsWithRightX(ball, obj);
     }
+    return true;
 }
 
-void ifHitReflectFromQuadrantII(Ball& ball, const GameObject& obj)
+bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
 {
     if (interectsWithBottomY(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithX(ball, obj)) {
             reflectHorizontal(ball);
         }
@@ -99,14 +86,11 @@ void ifHitReflectFromQuadrantII(Ball& ball, const GameObject& obj)
             reflectHorizontalDecreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithBottomY(ball, obj);
-        }
+        putBeforeIntersectsWithBottomY(ball, obj);
     }
     else if (interectsWithLeftX(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithY(ball, obj)) {
             reflectVertical(ball);
         }
@@ -119,18 +103,16 @@ void ifHitReflectFromQuadrantII(Ball& ball, const GameObject& obj)
             reflectVerticalDecreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithLeftX(ball, obj);
-        }
+        putBeforeIntersectsWithLeftX(ball, obj);
     }
+    return true;
 }
 
-void ifHitReflectFromQuadrantIII(Ball& ball, const GameObject& obj)
+bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
 {
     if (interectsWithTopY(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithX(ball, obj)) {
             reflectHorizontal(ball);
         }
@@ -143,14 +125,11 @@ void ifHitReflectFromQuadrantIII(Ball& ball, const GameObject& obj)
             reflectHorizontalIncreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithTopY(ball, obj);
-        }
+        putBeforeIntersectsWithTopY(ball, obj);
     }
     else if (interectsWithLeftX(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithY(ball, obj)) {
             reflectVertical(ball);
         }
@@ -163,18 +142,16 @@ void ifHitReflectFromQuadrantIII(Ball& ball, const GameObject& obj)
             reflectVerticalIncreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithLeftX(ball, obj);
-        }
+        putBeforeIntersectsWithLeftX(ball, obj);
     }
+    return true;
 }
 
-void ifHitReflectFromQuadrantIV(Ball& ball, const GameObject& obj)
+bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
 {
     if (interectsWithTopY(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithX(ball, obj)) {
             reflectHorizontal(ball);
         }
@@ -187,14 +164,11 @@ void ifHitReflectFromQuadrantIV(Ball& ball, const GameObject& obj)
             reflectHorizontalDecreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithTopY(ball, obj);
-        }
+        putBeforeIntersectsWithTopY(ball, obj);
     }
     else if (interectsWithRightX(ball, obj)) {
-        bool reflected = true;
         if (isInsideWithY(ball, obj)) {
             reflectVertical(ball);
         }
@@ -207,12 +181,11 @@ void ifHitReflectFromQuadrantIV(Ball& ball, const GameObject& obj)
             reflectVerticalDecreased(ball);
         }
         else {
-            reflected = false;
+            return false;
         }
-        if (reflected) {
-            putBeforeIntersectsWithRightX(ball, obj);
-        }
+        putBeforeIntersectsWithRightX(ball, obj);
     }
+    return true;
 }
 
 bool interectsWithRightX(const GameObject& a, const GameObject& b)

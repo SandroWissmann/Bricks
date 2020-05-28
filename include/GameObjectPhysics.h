@@ -6,12 +6,12 @@ namespace bricks {
 class Ball;
 class GameObject;
 
-bool ifHitReflect(Ball& ball, const GameObject& obj);
+bool reflect(Ball& ball, const GameObject& obj);
 
-void ifHitReflectFromQuadrantI(Ball& ball, const GameObject& obj);
-void ifHitReflectFromQuadrantII(Ball& ball, const GameObject& obj);
-void ifHitReflectFromQuadrantIII(Ball& ball, const GameObject& obj);
-void ifHitReflectFromQuadrantIV(Ball& ball, const GameObject& obj);
+bool reflectFromQuadrantI(Ball& ball, const GameObject& obj);
+bool reflectFromQuadrantII(Ball& ball, const GameObject& obj);
+bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj);
+bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj);
 
 bool interectsWithRightX(const GameObject& a, const GameObject& b);
 bool interectsWithLeftX(const GameObject& a, const GameObject& b);
