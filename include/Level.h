@@ -33,6 +33,9 @@ public:
     Wall rightWall() const;
     Wall topWall() const;
 
+    void resetBall();
+    void resetPlatform();
+
 private:
     Wall makeLeftWall();
     Wall makeRightWall();

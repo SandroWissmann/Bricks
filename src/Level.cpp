@@ -83,6 +83,15 @@ Wall Level::topWall() const
     return mTopWall;
 }
 
+void Level::resetBall()
+{
+    ball = makeBall();
+}
+void Level::resetPlatform()
+{
+    platform = makePlatform();
+}
+
 Wall Level::makeLeftWall()
 {
     return Wall{Point{0.0, 0.0}, Length{wallThickness},
