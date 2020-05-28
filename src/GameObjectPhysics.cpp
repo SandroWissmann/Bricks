@@ -50,6 +50,7 @@ bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithBottomY(ball, obj);
+        return true;
     }
     else if (interectsWithRightX(ball, obj)) {
         if (isInsideWithY(ball, obj)) {
@@ -67,8 +68,9 @@ bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithRightX(ball, obj);
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
@@ -89,6 +91,7 @@ bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithBottomY(ball, obj);
+        return true;
     }
     else if (interectsWithLeftX(ball, obj)) {
         if (isInsideWithY(ball, obj)) {
@@ -106,8 +109,9 @@ bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithLeftX(ball, obj);
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
@@ -128,6 +132,7 @@ bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithTopY(ball, obj);
+        return true;
     }
     else if (interectsWithLeftX(ball, obj)) {
         if (isInsideWithY(ball, obj)) {
@@ -145,8 +150,9 @@ bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithLeftX(ball, obj);
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
@@ -167,6 +173,7 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithTopY(ball, obj);
+        return true;
     }
     else if (interectsWithRightX(ball, obj)) {
         if (isInsideWithY(ball, obj)) {
@@ -184,8 +191,9 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithRightX(ball, obj);
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool interectsWithRightX(const GameObject& a, const GameObject& b)
