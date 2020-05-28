@@ -16,16 +16,16 @@ Event getEvent()
 
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
-    if(keystates[SDL_SCANCODE_LEFT]) {
+    if (keystates[SDL_SCANCODE_LEFT]) {
         return Event::left;
     }
-    if(keystates[SDL_SCANCODE_RIGHT]) {
+    if (keystates[SDL_SCANCODE_RIGHT]) {
         return Event::right;
     }
-    if(keystates[SDL_SCANCODE_SPACE]) {
+    if (keystates[SDL_SCANCODE_SPACE]) {
         return Event::space;
     }
-    if(keystates[SDL_SCANCODE_ESCAPE]) {
+    if (keystates[SDL_SCANCODE_ESCAPE]) {
         return Event::escape;
     }
     return Event::none;

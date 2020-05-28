@@ -107,7 +107,7 @@ void Renderer::render(const Wall& wall)
 
 void Renderer::render(const Brick& brick)
 {
-    if(brick.isDestroyed()) {
+    if (brick.isDestroyed()) {
         return;
     }
     auto color = getBrickDrawColor(brick);

@@ -200,4 +200,3 @@ TEST_F(CollisionTest, putBeforeIntersectsWithTopY)
     putBeforeIntersectsWithTopY(ball, brickTop);
     EXPECT_TRUE(ball.topLeft().y == brickTop.bottomRight().y);
 }
-
