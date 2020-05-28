@@ -32,7 +32,7 @@ static constexpr auto wallThickness{1.0};
 
 static constexpr auto platformWidth{4.0};
 static constexpr auto platformHeight{0.5};
-static constexpr auto platformVelocity{18.0};
+static constexpr auto platformVelocity{40.0};
 
 static constexpr auto ballWidth{0.75};
 static constexpr auto ballHeight{0.75};
