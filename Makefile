@@ -1,16 +1,22 @@
+build/level:
+	rsync -rupE level build/
+
 .PHONY: format
 format:
 	find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format -style=file -i {} \;
 .PHONY: build
 build:
 	mkdir -p build
+	rsync -rupE level build/
 	cd build && \
 	cmake .. && \
-	make
+	make	
 
 .PHONY: debug
 debug:
 	mkdir -p build
+	rsync -rupE level build/
+	cp /le
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
 	make
@@ -22,6 +28,7 @@ clean:
 .PHONY: memcheck
 memcheck:
 	mkdir -p build
+	rsync -rupE level build/
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
 	make

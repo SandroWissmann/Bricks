@@ -8,6 +8,9 @@
 #include "Renderer.h"
 #include "Level.h"
 
+#include <vector>
+#include <string>
+
 
 namespace bricks{
 
@@ -30,6 +33,7 @@ namespace bricks{
         long long getBrickValue(const Brick& brick) const;
         void awardExtraLifeIfThresholdReached();
 
+        std::vector<std::string> mLevelFilenames;
         Level mLevel;
         Renderer mRenderer;
 
@@ -47,6 +51,9 @@ namespace bricks{
     void moveRight(Platform& platform, double elapsedTimeInMS);
 
     void delayToFramerate(double elapsedTimeInMS);
+
+    std::vector<std::string> getLevelFilenamesFromFolder(
+        const std::string& folderName);
 }
 
 #endif

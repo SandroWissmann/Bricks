@@ -5,8 +5,10 @@
 #include "TimeMeasure.h"
 #include "GameObjectPhysics.h"
 
+#include <cassert>
 #include <string>
 #include <iostream>
+#include <filesystem>
 
 namespace bricks{
 
@@ -17,7 +19,8 @@ namespace bricks{
     constexpr int pointsForExtraLife{10000};
 
     Game::Game(std::size_t screenWidth, std::size_t screenHeight)
-        :mLevel{loadLevel(mCurrentLevel)},mRenderer{
+        :mLevelFilenames{getLevelFilenamesFromFolder("level")}, 
+        mLevel{loadLevel(1)},mRenderer{
             Renderer{screenWidth, screenHeight, 
             static_cast<std::size_t>(mLevel.gridWidth()),
             static_cast<std::size_t>(mLevel.gridHeight())
@@ -66,11 +69,11 @@ namespace bricks{
         }
     }
 
-    Level Game::loadLevel(int /*level*/)
+    Level Game::loadLevel(int level)
     {
+        assert(!mLevelFilenames.empty());
 
-        return readFromFile(
-        "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/level/1.lvl");
+        return readFromFile(mLevelFilenames.at(level - 1));
     }
 
     bool Game::ballLost()
@@ -185,5 +188,15 @@ namespace bricks{
             wait(std::chrono::milliseconds{
                 static_cast<int>(msPerFrame - elapsedTimeInMS)});
         }
+    }
+
+    std::vector<std::string> getLevelFilenamesFromFolder(
+        const std::string& folderName)
+    {
+        std::vector<std::string> names;
+        for(auto& p: std::filesystem::directory_iterator(folderName)) {
+            names.emplace_back(std::filesystem::absolute(p.path()));
+        }
+        return names;
     }
 }
