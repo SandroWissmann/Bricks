@@ -131,26 +131,20 @@ namespace bricks{
 
     void Game::handleBallCollisions()
     {
-        std::cout << "collide\n";
         if(reflect(mLevel.ball, mLevel.leftWall())) {
-            std::cout << "collide left\n";
             return;
         }
         if(reflect(mLevel.ball, mLevel.rightWall())) {
-            std::cout << "collide right\n";
             return;
         }   
         if(reflect(mLevel.ball, mLevel.topWall())) {
-            std::cout << "collide top\n";
             return;
         }
         if(reflect(mLevel.ball, mLevel.platform))   {
-            std::cout << "collide plattform\n";
             return;
         }
         for (auto& indestructibleBrick : mLevel.indestructibleBricks) {
             if (reflect(mLevel.ball, indestructibleBrick)) {
-                std::cout << "collide indes brick\n";
                 return;
             }
         }
@@ -165,11 +159,9 @@ namespace bricks{
                     mScore += getBrickValue(brick);
                     awardExtraLifeIfThresholdReached();
                 }
-                std::cout << "collide brick\n";
                 return;
             }
         }
-        std::cout << "collide noting\n";
     }
 
     long long Game::getBrickValue(const Brick& brick) const
