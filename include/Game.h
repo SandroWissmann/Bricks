@@ -28,6 +28,8 @@ private:
     void runLevel();
     Level loadLevel(int level);
 
+    void updateValuesInTitleBar();
+
     bool ballLost();
     void handleBallCollisions();
 
@@ -44,6 +46,8 @@ private:
     int mLifes{5};
     bool mGameOver = false;
 };
+
+std::string makeTitle(int level, int lifes, long long score);
 
 void handleEvent(const Event& event, const Wall& leftWall,
                  const Wall& rightWall, Ball& ball, Platform& platform,

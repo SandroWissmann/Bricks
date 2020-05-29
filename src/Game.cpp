@@ -40,6 +40,7 @@ void Game::run()
         }
         else {
             ++mCurrentLevel;
+            updateValuesInTitleBar();
         }
         mLevel = loadLevel(mCurrentLevel);
     }
@@ -70,6 +71,7 @@ void Game::runLevel()
 
             if (ballLost()) {
                 --mLifes;
+                updateValuesInTitleBar();
                 mLevel.resetBall();
                 mLevel.resetPlatform();
                 if (mLifes <= 0) {
@@ -97,9 +99,24 @@ Level Game::loadLevel(int level)
     return readFromFile(mLevelFilenames.at(level - 1));
 }
 
+void Game::updateValuesInTitleBar()
+{
+    mRenderer.setWindowTitle(
+        makeTitle(mCurrentLevel, mLifes, mScore));
+}
+
 bool Game::ballLost()
 {
     return mLevel.ball.bottomRight().y >= mLevel.gridHeight();
+}
+
+std::string makeTitle(int level, int lifes, long long score)
+{
+    return std::string{
+        "Level: " + std::to_string(level) + "\t" 
+        "Lifes: " + std::to_string(lifes) + "\t"
+        "Score: " + std::to_string(score)
+    };
 }
 
 void handleEvent(const Event& event, const Wall& leftWall,
@@ -183,6 +200,7 @@ void Game::handleBallCollisions()
             if (brick.isDestroyed()) {
                 mScore += getBrickValue(brick);
                 awardExtraLifeIfThresholdReached();
+                updateValuesInTitleBar();
             }
             return;
         }
