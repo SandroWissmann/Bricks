@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "TimeMeasure.h"
 
+#include <algorithm>
 #include <cassert>
 #include <filesystem>
 #include <iostream>
@@ -29,6 +30,23 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
 
 void Game::run()
 {
+    while(true) {
+        runLevel();
+        if(mGameOver) {
+            break;
+        }
+        if(mCurrentLevel > mLevelFilenames.size()) {
+            mCurrentLevel = 1;
+        }
+        else {
+            ++mCurrentLevel;
+        }
+        mLevel = loadLevel(mCurrentLevel);
+    }
+}
+
+void Game::runLevel()
+{
     std::chrono::time_point<std::chrono::high_resolution_clock> timepoint1;
     std::chrono::time_point<std::chrono::high_resolution_clock> timepoint2;
 
@@ -43,6 +61,7 @@ void Game::run()
         handleEvent(event, mLevel.leftWall(), mLevel.rightWall(), mLevel.ball,
                     mLevel.platform, quit);
         if (quit) {
+            mGameOver = true;
             break;
         }
 
@@ -55,10 +74,14 @@ void Game::run()
                 mLevel.resetPlatform();
                 if (mLifes <= 0) {
                     mGameOver = true;
+                    break;
                 }
             }
 
             handleBallCollisions();
+            if(allBricksAreDestroyed(mLevel.bricks)) {
+                break;
+            }
         }
 
         timepoint2 = getCurrentTime();
@@ -178,6 +201,15 @@ void Game::awardExtraLifeIfThresholdReached()
         ++mLifes;
         mLastExtraLifeDivisor = extraLifeDivisor;
     }
+}
+
+bool allBricksAreDestroyed(const std::vector<Brick> bricks)
+{
+    return std::find_if(bricks.begin(), bricks.end(),
+                        [](const Brick& b)
+                        {
+                            return !b.isDestroyed();
+                        }) == bricks.end();    
 }
 
 void delayToFramerate(double elapsedTimeInMS)

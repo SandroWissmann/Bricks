@@ -25,6 +25,7 @@ public:
     void run();
 
 private:
+    void runLevel();
     Level loadLevel(int level);
 
     bool ballLost();
@@ -50,6 +51,8 @@ void handleEvent(const Event& event, const Wall& leftWall,
 
 void moveLeft(Platform& platform, double elapsedTimeInMS);
 void moveRight(Platform& platform, double elapsedTimeInMS);
+
+bool allBricksAreDestroyed(const std::vector<Brick> bricks);
 
 void delayToFramerate(double elapsedTimeInMS);
 
