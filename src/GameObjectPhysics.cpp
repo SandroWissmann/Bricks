@@ -50,6 +50,7 @@ bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithBottomY(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     else if (interectsWithRightX(ball, obj)) {
@@ -68,6 +69,7 @@ bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithRightX(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     return false;
@@ -91,6 +93,7 @@ bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithBottomY(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     else if (interectsWithLeftX(ball, obj)) {
@@ -109,6 +112,7 @@ bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithLeftX(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     return false;
@@ -132,6 +136,7 @@ bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithTopY(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     else if (interectsWithLeftX(ball, obj)) {
@@ -150,6 +155,7 @@ bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithLeftX(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     return false;
@@ -173,6 +179,7 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithTopY(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     else if (interectsWithRightX(ball, obj)) {
@@ -191,9 +198,29 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
             return false;
         }
         putBeforeIntersectsWithRightX(ball, obj);
+        ball.setAngle(clampAngle(ball.angle()));
         return true;
     }
     return false;
+}
+
+types::Angle clampAngle(const types::Angle& angle)
+{
+    auto newAngle = angle;
+    // if(angle.angle() > 150.0_deg) {
+    //     newAngle.setAngle(150.0_deg);
+    // }
+    // else 
+    if(angle.angle() < 30.0_deg) {
+        newAngle.setAngle(30.0_deg);
+    }
+    else if(angle.angle() <= 90.0_deg && angle.angle() > 75.0_deg) {
+        newAngle.setAngle(75.0_deg);        
+    }
+    else if(angle.angle() >= 90.0_deg && angle.angle() < 105.0_deg) {
+        newAngle.setAngle(105.0_deg);        
+    }
+    return newAngle;
 }
 
 bool interectsWithRightX(const GameObject& a, const GameObject& b)

@@ -6,12 +6,18 @@ namespace bricks {
 class Ball;
 class GameObject;
 
+namespace types{
+    class Angle;
+}
+
 bool reflect(Ball& ball, const GameObject& obj);
 
 bool reflectFromQuadrantI(Ball& ball, const GameObject& obj);
 bool reflectFromQuadrantII(Ball& ball, const GameObject& obj);
 bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj);
 bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj);
+
+types::Angle clampAngle(const types::Angle& angle);
 
 bool interectsWithRightX(const GameObject& a, const GameObject& b);
 bool interectsWithLeftX(const GameObject& a, const GameObject& b);
