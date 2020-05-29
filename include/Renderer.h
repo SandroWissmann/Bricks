@@ -25,6 +25,8 @@ public:
 
     void render(const Level& level);
 
+    void setWindowTitle(const std::string& title);
+
 private:
     void clearScreen();
     void updateScreen();

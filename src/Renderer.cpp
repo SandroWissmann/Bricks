@@ -75,6 +75,11 @@ void Renderer::render(const Level& level)
     updateScreen();
 }
 
+void Renderer::setWindowTitle(const std::string& title)
+{
+    SDL_SetWindowTitle(mSdlWindow, title.c_str());
+}
+
 void Renderer::clearScreen()
 {
     RGBColor white{0x1E, 0x1E, 0x1E};
