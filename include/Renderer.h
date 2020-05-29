@@ -6,6 +6,7 @@
 #include <SDL.h>
 
 #include <vector>
+#include <string>
 
 namespace bricks {
 
