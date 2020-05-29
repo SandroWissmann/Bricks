@@ -130,6 +130,28 @@ void Renderer::render(const GameObject& obj, const RGBColor& color)
     setDrawColor(color);
     auto rect = toSDLRect(obj);
     SDL_RenderFillRect(mSdlRenderer, &rect);
+    drawHighlights(rect, color);
+}
+
+void Renderer::drawHighlights(const SDL_Rect& rect, const RGBColor& color)
+{
+    auto x = rect.x;
+    auto y = rect.y;
+    auto w = rect.w;
+    auto h = rect.h;
+
+    setDrawColor(color.lighter());
+
+    SDL_RenderDrawLine(mSdlRenderer, x, y + h, x, y);
+    SDL_RenderDrawLine(mSdlRenderer, x + 1, y + h, x + 1, y);
+    SDL_RenderDrawLine(mSdlRenderer, x, y, x + w, y);
+    SDL_RenderDrawLine(mSdlRenderer, x, y -1 , x + w, y - 1);
+
+    setDrawColor(color.darker());
+    SDL_RenderDrawLine(mSdlRenderer, x, y + h, x + w, y + h);
+    SDL_RenderDrawLine(mSdlRenderer, x, y + h - 1 , x + w, y + h - 1);
+    SDL_RenderDrawLine(mSdlRenderer, x + w - 1, y + h, x + w - 1, y);
+    SDL_RenderDrawLine(mSdlRenderer, x + w, y + h, x + w, y);
 }
 
 SDL_Rect Renderer::toSDLRect(const GameObject& obj) const
