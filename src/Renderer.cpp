@@ -155,7 +155,7 @@ RGBColor Renderer::getBrickDrawColor(const Brick& brick)
 
     assert(hp >= 0 && hp <= 9);
 
-    constexpr std::array<RGBColor, 9> colors{
+    std::array<RGBColor, 9> colors{
         RGBColor{0xFD, 0xEF, 0x42}, RGBColor{0x99, 0xFF, 0x00},
         RGBColor{0x00, 0x7E, 0x56}, RGBColor{0x00, 0x5A, 0x7E},
         RGBColor{0x46, 0x3A, 0xCB}, RGBColor{0xF4, 0x0b, 0xEC},

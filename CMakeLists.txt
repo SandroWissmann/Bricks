@@ -42,6 +42,7 @@ src/MoveableGameObject.cpp
 src/NearlyEqual.cpp
 src/Platform.cpp
 src/Renderer.cpp
+src/RGBColor.cpp
 src/TimeMeasure.cpp
 )
 
@@ -97,6 +98,7 @@ add_executable(test
 
     test/Platform_test.cpp
     src/Platform.cpp
+    src/RGBColor.cpp
     test/RGBColor_test.cpp
 )
 

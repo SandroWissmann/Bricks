@@ -1,41 +1,23 @@
 #ifndef RGBCOLOR_H
 #define RGBCOLOR_H
 
-#include <cassert>
-
 namespace bricks {
 class RGBColor {
 public:
-    constexpr RGBColor(int r, int g, int b, int a = 0xFF)
-        : mR{r}, mG{g}, mB{b}, mA{a}
-    {
-        assert(mR >= 0 && mR <= 0xFF);
-        assert(mG >= 0 && mG <= 0xFF);
-        assert(mB >= 0 && mB <= 0xFF);
-        assert(mA >= 0 && mA <= 0xFF);
-    }
+    RGBColor(int r, int g, int b, int a = 0xFF);
 
-    constexpr int r() const
-    {
-        return mR;
-    }
+    int r() const;
+    int g() const;
+    int b() const;
+    int a() const;
 
-    constexpr int g() const
-    {
-        return mG;
-    }
-
-    constexpr int b() const
-    {
-        return mB;
-    }
-
-    constexpr int a() const
-    {
-        return mA;
-    }
+    RGBColor lighter(double factor) const;
+    RGBColor darker(double factor) const;
 
 private:
+    int calcLighterPart(int part, double factor = 0.3) const;
+    int calcDarkerPart(int part, double factor = 0.3) const;
+
     const int mR;
     const int mG;
     const int mB;
