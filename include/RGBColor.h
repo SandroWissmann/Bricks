@@ -11,12 +11,12 @@ public:
     int b() const;
     int a() const;
 
-    RGBColor lighter(double factor) const;
-    RGBColor darker(double factor) const;
+    RGBColor lighter(double factor = 0.3) const;
+    RGBColor darker(double factor = 0.3) const;
 
 private:
-    int calcLighterPart(int part, double factor = 0.3) const;
-    int calcDarkerPart(int part, double factor = 0.3) const;
+    int calcLighterPart(int part, double factor) const;
+    int calcDarkerPart(int part, double factor) const;
 
     const int mR;
     const int mG;
