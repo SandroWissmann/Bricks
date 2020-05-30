@@ -11,7 +11,7 @@ class Ball : public MoveableGameObject {
 public:
     Ball();
 
-    Ball(types::Point topLeft, types::Length length, types::Width width,
+    Ball(types::Point topLeft, types::Width width, types::Height height,
          types::Velocity velocity, types::Angle angle, types::Gravity gravity);
 
     ~Ball() override = default;

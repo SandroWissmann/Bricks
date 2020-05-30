@@ -157,8 +157,8 @@ void Renderer::drawHighlights(const SDL_Rect& rect, const RGBColor& color)
 SDL_Rect Renderer::toSDLRect(const GameObject& obj) const
 {
     SDL_Rect rect;
-    rect.w = mWidthFactor * obj.length();
-    rect.h = mHeightFactor * obj.width();
+    rect.w = mWidthFactor * obj.width();
+    rect.h = mHeightFactor * obj.height();
     auto p = obj.topLeft();
     rect.x = mWidthFactor * p.x;
     rect.y = mHeightFactor * p.y;

@@ -3,8 +3,8 @@
 namespace bricks {
 
 using Point = types::Point;
-using Length = types::Length;
 using Width = types::Width;
+using Height = types::Height;
 using Velocity = types::Velocity;
 
 MoveableGameObject::MoveableGameObject()
@@ -12,9 +12,9 @@ MoveableGameObject::MoveableGameObject()
 {
 }
 
-MoveableGameObject::MoveableGameObject(Point topLeft, types::Length length,
-                                       Width width, Velocity velocity)
-    : GameObject{topLeft, length, width}, mVelocity{velocity()}
+MoveableGameObject::MoveableGameObject(Point topLeft, types::Width width,
+                                       Height height, Velocity velocity)
+    : GameObject{topLeft, width, height}, mVelocity{velocity()}
 {
 }
 

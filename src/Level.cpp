@@ -3,9 +3,9 @@
 #include "types/GridHeight.h"
 #include "types/GridWidth.h"
 #include "types/Hitpoints.h"
-#include "types/Length.h"
-#include "types/Point.h"
 #include "types/Width.h"
+#include "types/Point.h"
+#include "types/Height.h"
 
 #include "OperatorDegree.h"
 
@@ -17,8 +17,8 @@
 namespace bricks {
 
 using Point = types::Point;
-using Length = types::Length;
 using Width = types::Width;
+using Height = types::Height;
 using Velocity = types::Velocity;
 using Angle = types::Angle;
 using Gravity = types::Gravity;
@@ -106,30 +106,30 @@ void Level::resetPlatform()
 Wall Level::makeLeftWall()
 {
     return Wall{Point{0, 0}, 
-        Length{wallThickness},
-        Width{static_cast<double>(mGridHeight + wallThickness)}};
+        Width{wallThickness},
+        Height{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
 Wall Level::makeRightWall()
 {
     return Wall{Point{mGridWidth + wallThickness, 0.0}, 
-                Length{wallThickness},
-                Width{static_cast<double>(mGridHeight + wallThickness)}};
+                Width{wallThickness},
+                Height{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
 Wall Level::makeTopWall()
 {
     return Wall{Point{wallThickness, 0},
-                Length{static_cast<double>(mGridWidth)}, 
-                Width{wallThickness}};
+                Width{static_cast<double>(mGridWidth)}, 
+                Height{wallThickness}};
 }
 Platform Level::makePlatform()
 {
     auto p = impl::platformInitPosition(platformWidth, mGridWidth, mGridHeight);
 
     return Platform{p,
-                    Length{platformWidth},
-                    Width{platformHeight},
+                    Width{platformWidth},
+                    Height{platformHeight},
                     Velocity{platformVelocity}};
 }
 
@@ -138,8 +138,8 @@ Ball Level::makeBall()
     auto p = impl::ballInitPosition(mGridWidth, mGridHeight);
 
     return Ball{p,
-                Length{ballWidth},
-                Width{ballHeight},
+                Width{ballWidth},
+                Height{ballHeight},
                 Velocity{ballVelocity},
                 Angle{ballAngle},
                 Gravity{ballGravity}};
@@ -213,15 +213,15 @@ std::istream& operator>>(std::istream& is, Level& obj)
             return is;
         }
 
-        Length length;
+        Width length;
         ist >> length;
         if (!ist) {
             is.setstate(std::ios_base::failbit);
             return is;
         }
 
-        Width width;
-        ist >> width;
+        Height height;
+        ist >> height;
         if (!ist) {
             is.setstate(std::ios_base::failbit);
             return is;
@@ -231,10 +231,10 @@ std::istream& operator>>(std::istream& is, Level& obj)
         ist >> hitpoints;
         if (!ist) {
             indestructibleBricks.emplace_back(
-                IndestructibleBrick{point, length, width});
+                IndestructibleBrick{point, length, height});
         }
         else {
-            bricks.emplace_back(Brick{point, length, width, hitpoints});
+            bricks.emplace_back(Brick{point, length, height, hitpoints});
         }
     }
 

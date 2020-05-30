@@ -11,8 +11,8 @@ public:
     {
     }
 
-    DerivedGameObject(Point topLeft, Length length, Width width)
-        : GameObject(topLeft, length, width)
+    DerivedGameObject(Point topLeft, Width width, Height height)
+        : GameObject(topLeft, width, height)
     {
     }
 
@@ -29,13 +29,13 @@ TEST(GameObjectTest_, defaultConstructor)
 
     EXPECT_EQ(obj.topLeft().x, 0.0);
     EXPECT_EQ(obj.topLeft().y, 0.0);
-    EXPECT_EQ(obj.length(), 0.0);
     EXPECT_EQ(obj.width(), 0.0);
+    EXPECT_EQ(obj.height(), 0.0);
 }
 
 class GameObjectTest : public ::testing::Test {
 protected:
-    DerivedGameObject obj{Point{10.1, 20.2}, Length{10.5}, Width{20.6}};
+    DerivedGameObject obj{Point{10.1, 20.2}, Width{10.5}, Height{20.6}};
 };
 
 TEST_F(GameObjectTest, topLeft)
@@ -51,16 +51,16 @@ TEST_F(GameObjectTest, topLeft)
 
 TEST_F(GameObjectTest, bottomRight)
 {
-    EXPECT_EQ(obj.bottomRight().x, 10.1 + obj.length());
-    EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.width());
-}
-
-TEST_F(GameObjectTest, length)
-{
-    EXPECT_EQ(obj.length(), 10.5);
+    EXPECT_EQ(obj.bottomRight().x, 10.1 + obj.width());
+    EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.height());
 }
 
 TEST_F(GameObjectTest, width)
 {
-    EXPECT_EQ(obj.width(), 20.6);
+    EXPECT_EQ(obj.width(), 10.5);
+}
+
+TEST_F(GameObjectTest, height)
+{
+    EXPECT_EQ(obj.height(), 20.6);
 }

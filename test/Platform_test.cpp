@@ -11,21 +11,21 @@ TEST(PlatformTest_, defaultConstructor)
 
     EXPECT_EQ(platform.topLeft().x, 0.0);
     EXPECT_EQ(platform.topLeft().y, 0.0);
-    EXPECT_EQ(platform.length(), 0.0);
     EXPECT_EQ(platform.width(), 0.0);
+    EXPECT_EQ(platform.height(), 0.0);
     EXPECT_EQ(platform.velocity(), 0.0);
 }
 
 class PlatformTest : public ::testing::Test {
 protected:
     Point point{10.0, 10.0};
-    Length length{1.0};
     Width width{1.0};
+    Height height{1.0};
     Velocity velocity{2.0};
 
     Platform makePlatform(const Velocity& velocity)
     {
-        return Platform{point,        length,       width, velocity};
+        return Platform{point,        width,       height, velocity};
     }
 };
 

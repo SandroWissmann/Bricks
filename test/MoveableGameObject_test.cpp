@@ -11,9 +11,9 @@ public:
     {
     }
 
-    DerivedGameObject(Point topLeft, Length length, Width width,
+    DerivedGameObject(Point topLeft, Width width, Height height,
                       Velocity velocity)
-        : MoveableGameObject(topLeft, length, width, velocity)
+        : MoveableGameObject(topLeft, width, height, velocity)
     {
     }
 
@@ -34,15 +34,15 @@ TEST(MoveableGameObjectTest_F, defaultConstructor)
 
     EXPECT_EQ(obj.topLeft().x, 0.0);
     EXPECT_EQ(obj.topLeft().y, 0.0);
-    EXPECT_EQ(obj.length(), 0.0);
     EXPECT_EQ(obj.width(), 0.0);
+    EXPECT_EQ(obj.height(), 0.0);
     EXPECT_EQ(obj.velocity(), 0.0);
 }
 
 class MoveableGameObjectTest : public ::testing::Test {
 protected:
-    DerivedGameObject obj{Point{10.1, 20.2},  Length{10.5},
-                          Width{20.6},        Velocity{2.0}};
+    DerivedGameObject obj{Point{10.1, 20.2},  Width{10.5},
+                          Height{20.6},        Velocity{2.0}};
 };
 
 TEST_F(MoveableGameObjectTest, velocity)

@@ -327,7 +327,7 @@ void reflectVerticalDecreased(Ball& ball)
 void putBeforeIntersectsWithRightX(GameObject& a, const GameObject& b)
 {
     Point p = a.topLeft();
-    p.x = b.topLeft().x - a.length();
+    p.x = b.topLeft().x - a.width();
     a.setTopLeft(p);
 }
 
@@ -341,7 +341,7 @@ void putBeforeIntersectsWithLeftX(GameObject& a, const GameObject& b)
 void putBeforeIntersectsWithBottomY(Ball& ball, const GameObject& obj)
 {
     Point p = ball.topLeft();
-    p.y = obj.topLeft().y - ball.width();
+    p.y = obj.topLeft().y - ball.height();
     ball.setTopLeft(p);
 }
 

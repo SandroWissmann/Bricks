@@ -11,25 +11,25 @@ TEST(BrickTest, defaultConstructor)
 
     EXPECT_EQ(brick.topLeft().x, 0.0);
     EXPECT_EQ(brick.topLeft().y, 0.0);
-    EXPECT_EQ(brick.length(), 0.0);
     EXPECT_EQ(brick.width(), 0.0);
+    EXPECT_EQ(brick.height(), 0.0);
 }
 
 TEST(BrickTest, startHitpoints)
 {
-    Brick obj{Point{0, 0}, Length{1}, Width{1}, Hitpoints{2}};
+    Brick obj{Point{0, 0}, Width{1}, Height{1}, Hitpoints{2}};
     EXPECT_EQ(obj.startHitpoints(), 2);
 }
 
 TEST(BrickTest, hitpoints)
 {
-    Brick obj{Point{0, 0}, Length{1}, Width{1}, Hitpoints{2}};
+    Brick obj{Point{0, 0}, Width{1}, Height{1}, Hitpoints{2}};
     EXPECT_EQ(obj.hitpoints(), 2);
 }
 
 TEST(BrickTest, decreaseHitpoints)
 {
-    Brick obj{Point{0, 0}, Length{1}, Width{1}, Hitpoints{2}};
+    Brick obj{Point{0, 0}, Width{1}, Height{1}, Hitpoints{2}};
     EXPECT_EQ(obj.hitpoints(), 2);
     EXPECT_EQ(obj.startHitpoints(), 2);
 
@@ -41,7 +41,7 @@ TEST(BrickTest, decreaseHitpoints)
 
 TEST(BrickTest, isDestroyed)
 {
-    Brick obj{Point{0, 0}, Length{1}, Width{1}, Hitpoints{1}};
+    Brick obj{Point{0, 0}, Width{1}, Height{1}, Hitpoints{1}};
     EXPECT_FALSE(obj.isDestroyed());
 
     obj.decreaseHitpoints();

@@ -5,16 +5,16 @@
 namespace bricks {
 
 using Point = types::Point;
-using Length = types::Length;
 using Width = types::Width;
+using Height = types::Height;
 using Hitpoints = types::Hitpoints;
 
 Brick::Brick() : GameObject{}, mStartHitpoints{0}, mHitpoints{mStartHitpoints}
 {
 }
 
-Brick::Brick(Point topLeft, Length length, Width width, Hitpoints hitpoints)
-    : GameObject(topLeft, length, width), mStartHitpoints{hitpoints()},
+Brick::Brick(Point topLeft, Width width, Height height, Hitpoints hitpoints)
+    : GameObject(topLeft, width, height), mStartHitpoints{hitpoints()},
       mHitpoints{mStartHitpoints}
 {
     assert(mHitpoints > 0 && mHitpoints < 10);

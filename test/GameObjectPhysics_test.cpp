@@ -8,35 +8,35 @@
 using namespace bricks;
 using namespace bricks::types;
 
-Ball makeBall(Point p, Length l, Width w)
+Ball makeBall(Point p, Width w, Height h)
 {
     return Ball{p,
-                l,
                 w,
+                h,
                 Velocity{10},
                 Angle{0.0_deg},
                 Gravity{0}};
 }
 
-Brick makeBrick(Point p, Length l, Width w)
+Brick makeBrick(Point p, Width w, Height h)
 {
-    return Brick{p, l, w, Hitpoints{1}};
+    return Brick{p, w, h, Hitpoints{1}};
 }
 
 class CollisionTest : public ::testing::Test {
 protected:
     virtual void SetUp()
     {
-        brickTopLeft = makeBrick(Point{0.0, 0.0}, Length{2}, Width{2});
-        brickTop = makeBrick(Point{0.0, 0.0}, Length{5}, Width{2});
-        brickTopRight = makeBrick(Point{3.0, 0.0}, Length{2}, Width{2});
-        brickRight = makeBrick(Point{3.0, 0.0}, Length{2}, Width{5});
-        brickBottomRight = makeBrick(Point{3.0, 3.0}, Length{2}, Width{2});
-        brickBottom = makeBrick(Point{0.0, 3.0}, Length{5}, Width{2});
-        brickBottomLeft = makeBrick(Point{0.0, 3.0}, Length{2}, Width{2});
-        brickLeft = makeBrick(Point{0.0, 0.0}, Length{2}, Width{5});
+        brickTopLeft = makeBrick(Point{0.0, 0.0}, Width{2}, Height{2});
+        brickTop = makeBrick(Point{0.0, 0.0}, Width{5}, Height{2});
+        brickTopRight = makeBrick(Point{3.0, 0.0}, Width{2}, Height{2});
+        brickRight = makeBrick(Point{3.0, 0.0}, Width{2}, Height{5});
+        brickBottomRight = makeBrick(Point{3.0, 3.0}, Width{2}, Height{2});
+        brickBottom = makeBrick(Point{0.0, 3.0}, Width{5}, Height{2});
+        brickBottomLeft = makeBrick(Point{0.0, 3.0}, Width{2}, Height{2});
+        brickLeft = makeBrick(Point{0.0, 0.0}, Width{2}, Height{5});
 
-        ball = makeBall(Point{1.0, 1.0}, Length{3}, Width{3});
+        ball = makeBall(Point{1.0, 1.0}, Width{3}, Height{3});
     }
 
     Brick brickTopLeft;

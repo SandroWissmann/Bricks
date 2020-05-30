@@ -11,8 +11,8 @@ class MoveableGameObject : public GameObject {
 public:
     MoveableGameObject();
 
-    MoveableGameObject(types::Point topLeft, types::Length length,
-                       types::Width width, types::Velocity velocity);
+    MoveableGameObject(types::Point topLeft, types::Width width,
+                       types::Height height, types::Velocity velocity);
 
     virtual ~MoveableGameObject() = default;
 

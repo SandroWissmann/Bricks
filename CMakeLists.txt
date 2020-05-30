@@ -21,8 +21,8 @@ src/types/Angle.cpp
 src/types/Gravity.cpp
 src/types/GridHeight.cpp
 src/types/GridWidth.cpp
+src/types/Height.cpp
 src/types/Hitpoints.cpp
-src/types/Length.cpp
 src/types/Point.cpp
 src/types/Velocity.cpp
 src/types/Width.cpp
@@ -61,16 +61,16 @@ add_executable(test
     src/types/GridHeight.cpp
     test/types/GridWidth_test.cpp
     src/types/GridWidth.cpp
+    test/types/Height_test.cpp
+    src/types/Height.cpp
     test/types/Hitpoints_test.cpp
     src/types/Hitpoints.cpp
-    test/types/Length_test.cpp
-    src/types/Length.cpp
-    test/types/Width_test.cpp
-    src/types/Width.cpp
     test/types/Point_test.cpp
     src/types/Point.cpp
     test/types/Velocity_test.cpp
     src/types/Velocity.cpp
+    test/types/Width_test.cpp
+    src/types/Width.cpp
     
     test/Ball_test.cpp
     src/Ball.cpp
@@ -95,10 +95,6 @@ add_executable(test
     src/RGBColor.cpp
     test/RGBColor_test.cpp
 )
-
-#    test/GameObjectPhysics_test.cpp
-#    src/GameObjectPhysics.cpp
-
 
 target_link_libraries(test 
     gtest_main 
