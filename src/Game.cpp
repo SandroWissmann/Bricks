@@ -32,17 +32,23 @@ void Game::run()
 {
     while (true) {
         runLevel();
-        if (mGameOver) {
-            break;
+        if(mQuitGame) {
+            return;
         }
-        if (mCurrentLevel > mLevelFilenames.size()) {
+        if (mGameOver) {
             mCurrentLevel = 1;
+            mLifes = mStartLifes;
+            mGameOver = false;
+            mScore = 0;
+        }
+        else if (beatGame()) {
+                mCurrentLevel = 1;
         }
         else {
             ++mCurrentLevel;
-            updateValuesInTitleBar();
         }
         mLevel = loadLevel(mCurrentLevel);
+        updateValuesInTitleBar();
     }
 }
 
@@ -62,8 +68,8 @@ void Game::runLevel()
         handleEvent(event, mLevel.leftWall(), mLevel.rightWall(), mLevel.ball,
                     mLevel.platform, quit);
         if (quit) {
-            mGameOver = true;
-            break;
+            mQuitGame = true;
+            return;
         }
 
         if (mLevel.ball.isActive()) {
@@ -76,7 +82,7 @@ void Game::runLevel()
                 mLevel.resetPlatform();
                 if (mLifes <= 0) {
                     mGameOver = true;
-                    break;
+                    return;
                 }
             }
 
@@ -90,6 +96,11 @@ void Game::runLevel()
 
         delayToFramerate(getElapsedTime(timepoint1, timepoint2));
     }
+}
+
+bool Game::beatGame()
+{
+    return mCurrentLevel > mLevelFilenames.size();
 }
 
 Level Game::loadLevel(int level)

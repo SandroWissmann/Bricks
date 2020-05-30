@@ -26,6 +26,8 @@ public:
 
 private:
     void runLevel();
+
+    bool beatGame();
     Level loadLevel(int level);
 
     void updateValuesInTitleBar();
@@ -40,11 +42,14 @@ private:
     Level mLevel;
     Renderer mRenderer;
 
+    static constexpr auto mStartLifes{5};
+
     long long mScore{0};
     long long mLastExtraLifeDivisor{0};
     int mCurrentLevel{1};
-    int mLifes{5};
+    int mLifes{mStartLifes};
     bool mGameOver = false;
+    bool mQuitGame = false;
 };
 
 std::string makeTitle(int level, int lifes, long long score);
