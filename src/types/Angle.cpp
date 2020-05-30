@@ -18,12 +18,12 @@ Angle::Angle(long double angle)
 {
 }
 
-long double Angle::Angle::angle() const
+long double Angle::Angle::get() const
 {
     return impl::quadrantAngleToAngle(mQuadrantAngle, mQuadrant);
 }
 
-void Angle::setAngle(long double angle)
+void Angle::set(long double angle)
 {
     angle = impl::calcAngleIfOver360(angle);
     mQuadrant = impl::calcQuadrant(angle);
@@ -144,6 +144,7 @@ long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant)
 
 long double calcAngleIfOver360(long double angle)
 {
+    
     assert(angle >= 0);
 
     while (angle > 360.0_deg) {

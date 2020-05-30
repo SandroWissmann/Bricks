@@ -10,8 +10,8 @@ public:
     Angle();
     explicit Angle(long double angle);
 
-    long double angle() const;
-    void setAngle(long double angle);
+    long double get() const;
+    void set(long double angle);
 
     long double quadrantAngle() const;
     void setQuadrantAngle(long double quadrantAngle);
