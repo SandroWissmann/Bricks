@@ -3,7 +3,7 @@
 #include "NearlyEqual.h"
 #include "OperatorDegree.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 using Point = types::Point;
 using Width = types::Width;

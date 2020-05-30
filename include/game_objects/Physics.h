@@ -1,14 +1,14 @@
-#ifndef GAMEOBJECTPHYSICS_H
-#define GAMEOBJECTPHYSICS_H
+#ifndef GAME_OBJECTS_PHYSICS_H
+#define GAME_OBJECTS_PHYSICS_H
 
-namespace bricks {
+namespace bricks::types {
+class Angle;
+}
+
+namespace bricks::game_objects {
 
 class Ball;
 class GameObject;
-
-namespace types {
-class Angle;
-}
 
 bool reflect(Ball& ball, const GameObject& obj);
 

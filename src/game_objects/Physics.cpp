@@ -1,17 +1,17 @@
-#include "GameObjectPhysics.h"
-
-#include "types/Angle.h"
-#include "types/Point.h"
+#include "Physics.h"
 
 #include "Ball.h"
 #include "GameObject.h"
-#include "NearlyEqual.h"
-#include "OperatorDegree.h"
+
+#include "../types/Angle.h"
+#include "../types/Point.h"
+#include "../NearlyEqual.h"
+#include "../OperatorDegree.h"
 
 #include <algorithm>
 #include <random>
 
-namespace bricks {
+namespace bricks::game_objects {
 
 using Angle = types::Angle;
 using Point = types::Point;

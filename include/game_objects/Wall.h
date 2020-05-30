@@ -1,9 +1,9 @@
-#ifndef WALL_H
-#define WALL_H
+#ifndef GAME_OBJECTS_WALL_H
+#define GAME_OBJECTS_WALL_H
 
 #include "GameObject.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class Wall : public GameObject {
 public:

@@ -1,11 +1,11 @@
-#ifndef BRICK_H
-#define BRICK_H
+#ifndef GAME_OBJECTS_BRICK_H
+#define GAME_OBJECTS_BRICK_H
 
 #include "GameObject.h"
 
 #include "types/Hitpoints.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class Brick : public GameObject {
 public:

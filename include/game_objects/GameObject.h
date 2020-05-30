@@ -1,11 +1,11 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#ifndef GAME_OBJECTS_GAMEOBJECT_H
+#define GAME_OBJECTS_GAMEOBJECT_H
 
-#include "types/Height.h"
-#include "types/Point.h"
-#include "types/Width.h"
+#include "../types/Height.h"
+#include "../types/Point.h"
+#include "../types/Width.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class GameObject {
 public:

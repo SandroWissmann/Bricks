@@ -1,9 +1,9 @@
-#ifndef INDESTRUCTIBLEBRICK_H
-#define INDESTRUCTIBLEBRICK_H
+#ifndef GAME_OBJECTS_INDESTRUCTIBLEBRICK_H
+#define GAME_OBJECTS_INDESTRUCTIBLEBRICK_H
 
 #include "GameObject.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class IndestructibleBrick : public GameObject {
 public:

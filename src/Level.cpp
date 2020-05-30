@@ -26,6 +26,13 @@ using Hitpoints = types::Hitpoints;
 using GridWidth = types::GridWidth;
 using GridHeight = types::GridHeight;
 
+using Ball = game_objects::Ball;
+using Brick = game_objects::Brick;
+using GameObject = game_objects::GameObject;
+using IndestructibleBrick = game_objects::IndestructibleBrick;
+using Platform = game_objects::Platform;
+using Wall = game_objects::Wall;
+
 static constexpr auto wallThickness{1.0};
 
 static constexpr auto platformWidth{4.0};

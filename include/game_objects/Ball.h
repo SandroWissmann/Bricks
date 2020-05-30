@@ -1,11 +1,11 @@
-#ifndef BALL_H
-#define BALL_H
+#ifndef GAME_OBJECTS_BALL_H
+#define GAME_OBJECTS_BALL_H
 
 #include "MoveableGameObject.h"
-#include "types/Angle.h"
-#include "types/Gravity.h"
+#include "../types/Angle.h"
+#include "../types/Gravity.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class Ball : public MoveableGameObject {
 public:

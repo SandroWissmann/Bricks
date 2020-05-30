@@ -1,9 +1,10 @@
 #include "gtest/gtest.h"
 
-#include "../include/Ball.h"
+#include "../../include/game_objects/Ball.h"
 #include "../include/OperatorDegree.h"
 
 using namespace bricks;
+using namespace bricks::game_objects;
 using namespace bricks::types;
 
 TEST(BallTest_, defaultConstructor)

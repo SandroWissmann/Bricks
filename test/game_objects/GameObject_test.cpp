@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
 
-#include "../include/GameObject.h"
+#include "../../include/game_objects/GameObject.h"
 
 using namespace bricks;
+using namespace bricks::game_objects;
 using namespace bricks::types;
 
 class DerivedGameObject : public GameObject {

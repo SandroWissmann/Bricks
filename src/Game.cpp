@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include "GameObjectPhysics.h"
+#include "game_objects/Physics.h"
 #include "Level.h"
 #include "Renderer.h"
 #include "TimeMeasure.h"
@@ -14,6 +14,13 @@
 #include <string>
 
 namespace bricks {
+
+using Ball = game_objects::Ball;
+using Brick = game_objects::Brick;
+using GameObject = game_objects::GameObject;
+using IndestructibleBrick = game_objects::IndestructibleBrick;
+using Platform = game_objects::Platform;
+using Wall = game_objects::Wall;
 
 constexpr std::size_t framesPerSecond{60};
 constexpr std::size_t msPerFrame{1000 / framesPerSecond};

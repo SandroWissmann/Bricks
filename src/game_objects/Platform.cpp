@@ -1,6 +1,6 @@
 #include "Platform.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 void Platform::move(double elapsedTimeInMS)
 {

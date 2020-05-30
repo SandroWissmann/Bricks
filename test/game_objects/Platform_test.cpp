@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
 
-#include "../include/Platform.h"
+#include "../../include/game_objects/Platform.h"
 
 using namespace bricks;
+using namespace bricks::game_objects;
 using namespace bricks::types;
 
 TEST(PlatformTest_, defaultConstructor)

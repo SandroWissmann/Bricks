@@ -10,13 +10,16 @@
 
 namespace bricks {
 
+namespace game_objects {
 class Ball;
 class Platform;
 class Wall;
-class Level;
 class Brick;
 class IndestructibleBrick;
 class GameObject;
+}
+
+class Level;
 
 class Renderer {
 public:
@@ -32,18 +35,18 @@ private:
     void clearScreen();
     void updateScreen();
 
-    void render(const Ball& ball);
-    void render(const Platform& platform);
-    void render(const Wall& wall);
-    void render(const Brick& brick);
-    void render(const IndestructibleBrick& indestructibleBrick);
-    void render(const GameObject& obj, const RGBColor& color);
+    void render(const game_objects::Ball& ball);
+    void render(const game_objects::Platform& platform);
+    void render(const game_objects::Wall& wall);
+    void render(const game_objects::Brick& brick);
+    void render(const game_objects::IndestructibleBrick& indestructibleBrick);
+    void render(const game_objects::GameObject& obj, const RGBColor& color);
 
     void drawHighlights(const SDL_Rect& rect, const RGBColor& color);
 
-    SDL_Rect toSDLRect(const GameObject& obj) const;
+    SDL_Rect toSDLRect(const game_objects::GameObject& obj) const;
     void setDrawColor(const RGBColor& color);
-    RGBColor getBrickDrawColor(const Brick& brick);
+    RGBColor getBrickDrawColor(const game_objects::Brick& brick);
 
     SDL_Window* mSdlWindow;
     SDL_Renderer* mSdlRenderer;

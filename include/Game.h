@@ -13,10 +13,12 @@
 
 namespace bricks {
 
-class Wall;
-class Brick;
-class Ball;
-class Platform;
+namespace game_objects{
+    class Brick;
+    class Ball;
+    class Platform;
+    class Wall;
+}
 
 class Game {
 public:
@@ -35,7 +37,7 @@ private:
     bool ballLost();
     void handleBallCollisions();
 
-    long long getBrickValue(const Brick& brick) const;
+    long long getBrickValue(const game_objects::Brick& brick) const;
     void awardExtraLifeIfThresholdReached();
 
     std::vector<std::string> mLevelFilenames;
@@ -58,14 +60,16 @@ void writeHighscore(long long highscore);
 
 std::string makeTitle(int level, int lifes, long long score, long long highscore);
 
-void handleEvent(const Event& event, const Wall& leftWall,
-                 const Wall& rightWall, Ball& ball, Platform& platform,
+void handleEvent(const Event& event, const game_objects::Wall& leftWall,
+                 const game_objects::Wall& rightWall, 
+                 game_objects::Ball& ball, 
+                 game_objects::Platform& platform,
                  bool& quit);
 
-void moveLeft(Platform& platform, double elapsedTimeInMS);
-void moveRight(Platform& platform, double elapsedTimeInMS);
+void moveLeft(game_objects::Platform& platform, double elapsedTimeInMS);
+void moveRight(game_objects::Platform& platform, double elapsedTimeInMS);
 
-bool allBricksAreDestroyed(const std::vector<Brick> bricks);
+bool allBricksAreDestroyed(const std::vector<game_objects::Brick> bricks);
 
 void delayToFramerate(double elapsedTimeInMS);
 

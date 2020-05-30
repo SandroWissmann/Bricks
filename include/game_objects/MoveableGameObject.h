@@ -1,11 +1,11 @@
-#ifndef MOVEABLEGAMEOBJECT_H
-#define MOVEABLEGAMEOBJECT_H
+#ifndef GAME_OBJECTS_MOVEABLEGAMEOBJECT_H
+#define GAME_OBJECTS_MOVEABLEGAMEOBJECT_H
 
 #include "GameObject.h"
 
-#include "types/Velocity.h"
+#include "../types/Velocity.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class MoveableGameObject : public GameObject {
 public:

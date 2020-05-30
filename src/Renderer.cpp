@@ -1,11 +1,12 @@
 #include "Renderer.h"
 
-#include "Ball.h"
-#include "Brick.h"
-#include "IndestructibleBrick.h"
+#include "game_objects/Ball.h"
+#include "game_objects/Brick.h"
+#include "game_objects/IndestructibleBrick.h"
+#include "game_objects/Platform.h"
+#include "game_objects/Wall.h"
+
 #include "Level.h"
-#include "Platform.h"
-#include "Wall.h"
 
 #include <array>
 #include <cassert>
@@ -15,6 +16,13 @@
 #include <iostream>
 
 namespace bricks {
+
+using Ball = game_objects::Ball;
+using Brick = game_objects::Brick;
+using GameObject = game_objects::GameObject;
+using IndestructibleBrick = game_objects::IndestructibleBrick;
+using Platform = game_objects::Platform;
+using Wall = game_objects::Wall;
 
 Renderer::Renderer(const std::size_t screenWidth,
                    const std::size_t screenHeight, const std::size_t gridWidth,

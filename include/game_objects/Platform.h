@@ -1,9 +1,9 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef GAME_OBJECTS_PLATFORM_H
+#define GAME_OBJECTS_PLATFORM_H
 
 #include "MoveableGameObject.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 class Platform : public MoveableGameObject {
 public:

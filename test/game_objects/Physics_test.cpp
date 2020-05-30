@@ -1,11 +1,12 @@
 #include "gtest/gtest.h"
 
-#include "../include/Ball.h"
-#include "../include/Brick.h"
-#include "../include/GameObjectPhysics.h"
-#include "../include/OperatorDegree.h"
+#include "../../include/game_objects/Ball.h"
+#include "../../include/game_objects/Brick.h"
+#include "../../include/game_objects/Physics.h"
+#include "../../include/OperatorDegree.h"
 
 using namespace bricks;
+using namespace bricks::game_objects;
 using namespace bricks::types;
 
 TEST(clampAngle, AngleGetsClamped)

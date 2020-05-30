@@ -1,6 +1,6 @@
 #include "MoveableGameObject.h"
 
-namespace bricks {
+namespace bricks::game_objects {
 
 using Point = types::Point;
 using Width = types::Width;

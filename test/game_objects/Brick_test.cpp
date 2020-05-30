@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
 
-#include "../include/Brick.h"
+#include "../../include/game_objects/Brick.h"
 
 using namespace bricks;
+using namespace bricks::game_objects;
 using namespace bricks::types;
 
 TEST(BrickTest, defaultConstructor)

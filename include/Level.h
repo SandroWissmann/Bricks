@@ -1,11 +1,11 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include "Ball.h"
-#include "Brick.h"
-#include "IndestructibleBrick.h"
-#include "Platform.h"
-#include "Wall.h"
+#include "game_objects/Ball.h"
+#include "game_objects/Brick.h"
+#include "game_objects/IndestructibleBrick.h"
+#include "game_objects/Platform.h"
+#include "game_objects/Wall.h"
 
 #include <iosfwd>
 #include <vector>
@@ -23,40 +23,40 @@ public:
     Level();
     Level(const types::GridWidth& gridWidth,
           const types::GridHeight& gridHeight,
-          const std::vector<Brick>& bricks_,
-          const std::vector<IndestructibleBrick>& indestructibleBricks_);
+          const std::vector<game_objects::Brick>& bricks_,
+          const std::vector<game_objects::IndestructibleBrick>& indestructibleBricks_);
 
     int gridWidth() const;
     int gridHeight() const;
 
-    Wall leftWall() const;
-    Wall rightWall() const;
-    Wall topWall() const;
+    game_objects::Wall leftWall() const;
+    game_objects::Wall rightWall() const;
+    game_objects::Wall topWall() const;
 
     void resetBall();
     void resetPlatform();
 
 private:
-    Wall makeLeftWall();
-    Wall makeRightWall();
-    Wall makeTopWall();
-    Platform makePlatform();
-    Ball makeBall();
+    game_objects::Wall makeLeftWall();
+    game_objects::Wall makeRightWall();
+    game_objects::Wall makeTopWall();
+    game_objects::Platform makePlatform();
+    game_objects::Ball makeBall();
 
-    void transposeCoordinatesWithWalls(GameObject& obj);
+    void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
 
     int mGridWidth{0};
     int mGridHeight{0};
-    Wall mLeftWall;
-    Wall mRightWall;
-    Wall mTopWall;
+    game_objects::Wall mLeftWall;
+    game_objects::Wall mRightWall;
+    game_objects::Wall mTopWall;
 
 public:
-    Platform platform;
-    Ball ball;
+    game_objects::Platform platform;
+    game_objects::Ball ball;
 
-    std::vector<Brick> bricks;
-    std::vector<IndestructibleBrick> indestructibleBricks;
+    std::vector<game_objects::Brick> bricks;
+    std::vector<game_objects::IndestructibleBrick> indestructibleBricks;
 };
 
 Level readFromFile(const std::string& filename);
