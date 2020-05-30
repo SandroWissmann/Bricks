@@ -47,6 +47,7 @@ src/main.cpp
 src/NearlyEqual.cpp
 src/Renderer.cpp
 src/RGBColor.cpp
+src/SDL_RAII.cpp
 src/TimeMeasure.cpp
 )
 

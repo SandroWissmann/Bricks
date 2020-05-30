@@ -27,19 +27,14 @@ using Wall = game_objects::Wall;
 Renderer::Renderer(const std::size_t screenWidth,
                    const std::size_t screenHeight, const std::size_t gridWidth,
                    const std::size_t gridHeight)
-    : mScreenWidth{screenWidth}, mScreenHeight{screenHeight},
+    : mSDLRAII{},
+        mScreenWidth{screenWidth}, mScreenHeight{screenHeight},
       mGridWidth{gridWidth}, mGridHeight{gridHeight},
       mWidthFactor{static_cast<double>(mScreenWidth) /
                    static_cast<double>(mGridWidth)},
       mHeightFactor{static_cast<double>(mScreenHeight) /
                     static_cast<double>(mGridHeight)}
-
-{
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        throw std::runtime_error(std::string{"Renderer\n"} +
-                                 "SDL could not initialize.\n" +
-                                 "SDL_Error: " + SDL_GetError() + "\n");
-    }
+    {
 
     mSdlWindow = SDL_CreateWindow("Bricks", SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED, mScreenWidth,
@@ -62,7 +57,6 @@ Renderer::Renderer(const std::size_t screenWidth,
 Renderer::~Renderer()
 {
     SDL_DestroyWindow(mSdlWindow);
-    SDL_Quit();
 }
 
 void Renderer::render(const Level& level)
