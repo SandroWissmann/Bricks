@@ -44,6 +44,7 @@ private:
 
     static constexpr auto mStartLifes{5};
 
+    long long mHighscore;
     long long mScore{0};
     long long mLastExtraLifeDivisor{0};
     int mCurrentLevel{1};
@@ -52,7 +53,10 @@ private:
     bool mQuitGame = false;
 };
 
-std::string makeTitle(int level, int lifes, long long score);
+long long loadHighscore();
+void writeHighscore(long long highscore);
+
+std::string makeTitle(int level, int lifes, long long score, long long highscore);
 
 void handleEvent(const Event& event, const Wall& leftWall,
                  const Wall& rightWall, Ball& ball, Platform& platform,

@@ -4,9 +4,11 @@
 #include "Level.h"
 #include "Renderer.h"
 #include "TimeMeasure.h"
+#include "IsNumber.h"
 
 #include <algorithm>
 #include <cassert>
+#include <fstream>
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -19,13 +21,17 @@ constexpr std::size_t msPerFrame{1000 / framesPerSecond};
 constexpr int pointsPerBrickHitpoints{100};
 constexpr int pointsForExtraLife{10000};
 
+constexpr auto highscoreFilename = "highscore.dat";
+
 Game::Game(std::size_t screenWidth, std::size_t screenHeight)
     : mLevelFilenames{getLevelFilenamesFromFolder("level")},
       mLevel{loadLevel(1)}, mRenderer{Renderer{
                                 screenWidth, screenHeight,
                                 static_cast<std::size_t>(mLevel.gridWidth()),
-                                static_cast<std::size_t>(mLevel.gridHeight())}}
+                                static_cast<std::size_t>(mLevel.gridHeight())}},
+    mHighscore{loadHighscore()}
 {
+    updateValuesInTitleBar();
 }
 
 void Game::run()
@@ -36,6 +42,10 @@ void Game::run()
             return;
         }
         if (mGameOver) {
+            if(mScore > mHighscore) {
+                mHighscore = mScore;
+                writeHighscore(mHighscore);
+            }          
             mCurrentLevel = 1;
             mLifes = mStartLifes;
             mGameOver = false;
@@ -112,7 +122,8 @@ Level Game::loadLevel(int level)
 
 void Game::updateValuesInTitleBar()
 {
-    mRenderer.setWindowTitle(makeTitle(mCurrentLevel, mLifes, mScore));
+    mRenderer.setWindowTitle(makeTitle(mCurrentLevel, mLifes, mScore, 
+        mHighscore));
 }
 
 bool Game::ballLost()
@@ -120,15 +131,45 @@ bool Game::ballLost()
     return mLevel.ball.bottomRight().y >= mLevel.gridHeight();
 }
 
-std::string makeTitle(int level, int lifes, long long score)
+long long loadHighscore()
+{
+    std::ifstream ifs{highscoreFilename};
+    if(!ifs.is_open()) {
+        return 0;
+    }
+    std::string s;
+    ifs >> s;
+    if(!isNumber<long long>(s)) {
+        return 0;
+    }
+    return std::stoll(s);
+}
+
+void writeHighscore(long long highscore)
+{
+    std::ofstream ofs{highscoreFilename};
+    if(!ofs) {
+        throw std::runtime_error(
+            "void writeHighscore(long long highscore)\n"
+            "File could not be opened\n"
+        );
+    }
+    ofs << highscore;
+}
+
+std::string makeTitle(int level, int lifes, long long score, long long highscore)
 {
     return std::string{"Level: " + std::to_string(level) +
-                       "\t"
+                       "     "
                        "Lifes: " +
                        std::to_string(lifes) +
-                       "\t"
+                       "     "
                        "Score: " +
-                       std::to_string(score)};
+                       std::to_string(score) + 
+                       "     "
+                       "Highscore: " +
+                       std::to_string(highscore)                   
+                       };
 }
 
 void handleEvent(const Event& event, const Wall& leftWall,
