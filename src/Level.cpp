@@ -49,13 +49,26 @@ Level::Level()
 Level::Level(const GridWidth& gridWidth, const GridHeight& gridHeight,
              const std::vector<Brick>& bricks_,
              const std::vector<IndestructibleBrick>& indestructibleBricks_)
-    : mGridWidth{gridWidth()}, mGridHeight{gridHeight()},
+    : mGridWidth{gridWidth()}, 
+    mGridHeight{gridHeight()},
       mLeftWall{makeLeftWall()}, mRightWall{makeRightWall()},
       mTopWall{makeTopWall()}, platform{makePlatform()}, ball{makeBall()},
       bricks{bricks_}, indestructibleBricks{indestructibleBricks_}
 {
     assert(mGridWidth > 0);
     assert(mGridHeight > 0);
+
+    mGridWidth += 2*wallThickness;
+    mGridHeight += wallThickness;
+
+    transposeCoordinatesWithWalls(platform);
+    transposeCoordinatesWithWalls(ball);
+    for(auto& brick : bricks) {
+        transposeCoordinatesWithWalls(brick);
+    }
+    for(auto& indestructibleBrick : indestructibleBricks) {
+        transposeCoordinatesWithWalls(indestructibleBrick);
+    }
 }
 
 int Level::gridWidth() const
@@ -94,20 +107,22 @@ void Level::resetPlatform()
 
 Wall Level::makeLeftWall()
 {
-    return Wall{Point{0.0, 0.0}, Length{wallThickness},
-                Width{static_cast<double>(mGridHeight)}};
+    return Wall{Point{0, 0}, 
+        Length{wallThickness},
+        Width{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
 Wall Level::makeRightWall()
 {
-    return Wall{Point{mGridWidth - wallThickness, 0.0}, Length{wallThickness},
-                Width{static_cast<double>(mGridHeight)}};
+    return Wall{Point{mGridWidth + wallThickness, 0.0}, 
+                Length{wallThickness},
+                Width{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
 Wall Level::makeTopWall()
 {
-    return Wall{Point{wallThickness, 0.0},
-                Length{mGridWidth - 2.0 * wallThickness}, Width{wallThickness}};
+    return Wall{Point{wallThickness, 0},
+                Length{mGridWidth}, Width{wallThickness}};
 }
 Platform Level::makePlatform()
 {
@@ -133,6 +148,14 @@ Ball Level::makeBall()
                 Velocity{ballVelocity},
                 Angle{ballAngle},
                 Gravity{ballGravity}};
+}
+
+void Level::transposeCoordinatesWithWalls(GameObject& obj)
+{
+    auto p = obj.topLeft();
+    p.x += wallThickness;
+    p.y += wallThickness;
+    obj.setTopLeft(p);
 }
 
 Level readFromFile(const std::string& filename)

@@ -43,6 +43,8 @@ private:
     Platform makePlatform();
     Ball makeBall();
 
+    void transposeCoordinatesWithWalls(GameObject& obj);
+
     int mGridWidth{0};
     int mGridHeight{0};
     Wall mLeftWall;
