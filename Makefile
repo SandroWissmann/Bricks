@@ -1,5 +1,6 @@
 build/level:
 	rsync -rupE level build/
+	rsync -rupE sounds build/
 
 .PHONY: format
 format:
@@ -8,6 +9,7 @@ format:
 build:
 	mkdir -p build
 	rsync -rupE level build/
+	rsync -rupE sounds build/
 	cd build && \
 	cmake .. && \
 	make	
@@ -16,6 +18,7 @@ build:
 debug:
 	mkdir -p build
 	rsync -rupE level build/
+	rsync -rupE sounds build/
 	cp /le
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
@@ -29,6 +32,7 @@ clean:
 memcheck:
 	mkdir -p build
 	rsync -rupE level build/
+	rsync -rupE sounds build/
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
 	make

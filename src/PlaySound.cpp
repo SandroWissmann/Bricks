@@ -10,24 +10,21 @@ namespace bricks{
 
 void playSoundDestroyBrick()
 {
-    playSound("sounds/destroyBrickNew.wav");
+    playSound("sounds/destroyBrick.wav");
 }
 
 void playSoundHitBrick()
 {
-    playSound("sounds/hitBrickNew.wav");
+    playSound("sounds/hitBrick.wav");
 }
 
 void playSoundHitPlattform()
 {
-    playSound("sounds/hitPlattformNew.wav");
+    playSound("sounds/hitPlattform.wav");
 }
 
 void playSound(const std::string& filename)
 {
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        std::cerr << "Could not init SDL:" << SDL_GetError() << '\n';
-    }
     SDL_AudioSpec wavSpec;
     Uint32 wavLength;
     Uint8 *wavBuffer;

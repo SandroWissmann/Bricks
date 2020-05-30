@@ -39,6 +39,7 @@ src/types/Point.cpp
 src/types/Velocity.cpp
 src/types/Width.cpp
 
+src/AudioDevice.cpp
 src/Game.cpp
 src/GetEvent.cpp
 src/IsNumber.cpp

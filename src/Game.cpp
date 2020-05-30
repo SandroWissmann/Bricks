@@ -5,7 +5,6 @@
 #include "Renderer.h"
 #include "TimeMeasure.h"
 #include "IsNumber.h"
-#include "PlaySound.h"
 
 #include <algorithm>
 #include <cassert>
@@ -37,6 +36,7 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
                                 screenWidth, screenHeight,
                                 static_cast<std::size_t>(mLevel.gridWidth()),
                                 static_cast<std::size_t>(mLevel.gridHeight())}},
+    mAudioDevice{},
     mHighscore{loadHighscore()}
 {
     updateValuesInTitleBar();
@@ -243,8 +243,8 @@ void Game::handleBallCollisions()
     if (reflect(mLevel.ball, mLevel.topWall())) {
         return;
     }
-    if (reflect(mLevel.ball, mLevel.platform)) {
-        playSoundHitPlattform();
+    if (reflect(mLevel.ball, mLevel.platform)) {    
+        playHitPlatform(mAudioDevice);
         return;
     }
     for (auto& indestructibleBrick : mLevel.indestructibleBricks) {
@@ -260,13 +260,13 @@ void Game::handleBallCollisions()
             brick.decreaseHitpoints();
 
             if (brick.isDestroyed()) {
-                playSoundDestroyBrick();
+                playDestroyBrick(mAudioDevice);
                 mScore += getBrickValue(brick);
                 awardExtraLifeIfThresholdReached();
                 updateValuesInTitleBar();
             }
             else {
-                playSoundHitBrick();
+                playHitBrick(mAudioDevice);
             }
             return;
         }

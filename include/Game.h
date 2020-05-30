@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <memory>
 
+#include "AudioDevice.h"
 #include "GetEvent.h"
 #include "Level.h"
 #include "Renderer.h"
@@ -43,6 +44,7 @@ private:
     std::vector<std::string> mLevelFilenames;
     Level mLevel;
     Renderer mRenderer;
+    AudioDevice mAudioDevice;
 
     static constexpr auto mStartLifes{5};
 
