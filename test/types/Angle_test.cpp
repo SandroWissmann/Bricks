@@ -11,32 +11,32 @@ using Quadrant = bricks::types::Quadrant;
 TEST(AngleTest, defaultConstructor)
 {
     Angle obj;
-    EXPECT_EQ(obj.angle(), 0.0);
+    EXPECT_EQ(obj.get(), 0.0);
     EXPECT_EQ(obj.quadrant(), Quadrant::I);
     EXPECT_EQ(obj.quadrantAngle(), 0.0);
 }
 
-TEST(AngleTest, angle)
+TEST(AngleTest, getSet)
 {
     Angle obj{30.0_deg};
 
-    EXPECT_EQ(obj.angle(), 30.0_deg);
+    EXPECT_EQ(obj.get(), 30.0_deg);
 
-    obj.setAngle(65.0_deg);
+    obj.set(65.0_deg);
 
-    EXPECT_EQ(obj.angle(), 65.0_deg);
+    EXPECT_EQ(obj.get(), 65.0_deg);
 }
 
 TEST(AngleTest, quadrantAngle)
 {
     Angle obj{30.0_deg};
 
-    EXPECT_DOUBLE_EQ(obj.angle(), 30.0_deg);
+    EXPECT_DOUBLE_EQ(obj.get(), 30.0_deg);
     EXPECT_DOUBLE_EQ(obj.quadrantAngle(), 30.0_deg);
 
     obj.setQuadrantAngle(60.0_deg);
 
-    EXPECT_DOUBLE_EQ(obj.angle(), 60.0_deg);
+    EXPECT_DOUBLE_EQ(obj.get(), 60.0_deg);
     EXPECT_DOUBLE_EQ(obj.quadrantAngle(), 60.0_deg);
 }
 
