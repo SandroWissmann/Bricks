@@ -14,8 +14,6 @@ TEST(BallTest_, defaultConstructor)
     EXPECT_EQ(ball.topLeft().y, 0.0);
     EXPECT_EQ(ball.length(), 0.0);
     EXPECT_EQ(ball.width(), 0.0);
-    EXPECT_EQ(ball.maxPositionX(), 0.0);
-    EXPECT_EQ(ball.maxPositionY(), 0.0);
     EXPECT_EQ(ball.velocity(), 0.0);
     EXPECT_EQ(ball.angle().angle(), 0.0);
     EXPECT_EQ(ball.gravity(), 0.0);
@@ -26,8 +24,6 @@ protected:
     Point point{10.0, 10.0};
     Length length{1.0};
     Width width{1.0};
-    MaxPositionX maxPositionX{1000.0};
-    MaxPositionY maxPositionY{1000.0};
     Velocity velocity{2.0};
     Angle angle{30.0_deg};
     Gravity gravity{0.0};
@@ -35,8 +31,7 @@ protected:
     Ball makeBall(const Velocity& velocity, const Angle& angle,
                   const Gravity& gravity)
     {
-        return Ball{point,        length,   width, maxPositionX,
-                    maxPositionY, velocity, angle, gravity};
+        return Ball{point,        length,   width,  velocity, angle, gravity};
     }
 };
 

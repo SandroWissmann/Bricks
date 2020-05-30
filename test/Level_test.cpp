@@ -34,8 +34,10 @@ X 9.8 Y 7.6 L 5.4 W 3.2
 
     EXPECT_EQ(ist.rdbuf()->in_avail(), 0);
 
-    EXPECT_EQ(level.gridWidth(), 10);
-    EXPECT_EQ(level.gridHeight(), 20);
+    auto wallThickness = level.leftWall().length();
+
+    EXPECT_EQ(level.gridWidth(), 10 + 2*wallThickness);
+    EXPECT_EQ(level.gridHeight(), 20 + wallThickness);
 
     auto bricks = level.bricks;
     auto indestructibleBricks = level.indestructibleBricks;
@@ -43,14 +45,14 @@ X 9.8 Y 7.6 L 5.4 W 3.2
     ASSERT_EQ(bricks.size(), 1);
     ASSERT_EQ(indestructibleBricks.size(), 1);
 
-    EXPECT_EQ(bricks[0].topLeft().x, 1.2);
-    EXPECT_EQ(bricks[0].topLeft().y, 3.4);
+    EXPECT_EQ(bricks[0].topLeft().x, 1.2 + wallThickness);
+    EXPECT_EQ(bricks[0].topLeft().y, 3.4 + wallThickness);
     EXPECT_EQ(bricks[0].length(), 5.6);
     EXPECT_EQ(bricks[0].width(), 7.8);
     EXPECT_EQ(bricks[0].hitpoints(), 9);
 
-    EXPECT_EQ(indestructibleBricks[0].topLeft().x, 9.8);
-    EXPECT_EQ(indestructibleBricks[0].topLeft().y, 7.6);
+    EXPECT_EQ(indestructibleBricks[0].topLeft().x, 9.8 + wallThickness);
+    EXPECT_EQ(indestructibleBricks[0].topLeft().y, 7.6 + wallThickness);
     EXPECT_EQ(indestructibleBricks[0].length(), 5.4);
     EXPECT_EQ(indestructibleBricks[0].width(), 3.2);
 }

@@ -19,8 +19,6 @@ namespace bricks {
 using Point = types::Point;
 using Length = types::Length;
 using Width = types::Width;
-using MaxPositionX = types::MaxPositionX;
-using MaxPositionY = types::MaxPositionY;
 using Velocity = types::Velocity;
 using Angle = types::Angle;
 using Gravity = types::Gravity;
@@ -122,7 +120,8 @@ Wall Level::makeRightWall()
 Wall Level::makeTopWall()
 {
     return Wall{Point{wallThickness, 0},
-                Length{mGridWidth}, Width{wallThickness}};
+                Length{static_cast<double>(mGridWidth)}, 
+                Width{wallThickness}};
 }
 Platform Level::makePlatform()
 {
@@ -131,8 +130,6 @@ Platform Level::makePlatform()
     return Platform{p,
                     Length{platformWidth},
                     Width{platformHeight},
-                    MaxPositionX{static_cast<double>(mGridWidth)},
-                    MaxPositionY{static_cast<double>(mGridHeight)},
                     Velocity{platformVelocity}};
 }
 
@@ -143,8 +140,6 @@ Ball Level::makeBall()
     return Ball{p,
                 Length{ballWidth},
                 Width{ballHeight},
-                MaxPositionX{static_cast<double>(mGridWidth)},
-                MaxPositionY{static_cast<double>(mGridHeight)},
                 Velocity{ballVelocity},
                 Angle{ballAngle},
                 Gravity{ballGravity}};

@@ -13,8 +13,6 @@ Ball makeBall(Point p, Length l, Width w)
     return Ball{p,
                 l,
                 w,
-                MaxPositionX{1000},
-                MaxPositionY{1000},
                 Velocity{10},
                 Angle{0.0_deg},
                 Gravity{0}};

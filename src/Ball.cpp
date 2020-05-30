@@ -8,8 +8,6 @@ namespace bricks {
 using Point = types::Point;
 using Length = types::Length;
 using Width = types::Width;
-using MaxPositionX = types::MaxPositionX;
-using MaxPositionY = types::MaxPositionY;
 using Velocity = types::Velocity;
 using Angle = types::Angle;
 using Gravity = types::Gravity;
@@ -19,11 +17,9 @@ Ball::Ball() : MoveableGameObject{}, mAngle{0.0}, mGravity{}, mIsActive{false}
 {
 }
 
-Ball::Ball(Point topLeft, Length length, Width width, MaxPositionX maxPositionX,
-           MaxPositionY maxPositionY, Velocity velocity, Angle angle,
+Ball::Ball(Point topLeft, Length length, Width width, Velocity velocity, Angle angle,
            Gravity gravity)
-    : MoveableGameObject{topLeft,      length,       width,
-                         maxPositionX, maxPositionY, velocity},
+    : MoveableGameObject{topLeft,      length,       width, velocity},
       mAngle{angle}, mGravity{gravity()}, mIsActive{false}
 {
 }

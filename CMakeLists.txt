@@ -23,8 +23,6 @@ src/types/GridHeight.cpp
 src/types/GridWidth.cpp
 src/types/Hitpoints.cpp
 src/types/Length.cpp
-src/types/MaxPositionX.cpp
-src/types/MaxPositionY.cpp
 src/types/Point.cpp
 src/types/Velocity.cpp
 src/types/Width.cpp
@@ -69,10 +67,6 @@ add_executable(test
     src/types/Length.cpp
     test/types/Width_test.cpp
     src/types/Width.cpp
-    test/types/MaxPositionX_test.cpp
-    src/types/MaxPositionX.cpp
-    test/types/MaxPositionY_test.cpp
-    src/types/MaxPositionY.cpp
     test/types/Point_test.cpp
     src/types/Point.cpp
     test/types/Velocity_test.cpp
