@@ -36,27 +36,23 @@ Renderer::Renderer(const std::size_t screenWidth,
                     static_cast<double>(mGridHeight)}
     {
 
-    mSdlWindow = SDL_CreateWindow("Bricks", SDL_WINDOWPOS_CENTERED,
-                                  SDL_WINDOWPOS_CENTERED, mScreenWidth,
-                                  mScreenHeight, SDL_WINDOW_SHOWN);
+    mSdlWindow = std::unique_ptr<SDL_Window, SDLWindowDeleter>(
+        SDL_CreateWindow("Bricks", SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED, mScreenWidth, mScreenHeight, SDL_WINDOW_SHOWN));
 
-    if (nullptr == mSdlWindow) {
+    if (mSdlWindow == nullptr) {
         throw std::runtime_error(std::string{"Renderer\n"} +
                                  "Window could not be created.\n" +
                                  "SDL_Error: " + SDL_GetError() + "\n");
     }
 
-    mSdlRenderer = SDL_CreateRenderer(mSdlWindow, -1, SDL_RENDERER_ACCELERATED);
-    if (nullptr == mSdlRenderer) {
+    mSdlRenderer = std::unique_ptr<SDL_Renderer, SDLRendererDeleter>(
+        SDL_CreateRenderer(mSdlWindow.get(), -1, SDL_RENDERER_ACCELERATED));
+    if (mSdlRenderer == nullptr) {
         throw std::runtime_error(std::string{"Renderer\n"} +
                                  "Renderer could not be created.\n" +
                                  "SDL_Error: " + SDL_GetError() + "\n");
     }
-}
-
-Renderer::~Renderer()
-{
-    SDL_DestroyWindow(mSdlWindow);
 }
 
 void Renderer::render(const Level& level)
@@ -79,19 +75,19 @@ void Renderer::render(const Level& level)
 
 void Renderer::setWindowTitle(const std::string& title)
 {
-    SDL_SetWindowTitle(mSdlWindow, title.c_str());
+    SDL_SetWindowTitle(mSdlWindow.get(), title.c_str());
 }
 
 void Renderer::clearScreen()
 {
     RGBColor white{0x1E, 0x1E, 0x1E};
     setDrawColor(white);
-    SDL_RenderClear(mSdlRenderer);
+    SDL_RenderClear(mSdlRenderer.get());
 }
 
 void Renderer::updateScreen()
 {
-    SDL_RenderPresent(mSdlRenderer);
+    SDL_RenderPresent(mSdlRenderer.get());
 }
 
 void Renderer::render(const Ball& ball)
@@ -131,7 +127,7 @@ void Renderer::render(const GameObject& obj, const RGBColor& color)
 {
     setDrawColor(color);
     auto rect = toSDLRect(obj);
-    SDL_RenderFillRect(mSdlRenderer, &rect);
+    SDL_RenderFillRect(mSdlRenderer.get(), &rect);
     drawHighlights(rect, color);
 }
 
@@ -143,16 +139,16 @@ void Renderer::drawHighlights(const SDL_Rect& rect, const RGBColor& color)
     auto h = rect.h;
 
     setDrawColor(color.lighter());
-    SDL_RenderDrawLine(mSdlRenderer, x, y + h, x, y);
-    SDL_RenderDrawLine(mSdlRenderer, x + 1, y + h, x + 1, y);
-    SDL_RenderDrawLine(mSdlRenderer, x, y, x + w, y);
-    SDL_RenderDrawLine(mSdlRenderer, x, y + 1, x + w, y + 1);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x, y + h, x, y);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x + 1, y + h, x + 1, y);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x, y, x + w, y);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x, y + 1, x + w, y + 1);
 
     setDrawColor(color.darker());
-    SDL_RenderDrawLine(mSdlRenderer, x, y + h, x + w, y + h);
-    SDL_RenderDrawLine(mSdlRenderer, x, y + h - 1, x + w, y + h - 1);
-    SDL_RenderDrawLine(mSdlRenderer, x + w, y + h, x + w, y);    
-    SDL_RenderDrawLine(mSdlRenderer, x + w - 1, y + h, x + w - 1, y);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x, y + h, x + w, y + h);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x, y + h - 1, x + w, y + h - 1);
+    SDL_RenderDrawLine(mSdlRenderer.get(), x + w, y + h, x + w, y);    
+    SDL_RenderDrawLine(mSdlRenderer.get(), x + w - 1, y + h, x + w - 1, y);
 }
 
 SDL_Rect Renderer::toSDLRect(const GameObject& obj) const
@@ -168,7 +164,7 @@ SDL_Rect Renderer::toSDLRect(const GameObject& obj) const
 
 void Renderer::setDrawColor(const RGBColor& color)
 {
-    SDL_SetRenderDrawColor(mSdlRenderer, color.r(), color.g(), color.b(),
+    SDL_SetRenderDrawColor(mSdlRenderer.get(), color.r(), color.g(), color.b(),
                            color.a());
 }
 

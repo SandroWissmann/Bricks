@@ -9,6 +9,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 namespace bricks {
 
@@ -23,11 +24,28 @@ class GameObject;
 
 class Level;
 
+struct SDLWindowDeleter{
+    void operator()(SDL_Window* window) {
+        SDL_DestroyWindow(window);
+    }
+};
+
+struct SDLRendererDeleter{
+    void operator()(SDL_Renderer* renderer) {
+        SDL_DestroyRenderer(renderer);
+    }
+};
+
 class Renderer {
 public:
     Renderer(const std::size_t screenWidth, const std::size_t screenHeight,
              const std::size_t gridWidth, const std::size_t gridHeight);
-    ~Renderer();
+    ~Renderer() = default;
+
+    Renderer(const Renderer&) = delete;
+    Renderer(Renderer&&) = delete;
+    Renderer& operator=(const Renderer&) = delete;
+    Renderer& operator=(Renderer&&) = delete;
 
     void render(const Level& level);
 
@@ -51,8 +69,8 @@ private:
     RGBColor getBrickDrawColor(const game_objects::Brick& brick);
 
     SDL_RAII mSDLRAII;
-    SDL_Window* mSdlWindow;
-    SDL_Renderer* mSdlRenderer;
+    std::unique_ptr<SDL_Window, SDLWindowDeleter> mSdlWindow;
+    std::unique_ptr<SDL_Renderer, SDLRendererDeleter> mSdlRenderer;
 
     const std::size_t mScreenWidth;
     const std::size_t mScreenHeight;
