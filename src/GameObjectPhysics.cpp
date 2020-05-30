@@ -206,21 +206,47 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
 
 types::Angle clampAngle(const types::Angle& angle)
 {
+    auto deltaX = 30.0_deg;
+    auto deltaY = 15.0_deg;
+
     auto newAngle = angle;
-    // if(angle.angle() > 150.0_deg) {
-    //     newAngle.setAngle(150.0_deg);
-    // }
-    // else
-    if (angle.angle() < 30.0_deg) {
-        newAngle.setAngle(30.0_deg);
+
+    if (isBigger(angle.get(), 0.0_deg, deltaX)) {
+        newAngle.set(0.0_deg + deltaX);
     }
-    else if (angle.angle() <= 90.0_deg && angle.angle() > 75.0_deg) {
-        newAngle.setAngle(75.0_deg);
+    else if (isSmaller(angle.get(), 90.0_deg, deltaY)) {
+        newAngle.set(90.0_deg - deltaY);
     }
-    else if (angle.angle() >= 90.0_deg && angle.angle() < 105.0_deg) {
-        newAngle.setAngle(105.0_deg);
+    else if (isBigger(angle.get(), 90.0_deg, deltaY)) {
+        newAngle.set(90.0_deg + deltaY);
     }
+    else if (isSmaller(angle.get(), 180.0_deg, deltaX)) {
+        newAngle.set(180.0_deg - deltaX);
+    }
+    else if (isBigger(angle.get(), 180.0_deg, deltaX)) {
+        newAngle.set(180.0_deg + deltaX);
+    }
+    else if (isSmaller(angle.get(), 270.0_deg, deltaY)) {
+        newAngle.set(270.0_deg - deltaY);
+    }
+    else if (isBigger(angle.get(), 270.0_deg, deltaY)) {
+        newAngle.set(270.0_deg + deltaY);
+    }
+    else if (isSmaller(angle.get(), 360.0_deg, deltaX)) {
+        newAngle.set(360.0_deg - deltaX);
+    }
+
     return newAngle;
+}
+
+bool isSmaller(double angle, double targetAngle, double delta)
+{
+    return angle >= targetAngle - delta && angle < targetAngle;
+}
+
+bool isBigger(double angle, double targetAngle, double delta)
+{
+    return angle >= targetAngle && angle < targetAngle + delta;
 }
 
 bool interectsWithRightX(const GameObject& a, const GameObject& b)

@@ -19,6 +19,9 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj);
 
 types::Angle clampAngle(const types::Angle& angle);
 
+bool isSmaller(double angle, double targetAngle, double delta);
+bool isBigger(double angle, double targetAngle, double delta);
+
 bool interectsWithRightX(const GameObject& a, const GameObject& b);
 bool interectsWithLeftX(const GameObject& a, const GameObject& b);
 bool interectsWithBottomY(const GameObject& a, const GameObject& b);
