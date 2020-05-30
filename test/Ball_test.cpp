@@ -15,7 +15,7 @@ TEST(BallTest_, defaultConstructor)
     EXPECT_EQ(ball.width(), 0.0);
     EXPECT_EQ(ball.height(), 0.0);
     EXPECT_EQ(ball.velocity(), 0.0);
-    EXPECT_EQ(ball.angle().angle(), 0.0);
+    EXPECT_EQ(ball.angle().get(), 0.0);
     EXPECT_EQ(ball.gravity(), 0.0);
 }
 
@@ -39,11 +39,11 @@ TEST_F(BallTest, angle)
 {
     auto obj = makeBall(velocity, Angle{30.0_deg}, gravity);
 
-    EXPECT_DOUBLE_EQ(obj.angle().angle(), 30.0_deg);
+    EXPECT_DOUBLE_EQ(obj.angle().get(), 30.0_deg);
 
     obj.setAngle(Angle{65.0_deg});
 
-    EXPECT_DOUBLE_EQ(obj.angle().angle(), 65.0_deg);
+    EXPECT_DOUBLE_EQ(obj.angle().get(), 65.0_deg);
 }
 
 TEST_F(BallTest, gravity)
