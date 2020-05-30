@@ -6,8 +6,8 @@ namespace bricks {
 class Ball;
 class GameObject;
 
-namespace types{
-    class Angle;
+namespace types {
+class Angle;
 }
 
 bool reflect(Ball& ball, const GameObject& obj);

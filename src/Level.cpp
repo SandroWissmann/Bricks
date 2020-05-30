@@ -2,10 +2,10 @@
 
 #include "types/GridHeight.h"
 #include "types/GridWidth.h"
-#include "types/Hitpoints.h"
-#include "types/Width.h"
-#include "types/Point.h"
 #include "types/Height.h"
+#include "types/Hitpoints.h"
+#include "types/Point.h"
+#include "types/Width.h"
 
 #include "OperatorDegree.h"
 
@@ -47,8 +47,7 @@ Level::Level()
 Level::Level(const GridWidth& gridWidth, const GridHeight& gridHeight,
              const std::vector<Brick>& bricks_,
              const std::vector<IndestructibleBrick>& indestructibleBricks_)
-    : mGridWidth{gridWidth()}, 
-    mGridHeight{gridHeight()},
+    : mGridWidth{gridWidth()}, mGridHeight{gridHeight()},
       mLeftWall{makeLeftWall()}, mRightWall{makeRightWall()},
       mTopWall{makeTopWall()}, platform{makePlatform()}, ball{makeBall()},
       bricks{bricks_}, indestructibleBricks{indestructibleBricks_}
@@ -56,15 +55,15 @@ Level::Level(const GridWidth& gridWidth, const GridHeight& gridHeight,
     assert(mGridWidth > 0);
     assert(mGridHeight > 0);
 
-    mGridWidth += 2*wallThickness;
+    mGridWidth += 2 * wallThickness;
     mGridHeight += wallThickness;
 
     transposeCoordinatesWithWalls(platform);
     transposeCoordinatesWithWalls(ball);
-    for(auto& brick : bricks) {
+    for (auto& brick : bricks) {
         transposeCoordinatesWithWalls(brick);
     }
-    for(auto& indestructibleBrick : indestructibleBricks) {
+    for (auto& indestructibleBrick : indestructibleBricks) {
         transposeCoordinatesWithWalls(indestructibleBrick);
     }
 }
@@ -105,31 +104,26 @@ void Level::resetPlatform()
 
 Wall Level::makeLeftWall()
 {
-    return Wall{Point{0, 0}, 
-        Width{wallThickness},
-        Height{static_cast<double>(mGridHeight + wallThickness)}};
+    return Wall{Point{0, 0}, Width{wallThickness},
+                Height{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
 Wall Level::makeRightWall()
 {
-    return Wall{Point{mGridWidth + wallThickness, 0.0}, 
-                Width{wallThickness},
+    return Wall{Point{mGridWidth + wallThickness, 0.0}, Width{wallThickness},
                 Height{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
 Wall Level::makeTopWall()
 {
-    return Wall{Point{wallThickness, 0},
-                Width{static_cast<double>(mGridWidth)}, 
+    return Wall{Point{wallThickness, 0}, Width{static_cast<double>(mGridWidth)},
                 Height{wallThickness}};
 }
 Platform Level::makePlatform()
 {
     auto p = impl::platformInitPosition(platformWidth, mGridWidth, mGridHeight);
 
-    return Platform{p,
-                    Width{platformWidth},
-                    Height{platformHeight},
+    return Platform{p, Width{platformWidth}, Height{platformHeight},
                     Velocity{platformVelocity}};
 }
 

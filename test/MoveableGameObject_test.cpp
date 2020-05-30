@@ -41,8 +41,8 @@ TEST(MoveableGameObjectTest_F, defaultConstructor)
 
 class MoveableGameObjectTest : public ::testing::Test {
 protected:
-    DerivedGameObject obj{Point{10.1, 20.2},  Width{10.5},
-                          Height{20.6},        Velocity{2.0}};
+    DerivedGameObject obj{Point{10.1, 20.2}, Width{10.5}, Height{20.6},
+                          Velocity{2.0}};
 };
 
 TEST_F(MoveableGameObjectTest, velocity)

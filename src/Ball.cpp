@@ -17,10 +17,10 @@ Ball::Ball() : MoveableGameObject{}, mAngle{0.0}, mGravity{}, mIsActive{false}
 {
 }
 
-Ball::Ball(Point topLeft, Width width, Height height, Velocity velocity, Angle angle,
-           Gravity gravity)
-    : MoveableGameObject{topLeft,      width,       height, velocity},
-      mAngle{angle}, mGravity{gravity()}, mIsActive{false}
+Ball::Ball(Point topLeft, Width width, Height height, Velocity velocity,
+           Angle angle, Gravity gravity)
+    : MoveableGameObject{topLeft, width, height, velocity}, mAngle{angle},
+      mGravity{gravity()}, mIsActive{false}
 {
 }
 

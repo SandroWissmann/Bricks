@@ -36,7 +36,7 @@ X 9.8 Y 7.6 W 5.4 H 3.2
 
     auto wallThickness = level.leftWall().width();
 
-    EXPECT_EQ(level.gridWidth(), 10 + 2*wallThickness);
+    EXPECT_EQ(level.gridWidth(), 10 + 2 * wallThickness);
     EXPECT_EQ(level.gridHeight(), 20 + wallThickness);
 
     auto bricks = level.bricks;

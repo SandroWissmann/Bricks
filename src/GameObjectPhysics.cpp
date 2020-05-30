@@ -210,15 +210,15 @@ types::Angle clampAngle(const types::Angle& angle)
     // if(angle.angle() > 150.0_deg) {
     //     newAngle.setAngle(150.0_deg);
     // }
-    // else 
-    if(angle.angle() < 30.0_deg) {
+    // else
+    if (angle.angle() < 30.0_deg) {
         newAngle.setAngle(30.0_deg);
     }
-    else if(angle.angle() <= 90.0_deg && angle.angle() > 75.0_deg) {
-        newAngle.setAngle(75.0_deg);        
+    else if (angle.angle() <= 90.0_deg && angle.angle() > 75.0_deg) {
+        newAngle.setAngle(75.0_deg);
     }
-    else if(angle.angle() >= 90.0_deg && angle.angle() < 105.0_deg) {
-        newAngle.setAngle(105.0_deg);        
+    else if (angle.angle() >= 90.0_deg && angle.angle() < 105.0_deg) {
+        newAngle.setAngle(105.0_deg);
     }
     return newAngle;
 }

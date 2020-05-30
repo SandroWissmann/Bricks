@@ -25,7 +25,7 @@ protected:
 
     Platform makePlatform(const Velocity& velocity)
     {
-        return Platform{point,        width,       height, velocity};
+        return Platform{point, width, height, velocity};
     }
 };
 

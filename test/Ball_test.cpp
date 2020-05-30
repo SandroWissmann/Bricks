@@ -31,7 +31,7 @@ protected:
     Ball makeBall(const Velocity& velocity, const Angle& angle,
                   const Gravity& gravity)
     {
-        return Ball{point,        width,   height,  velocity, angle, gravity};
+        return Ball{point, width, height, velocity, angle, gravity};
     }
 };
 

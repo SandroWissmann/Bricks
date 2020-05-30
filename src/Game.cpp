@@ -30,12 +30,12 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
 
 void Game::run()
 {
-    while(true) {
+    while (true) {
         runLevel();
-        if(mGameOver) {
+        if (mGameOver) {
             break;
         }
-        if(mCurrentLevel > mLevelFilenames.size()) {
+        if (mCurrentLevel > mLevelFilenames.size()) {
             mCurrentLevel = 1;
         }
         else {
@@ -81,7 +81,7 @@ void Game::runLevel()
             }
 
             handleBallCollisions();
-            if(allBricksAreDestroyed(mLevel.bricks)) {
+            if (allBricksAreDestroyed(mLevel.bricks)) {
                 break;
             }
         }
@@ -101,8 +101,7 @@ Level Game::loadLevel(int level)
 
 void Game::updateValuesInTitleBar()
 {
-    mRenderer.setWindowTitle(
-        makeTitle(mCurrentLevel, mLifes, mScore));
+    mRenderer.setWindowTitle(makeTitle(mCurrentLevel, mLifes, mScore));
 }
 
 bool Game::ballLost()
@@ -112,11 +111,13 @@ bool Game::ballLost()
 
 std::string makeTitle(int level, int lifes, long long score)
 {
-    return std::string{
-        "Level: " + std::to_string(level) + "\t" 
-        "Lifes: " + std::to_string(lifes) + "\t"
-        "Score: " + std::to_string(score)
-    };
+    return std::string{"Level: " + std::to_string(level) +
+                       "\t"
+                       "Lifes: " +
+                       std::to_string(lifes) +
+                       "\t"
+                       "Score: " +
+                       std::to_string(score)};
 }
 
 void handleEvent(const Event& event, const Wall& leftWall,
@@ -223,11 +224,9 @@ void Game::awardExtraLifeIfThresholdReached()
 
 bool allBricksAreDestroyed(const std::vector<Brick> bricks)
 {
-    return std::find_if(bricks.begin(), bricks.end(),
-                        [](const Brick& b)
-                        {
-                            return !b.isDestroyed();
-                        }) == bricks.end();    
+    return std::find_if(bricks.begin(), bricks.end(), [](const Brick& b) {
+               return !b.isDestroyed();
+           }) == bricks.end();
 }
 
 void delayToFramerate(double elapsedTimeInMS)

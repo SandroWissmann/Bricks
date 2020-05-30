@@ -10,12 +10,7 @@ using namespace bricks::types;
 
 Ball makeBall(Point p, Width w, Height h)
 {
-    return Ball{p,
-                w,
-                h,
-                Velocity{10},
-                Angle{0.0_deg},
-                Gravity{0}};
+    return Ball{p, w, h, Velocity{10}, Angle{0.0_deg}, Gravity{0}};
 }
 
 Brick makeBrick(Point p, Width w, Height h)
