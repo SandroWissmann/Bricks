@@ -45,6 +45,7 @@ src/IsNumber.cpp
 src/Level.cpp
 src/main.cpp
 src/NearlyEqual.cpp
+src/PlaySound.cpp
 src/Renderer.cpp
 src/RGBColor.cpp
 src/SDL_RAII.cpp

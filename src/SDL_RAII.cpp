@@ -9,7 +9,7 @@
 namespace bricks {
 
 SDL_RAII::SDL_RAII() { 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         throw std::runtime_error(std::string{"Renderer\n"} +
                                 "SDL could not initialize.\n" +
                                 "SDL_Error: " + SDL_GetError() + "\n");

@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "TimeMeasure.h"
 #include "IsNumber.h"
+#include "PlaySound.h"
 
 #include <algorithm>
 #include <cassert>
@@ -243,6 +244,7 @@ void Game::handleBallCollisions()
         return;
     }
     if (reflect(mLevel.ball, mLevel.platform)) {
+        playSoundHitPlattform();
         return;
     }
     for (auto& indestructibleBrick : mLevel.indestructibleBricks) {
@@ -258,9 +260,13 @@ void Game::handleBallCollisions()
             brick.decreaseHitpoints();
 
             if (brick.isDestroyed()) {
+                playSoundDestroyBrick();
                 mScore += getBrickValue(brick);
                 awardExtraLifeIfThresholdReached();
                 updateValuesInTitleBar();
+            }
+            else {
+                playSoundHitBrick();
             }
             return;
         }
