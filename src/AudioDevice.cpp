@@ -8,27 +8,16 @@ namespace bricks{
     constexpr auto filenameHitBrick = "sounds/hitBrick.wav";
     constexpr auto filenameHitPlatform = "sounds/hitPlatform.wav";
 
-    AudioDevice::AudioDevice()
-    {
-        // mAudioDeviceId = SDL_OpenAudioDevice(NULL, 0, &mAudioSpec, NULL, 0);
-        // if(mAudioDeviceId == 0) {
-        //     throw std::runtime_error("SDL_Open Audio Not Successfull:\n" 
-        //      + std::string(SDL_GetError()) + "\n" +
-        //     "Device ID:" + std::to_string(mAudioDeviceId) + "\n");
-        // }
-    }
-
     AudioDevice::~AudioDevice() noexcept {
-        SDL_CloseAudioDevice(mAudioDeviceId);
         if(mIsActive) {
             SDL_FreeWAV(mBuffer);
+            SDL_CloseAudioDevice(mAudioDeviceId);
         }
     }
 
     void AudioDevice::playSound(const std::string& filename)
     {
         if(mIsActive) {
-            std::cout << "close audio device:" << mAudioDeviceId <<'\n';
             SDL_FreeWAV(mBuffer);
         }
 
@@ -42,7 +31,11 @@ namespace bricks{
 
         if(!mIsActive) {
             mAudioDeviceId = SDL_OpenAudioDevice(NULL, 0, &mAudioSpec, NULL, 0);
-            // add error handling here
+            if(mAudioDeviceId == 0) {
+                std::cerr << "SDL_Open Audio Not Successfull:\n" 
+              << std::string(SDL_GetError()) << "\n" <<
+             "Device ID:" << std::to_string(mAudioDeviceId) << "\n";
+            }
         }
 
         if(SDL_QueueAudio(mAudioDeviceId, mBuffer, mLength) == -1) {

@@ -9,7 +9,7 @@ namespace bricks{
 
 class AudioDevice {
 public:
-    AudioDevice();
+    AudioDevice() = default;
     ~AudioDevice() noexcept;
 
     AudioDevice(const AudioDevice&) = delete;
