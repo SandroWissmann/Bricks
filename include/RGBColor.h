@@ -14,6 +14,8 @@ public:
     RGBColor lighter(double factor = 0.3) const;
     RGBColor darker(double factor = 0.3) const;
 
+    RGBColor grayscale() const;
+
 private:
     int calcLighterPart(int part, double factor) const;
     int calcDarkerPart(int part, double factor) const;
