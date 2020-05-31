@@ -2,8 +2,6 @@
 
 #include "SDL.h"
 
-#include <iostream>
-
 namespace bricks {
 
 Event getEvent()
@@ -24,11 +22,9 @@ Event getEvent()
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
     if (keystates[SDL_SCANCODE_LEFT]) {
-        std::cout << "left\n";
         return Event::left;
     }
     if (keystates[SDL_SCANCODE_RIGHT]) {
-        std::cout << "right\n";
         return Event::right;
     }
     if (keystates[SDL_SCANCODE_SPACE]) {
