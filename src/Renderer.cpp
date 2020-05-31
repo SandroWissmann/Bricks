@@ -7,6 +7,7 @@
 #include "game_objects/Wall.h"
 
 #include "Level.h"
+#include "SDL_RAII.h"
 
 #include <array>
 #include <cassert>
@@ -27,14 +28,15 @@ using Wall = game_objects::Wall;
 Renderer::Renderer(const std::size_t screenWidth,
                    const std::size_t screenHeight, const std::size_t gridWidth,
                    const std::size_t gridHeight)
-    : mSDLRAII{},
-        mScreenWidth{screenWidth}, mScreenHeight{screenHeight},
+    : mScreenWidth{screenWidth}, mScreenHeight{screenHeight},
       mGridWidth{gridWidth}, mGridHeight{gridHeight},
       mWidthFactor{static_cast<double>(mScreenWidth) /
                    static_cast<double>(mGridWidth)},
       mHeightFactor{static_cast<double>(mScreenHeight) /
                     static_cast<double>(mGridHeight)}
     {
+
+    SDL_RAII::init();
 
     mSdlWindow = std::unique_ptr<SDL_Window, SDLWindowDeleter>(
         SDL_CreateWindow("Bricks", SDL_WINDOWPOS_CENTERED,

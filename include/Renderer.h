@@ -3,8 +3,6 @@
 
 #include "RGBColor.h"
 
-#include "SDL_RAII.h"
-
 #include <SDL.h>
 
 #include <string>
@@ -68,7 +66,6 @@ private:
     void setDrawColor(const RGBColor& color);
     RGBColor getBrickDrawColor(const game_objects::Brick& brick);
 
-    SDL_RAII mSDLRAII;
     std::unique_ptr<SDL_Window, SDLWindowDeleter> mSdlWindow;
     std::unique_ptr<SDL_Renderer, SDLRendererDeleter> mSdlRenderer;
 

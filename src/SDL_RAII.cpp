@@ -8,6 +8,11 @@
 
 namespace bricks {
 
+void SDL_RAII::init()
+{
+    static SDL_RAII instance{};
+}
+
 SDL_RAII::SDL_RAII() { 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         throw std::runtime_error(std::string{"Renderer\n"} +

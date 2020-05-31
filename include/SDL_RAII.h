@@ -6,6 +6,10 @@ namespace bricks{
 class SDL_RAII
 {
     public:
+
+    static void init();
+
+    private:
     SDL_RAII();
     ~SDL_RAII() noexcept;
 

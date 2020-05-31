@@ -1,5 +1,7 @@
 #include "AudioDevice.h"
 
+#include "SDL_RAII.h"
+
 #include <iostream>
 
 namespace bricks{
@@ -11,6 +13,11 @@ namespace bricks{
     constexpr auto filenameNextLevel = "sounds/nextLevel.wav";
     constexpr auto filenameLostBall = "sounds/lostBall.wav";
     constexpr auto filenameExtraLife = "sounds/extraLife.wav";
+
+    AudioDevice::AudioDevice()
+    {
+        SDL_RAII::init();
+    }
 
     AudioDevice::~AudioDevice() noexcept {
         if(mIsActive) {
