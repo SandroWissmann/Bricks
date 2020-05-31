@@ -20,10 +20,10 @@ private:
     int calcLighterPart(int part, double factor) const;
     int calcDarkerPart(int part, double factor) const;
 
-    const int mR;
-    const int mG;
-    const int mB;
-    const int mA;
+    int mR;
+    int mG;
+    int mB;
+    int mA;
 };
 } // namespace bricks
 #endif
