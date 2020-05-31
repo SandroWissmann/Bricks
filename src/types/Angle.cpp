@@ -4,6 +4,8 @@
 
 #include <cassert>
 
+#include <iostream>
+
 namespace bricks::types {
 
 Angle::Angle()
@@ -37,7 +39,7 @@ long double Angle::quadrantAngle() const
 
 void Angle::setQuadrantAngle(long double quadrantAngle)
 {
-    assert(quadrantAngle >= 0.0 && quadrantAngle <= 90.0);
+    assert(quadrantAngle >= 0.0_deg && quadrantAngle <= 90.0_deg);
     mQuadrantAngle = quadrantAngle;
 }
 
