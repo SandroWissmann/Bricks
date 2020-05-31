@@ -29,8 +29,10 @@ private:
 void playDestroyBrick(AudioDevice& audioDevice);
 void playHitBrick(AudioDevice& audioDevice);
 void playHitPlatform(AudioDevice& audioDevice);
-
-
+void playGameOver(AudioDevice& audioDevice);
+void playNextLevel(AudioDevice& audioDevice);
+void playLostBall(AudioDevice& audioDevice);
+void playExtraLife(AudioDevice& audioDevice);
 }
 
 #endif

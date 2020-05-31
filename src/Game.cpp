@@ -50,6 +50,7 @@ void Game::run()
             return;
         }
         if (mGameOver) {
+            playGameOver(mAudioDevice);
             if(mScore > mHighscore) {
                 mHighscore = mScore;
                 writeHighscore(mHighscore);
@@ -60,9 +61,10 @@ void Game::run()
             mScore = 0;
         }
         else if (beatGame()) {
-                mCurrentLevel = 1;
+            mCurrentLevel = 1;
         }
         else {
+            playNextLevel(mAudioDevice);
             ++mCurrentLevel;
         }
         mLevel = loadLevel(mCurrentLevel);
@@ -95,13 +97,15 @@ void Game::runLevel()
 
             if (ballLost()) {
                 --mLifes;
-                updateValuesInTitleBar();
-                mLevel.resetBall();
-                mLevel.resetPlatform();
                 if (mLifes <= 0) {
                     mGameOver = true;
                     return;
                 }
+                playLostBall(mAudioDevice);
+
+                updateValuesInTitleBar();
+                mLevel.resetBall();
+                mLevel.resetPlatform();
             }
 
             handleBallCollisions();
@@ -282,6 +286,7 @@ void Game::awardExtraLifeIfThresholdReached()
 {
     auto extraLifeDivisor = static_cast<long long>(mScore / pointsForExtraLife);
     if (extraLifeDivisor != mLastExtraLifeDivisor) {
+        playExtraLife(mAudioDevice);
         ++mLifes;
         mLastExtraLifeDivisor = extraLifeDivisor;
     }

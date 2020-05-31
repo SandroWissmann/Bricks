@@ -7,6 +7,10 @@ namespace bricks{
     constexpr auto filenameDestroyBrick = "sounds/destroyBrick.wav";
     constexpr auto filenameHitBrick = "sounds/hitBrick.wav";
     constexpr auto filenameHitPlatform = "sounds/hitPlatform.wav";
+    constexpr auto filenameGameOver = "sounds/gameOver.wav";
+    constexpr auto filenameNextLevel = "sounds/nextLevel.wav";
+    constexpr auto filenameLostBall = "sounds/lostBall.wav";
+    constexpr auto filenameExtraLife = "sounds/extraLife.wav";
 
     AudioDevice::~AudioDevice() noexcept {
         if(mIsActive) {
@@ -25,7 +29,6 @@ namespace bricks{
             == NULL) {
             std::cerr<< "SLD_LoadWAV not succesfull\n"
              << SDL_GetError() << '\n';
-            SDL_FreeWAV(mBuffer);
             return;
         }
 
@@ -61,5 +64,25 @@ namespace bricks{
     void playHitPlatform(AudioDevice& audioDevice)
     {
         audioDevice.playSound(filenameHitPlatform);
+    }
+
+    void playGameOver(AudioDevice& audioDevice)
+    {
+        audioDevice.playSound(filenameGameOver);       
+    }
+
+    void playNextLevel(AudioDevice& audioDevice)
+    {
+        audioDevice.playSound(filenameNextLevel); 
+    }
+
+    void playLostBall(AudioDevice& audioDevice)
+    {
+        audioDevice.playSound(filenameLostBall); 
+    }
+
+    void playExtraLife(AudioDevice& audioDevice)
+    {
+        audioDevice.playSound(filenameExtraLife); 
     }
 }
