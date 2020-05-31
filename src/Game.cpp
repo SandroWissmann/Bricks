@@ -312,8 +312,11 @@ getLevelFilenamesFromFolder(const std::string& folderName)
 {
     std::vector<std::string> names;
     for (auto& p : std::filesystem::directory_iterator(folderName)) {
-        names.emplace_back(std::filesystem::absolute(p.path()));
+        if(p.path().extension() == ".lvl") {
+            names.emplace_back(std::filesystem::absolute(p.path()));
+        }
     }
+    std::sort(names.begin(), names.end());
     return names;
 }
 } // namespace bricks
