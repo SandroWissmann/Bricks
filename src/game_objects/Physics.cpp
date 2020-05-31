@@ -393,7 +393,7 @@ long double decreaseAngle(long double quadrantAngle)
 long double random(long double min, long double max)
 {
     static std::default_random_engine e;
-    static std::uniform_real_distribution<long double> dis(min, max);
+    std::uniform_real_distribution<long double> dis(min, max);
     return dis(e);
 }
 } // namespace bricks
