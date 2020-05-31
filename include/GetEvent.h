@@ -3,7 +3,7 @@
 
 namespace bricks {
 
-enum class Event { none, quit, left, right, space, escape };
+enum class Event { none, quit, left, right, space, escape, p };
 
 Event getEvent();
 } // namespace bricks

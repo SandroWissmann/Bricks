@@ -46,7 +46,7 @@ void Game::run()
 {
     while (true) {
         runLevel();
-        if(mQuitGame) {
+        if(mQuit) {
             return;
         }
         if (mGameOver) {
@@ -80,17 +80,18 @@ void Game::runLevel()
     while (true) {
         timepoint1 = getCurrentTime();
 
-        mRenderer.render(mLevel);
-
         auto event = getEvent();
 
-        bool quit = false;
         handleEvent(event, mLevel.leftWall(), mLevel.rightWall(), mLevel.ball,
-                    mLevel.platform, quit);
-        if (quit) {
-            mQuitGame = true;
+                    mLevel.platform, mQuit, mPause);
+        if (mQuit) {
             return;
         }
+        if(mPause) {
+            continue;
+        }
+
+        mRenderer.render(mLevel);      
 
         if (mLevel.ball.isActive()) {
             mLevel.ball.move(msPerFrame);
@@ -186,7 +187,7 @@ std::string makeTitle(int level, int lifes, long long score, long long highscore
 
 void handleEvent(const Event& event, const Wall& leftWall,
                  const Wall& rightWall, Ball& ball, Platform& platform,
-                 bool& quit)
+                 bool& quit, bool& pause)
 {
     switch (event) {
     case Event::quit:
@@ -195,11 +196,17 @@ void handleEvent(const Event& event, const Wall& leftWall,
         quit = true;
         break;
     case Event::space:
+        if(pause) {
+            return;
+        }
         if (!ball.isActive()) {
             ball.activate();
         }
         break;
     case Event::left:
+        if(pause) {
+            return;
+        }
         if (interectsWithLeftX(platform, leftWall)) {
             putBeforeIntersectsWithLeftX(platform, leftWall);
         }
@@ -208,12 +215,18 @@ void handleEvent(const Event& event, const Wall& leftWall,
         }
         break;
     case Event::right:
+        if(pause) {
+            return;
+        }
         if (interectsWithRightX(platform, rightWall)) {
             putBeforeIntersectsWithRightX(platform, rightWall);
         }
         else {
             moveRight(platform, msPerFrame);
         }
+        break;
+    case Event::p:
+        pause = !pause;
         break;
     }
 }
