@@ -80,10 +80,26 @@ void Renderer::setWindowTitle(const std::string& title)
     SDL_SetWindowTitle(mSdlWindow.get(), title.c_str());
 }
 
+void Renderer::setPause()
+{
+    mPaused = true;
+}
+
+void Renderer::resetPause()
+{
+    mPaused = false;
+}
+
 void Renderer::clearScreen()
 {
     RGBColor white{0x1E, 0x1E, 0x1E};
-    setDrawColor(white);
+
+    if(!mPaused) {
+        setDrawColor(white);
+    }
+    else {
+        setDrawColor(white.grayscale());
+    }
     SDL_RenderClear(mSdlRenderer.get());
 }
 
@@ -125,8 +141,11 @@ void Renderer::render(const IndestructibleBrick& indestructibleBrick)
     render(indestructibleBrick, red);
 }
 
-void Renderer::render(const GameObject& obj, const RGBColor& color)
+void Renderer::render(const GameObject& obj, RGBColor color)
 {
+    if(mPaused) {
+        color = color.grayscale();
+    }
     setDrawColor(color);
     auto rect = toSDLRect(obj);
     SDL_RenderFillRect(mSdlRenderer.get(), &rect);

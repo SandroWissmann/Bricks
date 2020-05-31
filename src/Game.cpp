@@ -80,18 +80,18 @@ void Game::runLevel()
     while (true) {
         timepoint1 = getCurrentTime();
 
+        mRenderer.render(mLevel); 
+
         auto event = getEvent();
 
         handleEvent(event, mLevel.leftWall(), mLevel.rightWall(), mLevel.ball,
-                    mLevel.platform, mQuit, mPause);
+                    mLevel.platform);
         if (mQuit) {
             return;
         }
         if(mPause) {
             continue;
-        }
-
-        mRenderer.render(mLevel);      
+        }     
 
         if (mLevel.ball.isActive()) {
             mLevel.ball.move(msPerFrame);
@@ -118,6 +118,57 @@ void Game::runLevel()
         timepoint2 = getCurrentTime();
 
         delayToFramerate(getElapsedTime(timepoint1, timepoint2));
+    }
+}
+
+void Game::handleEvent(const Event& event, const Wall& leftWall,
+                 const Wall& rightWall, Ball& ball, Platform& platform)
+{
+    switch (event) {
+    case Event::quit:
+        [[fallthrough]];
+    case Event::escape:
+        mQuit = true;
+        break;
+    case Event::space:
+        if(mPause) {
+            return;
+        }
+        if (!ball.isActive()) {
+            ball.activate();
+        }
+        break;
+    case Event::left:
+        if(mPause) {
+            return;
+        }
+        if (interectsWithLeftX(platform, leftWall)) {
+            putBeforeIntersectsWithLeftX(platform, leftWall);
+        }
+        else {
+            moveLeft(platform, msPerFrame);
+        }
+        break;
+    case Event::right:
+        if(mPause) {
+            return;
+        }
+        if (interectsWithRightX(platform, rightWall)) {
+            putBeforeIntersectsWithRightX(platform, rightWall);
+        }
+        else {
+            moveRight(platform, msPerFrame);
+        }
+        break;
+    case Event::p:
+        mPause = !mPause;
+        if(mPause) {
+            mRenderer.setPause();
+        }
+        else {
+            mRenderer.resetPause();
+        }
+        break;
     }
 }
 
@@ -183,52 +234,6 @@ std::string makeTitle(int level, int lifes, long long score, long long highscore
                        "Highscore: " +
                        std::to_string(highscore)                   
                        };
-}
-
-void handleEvent(const Event& event, const Wall& leftWall,
-                 const Wall& rightWall, Ball& ball, Platform& platform,
-                 bool& quit, bool& pause)
-{
-    switch (event) {
-    case Event::quit:
-        [[fallthrough]];
-    case Event::escape:
-        quit = true;
-        break;
-    case Event::space:
-        if(pause) {
-            return;
-        }
-        if (!ball.isActive()) {
-            ball.activate();
-        }
-        break;
-    case Event::left:
-        if(pause) {
-            return;
-        }
-        if (interectsWithLeftX(platform, leftWall)) {
-            putBeforeIntersectsWithLeftX(platform, leftWall);
-        }
-        else {
-            moveLeft(platform, msPerFrame);
-        }
-        break;
-    case Event::right:
-        if(pause) {
-            return;
-        }
-        if (interectsWithRightX(platform, rightWall)) {
-            putBeforeIntersectsWithRightX(platform, rightWall);
-        }
-        else {
-            moveRight(platform, msPerFrame);
-        }
-        break;
-    case Event::p:
-        pause = !pause;
-        break;
-    }
 }
 
 void moveLeft(Platform& platform, double elapsedTimeInMS)

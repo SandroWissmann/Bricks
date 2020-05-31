@@ -49,6 +49,9 @@ public:
 
     void setWindowTitle(const std::string& title);
 
+    void setPause();
+    void resetPause();
+
 private:
     void clearScreen();
     void updateScreen();
@@ -58,7 +61,7 @@ private:
     void render(const game_objects::Wall& wall);
     void render(const game_objects::Brick& brick);
     void render(const game_objects::IndestructibleBrick& indestructibleBrick);
-    void render(const game_objects::GameObject& obj, const RGBColor& color);
+    void render(const game_objects::GameObject& obj, RGBColor color);
 
     void drawHighlights(const SDL_Rect& rect, const RGBColor& color);
 
@@ -75,6 +78,7 @@ private:
     const std::size_t mGridHeight;
     const double mWidthFactor;
     const double mHeightFactor;
+    bool mPaused{false};
 };
 
 } // namespace bricks

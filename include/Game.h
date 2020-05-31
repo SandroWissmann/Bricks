@@ -30,6 +30,11 @@ public:
 private:
     void runLevel();
 
+    void handleEvent(const Event& event, const game_objects::Wall& leftWall,
+        const game_objects::Wall& rightWall, 
+        game_objects::Ball& ball, 
+        game_objects::Platform& platform);
+
     bool beatGame();
     Level loadLevel(int level);
 
@@ -62,12 +67,6 @@ long long loadHighscore();
 void writeHighscore(long long highscore);
 
 std::string makeTitle(int level, int lifes, long long score, long long highscore);
-
-void handleEvent(const Event& event, const game_objects::Wall& leftWall,
-                 const game_objects::Wall& rightWall, 
-                 game_objects::Ball& ball, 
-                 game_objects::Platform& platform,
-                 bool& quit, bool& pause);
 
 void moveLeft(game_objects::Platform& platform, double elapsedTimeInMS);
 void moveRight(game_objects::Platform& platform, double elapsedTimeInMS);

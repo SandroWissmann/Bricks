@@ -55,9 +55,9 @@ RGBColor RGBColor::darker(double factor) const
 RGBColor RGBColor::grayscale() const
 {
     return RGBColor{
-        static_cast<int>(mR * 0.3),
-        static_cast<int>(mG * 0.59),
-        static_cast<int>(mB * 0.11)
+        static_cast<int>(double(mR) * 0.2126),
+        static_cast<int>(double(mG) * 0.7152),
+        static_cast<int>(double(mB) * 0.0722),
     };
 }
 
