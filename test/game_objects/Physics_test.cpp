@@ -9,6 +9,56 @@ using namespace bricks;
 using namespace bricks::game_objects;
 using namespace bricks::types;
 
+class CalcAngleFactorTest : public ::testing::Test {
+protected:
+    static constexpr double xLeft = 30.0;
+    static constexpr double xCenter = 60.0;
+    static constexpr double xRight = 90.0;
+};
+
+TEST_F(CalcAngleFactorTest, xBallIsXLeft)
+{
+    auto xBall = xLeft;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 1.0);
+}
+
+TEST_F(CalcAngleFactorTest, xBallIsXCenter)
+{
+    auto xBall = xCenter;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.0);
+}
+
+TEST_F(CalcAngleFactorTest, xBallIsXRight)
+{
+    auto xBall = xRight;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 1.0);
+}
+
+TEST_F(CalcAngleFactorTest, xBallIsXBetweenLeftAndCenter)
+{
+    auto xBall = xLeft + (xCenter - xLeft) / 2;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.5);
+}
+
+TEST_F(CalcAngleFactorTest, xBallIsXBetweenLeftAndCenter2)
+{
+    auto xBall = xLeft + (xCenter - xLeft) / 4;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.75);
+}
+
+TEST_F(CalcAngleFactorTest, xBallIsXBetweenCenterAndRight)
+{
+    auto xBall = xRight - (xRight - xCenter) / 2;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.5);
+}
+
+TEST_F(CalcAngleFactorTest, xBallIsXBetweenCenterAndRight2)
+{
+    auto xBall = xRight - (xRight - xCenter) / 4;
+    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.75);
+}
+
+
 TEST(clampAngle, AngleGetsClamped)
 {
     EXPECT_EQ((clampAngle(Angle{0.0_deg}).get()), 30.0_deg);   
