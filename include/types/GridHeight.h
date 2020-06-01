@@ -13,6 +13,8 @@ public:
     int operator()() const;
 
 private:
+    int checkArgs(int value);
+    
     int mValue{0};
 };
 

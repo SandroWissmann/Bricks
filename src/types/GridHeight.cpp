@@ -3,18 +3,30 @@
 #include "../utility/IsNumber.h"
 
 #include <iostream>
+#include <stdexcept>
 
 namespace bricks::types {
 
 using namespace utility;
 
-GridHeight::GridHeight(int value) : mValue{value}
+GridHeight::GridHeight(int value) 
+    : mValue{checkArgs(value)}
 {
 }
 
 int GridHeight::operator()() const
 {
     return mValue;
+}
+
+int GridHeight::checkArgs(int value)
+{
+    if(value < 0) {
+        throw std::invalid_argument("GridHeight::GridHeight(int value)\n"
+        "Value must be >= 0\n"
+        "Value: " + std::to_string(value));
+    }
+    return value;
 }
 
 std::istream& operator>>(std::istream& is, GridHeight& obj)
