@@ -22,6 +22,10 @@ using IndestructibleBrick = game_objects::IndestructibleBrick;
 using Platform = game_objects::Platform;
 using Wall = game_objects::Wall;
 
+using Width = types::Width;
+using Velocity = types::Velocity;
+using Gravity = types::Gravity;
+
 constexpr std::size_t framesPerSecond{60};
 constexpr std::size_t msPerFrame{1000 / framesPerSecond};
 
@@ -30,6 +34,16 @@ constexpr int pointsForExtraLife{10000};
 
 constexpr auto highscoreFilename = "highscore.dat";
 
+constexpr double ballVelocityIncrease = 2.0;
+constexpr double ballGravityIncrease = 0.5;
+constexpr double platformVelocityIncrease = 2.0;
+constexpr double platformWidthDecrease = 0.5;
+
+constexpr double ballVelocityMax = 30.0;
+constexpr double ballGravityMax = 5.0;
+constexpr double platformVelocityMax = 28.0;
+constexpr double platformWidthMin = 2.0;
+
 Game::Game(std::size_t screenWidth, std::size_t screenHeight)
     : mLevelFilenames{getLevelFilenamesFromFolder("level")},
       mLevel{loadLevel(1)}, mRenderer{Renderer{
@@ -37,7 +51,9 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
                                 static_cast<std::size_t>(mLevel.gridWidth()),
                                 static_cast<std::size_t>(mLevel.gridHeight())}},
       mInputHandler{},
-      mAudioDevice{}, mHighscore{loadHighscore()}
+      mAudioDevice{}, 
+      mParameter{},
+      mHighscore{loadHighscore()}
 {
     updateValuesInTitleBar();
 }
@@ -55,19 +71,20 @@ void Game::run()
                 mHighscore = mScore;
                 writeHighscore(mHighscore);
             }
-            mCurrentLevel = 1;
+            mCurrentLevelIDX = 1;
             mLifes = mStartLifes;
             mGameOver = false;
             mScore = 0;
         }
         else if (beatGame()) {
-            mCurrentLevel = 1;
+            mCurrentLevelIDX = 1;
+            increaseDifficulty();
         }
         else {
             playNextLevel(mAudioDevice);
-            ++mCurrentLevel;
+            ++mCurrentLevelIDX;
         }
-        mLevel = loadLevel(mCurrentLevel);
+        mLevel = loadLevel(mCurrentLevelIDX);
         updateValuesInTitleBar();
     }
 }
@@ -123,20 +140,46 @@ void Game::runLevel()
 
 bool Game::beatGame()
 {
-    return mCurrentLevel >= mLevelFilenames.size();
+    return mCurrentLevelIDX >= mLevelFilenames.size();
 }
 
-Level Game::loadLevel(int level)
+void Game::increaseDifficulty()
+{
+    double platformVelocity = mParameter.getPlatformVelocity()();
+    double platformWidth = mParameter.getPlatformWidth()();
+    double ballVelocity = mParameter.getBallVelocity()();
+    double ballGravity = mParameter.getBallGravity()();
+
+    platformVelocity += platformVelocityIncrease;
+    platformWidth -= platformWidthDecrease;
+    ballVelocity += ballVelocityIncrease;
+    ballGravity += ballGravityIncrease;
+
+    platformVelocity = std::clamp(platformVelocity, platformVelocity, 
+        platformVelocityMax);
+    platformWidth = std::clamp(platformWidth, platformWidthMin, platformWidth);
+    ballVelocity = std::clamp(ballVelocity, ballVelocity, ballVelocityMax);
+    ballGravity = std::clamp(ballGravity, ballGravity, ballGravityMax);    
+
+    mParameter.setPlatformVelocity(Velocity{platformVelocity});
+    mParameter.setPlatformWidth(Width{platformVelocity});
+    mParameter.setBallVelocity(Velocity{ballVelocity});
+    mParameter.setBallGravity(Gravity{ballGravity});
+}
+
+Level Game::loadLevel(int levelIDX)
 {
     assert(!mLevelFilenames.empty());
 
-    return readFromFile(mLevelFilenames.at(level - 1));
+    auto level = readFromFile(mLevelFilenames.at(levelIDX - 1));
+    level.setParameter(mParameter);
+    return level;
 }
 
 void Game::updateValuesInTitleBar()
 {
     mRenderer.setWindowTitle(
-        makeTitle(mCurrentLevel, mLifes, mScore, mHighscore));
+        makeTitle(mCurrentLevelIDX, mLifes, mScore, mHighscore));
 }
 
 bool Game::ballLost()
@@ -226,7 +269,7 @@ void Game::handleBallCollisions()
 
 long long Game::getBrickValue(const Brick& brick) const
 {
-    return pointsPerBrickHitpoints * brick.startHitpoints() * mCurrentLevel;
+    return pointsPerBrickHitpoints * brick.startHitpoints() * mCurrentLevelIDX;
 }
 
 void Game::awardExtraLifeIfThresholdReached()

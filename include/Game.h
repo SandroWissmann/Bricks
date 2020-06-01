@@ -31,7 +31,8 @@ private:
     void runLevel();
 
     bool beatGame();
-    Level loadLevel(int level);
+    void increaseDifficulty();
+    Level loadLevel(int levelIDX);
 
     void updateValuesInTitleBar();
 
@@ -46,13 +47,14 @@ private:
     Renderer mRenderer;
     InputHandler mInputHandler;
     AudioDevice mAudioDevice;
+    GameParameter mParameter;
 
     static constexpr auto mStartLifes{5};
 
     long long mHighscore;
     long long mScore{0};
     long long mLastExtraLifeDivisor{0};
-    int mCurrentLevel{1};
+    int mCurrentLevelIDX{1};
     int mLifes{mStartLifes};
     bool mGameOver = false;
 };

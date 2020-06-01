@@ -52,6 +52,7 @@ add_executable(bricks
 
     src/AudioDevice.cpp
     src/Game.cpp
+    src/GameParameter.cpp
     src/InputHandler.cpp
     src/Level.cpp
     src/main.cpp

@@ -7,6 +7,8 @@
 #include "game_objects/Platform.h"
 #include "game_objects/Wall.h"
 
+#include "GameParameter.h"
+
 #include <iosfwd>
 #include <vector>
 
@@ -21,7 +23,8 @@ struct Point;
 class Level {
 public:
     Level();
-    Level(const types::GridWidth& gridWidth,
+    Level(const GameParameter& parameter,
+          const types::GridWidth& gridWidth,
           const types::GridHeight& gridHeight,
           const std::vector<game_objects::Brick>& bricks_,
           const std::vector<game_objects::IndestructibleBrick>&
@@ -34,6 +37,7 @@ public:
     game_objects::Wall rightWall() const;
     game_objects::Wall topWall() const;
 
+    void setParameter(const GameParameter& parameter);
     void resetBall();
     void resetPlatform();
 
@@ -41,11 +45,14 @@ private:
     game_objects::Wall makeLeftWall();
     game_objects::Wall makeRightWall();
     game_objects::Wall makeTopWall();
-    game_objects::Platform makePlatform();
-    game_objects::Ball makeBall();
+    game_objects::Platform makePlatform(
+        const types::Width& width, const types::Velocity& velocity);
+    game_objects::Ball makeBall(const types::Velocity& velocity,
+        const types::Gravity& gravity);
 
     void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
 
+    GameParameter mParameter;
     int mGridWidth{0};
     int mGridHeight{0};
     game_objects::Wall mLeftWall;
