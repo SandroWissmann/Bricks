@@ -4,6 +4,7 @@
 
 #include <cassert>
 
+#include <algorithm>
 #include <iostream>
 
 namespace bricks::types {
@@ -41,7 +42,12 @@ long double Angle::quadrantAngle() const
 
 void Angle::setQuadrantAngle(long double quadrantAngle)
 {
-    assert(quadrantAngle >= 0.0_deg && quadrantAngle <= 90.0_deg);
+    if(quadrantAngle <0.0_deg || quadrantAngle > 90.0_deg) {
+        std::cerr << "void Angle::setQuadrantAngle(long double quadrantAngle)\n" 
+        "Out of Range 0.0_deg to 90.0_deg\n"
+        "supllied angle: " << quadrantAngle << '\n';
+        quadrantAngle = std::clamp(quadrantAngle, 0.0_deg, 90.0_deg);
+    }
     mQuadrantAngle = quadrantAngle;
 }
 
