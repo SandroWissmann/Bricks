@@ -5,7 +5,6 @@
 #include <memory>
 
 #include "AudioDevice.h"
-#include "GetEvent.h"
 #include "Level.h"
 #include "Renderer.h"
 #include "InputHandler.h"
