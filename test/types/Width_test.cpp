@@ -19,6 +19,11 @@ TEST(WidthTest, Constructor)
     EXPECT_EQ(w(), 3.5);
 }
 
+TEST(WidthTest, Constructor_throws_invald_argument)
+{
+    EXPECT_THROW(Width{-1}, std::invalid_argument);
+}
+
 TEST(WidthTest, operatorIsWorks1)
 {
     std::string test{"W 3.5"};
