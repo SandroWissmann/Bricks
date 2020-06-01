@@ -42,7 +42,7 @@ long double angleToQuadrantAngle(long double angle, Quadrant quadrant);
 
 long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant);
 
-long double calcAngleIfOver360(long double angle);
+long double calcAngleIfOutOfRange(long double angle);
 
 } // namespace impl
 } // namespace bricks::types
