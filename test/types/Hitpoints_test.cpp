@@ -19,6 +19,11 @@ TEST(HitpointsTest, Constructor)
     EXPECT_EQ(hp(), 3);
 }
 
+TEST(HitpointsTest, Constructor_throws_invald_argument)
+{
+    EXPECT_THROW(Hitpoints{-1}, std::invalid_argument);
+}
+
 TEST(HitpointsTest, operatorIsWorks1)
 {
     std::string test{"HP 3"};
