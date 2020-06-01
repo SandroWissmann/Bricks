@@ -27,6 +27,8 @@ public:
     double height() const;
 
 private:
+    types::Point checkArgs(types::Point point);
+
     types::Point mTopLeft;
 
     double mWidth;

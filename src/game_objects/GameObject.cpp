@@ -1,6 +1,7 @@
 #include "GameObject.h"
 
-#include <cassert>
+#include <stdexcept>
+#include <string>
 
 namespace bricks::game_objects {
 
@@ -11,13 +12,8 @@ GameObject::GameObject() : mTopLeft{Point{}}, mWidth{0.0}, mHeight{0.0}
 }
 
 GameObject::GameObject(Point topLeft, types::Width width, types::Height height)
-    : mTopLeft{topLeft}, mWidth{width()}, mHeight{height()}
+    : mTopLeft{checkArgs(topLeft)}, mWidth{width()}, mHeight{height()}
 {
-    assert(mTopLeft.x >= 0);
-    assert(mTopLeft.y >= 0);
-
-    assert(mWidth > 0);
-    assert(mHeight > 0);
 }
 
 GameObject::~GameObject() = default;
@@ -47,5 +43,17 @@ double GameObject::width() const
 double GameObject::height() const
 {
     return mHeight;
+}
+
+Point GameObject::checkArgs(Point point)
+{
+    if(point.x < 0.0 || point.y < 0.0) {
+        throw std::invalid_argument(
+            "Point GameObject::checkArgs(Point point)\n"
+        "Point must be >= 0\n"
+        "Point x: " + std::to_string(point.x) + "\n"
+        "Point y: " + std::to_string(point.y) + "\n");
+    }
+    return point;
 }
 } // namespace bricks::game_objects
