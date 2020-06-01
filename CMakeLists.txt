@@ -7,13 +7,18 @@ set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
 project(bricks)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 set(LIBRARY_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/lib")
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_mixer REQUIRED)
+
 include_directories(
     ${SDL2_INCLUDE_DIRS} 
+    ${SDL2_mixer_INCLUDE_DIRS} 
     include 
     include/game_objects
     include/types
@@ -54,9 +59,10 @@ add_executable(bricks
     src/SDL_RAII.cpp
 )
 
-string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
-target_link_libraries(bricks 
-    ${SDL2_LIBRARIES}
+target_link_libraries(
+    bricks 
+    SDL2::Main
+    SDL2::Mixer
 )
 
 add_executable(test 

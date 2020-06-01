@@ -12,7 +12,7 @@ build:
 	rsync -rupE sounds build/
 	cd build && \
 	cmake .. && \
-	make	
+	make -j${nproc}	
 
 .PHONY: debug
 debug:
@@ -22,7 +22,7 @@ debug:
 	cp /le
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
-	make
+	make -j${nproc}
 
 .PHONY: clean
 clean:
@@ -35,5 +35,5 @@ memcheck:
 	rsync -rupE sounds build/
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
-	make
+	make -j${nproc}
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="valgrindReport" ./build/bricks	
