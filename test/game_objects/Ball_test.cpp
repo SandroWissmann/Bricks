@@ -5,6 +5,7 @@
 
 using namespace bricks;
 using namespace bricks::game_objects;
+using namespace bricks::game_objects::impl;
 using namespace bricks::types;
 using namespace bricks::utility;
 
