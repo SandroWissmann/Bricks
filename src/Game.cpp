@@ -174,7 +174,7 @@ void Game::handleEvent(const Event& event, const Wall& leftWall,
 
 bool Game::beatGame()
 {
-    return mCurrentLevel > mLevelFilenames.size();
+    return mCurrentLevel >= mLevelFilenames.size();
 }
 
 Level Game::loadLevel(int level)
