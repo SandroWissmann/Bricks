@@ -8,13 +8,24 @@ namespace bricks::types {
 
 using namespace utility;
 
-Hitpoints::Hitpoints(int value) : mValue{value}
+Hitpoints::Hitpoints(int value) : 
+    mValue{checkArgs(value)}
 {
 }
 
 int Hitpoints::operator()() const
 {
     return mValue;
+}
+
+int Hitpoints::checkArgs(int value) const
+{
+    if(value < 0) {
+        throw std::invalid_argument("Hitpoints::checkArgs(int value)\n"
+        "Value must be >= 0\n"
+        "Value: " + std::to_string(value));
+    }
+    return value;
 }
 
 std::istream& operator>>(std::istream& is, Hitpoints& obj)
