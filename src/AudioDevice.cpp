@@ -13,6 +13,7 @@ constexpr auto filenameGameOver = "sounds/gameOver.wav";
 constexpr auto filenameNextLevel = "sounds/nextLevel.wav";
 constexpr auto filenameLostBall = "sounds/lostBall.wav";
 constexpr auto filenameExtraLife = "sounds/extraLife.wav";
+constexpr auto filenameWinGame = "sounds/winGame.wav";
 
 AudioDevice::AudioDevice(
     int rate, Uint16 format, int channels, int buffers)
@@ -82,4 +83,10 @@ void playExtraLife(AudioDevice& audioDevice)
 {
     audioDevice.playSound(filenameExtraLife);
 }
+
+void playWinGame(AudioDevice& audioDevice)
+{
+    audioDevice.playSound(filenameWinGame);
+}
+
 } // namespace bricks

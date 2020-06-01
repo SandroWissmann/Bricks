@@ -37,6 +37,7 @@ void playGameOver(AudioDevice& audioDevice);
 void playNextLevel(AudioDevice& audioDevice);
 void playLostBall(AudioDevice& audioDevice);
 void playExtraLife(AudioDevice& audioDevice);
+void playWinGame(AudioDevice& audioDevice);
 } // namespace bricks
 
 #endif
