@@ -150,10 +150,14 @@ TEST(isInQuadrantIV, Expect_FALSE)
     EXPECT_FALSE(isInQuadrantIV(270.0_deg));
 }
 
-TEST(calcAngleIfOver360, Expect_FALSE)
+TEST(calcAngleIfOutOfRange, Expect_FALSE)
 {
-    EXPECT_DOUBLE_EQ(calcAngleIfOver360(0.0_deg), 0.0_deg);
-    EXPECT_DOUBLE_EQ(calcAngleIfOver360(360.0_deg), 360.0_deg);
-    EXPECT_DOUBLE_EQ(calcAngleIfOver360(360.1_deg), 0.1_deg);
-    EXPECT_DOUBLE_EQ(calcAngleIfOver360(540.0_deg), 180.0_deg);
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(0.0_deg), 0.0_deg);
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(360.0_deg), 360.0_deg);
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(360.1_deg), 0.1_deg);
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(540.0_deg), 180.0_deg);
+
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(-0.1_deg), 359.9_deg);
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(-360.0_deg), 0.0_deg);
+    EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(-540.0_deg), 180.0_deg);
 }
