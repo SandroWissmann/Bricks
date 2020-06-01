@@ -19,10 +19,10 @@ int GridHeight::operator()() const
     return mValue;
 }
 
-int GridHeight::checkArgs(int value)
+int GridHeight::checkArgs(int value) const
 {
     if(value < 0) {
-        throw std::invalid_argument("GridHeight::GridHeight(int value)\n"
+        throw std::invalid_argument("GridHeight::checkArgs(int value)\n"
         "Value must be >= 0\n"
         "Value: " + std::to_string(value));
     }
