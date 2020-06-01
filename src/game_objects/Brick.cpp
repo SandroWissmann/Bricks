@@ -1,6 +1,6 @@
 #include "Brick.h"
 
-#include <cassert>
+#include <stdexcept>
 
 namespace bricks::game_objects {
 
@@ -14,10 +14,9 @@ Brick::Brick() : GameObject{}, mStartHitpoints{0}, mHitpoints{mStartHitpoints}
 }
 
 Brick::Brick(Point topLeft, Width width, Height height, Hitpoints hitpoints)
-    : GameObject(topLeft, width, height), mStartHitpoints{hitpoints()},
+    : GameObject(topLeft, width, height), mStartHitpoints{checkArgs(hitpoints())},
       mHitpoints{mStartHitpoints}
 {
-    assert(mHitpoints > 0 && mHitpoints < 10);
 }
 
 int Brick::startHitpoints() const
@@ -41,4 +40,15 @@ bool Brick::isDestroyed() const
 {
     return mHitpoints == 0;
 }
+
+int Brick::checkArgs(int hitpoints)
+{
+    if(hitpoints < 1 || hitpoints > 9) {
+        throw std::invalid_argument("int Brick::checkArgs(int hitpoints)\n"
+        "hitpoints must be > 0 and < 10\n"
+        "hitpoints: " + std::to_string(hitpoints));
+    }
+    return hitpoints;
+}
+
 } // namespace bricks::game_objects

@@ -26,6 +26,8 @@ public:
     bool isDestroyed() const;
 
 private:
+    int checkArgs(int hitpoints);
+
     int mStartHitpoints;
     int mHitpoints;
 };
