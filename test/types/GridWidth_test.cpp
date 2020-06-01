@@ -19,6 +19,11 @@ TEST(GridWidth, Constructor)
     EXPECT_EQ(w(), 3);
 }
 
+TEST(GridWidth, Constructor_throws_invald_argument)
+{
+    EXPECT_THROW(GridWidth{-1}, std::invalid_argument);
+}
+
 TEST(GridWidth, operatorIsWorks1)
 {
     std::string test{"W 3"};
