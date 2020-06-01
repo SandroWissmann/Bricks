@@ -1,19 +1,22 @@
 #include "Game.h"
 
 #include "game_objects/Physics.h"
+
+#include "utility/TimeMeasure.h"
+#include "utility/IsNumber.h"
+
 #include "Level.h"
 #include "Renderer.h"
-#include "TimeMeasure.h"
-#include "IsNumber.h"
 
 #include <algorithm>
 #include <cassert>
 #include <fstream>
 #include <filesystem>
-#include <iostream>
 #include <string>
 
 namespace bricks {
+
+using namespace utility;
 
 using Ball = game_objects::Ball;
 using Brick = game_objects::Brick;

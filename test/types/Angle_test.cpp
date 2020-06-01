@@ -1,10 +1,13 @@
 #include "gtest/gtest.h"
 
-#include "../../include/OperatorDegree.h"
 #include "../../include/types/Angle.h"
+
+#include "../../include/utility/OperatorDegree.h"
 
 using namespace bricks;
 using namespace bricks::types::impl;
+using namespace bricks::utility;
+
 using Angle = bricks::types::Angle;
 using Quadrant = bricks::types::Quadrant;
 

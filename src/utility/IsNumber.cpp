@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-namespace bricks {
+namespace bricks::utility {
 
 template <typename T> bool isNumber(const std::string& s)
 {

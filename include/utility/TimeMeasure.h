@@ -1,9 +1,9 @@
-#ifndef TIME_H
-#define TIME_H
+#ifndef UTILITY_TIME_H
+#define UTILITY_TIME_H
 
 #include <chrono>
 
-namespace bricks {
+namespace bricks::utility {
 std::chrono::time_point<std::chrono::high_resolution_clock> getCurrentTime();
 
 double getElapsedTime(

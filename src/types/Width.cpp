@@ -1,10 +1,12 @@
 #include "Width.h"
 
-#include "../IsNumber.h"
+#include "../utility/IsNumber.h"
 
 #include <iostream>
 
 namespace bricks::types {
+
+using namespace utility;
 
 Width::Width(double value) : mValue{value}
 {

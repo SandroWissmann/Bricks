@@ -1,7 +1,7 @@
-#ifndef NEARLYEQUAL_H
-#define NEARLYEQUAL_H
+#ifndef UTILITY_NEARLYEQUAL_H
+#define UTILITY_NEARLYEQUAL_H
 
-namespace bricks {
+namespace bricks::utility {
 
 template <typename FloatingPointType>
 bool nearlyEqual(FloatingPointType a, FloatingPointType b);

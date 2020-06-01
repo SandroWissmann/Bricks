@@ -1,12 +1,14 @@
 #include "Angle.h"
 
-#include "OperatorDegree.h"
+#include "../utility/OperatorDegree.h"
 
 #include <cassert>
 
 #include <iostream>
 
 namespace bricks::types {
+
+using namespace utility;
 
 Angle::Angle()
     : mQuadrant{impl::calcQuadrant(0.0)},

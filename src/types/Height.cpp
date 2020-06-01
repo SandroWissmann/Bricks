@@ -1,10 +1,12 @@
 #include "Height.h"
 
-#include "../IsNumber.h"
+#include "../utility/IsNumber.h"
 
 #include <iostream>
 
 namespace bricks::types {
+
+using namespace utility;
 
 Height::Height(double value) : mValue{value}
 {

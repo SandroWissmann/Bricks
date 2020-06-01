@@ -1,10 +1,12 @@
 #include "GridWidth.h"
 
-#include "../IsNumber.h"
+#include "../utility/IsNumber.h"
 
 #include <iostream>
 
 namespace bricks::types {
+
+using namespace utility;
 
 GridWidth::GridWidth(int value) : mValue{value}
 {

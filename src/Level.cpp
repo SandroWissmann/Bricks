@@ -7,7 +7,7 @@
 #include "types/Point.h"
 #include "types/Width.h"
 
-#include "OperatorDegree.h"
+#include "utility/OperatorDegree.h"
 
 #include <cassert>
 #include <fstream>
@@ -15,6 +15,8 @@
 #include <sstream>
 
 namespace bricks {
+
+using namespace utility;
 
 using Point = types::Point;
 using Width = types::Width;

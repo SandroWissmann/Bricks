@@ -3,11 +3,13 @@
 #include "../../include/game_objects/Ball.h"
 #include "../../include/game_objects/Brick.h"
 #include "../../include/game_objects/Physics.h"
-#include "../../include/OperatorDegree.h"
+
+#include "../../include/utility/OperatorDegree.h"
 
 using namespace bricks;
 using namespace bricks::game_objects;
 using namespace bricks::types;
+using namespace bricks::utility;
 
 class CalcAngleFactorTest : public ::testing::Test {
 protected:

@@ -2,7 +2,7 @@
 
 #include <thread>
 
-namespace bricks {
+namespace bricks::utility {
 std::chrono::time_point<std::chrono::high_resolution_clock> getCurrentTime()
 {
     return std::chrono::high_resolution_clock::now();

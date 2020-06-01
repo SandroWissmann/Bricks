@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
-#include "../include/OperatorDegree.h"
+#include "../../include/utility/OperatorDegree.h"
 
-using namespace bricks;
+using namespace bricks::utility;
 
 TEST(OperatorDegree, ValuesAreEqual_0)
 {

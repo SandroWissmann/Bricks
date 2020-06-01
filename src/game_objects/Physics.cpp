@@ -6,8 +6,8 @@
 
 #include "../types/Angle.h"
 #include "../types/Point.h"
-#include "../NearlyEqual.h"
-#include "../OperatorDegree.h"
+#include "../utility/NearlyEqual.h"
+#include "../utility/OperatorDegree.h"
 
 #include <algorithm>
 #include <random>
@@ -17,6 +17,8 @@
 #include <cassert>
 
 namespace bricks::game_objects {
+
+using namespace utility;
 
 using Angle = types::Angle;
 using Point = types::Point;

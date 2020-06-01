@@ -1,10 +1,10 @@
-#ifndef OPERATORDEGREE_H
-#define OPERATORDEGREE_H
+#ifndef UTILITY_OPERATORDEGREE_H
+#define UTILITY_OPERATORDEGREE_H
 
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-namespace bricks {
+namespace bricks::utility {
 
 constexpr long double operator"" _deg(long double deg)
 {

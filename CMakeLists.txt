@@ -15,46 +15,44 @@ find_package(SDL2 REQUIRED)
 include_directories(
     ${SDL2_INCLUDE_DIRS} 
     include 
-    include/types 
     include/game_objects
+    include/types
+    include/utility 
 )
 
 add_subdirectory(thirdparty/googletest)
 
 add_executable(bricks 
-src/game_objects/Ball.cpp
-src/game_objects/Brick.cpp
-src/game_objects/GameObject.cpp
-src/game_objects/MoveableGameObject.cpp
-src/game_objects/Physics.cpp
-src/game_objects/Platform.cpp
+    src/game_objects/Ball.cpp
+    src/game_objects/Brick.cpp
+    src/game_objects/GameObject.cpp
+    src/game_objects/MoveableGameObject.cpp
+    src/game_objects/Physics.cpp
+    src/game_objects/Platform.cpp
 
-src/types/Angle.cpp
-src/types/Gravity.cpp
-src/types/GridHeight.cpp
-src/types/GridWidth.cpp
-src/types/Height.cpp
-src/types/Hitpoints.cpp
-src/types/Point.cpp
-src/types/Velocity.cpp
-src/types/Width.cpp
+    src/types/Angle.cpp
+    src/types/Gravity.cpp
+    src/types/GridHeight.cpp
+    src/types/GridWidth.cpp
+    src/types/Height.cpp
+    src/types/Hitpoints.cpp
+    src/types/Point.cpp
+    src/types/Velocity.cpp
+    src/types/Width.cpp
 
-src/AudioDevice.cpp
-src/Game.cpp
-src/GetEvent.cpp
-src/IsNumber.cpp
-src/Level.cpp
-src/main.cpp
-src/NearlyEqual.cpp
-src/PlaySound.cpp
-src/Renderer.cpp
-src/RGBColor.cpp
-src/SDL_RAII.cpp
-src/TimeMeasure.cpp
+    src/utility/IsNumber.cpp
+    src/utility/NearlyEqual.cpp
+    src/utility/TimeMeasure.cpp
+
+    src/AudioDevice.cpp
+    src/Game.cpp
+    src/GetEvent.cpp
+    src/Level.cpp
+    src/main.cpp
+    src/Renderer.cpp
+    src/RGBColor.cpp
+    src/SDL_RAII.cpp
 )
-
-
-
 
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(bricks 
@@ -94,13 +92,14 @@ add_executable(test
     test/types/Width_test.cpp
     src/types/Width.cpp
     
-    test/IsNumber_test.cpp
-    src/IsNumber.cpp
+    test/utility/IsNumber_test.cpp
+    src/utility/IsNumber.cpp
+    test/utility/NearlyEqual_test.cpp
+    src/utility/NearlyEqual.cpp
+    test/utility/OperatorDegree_test.cpp
+
     test/Level_test.cpp
     src/Level.cpp
-    test/NearlyEqual_test.cpp
-    src/NearlyEqual.cpp
-    test/OperatorDegree_test.cpp
     src/RGBColor.cpp
     test/RGBColor_test.cpp
 )

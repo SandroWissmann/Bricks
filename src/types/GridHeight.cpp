@@ -1,10 +1,12 @@
 #include "GridHeight.h"
 
-#include "../IsNumber.h"
+#include "../utility/IsNumber.h"
 
 #include <iostream>
 
 namespace bricks::types {
+
+using namespace utility;
 
 GridHeight::GridHeight(int value) : mValue{value}
 {

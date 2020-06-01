@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
-#include "../include/IsNumber.h"
+#include "../../include/utility/IsNumber.h"
 
-using namespace bricks;
+using namespace bricks::utility;
 
 TEST(IsNumberTest, int_expect_true)
 {

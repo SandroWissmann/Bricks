@@ -3,7 +3,7 @@
 #include <cmath>
 #include <limits>
 
-namespace bricks {
+namespace bricks::utility {
 
 template <typename FloatingPointType>
 bool nearlyEqual(FloatingPointType a, FloatingPointType b)

@@ -1,9 +1,11 @@
 #include "Ball.h"
 
-#include "NearlyEqual.h"
-#include "OperatorDegree.h"
+#include "../utility/NearlyEqual.h"
+#include "../utility/OperatorDegree.h"
 
 namespace bricks::game_objects {
+
+using namespace utility;
 
 using Point = types::Point;
 using Width = types::Width;

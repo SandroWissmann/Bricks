@@ -1,10 +1,12 @@
 #include "Hitpoints.h"
 
-#include "../IsNumber.h"
+#include "../utility/IsNumber.h"
 
 #include <iostream>
 
 namespace bricks::types {
+
+using namespace utility;
 
 Hitpoints::Hitpoints(int value) : mValue{value}
 {
