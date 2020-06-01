@@ -2,6 +2,7 @@
 #define AUDIODEVICE_H
 
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 #include <string>
 
@@ -9,7 +10,8 @@ namespace bricks {
 
 class AudioDevice {
 public:
-    AudioDevice();
+    AudioDevice(int rate = 44100, Uint16 format = AUDIO_S16SYS,
+        int channels = 2, int buffers = 4096);
     ~AudioDevice() noexcept;
 
     AudioDevice(const AudioDevice&) = delete;
@@ -20,11 +22,12 @@ public:
     void playSound(const std::string& filename);
 
 private:
-    SDL_AudioSpec mAudioSpec;
-    SDL_AudioDeviceID mAudioDeviceId{0};
-    Uint32 mLength;
-    Uint8* mBuffer;
-    bool mIsActive{false};
+    int mRate;
+    Uint16 mFormat;
+    int mChannels;
+    int mBuffers;
+
+    Mix_Chunk *mChunk;
 };
 
 void playDestroyBrick(AudioDevice& audioDevice);

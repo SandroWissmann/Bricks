@@ -14,48 +14,38 @@ constexpr auto filenameNextLevel = "sounds/nextLevel.wav";
 constexpr auto filenameLostBall = "sounds/lostBall.wav";
 constexpr auto filenameExtraLife = "sounds/extraLife.wav";
 
-AudioDevice::AudioDevice()
+AudioDevice::AudioDevice(
+    int rate, Uint16 format, int channels, int buffers)
+    :mRate{rate}, mFormat{format}, mChannels{channels}, mBuffers{buffers},
+    mChunk{nullptr}
 {
     SDL_RAII::init();
+
+    Mix_AllocateChannels(1);
 }
 
 AudioDevice::~AudioDevice() noexcept
 {
-    if (mIsActive) {
-        SDL_FreeWAV(mBuffer);
-        SDL_CloseAudioDevice(mAudioDeviceId);
-    }
+    Mix_FreeChunk(mChunk);
+    Mix_CloseAudio();
 }
 
 void AudioDevice::playSound(const std::string& filename)
 {
-    if (mIsActive) {
-        SDL_FreeWAV(mBuffer);
+    if(Mix_OpenAudio(mRate, mFormat, mChannels, mBuffers) != 0) {
+        std::cerr << "Mix_OpenAudio failed: " << Mix_GetError() << '\n';
     }
 
-    if (SDL_LoadWAV(filename.c_str(), &mAudioSpec, &mBuffer, &mLength) ==
-        NULL) {
-        std::cerr << "SLD_LoadWAV not succesfull\n" << SDL_GetError() << '\n';
-        return;
+    mChunk = Mix_LoadWAV(filename.c_str ());
+    if(mChunk == NULL) {
+        std::cerr << "Mix_LoadWAV failed: " << Mix_GetError() << '\n';
     }
 
-    if (!mIsActive) {
-        mAudioDeviceId = SDL_OpenAudioDevice(NULL, 0, &mAudioSpec, NULL, 0);
-        if (mAudioDeviceId == 0) {
-            std::cerr << "SDL_Open Audio Not Successfull:\n"
-                      << std::string(SDL_GetError()) << "\n"
-                      << "Device ID:" << std::to_string(mAudioDeviceId) << "\n";
-        }
-    }
+    Mix_VolumeChunk(mChunk, MIX_MAX_VOLUME); 
 
-    if (SDL_QueueAudio(mAudioDeviceId, mBuffer, mLength) == -1) {
-        std::cerr << "SDL_QueueAudio not succesfull\n"
-                  << SDL_GetError() << '\n';
-        SDL_FreeWAV(mBuffer);
-        return;
+    if(Mix_PlayChannel(-1, mChunk, 0) == -1) {
+        std::cerr << "Mix_PlayChannel failed: " << Mix_GetError() << '\n';
     }
-    SDL_PauseAudioDevice(mAudioDeviceId, 0);
-    mIsActive = true;
 }
 
 void playDestroyBrick(AudioDevice& audioDevice)
