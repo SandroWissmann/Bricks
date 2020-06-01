@@ -19,6 +19,11 @@ TEST(GridHeight, Constructor)
     EXPECT_EQ(h(), 3);
 }
 
+TEST(GridHeight, Constructor_throws_invald_argument)
+{
+    EXPECT_THROW(GridHeight{-1}, std::invalid_argument);
+}
+
 TEST(GridHeight, operatorIsWorks1)
 {
     std::string test{"H 3"};
