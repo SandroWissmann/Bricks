@@ -7,6 +7,6 @@ namespace bricks::utility {
 
 template <typename T> bool isNumber(const std::string& s);
 
-} // namespace bricks
+} // namespace bricks::utility
 
 #endif

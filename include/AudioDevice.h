@@ -5,7 +5,7 @@
 
 #include <string>
 
-namespace bricks{
+namespace bricks {
 
 class AudioDevice {
 public:
@@ -18,11 +18,12 @@ public:
     AudioDevice& operator=(AudioDevice&&) = delete;
 
     void playSound(const std::string& filename);
+
 private:
     SDL_AudioSpec mAudioSpec;
     SDL_AudioDeviceID mAudioDeviceId{0};
     Uint32 mLength;
-    Uint8 *mBuffer;
+    Uint8* mBuffer;
     bool mIsActive{false};
 };
 
@@ -33,6 +34,6 @@ void playGameOver(AudioDevice& audioDevice);
 void playNextLevel(AudioDevice& audioDevice);
 void playLostBall(AudioDevice& audioDevice);
 void playExtraLife(AudioDevice& audioDevice);
-}
+} // namespace bricks
 
 #endif

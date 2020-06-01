@@ -3,35 +3,37 @@
 
 #include <SDL.h>
 
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 namespace bricks {
 
 namespace game_objects {
-    class Ball;
-    class Platform;
-    class Wall;
-    class Brick;
-    class IndestructibleBrick;
-    class GameObject;
-}
+class Ball;
+class Platform;
+class Wall;
+class Brick;
+class IndestructibleBrick;
+class GameObject;
+} // namespace game_objects
 
-namespace types{
-    class RGBColor;
+namespace types {
+class RGBColor;
 }
 
 class Level;
 
-struct SDLWindowDeleter{
-    void operator()(SDL_Window* window) {
+struct SDLWindowDeleter {
+    void operator()(SDL_Window* window)
+    {
         SDL_DestroyWindow(window);
     }
 };
 
-struct SDLRendererDeleter{
-    void operator()(SDL_Renderer* renderer) {
+struct SDLRendererDeleter {
+    void operator()(SDL_Renderer* renderer)
+    {
         SDL_DestroyRenderer(renderer);
     }
 };
@@ -69,7 +71,7 @@ private:
 
     SDL_Rect toSDLRect(const game_objects::GameObject& obj) const;
     void setDrawColor(const types::RGBColor& color);
-   types::RGBColor getBrickDrawColor(const game_objects::Brick& brick);
+    types::RGBColor getBrickDrawColor(const game_objects::Brick& brick);
 
     std::unique_ptr<SDL_Window, SDLWindowDeleter> mSdlWindow;
     std::unique_ptr<SDL_Renderer, SDLRendererDeleter> mSdlRenderer;

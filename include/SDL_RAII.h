@@ -1,15 +1,13 @@
 #ifndef SDL_RAII_H
 #define SDL_RAII_H
 
-namespace bricks{
-    
-class SDL_RAII
-{
-    public:
+namespace bricks {
 
+class SDL_RAII {
+public:
     static void init();
 
-    private:
+private:
     SDL_RAII();
     ~SDL_RAII() noexcept;
 
@@ -19,5 +17,5 @@ class SDL_RAII
     SDL_RAII& operator=(SDL_RAII&&) = delete;
 };
 
-}
+} // namespace bricks
 #endif

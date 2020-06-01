@@ -48,4 +48,4 @@ FloatingPointType nextHight(FloatingPointType a)
 template float nextHight<float>(float a);
 template double nextHight<double>(double a);
 template long double nextHight<long double>(long double a);
-} // namespace bricks
+} // namespace bricks::utility

@@ -1,9 +1,9 @@
 #ifndef GAME_OBJECTS_BALL_H
 #define GAME_OBJECTS_BALL_H
 
-#include "MoveableGameObject.h"
 #include "../types/Angle.h"
 #include "../types/Gravity.h"
+#include "MoveableGameObject.h"
 
 namespace bricks::game_objects {
 
@@ -44,5 +44,5 @@ types::Point calcNewPosition(const types::Point& p, double velocity,
 double calcTraveldWay(double deltaTimeMS, double velocityInS);
 
 types::Point calcDelta(types::Angle angle, double sideC);
-} // namespace bricks
+} // namespace bricks::game_objects
 #endif

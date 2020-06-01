@@ -15,6 +15,6 @@ public:
     IndestructibleBrick& operator=(const IndestructibleBrick& other) = default;
     IndestructibleBrick& operator=(IndestructibleBrick&& other) = default;
 };
-} // namespace bricks
+} // namespace bricks::game_objects
 
 #endif

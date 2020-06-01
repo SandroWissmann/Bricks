@@ -38,13 +38,13 @@ Renderer::Renderer(const std::size_t screenWidth,
                    static_cast<double>(mGridWidth)},
       mHeightFactor{static_cast<double>(mScreenHeight) /
                     static_cast<double>(mGridHeight)}
-    {
+{
 
     SDL_RAII::init();
 
-    mSdlWindow = std::unique_ptr<SDL_Window, SDLWindowDeleter>(
-        SDL_CreateWindow("Bricks", SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED, mScreenWidth, mScreenHeight, SDL_WINDOW_SHOWN));
+    mSdlWindow = std::unique_ptr<SDL_Window, SDLWindowDeleter>(SDL_CreateWindow(
+        "Bricks", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, mScreenWidth,
+        mScreenHeight, SDL_WINDOW_SHOWN));
 
     if (mSdlWindow == nullptr) {
         throw std::runtime_error(std::string{"Renderer\n"} +
@@ -98,7 +98,7 @@ void Renderer::clearScreen()
 {
     RGBColor white{0x1E, 0x1E, 0x1E};
 
-    if(!mPaused) {
+    if (!mPaused) {
         setDrawColor(white);
     }
     else {
@@ -147,7 +147,7 @@ void Renderer::render(const IndestructibleBrick& indestructibleBrick)
 
 void Renderer::render(const GameObject& obj, RGBColor color)
 {
-    if(mPaused) {
+    if (mPaused) {
         color = color.grayscale();
     }
     setDrawColor(color);
@@ -172,7 +172,7 @@ void Renderer::drawHighlights(const SDL_Rect& rect, const RGBColor& color)
     setDrawColor(color.darker());
     SDL_RenderDrawLine(mSdlRenderer.get(), x, y + h, x + w, y + h);
     SDL_RenderDrawLine(mSdlRenderer.get(), x, y + h - 1, x + w, y + h - 1);
-    SDL_RenderDrawLine(mSdlRenderer.get(), x + w, y + h, x + w, y);    
+    SDL_RenderDrawLine(mSdlRenderer.get(), x + w, y + h, x + w, y);
     SDL_RenderDrawLine(mSdlRenderer.get(), x + w - 1, y + h, x + w - 1, y);
 }
 

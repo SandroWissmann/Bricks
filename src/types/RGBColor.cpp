@@ -71,4 +71,4 @@ int RGBColor::calcDarkerPart(int part, double factor) const
 {
     return std::clamp(static_cast<int>(part * (1.0 - factor)), 0x00, 0xFF);
 }
-} // namespace bricks
+} // namespace bricks::types

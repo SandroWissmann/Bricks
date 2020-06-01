@@ -48,4 +48,4 @@ double GameObject::height() const
 {
     return mHeight;
 }
-} // namespace bricks
+} // namespace bricks::game_objects

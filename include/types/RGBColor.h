@@ -25,5 +25,5 @@ private:
     int mB;
     int mA;
 };
-} // namespace bricks
+} // namespace bricks::types
 #endif

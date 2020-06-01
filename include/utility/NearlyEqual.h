@@ -14,5 +14,5 @@ FloatingPointType nextLow(FloatingPointType a);
 
 template <typename FloatingPointType>
 FloatingPointType nextHight(FloatingPointType a);
-} // namespace bricks
+} // namespace bricks::utility
 #endif

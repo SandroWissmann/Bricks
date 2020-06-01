@@ -29,5 +29,5 @@ private:
     int mStartHitpoints;
     int mHitpoints;
 };
-} // namespace bricks
+} // namespace bricks::game_objects
 #endif

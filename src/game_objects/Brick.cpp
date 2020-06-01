@@ -41,4 +41,4 @@ bool Brick::isDestroyed() const
 {
     return mHitpoints == 0;
 }
-} // namespace bricks
+} // namespace bricks::game_objects

@@ -121,4 +121,4 @@ Point calcDelta(Angle angle, double sideC)
     return ret;
 }
 
-} // namespace bricks
+} // namespace bricks::game_objects

@@ -27,4 +27,4 @@ void MoveableGameObject::setVelocity(double velocity)
     mVelocity = velocity;
 }
 
-} // namespace bricks
+} // namespace bricks::game_objects

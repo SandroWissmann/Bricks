@@ -17,5 +17,5 @@ public:
 
     void move(double elapsedTimeInMS) override;
 };
-} // namespace bricks
+} // namespace bricks::game_objects
 #endif

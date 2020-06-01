@@ -33,6 +33,6 @@ private:
     double mHeight;
 };
 
-} // namespace bricks
+} // namespace bricks::game_objects
 
 #endif

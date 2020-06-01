@@ -21,7 +21,8 @@ bool reflectFromQuadrantII(Ball& ball, const Platform& platform);
 bool reflectHorizontalFromQuadrantII(Ball& ball, const Platform& platform);
 void reflectHorizontalIItoIII(Ball& ball, const Platform& platform);
 
-double calcAngleFactor(double xBall, double xLeft, double xCenter, double xRight);
+double calcAngleFactor(double xBall, double xLeft, double xCenter,
+                       double xRight);
 
 bool reflect(Ball& ball, const GameObject& obj);
 
@@ -82,6 +83,6 @@ long double decreaseAngle(long double quadrantAngle);
 long double mirror(long double quadrantAngle);
 
 long double random(long double min, long double max);
-} // namespace bricks
+} // namespace bricks::game_objects
 
 #endif // GAMEOBJECTPHYSICS_H

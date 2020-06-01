@@ -148,7 +148,7 @@ long double quadrantAngleToAngle(long double quadrantAngle, Quadrant quadrant)
 
 long double calcAngleIfOver360(long double angle)
 {
-    
+
     assert(angle >= 0);
 
     while (angle > 360.0_deg) {

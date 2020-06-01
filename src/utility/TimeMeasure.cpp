@@ -20,4 +20,4 @@ void wait(const std::chrono::milliseconds& milliseconds)
 {
     std::this_thread::sleep_for(milliseconds);
 }
-} // namespace bricks
+} // namespace bricks::utility

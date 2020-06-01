@@ -11,5 +11,5 @@ double getElapsedTime(
     const std::chrono::time_point<std::chrono::high_resolution_clock>& last);
 
 void wait(const std::chrono::milliseconds& milliseconds);
-} // namespace bricks
+} // namespace bricks::utility
 #endif

@@ -30,5 +30,5 @@ private:
     double mVelocity;
 };
 
-} // namespace bricks
+} // namespace bricks::game_objects
 #endif

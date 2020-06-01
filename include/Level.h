@@ -24,7 +24,8 @@ public:
     Level(const types::GridWidth& gridWidth,
           const types::GridHeight& gridHeight,
           const std::vector<game_objects::Brick>& bricks_,
-          const std::vector<game_objects::IndestructibleBrick>& indestructibleBricks_);
+          const std::vector<game_objects::IndestructibleBrick>&
+              indestructibleBricks_);
 
     int gridWidth() const;
     int gridHeight() const;

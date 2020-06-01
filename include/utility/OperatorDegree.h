@@ -10,5 +10,5 @@ constexpr long double operator"" _deg(long double deg)
 {
     return deg * M_PI / 180.0L;
 }
-} // namespace bricks
+} // namespace bricks::utility
 #endif

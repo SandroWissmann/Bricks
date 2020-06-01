@@ -4,7 +4,7 @@
 
 int main()
 {
-    try{
+    try {
         constexpr std::size_t screenWidth{780};
         constexpr std::size_t screenHeight{540};
 
@@ -24,7 +24,8 @@ int main()
         std::cin.get();
     }
     catch (...) {
-        std::cerr << "unknown error " << "\n";
+        std::cerr << "unknown error "
+                  << "\n";
         std::cin.get();
     }
 }

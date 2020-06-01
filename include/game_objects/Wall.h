@@ -15,5 +15,5 @@ public:
     Wall& operator=(const Wall& other) = default;
     Wall& operator=(Wall&& other) = default;
 };
-} // namespace bricks
+} // namespace bricks::game_objects
 #endif

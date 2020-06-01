@@ -2,16 +2,16 @@
 
 #include "game_objects/Physics.h"
 
-#include "utility/TimeMeasure.h"
 #include "utility/IsNumber.h"
+#include "utility/TimeMeasure.h"
 
 #include "Level.h"
 #include "Renderer.h"
 
 #include <algorithm>
 #include <cassert>
-#include <fstream>
 #include <filesystem>
+#include <fstream>
 #include <string>
 
 namespace bricks {
@@ -39,8 +39,7 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
                                 screenWidth, screenHeight,
                                 static_cast<std::size_t>(mLevel.gridWidth()),
                                 static_cast<std::size_t>(mLevel.gridHeight())}},
-    mAudioDevice{},
-    mHighscore{loadHighscore()}
+      mAudioDevice{}, mHighscore{loadHighscore()}
 {
     updateValuesInTitleBar();
 }
@@ -49,15 +48,15 @@ void Game::run()
 {
     while (true) {
         runLevel();
-        if(mQuit) {
+        if (mQuit) {
             return;
         }
         if (mGameOver) {
             playGameOver(mAudioDevice);
-            if(mScore > mHighscore) {
+            if (mScore > mHighscore) {
                 mHighscore = mScore;
                 writeHighscore(mHighscore);
-            }          
+            }
             mCurrentLevel = 1;
             mLifes = mStartLifes;
             mGameOver = false;
@@ -83,7 +82,7 @@ void Game::runLevel()
     while (true) {
         timepoint1 = getCurrentTime();
 
-        mRenderer.render(mLevel); 
+        mRenderer.render(mLevel);
 
         auto event = getEvent();
 
@@ -92,9 +91,9 @@ void Game::runLevel()
         if (mQuit) {
             return;
         }
-        if(mPause) {
+        if (mPause) {
             continue;
-        }     
+        }
 
         if (mLevel.ball.isActive()) {
             mLevel.ball.move(msPerFrame);
@@ -125,7 +124,7 @@ void Game::runLevel()
 }
 
 void Game::handleEvent(const Event& event, const Wall& leftWall,
-                 const Wall& rightWall, Ball& ball, Platform& platform)
+                       const Wall& rightWall, Ball& ball, Platform& platform)
 {
     switch (event) {
     case Event::quit:
@@ -134,7 +133,7 @@ void Game::handleEvent(const Event& event, const Wall& leftWall,
         mQuit = true;
         break;
     case Event::space:
-        if(mPause) {
+        if (mPause) {
             return;
         }
         if (!ball.isActive()) {
@@ -142,7 +141,7 @@ void Game::handleEvent(const Event& event, const Wall& leftWall,
         }
         break;
     case Event::left:
-        if(mPause) {
+        if (mPause) {
             return;
         }
         if (interectsWithLeftX(platform, leftWall)) {
@@ -153,7 +152,7 @@ void Game::handleEvent(const Event& event, const Wall& leftWall,
         }
         break;
     case Event::right:
-        if(mPause) {
+        if (mPause) {
             return;
         }
         if (interectsWithRightX(platform, rightWall)) {
@@ -165,7 +164,7 @@ void Game::handleEvent(const Event& event, const Wall& leftWall,
         break;
     case Event::p:
         mPause = !mPause;
-        if(mPause) {
+        if (mPause) {
             mRenderer.setPause();
         }
         else {
@@ -189,8 +188,8 @@ Level Game::loadLevel(int level)
 
 void Game::updateValuesInTitleBar()
 {
-    mRenderer.setWindowTitle(makeTitle(mCurrentLevel, mLifes, mScore, 
-        mHighscore));
+    mRenderer.setWindowTitle(
+        makeTitle(mCurrentLevel, mLifes, mScore, mHighscore));
 }
 
 bool Game::ballLost()
@@ -201,12 +200,12 @@ bool Game::ballLost()
 long long loadHighscore()
 {
     std::ifstream ifs{highscoreFilename};
-    if(!ifs.is_open()) {
+    if (!ifs.is_open()) {
         return 0;
     }
     std::string s;
     ifs >> s;
-    if(!isNumber<long long>(s)) {
+    if (!isNumber<long long>(s)) {
         return 0;
     }
     return std::stoll(s);
@@ -215,16 +214,15 @@ long long loadHighscore()
 void writeHighscore(long long highscore)
 {
     std::ofstream ofs{highscoreFilename};
-    if(!ofs) {
-        throw std::runtime_error(
-            "void writeHighscore(long long highscore)\n"
-            "File could not be opened\n"
-        );
+    if (!ofs) {
+        throw std::runtime_error("void writeHighscore(long long highscore)\n"
+                                 "File could not be opened\n");
     }
     ofs << highscore;
 }
 
-std::string makeTitle(int level, int lifes, long long score, long long highscore)
+std::string makeTitle(int level, int lifes, long long score,
+                      long long highscore)
 {
     return std::string{"Level: " + std::to_string(level) +
                        "     "
@@ -232,11 +230,10 @@ std::string makeTitle(int level, int lifes, long long score, long long highscore
                        std::to_string(lifes) +
                        "     "
                        "Score: " +
-                       std::to_string(score) + 
+                       std::to_string(score) +
                        "     "
                        "Highscore: " +
-                       std::to_string(highscore)                   
-                       };
+                       std::to_string(highscore)};
 }
 
 void moveLeft(Platform& platform, double elapsedTimeInMS)
@@ -268,7 +265,7 @@ void Game::handleBallCollisions()
     if (reflect(mLevel.ball, mLevel.topWall())) {
         return;
     }
-    if (reflect(mLevel.ball, mLevel.platform)) {    
+    if (reflect(mLevel.ball, mLevel.platform)) {
         playHitPlatform(mAudioDevice);
         return;
     }
@@ -333,7 +330,7 @@ getLevelFilenamesFromFolder(const std::string& folderName)
 {
     std::vector<std::string> names;
     for (auto& p : std::filesystem::directory_iterator(folderName)) {
-        if(p.path().extension() == ".lvl") {
+        if (p.path().extension() == ".lvl") {
             names.emplace_back(std::filesystem::absolute(p.path()));
         }
     }

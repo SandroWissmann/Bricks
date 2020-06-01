@@ -14,4 +14,4 @@ void Platform::move(double elapsedTimeInMS)
     setTopLeft(newPos);
 }
 
-} // namespace bricks
+} // namespace bricks::game_objects
