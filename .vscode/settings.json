@@ -42,7 +42,10 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "variant": "cpp"
     },
     "editor.tokenColorCustomizations": {
         "textMateRules": [
