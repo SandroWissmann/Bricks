@@ -10,6 +10,8 @@ namespace bricks{
         const Width& platformWidth, 
         const Velocity& ballVelocity,
         const Gravity& ballGravity)
+        :mPlatformVelocity{ platformVelocity}, mPlatformWidth{platformWidth},
+        mBallVelocity{ballVelocity}, mBallGravity{ballGravity}
     {     
     }
 

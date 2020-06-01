@@ -8,6 +8,7 @@
 #include "Level.h"
 #include "Renderer.h"
 #include "InputHandler.h"
+#include "GameParameter.h"
 
 #include <string>
 #include <vector>
@@ -42,12 +43,12 @@ private:
     long long getBrickValue(const game_objects::Brick& brick) const;
     void awardExtraLifeIfThresholdReached();
 
+    GameParameter mParameter;
     std::vector<std::string> mLevelFilenames;
     Level mLevel;
     Renderer mRenderer;
     InputHandler mInputHandler;
     AudioDevice mAudioDevice;
-    GameParameter mParameter;
 
     static constexpr auto mStartLifes{5};
 
