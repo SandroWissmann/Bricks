@@ -34,6 +34,21 @@ TEST(GameObjectTest_, defaultConstructor)
     EXPECT_EQ(obj.height(), 0.0);
 }
 
+DerivedGameObject makeDerrivedGameObject(Point point)
+{
+    return DerivedGameObject{
+        point,
+        Width{1},
+        Height{1}
+    };
+}
+
+TEST(GameObjectTest_, Constructor_throws_invald_argument)
+{
+    EXPECT_THROW((makeDerrivedGameObject(Point{-1,0})), std::invalid_argument);
+    EXPECT_THROW((makeDerrivedGameObject(Point{0,-1})), std::invalid_argument);
+}
+
 class GameObjectTest : public ::testing::Test {
 protected:
     DerivedGameObject obj{Point{10.1, 20.2}, Width{10.5}, Height{20.6}};
