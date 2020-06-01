@@ -1,8 +1,6 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "RGBColor.h"
-
 #include <SDL.h>
 
 #include <string>
@@ -12,12 +10,16 @@
 namespace bricks {
 
 namespace game_objects {
-class Ball;
-class Platform;
-class Wall;
-class Brick;
-class IndestructibleBrick;
-class GameObject;
+    class Ball;
+    class Platform;
+    class Wall;
+    class Brick;
+    class IndestructibleBrick;
+    class GameObject;
+}
+
+namespace types{
+    class RGBColor;
 }
 
 class Level;
@@ -61,13 +63,13 @@ private:
     void render(const game_objects::Wall& wall);
     void render(const game_objects::Brick& brick);
     void render(const game_objects::IndestructibleBrick& indestructibleBrick);
-    void render(const game_objects::GameObject& obj, RGBColor color);
+    void render(const game_objects::GameObject& obj, types::RGBColor color);
 
-    void drawHighlights(const SDL_Rect& rect, const RGBColor& color);
+    void drawHighlights(const SDL_Rect& rect, const types::RGBColor& color);
 
     SDL_Rect toSDLRect(const game_objects::GameObject& obj) const;
-    void setDrawColor(const RGBColor& color);
-    RGBColor getBrickDrawColor(const game_objects::Brick& brick);
+    void setDrawColor(const types::RGBColor& color);
+   types::RGBColor getBrickDrawColor(const game_objects::Brick& brick);
 
     std::unique_ptr<SDL_Window, SDLWindowDeleter> mSdlWindow;
     std::unique_ptr<SDL_Renderer, SDLRendererDeleter> mSdlRenderer;

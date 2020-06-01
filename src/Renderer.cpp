@@ -6,6 +6,8 @@
 #include "game_objects/Platform.h"
 #include "game_objects/Wall.h"
 
+#include "types/RGBColor.h"
+
 #include "Level.h"
 #include "SDL_RAII.h"
 
@@ -24,6 +26,8 @@ using GameObject = game_objects::GameObject;
 using IndestructibleBrick = game_objects::IndestructibleBrick;
 using Platform = game_objects::Platform;
 using Wall = game_objects::Wall;
+
+using RGBColor = types::RGBColor;
 
 Renderer::Renderer(const std::size_t screenWidth,
                    const std::size_t screenHeight, const std::size_t gridWidth,

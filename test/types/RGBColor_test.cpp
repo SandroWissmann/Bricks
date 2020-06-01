@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
-#include "../include/RGBColor.h"
+#include "../../include/types/RGBColor.h"
 
-using namespace bricks;
+using namespace bricks::types;
 
 TEST(RGBColorTest, Constructor)
 {

@@ -1,7 +1,7 @@
-#ifndef RGBCOLOR_H
-#define RGBCOLOR_H
+#ifndef TYPES_RGBCOLOR_H
+#define TYPES_RGBCOLOR_H
 
-namespace bricks {
+namespace bricks::types {
 class RGBColor {
 public:
     RGBColor(int r, int g, int b, int a = 0xFF);

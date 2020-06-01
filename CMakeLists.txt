@@ -37,6 +37,7 @@ add_executable(bricks
     src/types/Height.cpp
     src/types/Hitpoints.cpp
     src/types/Point.cpp
+    src/types/RGBColor.cpp
     src/types/Velocity.cpp
     src/types/Width.cpp
 
@@ -50,7 +51,6 @@ add_executable(bricks
     src/Level.cpp
     src/main.cpp
     src/Renderer.cpp
-    src/RGBColor.cpp
     src/SDL_RAII.cpp
 )
 
@@ -87,6 +87,8 @@ add_executable(test
     src/types/Hitpoints.cpp
     test/types/Point_test.cpp
     src/types/Point.cpp
+    src/types/RGBColor.cpp
+    test/types/RGBColor_test.cpp
     test/types/Velocity_test.cpp
     src/types/Velocity.cpp
     test/types/Width_test.cpp
@@ -100,8 +102,6 @@ add_executable(test
 
     test/Level_test.cpp
     src/Level.cpp
-    src/RGBColor.cpp
-    test/RGBColor_test.cpp
 )
 
 target_link_libraries(test 
