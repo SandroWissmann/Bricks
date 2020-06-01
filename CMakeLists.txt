@@ -107,6 +107,9 @@ add_executable(test
     src/utility/NearlyEqual.cpp
     test/utility/OperatorDegree_test.cpp
 
+# needs to be added so linker works with level
+    src/GameParameter.cpp
+
     test/Level_test.cpp
     src/Level.cpp
 )
