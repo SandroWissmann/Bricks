@@ -53,8 +53,7 @@ public:
 
     void setWindowTitle(const std::string& title);
 
-    void setPause();
-    void resetPause();
+    void setPaused(bool paused);
 
 private:
     void clearScreen();

@@ -8,6 +8,7 @@
 #include "GetEvent.h"
 #include "Level.h"
 #include "Renderer.h"
+#include "InputHandler.h"
 
 #include <string>
 #include <vector>
@@ -30,11 +31,6 @@ public:
 private:
     void runLevel();
 
-    void handleEvent(const Event& event, const game_objects::Wall& leftWall,
-                     const game_objects::Wall& rightWall,
-                     game_objects::Ball& ball,
-                     game_objects::Platform& platform);
-
     bool beatGame();
     Level loadLevel(int level);
 
@@ -49,6 +45,7 @@ private:
     std::vector<std::string> mLevelFilenames;
     Level mLevel;
     Renderer mRenderer;
+    InputHandler mInputHandler;
     AudioDevice mAudioDevice;
 
     static constexpr auto mStartLifes{5};
@@ -59,8 +56,6 @@ private:
     int mCurrentLevel{1};
     int mLifes{mStartLifes};
     bool mGameOver = false;
-    bool mQuit = false;
-    bool mPause = false;
 };
 
 long long loadHighscore();
@@ -68,9 +63,6 @@ void writeHighscore(long long highscore);
 
 std::string makeTitle(int level, int lifes, long long score,
                       long long highscore);
-
-void moveLeft(game_objects::Platform& platform, double elapsedTimeInMS);
-void moveRight(game_objects::Platform& platform, double elapsedTimeInMS);
 
 bool allBricksAreDestroyed(const std::vector<game_objects::Brick> bricks);
 

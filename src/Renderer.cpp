@@ -84,14 +84,9 @@ void Renderer::setWindowTitle(const std::string& title)
     SDL_SetWindowTitle(mSdlWindow.get(), title.c_str());
 }
 
-void Renderer::setPause()
+void Renderer::setPaused(bool paused)
 {
-    mPaused = true;
-}
-
-void Renderer::resetPause()
-{
-    mPaused = false;
+    mPaused = paused;
 }
 
 void Renderer::clearScreen()
