@@ -21,6 +21,8 @@ bool reflectFromQuadrantII(Ball& ball, const Platform& platform);
 bool reflectHorizontalFromQuadrantII(Ball& ball, const Platform& platform);
 void reflectHorizontalIItoIII(Ball& ball, const Platform& platform);
 
+double calcAngleFactor(double xBall, double xLeft, double xCenter, double xRight);
+
 bool reflect(Ball& ball, const GameObject& obj);
 
 bool reflectFromQuadrantI(Ball& ball, const GameObject& obj);

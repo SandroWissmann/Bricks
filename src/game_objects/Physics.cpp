@@ -76,26 +76,13 @@ void reflectHorizontalItoIV(Ball& ball, const Platform& platform)
     auto xBall = ball.bottomRight().x;
     auto len = xRight - xCenter;
 
-    auto angle = ball.angle();
-    angle.mirrorHorizontal();
-    auto quadAngleIV = angle.quadrantAngle();
+    auto factor = calcAngleFactor(xBall, xLeft, xCenter, xRight); 
 
-    double factor = 0.0;
-    if(xBall <= xCenter) {
-        factor = (xCenter - xBall) / len;
-    }
-    else {
-        factor = (xRight - xBall) / len;
-    }
-
-    factor = std::clamp(factor, 0.0, 1.0);
-    std::cerr << "factor Horizontal:" << factor << '\n';
-    assert(factor >= 0.0 && factor <= 1.0);
-    auto newQuadAngle = quadAngleIV - (quadAngleIV * factor);
-
-
+    auto newQuadAngle = 60.0_deg - (45.0_deg * factor);
     assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
 
+    auto angle = ball.angle();
+    angle.mirrorHorizontal();
     angle.setQuadrantAngle(newQuadAngle);
     ball.setAngle(angle);
 }
@@ -137,30 +124,36 @@ void reflectHorizontalIItoIII(Ball& ball, const Platform& platform)
     auto xLeft = platform.topLeft().x;
     auto xCenter = xLeft + (platform.width() / 2.0);
     auto xBall = ball.topLeft().x;
-    auto len = xCenter - xLeft;
 
-    auto quadAngleII = ball.angle().quadrantAngle();
+    auto factor = calcAngleFactor(xBall, xLeft, xCenter, xRight); 
+
+    auto newQuadAngle = 30.0_deg + (45.0_deg * factor);
+    assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
+
     auto angle = ball.angle();
     angle.mirrorHorizontal();
-    auto quadAngleIII = angle.quadrantAngle();
+    angle.setQuadrantAngle(newQuadAngle);
+    ball.setAngle(angle);   
+}
 
+double calcAngleFactor(
+    double xBall, double xLeft, double xCenter, double xRight)
+{
+    assert(xLeft < xCenter);
+    assert(xCenter < xRight);
+    
+    xBall = std::clamp(xBall, xLeft, xRight);
+
+    auto len = xCenter - xLeft;
     double factor = 0.0;
     if(xBall <= xCenter) {
         factor = (xCenter - xBall) / len;
     }
     else {
-        factor = (xRight - xBall) / len;
+        factor = (xBall - xCenter) / len;
     }
-    factor = std::clamp(factor, 0.0, 1.0);
-    std::cerr << "factor Vertical:" << factor << '\n';
     assert(factor >= 0.0 && factor <= 1.0);
-
-    auto newQuadAngle = quadAngleIII + (quadAngleII * factor);
-
-    assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
-
-    angle.setQuadrantAngle(newQuadAngle);
-    ball.setAngle(angle);   
+    return factor;
 }
 
 bool reflect(Ball& ball, const GameObject& obj)
