@@ -13,6 +13,8 @@ public:
     double operator()() const;
 
 private:
+    double checkArgs(double value) const;
+
     double mValue{0.0};
 };
 
