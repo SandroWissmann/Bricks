@@ -78,7 +78,7 @@ void reflectHorizontalItoIV(Ball& ball, const Platform& platform)
 
     auto factor = calcAngleFactor(xBall, xLeft, xCenter, xRight); 
 
-    auto newQuadAngle = 60.0_deg - (45.0_deg * factor);
+    auto newQuadAngle = 60.0_deg - (45.0_deg - 45.0_deg * factor);
     assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
 
     auto angle = ball.angle();
@@ -127,7 +127,7 @@ void reflectHorizontalIItoIII(Ball& ball, const Platform& platform)
 
     auto factor = calcAngleFactor(xBall, xLeft, xCenter, xRight); 
 
-    auto newQuadAngle = 30.0_deg + (45.0_deg * factor);
+    auto newQuadAngle = 30.0_deg + (45.0_deg - (45.0_deg * factor));
     assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
 
     auto angle = ball.angle();
@@ -152,6 +152,7 @@ double calcAngleFactor(
     else {
         factor = (xBall - xCenter) / len;
     }
+    factor = std::clamp(factor, 0.0, 1.0);
     assert(factor >= 0.0 && factor <= 1.0);
     return factor;
 }
