@@ -9,13 +9,39 @@ namespace bricks::game_objects {
 
 class Ball;
 class GameObject;
+class Platform;
+
+bool reflect(Ball& ball, const Platform& platform);
+
+bool reflectFromQuadrantI(Ball& ball, const Platform& platform);
+bool reflectHorizontalFromQuadrantI(Ball& ball, const Platform& platform);
+void reflectHorizontalItoIV(Ball& ball, const Platform& platform);
+
+bool reflectFromQuadrantII(Ball& ball, const Platform& platform);
+bool reflectHorizontalFromQuadrantII(Ball& ball, const Platform& platform);
+void reflectHorizontalIItoIII(Ball& ball, const Platform& platform);
 
 bool reflect(Ball& ball, const GameObject& obj);
 
 bool reflectFromQuadrantI(Ball& ball, const GameObject& obj);
+
+bool reflectHorizontalFromQuadrantI(Ball& ball, const GameObject& obj);
+bool reflectVerticalFromQuadrantI(Ball& ball, const GameObject& obj);
+
 bool reflectFromQuadrantII(Ball& ball, const GameObject& obj);
+
+bool reflectHorizontalFromQuadrantII(Ball& ball, const GameObject& obj);
+bool reflectVerticalFromQuadrantII(Ball& ball, const GameObject& obj);
+
 bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj);
+
+bool reflectHorizontalFromQuadrantIII(Ball& ball, const GameObject& obj);
+bool reflectVerticalFromQuadrantIII(Ball& ball, const GameObject& obj);
+
 bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj);
+
+bool reflectHorizontalFromQuadrantIV(Ball& ball, const GameObject& obj);
+bool reflectVerticalFromQuadrantIV(Ball& ball, const GameObject& obj);
 
 types::Angle clampAngle(const types::Angle& angle);
 

@@ -1,6 +1,7 @@
 #include "Physics.h"
 
 #include "Ball.h"
+#include "Platform.h"
 #include "GameObject.h"
 
 #include "../types/Angle.h"
@@ -11,11 +12,156 @@
 #include <algorithm>
 #include <random>
 
+#include <iostream>
+
+#include <cassert>
+
 namespace bricks::game_objects {
 
 using Angle = types::Angle;
 using Point = types::Point;
 using Quadrant = types::Quadrant;
+
+bool reflect(Ball& ball, const Platform& platform)
+{
+    switch (ball.angle().quadrant()) {
+    case Quadrant::I:
+        return reflectFromQuadrantI(ball, platform);
+    case Quadrant::II:
+        return reflectFromQuadrantII(ball, platform);   
+    case Quadrant::III:
+        return reflectFromQuadrantIII(ball, platform);
+    case Quadrant::IV:
+        return  reflectFromQuadrantIV(ball, platform);
+    }
+    return false;
+}
+
+bool reflectFromQuadrantI(Ball& ball, const Platform& platform)
+{
+    if (interectsWithBottomY(ball, platform)) {
+        return reflectHorizontalFromQuadrantI(ball, platform);
+    }
+    else if (interectsWithRightX(ball, platform)) {
+        return reflectVerticalFromQuadrantI(ball, platform);
+    }
+    return false;
+}
+
+bool reflectHorizontalFromQuadrantI(Ball& ball, const Platform& platform)
+{
+    if (isInsideWithX(ball, platform)) {
+        reflectHorizontalItoIV(ball, platform);
+    }
+    else if (interectsWithRightX(ball, platform) &&
+                notThroughWithRightX(ball, platform)) {
+        reflectHorizontalItoIV(ball, platform);
+    }
+    else if (interectsWithLeftX(ball, platform) &&
+                notThroughWithLeftX(ball, platform)) {
+        reflectHorizontalItoIV(ball, platform);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithBottomY(ball, platform);
+    return true;
+}
+
+void reflectHorizontalItoIV(Ball& ball, const Platform& platform)
+{
+    auto xRight = platform.bottomRight().x;
+    auto xLeft = platform.topLeft().x;
+    auto xCenter = xRight - (platform.width() / 2.0);
+    auto xBall = ball.bottomRight().x;
+    auto len = xRight - xCenter;
+
+    auto angle = ball.angle();
+    angle.mirrorHorizontal();
+    auto quadAngleIV = angle.quadrantAngle();
+
+    double factor = 0.0;
+    if(xBall <= xCenter) {
+        factor = (xCenter - xBall) / len;
+    }
+    else {
+        factor = (xRight - xBall) / len;
+    }
+
+    factor = std::clamp(factor, 0.0, 1.0);
+    std::cerr << "factor Horizontal:" << factor << '\n';
+    assert(factor >= 0.0 && factor <= 1.0);
+    auto newQuadAngle = quadAngleIV - (quadAngleIV * factor);
+
+
+    assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
+
+    angle.setQuadrantAngle(newQuadAngle);
+    ball.setAngle(angle);
+}
+
+bool reflectFromQuadrantII(Ball& ball, const Platform& platform)
+{
+    if (interectsWithBottomY(ball, platform)) {
+        return reflectHorizontalFromQuadrantII(ball, platform);
+    }
+    else if (interectsWithLeftX(ball, platform)) {
+        return reflectVerticalFromQuadrantII(ball, platform);
+    }
+    return false;
+}
+
+bool reflectHorizontalFromQuadrantII(Ball& ball, const Platform& platform)
+{
+    if (isInsideWithX(ball, platform)) {
+        reflectHorizontalIItoIII(ball, platform);
+    }
+    else if (interectsWithRightX(ball, platform) &&
+                notThroughWithRightX(ball, platform)) {
+        reflectHorizontalIItoIII(ball, platform);
+    }
+    else if (interectsWithLeftX(ball, platform) &&
+                notThroughWithLeftX(ball, platform)) {
+        reflectHorizontalIItoIII(ball, platform);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithBottomY(ball, platform);
+    return true;
+}
+
+void reflectHorizontalIItoIII(Ball& ball, const Platform& platform)
+{
+    auto xRight = platform.bottomRight().x;
+    auto xLeft = platform.topLeft().x;
+    auto xCenter = xLeft + (platform.width() / 2.0);
+    auto xBall = ball.topLeft().x;
+    auto len = xCenter - xLeft;
+
+    auto quadAngleII = ball.angle().quadrantAngle();
+    auto angle = ball.angle();
+    angle.mirrorHorizontal();
+    auto quadAngleIII = angle.quadrantAngle();
+
+    double factor = 0.0;
+    if(xBall <= xCenter) {
+        factor = (xCenter - xBall) / len;
+    }
+    else {
+        factor = (xRight - xBall) / len;
+    }
+    factor = std::clamp(factor, 0.0, 1.0);
+    std::cerr << "factor Vertical:" << factor << '\n';
+    assert(factor >= 0.0 && factor <= 1.0);
+
+    auto newQuadAngle = quadAngleIII + (quadAngleII * factor);
+
+    assert(newQuadAngle >= 0.0_deg && newQuadAngle <= 90.0_deg);
+
+    angle.setQuadrantAngle(newQuadAngle);
+    ball.setAngle(angle);   
+}
 
 bool reflect(Ball& ball, const GameObject& obj)
 {
@@ -35,173 +181,213 @@ bool reflect(Ball& ball, const GameObject& obj)
 bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
 {
     if (interectsWithBottomY(ball, obj)) {
-        if (isInsideWithX(ball, obj)) {
-            reflectHorizontal(ball);
-        }
-        else if (interectsWithRightX(ball, obj) &&
-                 notThroughWithRightX(ball, obj)) {
-            reflectHorizontalIncreased(ball);
-        }
-        else if (interectsWithLeftX(ball, obj) &&
-                 notThroughWithLeftX(ball, obj)) {
-            reflectHorizontalIncreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithBottomY(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectHorizontalFromQuadrantI(ball, obj);
     }
     else if (interectsWithRightX(ball, obj)) {
-        if (isInsideWithY(ball, obj)) {
-            reflectVertical(ball);
-        }
-        else if (interectsWithBottomY(ball, obj) &&
-                 notThroughWithBottomY(ball, obj)) {
-            reflectVerticalIncreased(ball);
-        }
-        else if (interectsWithTopY(ball, obj) &&
-                 notThroughWithTopY(ball, obj)) {
-            reflectVerticalIncreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithRightX(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectVerticalFromQuadrantI(ball, obj);
     }
     return false;
+}
+
+bool reflectHorizontalFromQuadrantI(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithX(ball, obj)) {
+        reflectHorizontal(ball);
+    }
+    else if (interectsWithRightX(ball, obj) &&
+                notThroughWithRightX(ball, obj)) {
+        reflectHorizontalIncreased(ball);
+    }
+    else if (interectsWithLeftX(ball, obj) &&
+                notThroughWithLeftX(ball, obj)) {
+        reflectHorizontalIncreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithBottomY(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
+}
+
+bool reflectVerticalFromQuadrantI(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithY(ball, obj)) {
+        reflectVertical(ball);
+    }
+    else if (interectsWithBottomY(ball, obj) &&
+                notThroughWithBottomY(ball, obj)) {
+        reflectVerticalIncreased(ball);
+    }
+    else if (interectsWithTopY(ball, obj) &&
+                notThroughWithTopY(ball, obj)) {
+        reflectVerticalIncreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithRightX(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
 }
 
 bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
 {
     if (interectsWithBottomY(ball, obj)) {
-        if (isInsideWithX(ball, obj)) {
-            reflectHorizontal(ball);
-        }
-        else if (interectsWithRightX(ball, obj) &&
-                 notThroughWithRightX(ball, obj)) {
-            reflectHorizontalDecreased(ball);
-        }
-        else if (interectsWithLeftX(ball, obj) &&
-                 notThroughWithLeftX(ball, obj)) {
-            reflectHorizontalDecreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithBottomY(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectHorizontalFromQuadrantII(ball, obj);
     }
     else if (interectsWithLeftX(ball, obj)) {
-        if (isInsideWithY(ball, obj)) {
-            reflectVertical(ball);
-        }
-        else if (interectsWithBottomY(ball, obj) &&
-                 notThroughWithBottomY(ball, obj)) {
-            reflectVerticalDecreased(ball);
-        }
-        else if (interectsWithTopY(ball, obj) &&
-                 notThroughWithTopY(ball, obj)) {
-            reflectVerticalDecreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithLeftX(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectVerticalFromQuadrantII(ball, obj);
     }
     return false;
+}
+
+bool reflectHorizontalFromQuadrantII(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithX(ball, obj)) {
+        reflectHorizontal(ball);
+    }
+    else if (interectsWithRightX(ball, obj) &&
+                notThroughWithRightX(ball, obj)) {
+        reflectHorizontalDecreased(ball);
+    }
+    else if (interectsWithLeftX(ball, obj) &&
+                notThroughWithLeftX(ball, obj)) {
+        reflectHorizontalDecreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithBottomY(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
+}
+
+bool reflectVerticalFromQuadrantII(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithY(ball, obj)) {
+        reflectVertical(ball);
+    }
+    else if (interectsWithBottomY(ball, obj) &&
+                notThroughWithBottomY(ball, obj)) {
+        reflectVerticalDecreased(ball);
+    }
+    else if (interectsWithTopY(ball, obj) &&
+                notThroughWithTopY(ball, obj)) {
+        reflectVerticalDecreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithLeftX(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
 }
 
 bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
 {
     if (interectsWithTopY(ball, obj)) {
-        if (isInsideWithX(ball, obj)) {
-            reflectHorizontal(ball);
-        }
-        else if (interectsWithRightX(ball, obj) &&
-                 notThroughWithRightX(ball, obj)) {
-            reflectHorizontalIncreased(ball);
-        }
-        else if (interectsWithLeftX(ball, obj) &&
-                 notThroughWithLeftX(ball, obj)) {
-            reflectHorizontalIncreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithTopY(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectHorizontalFromQuadrantIII(ball, obj);
     }
     else if (interectsWithLeftX(ball, obj)) {
-        if (isInsideWithY(ball, obj)) {
-            reflectVertical(ball);
-        }
-        else if (interectsWithBottomY(ball, obj) &&
-                 notThroughWithBottomY(ball, obj)) {
-            reflectVerticalIncreased(ball);
-        }
-        else if (interectsWithTopY(ball, obj) &&
-                 notThroughWithTopY(ball, obj)) {
-            reflectVerticalIncreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithLeftX(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectVerticalFromQuadrantIII(ball, obj);
     }
     return false;
+}
+
+bool reflectHorizontalFromQuadrantIII(Ball& ball, const GameObject& obj)
+{
+        if (isInsideWithX(ball, obj)) {
+        reflectHorizontal(ball);
+    }
+    else if (interectsWithRightX(ball, obj) &&
+                notThroughWithRightX(ball, obj)) {
+        reflectHorizontalIncreased(ball);
+    }
+    else if (interectsWithLeftX(ball, obj) &&
+                notThroughWithLeftX(ball, obj)) {
+        reflectHorizontalIncreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithTopY(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
+}
+
+bool reflectVerticalFromQuadrantIII(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithY(ball, obj)) {
+        reflectVertical(ball);
+    }
+    else if (interectsWithBottomY(ball, obj) &&
+                notThroughWithBottomY(ball, obj)) {
+        reflectVerticalIncreased(ball);
+    }
+    else if (interectsWithTopY(ball, obj) &&
+                notThroughWithTopY(ball, obj)) {
+        reflectVerticalIncreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithLeftX(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
 }
 
 bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
 {
     if (interectsWithTopY(ball, obj)) {
-        if (isInsideWithX(ball, obj)) {
-            reflectHorizontal(ball);
-        }
-        else if (interectsWithRightX(ball, obj) &&
-                 notThroughWithRightX(ball, obj)) {
-            reflectHorizontalDecreased(ball);
-        }
-        else if (interectsWithLeftX(ball, obj) &&
-                 notThroughWithLeftX(ball, obj)) {
-            reflectHorizontalDecreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithTopY(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectHorizontalFromQuadrantIV(ball, obj);
     }
     else if (interectsWithRightX(ball, obj)) {
-        if (isInsideWithY(ball, obj)) {
-            reflectVertical(ball);
-        }
-        else if (interectsWithBottomY(ball, obj) &&
-                 notThroughWithBottomY(ball, obj)) {
-            reflectVerticalDecreased(ball);
-        }
-        else if (interectsWithTopY(ball, obj) &&
-                 notThroughWithTopY(ball, obj)) {
-            reflectVerticalDecreased(ball);
-        }
-        else {
-            return false;
-        }
-        putBeforeIntersectsWithRightX(ball, obj);
-        ball.setAngle(clampAngle(ball.angle()));
-        return true;
+        return reflectVerticalFromQuadrantIV(ball, obj);
     }
     return false;
+}
+
+bool reflectHorizontalFromQuadrantIV(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithX(ball, obj)) {
+        reflectHorizontal(ball);
+    }
+    else if (interectsWithRightX(ball, obj) &&
+                notThroughWithRightX(ball, obj)) {
+        reflectHorizontalDecreased(ball);
+    }
+    else if (interectsWithLeftX(ball, obj) &&
+                notThroughWithLeftX(ball, obj)) {
+        reflectHorizontalDecreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithTopY(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
+}
+
+bool reflectVerticalFromQuadrantIV(Ball& ball, const GameObject& obj)
+{
+    if (isInsideWithY(ball, obj)) {
+        reflectVertical(ball);
+    }
+    else if (interectsWithBottomY(ball, obj) &&
+                notThroughWithBottomY(ball, obj)) {
+        reflectVerticalDecreased(ball);
+    }
+    else if (interectsWithTopY(ball, obj) &&
+                notThroughWithTopY(ball, obj)) {
+        reflectVerticalDecreased(ball);
+    }
+    else {
+        return false;
+    }
+    putBeforeIntersectsWithRightX(ball, obj);
+    ball.setAngle(clampAngle(ball.angle()));
+    return true;
 }
 
 types::Angle clampAngle(const types::Angle& angle)
