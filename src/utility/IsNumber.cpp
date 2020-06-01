@@ -18,6 +18,7 @@ template <typename T> bool isNumber(const std::string& s)
 }
 
 template bool isNumber<int>(const std::string& s);
+template bool isNumber<std::size_t>(const std::string& s);
 template bool isNumber<long long>(const std::string& s);
 template bool isNumber<double>(const std::string& s);
 } // namespace bricks::utility
