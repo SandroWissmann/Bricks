@@ -6,6 +6,16 @@ using namespace bricks;
 using namespace bricks::game_objects;
 using namespace bricks::types;
 
+Brick makeBrick(int hitpoints)
+{
+    return Brick{
+        Point{0.0, 0.0},
+        Width{1},
+        Height{1},
+        Hitpoints{hitpoints}
+    };
+}
+
 TEST(BrickTest, defaultConstructor)
 {
     Brick brick;
@@ -14,6 +24,12 @@ TEST(BrickTest, defaultConstructor)
     EXPECT_EQ(brick.topLeft().y, 0.0);
     EXPECT_EQ(brick.width(), 0.0);
     EXPECT_EQ(brick.height(), 0.0);
+}
+
+TEST(BrickTest, Constructor_throws_invald_argument)
+{
+    EXPECT_THROW(makeBrick(0), std::invalid_argument);
+    EXPECT_THROW(makeBrick(10), std::invalid_argument);
 }
 
 TEST(BrickTest, startHitpoints)
