@@ -23,6 +23,9 @@ public:
     virtual void setTopLeft(types::Point topLeft);
     types::Point bottomRight() const;
 
+    types::Point bottomLeft() const;
+    types::Point topRight() const;
+
     double width() const;
     double height() const;
 

@@ -35,6 +35,16 @@ Point GameObject::bottomRight() const
     return Point{mTopLeft.x + mWidth, mTopLeft.y + mHeight};
 }
 
+Point GameObject::bottomLeft() const
+{
+    return Point{mTopLeft.x, mTopLeft.y + mHeight};
+}
+
+Point GameObject::topRight() const
+{
+    return Point{mTopLeft.x + mWidth, mTopLeft.y};
+}
+
 double GameObject::width() const
 {
     return mWidth;
