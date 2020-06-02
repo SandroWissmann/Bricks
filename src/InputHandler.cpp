@@ -11,7 +11,7 @@
 
 #include <SDL.h>
 
-namespace bricks{
+namespace bricks {
 
 using Ball = game_objects::Ball;
 using Platform = game_objects::Platform;
@@ -75,19 +75,18 @@ InputHandler::Event InputHandler::getEvent()
     return Event::none;
 }
 
-void InputHandler::handleEvent(const InputHandler::Event& event, 
-    double elapsedTimeMS, Level& level)
+void InputHandler::handleEvent(const InputHandler::Event& event,
+                               double elapsedTimeMS, Level& level)
 {
-    handleEvent(event, elapsedTimeMS, level.leftWall(), level.rightWall(), 
-        level.ball, level.platform);
+    handleEvent(event, elapsedTimeMS, level.leftWall(), level.rightWall(),
+                level.ball, level.platform);
 }
 
-void InputHandler::handleEvent(
-    const Event& event, double elapsedTimeMS, 
-    const Wall& leftWall, const Wall& rightWall, Ball& ball, 
-    Platform& platform)
+void InputHandler::handleEvent(const Event& event, double elapsedTimeMS,
+                               const Wall& leftWall, const Wall& rightWall,
+                               Ball& ball, Platform& platform)
 {
-    if(event == Event::p) {
+    if (event == Event::p) {
         mPaused = !mPaused;
         mChangedPauseState = true;
         return;
@@ -96,19 +95,18 @@ void InputHandler::handleEvent(
         mChangedPauseState = false;
     }
 
-    switch(event)
-    {
+    switch (event) {
     case Event::quit:
         [[fallthrough]];
     case Event::escape:
         mQuit = true;
-        return;  
+        return;
     case Event::p:
         mPaused = !mPaused;
-        return;  
+        return;
     }
 
-    if(mPaused) {
+    if (mPaused) {
         return;
     }
 
@@ -137,7 +135,7 @@ void InputHandler::handleEvent(
     }
 }
 
-namespace impl{
+namespace impl {
 void moveLeft(Platform& platform, double elapsedTimeInMS)
 {
     if (auto velocity = platform.velocity(); velocity > 0) {
@@ -155,6 +153,6 @@ void moveRight(Platform& platform, double elapsedTimeInMS)
     }
     platform.move(elapsedTimeInMS);
 }
-}
+} // namespace impl
 
-}
+} // namespace bricks

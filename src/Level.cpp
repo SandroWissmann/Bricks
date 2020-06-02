@@ -44,22 +44,19 @@ static constexpr auto ballHeight{0.75};
 static constexpr auto ballAngle{135.0_deg};
 
 Level::Level()
-    : mParameter{}, mGridWidth{}, mGridHeight{}, mLeftWall{}, mRightWall{}, 
-        mTopWall{}, platform{}, ball{}, bricks{}, indestructibleBricks{}
+    : mParameter{}, mGridWidth{}, mGridHeight{}, mLeftWall{}, mRightWall{},
+      mTopWall{}, platform{}, ball{}, bricks{}, indestructibleBricks{}
 {
 }
 
-Level::Level(
-    const GameParameter& parameter,
-    const GridWidth& gridWidth, const GridHeight& gridHeight,
-             const std::vector<Brick>& bricks_,
+Level::Level(const GameParameter& parameter, const GridWidth& gridWidth,
+             const GridHeight& gridHeight, const std::vector<Brick>& bricks_,
              const std::vector<IndestructibleBrick>& indestructibleBricks_)
-    : mParameter{parameter},
-      mGridWidth{gridWidth()}, mGridHeight{gridHeight()},
-      mLeftWall{makeLeftWall()}, mRightWall{makeRightWall()},
-      mTopWall{makeTopWall()}, 
-      platform{makePlatform(mParameter.getPlatformWidth(), 
-        mParameter.getPlatformVelocity())}, 
+    : mParameter{parameter}, mGridWidth{gridWidth()},
+      mGridHeight{gridHeight()}, mLeftWall{makeLeftWall()},
+      mRightWall{makeRightWall()}, mTopWall{makeTopWall()},
+      platform{makePlatform(mParameter.getPlatformWidth(),
+                            mParameter.getPlatformVelocity())},
       ball{makeBall(mParameter.getBallVelocity(), mParameter.getBallGravity())},
       bricks{bricks_}, indestructibleBricks{indestructibleBricks_}
 {
@@ -117,8 +114,8 @@ void Level::resetBall()
 }
 void Level::resetPlatform()
 {
-    platform = makePlatform(mParameter.getPlatformWidth(), 
-        mParameter.getPlatformVelocity());
+    platform = makePlatform(mParameter.getPlatformWidth(),
+                            mParameter.getPlatformVelocity());
 }
 
 Wall Level::makeLeftWall()
@@ -150,12 +147,8 @@ Ball Level::makeBall(const Velocity& velocity, const Gravity& gravity)
 {
     auto p = impl::ballInitPosition(mGridWidth, mGridHeight);
 
-    return Ball{p,
-                Width{ballWidth},
-                Height{ballHeight},
-                velocity,
-                Angle{ballAngle},
-                gravity};
+    return Ball{p,        Width{ballWidth}, Height{ballHeight},
+                velocity, Angle{ballAngle}, gravity};
 }
 
 void Level::transposeCoordinatesWithWalls(GameObject& obj)
@@ -251,8 +244,8 @@ std::istream& operator>>(std::istream& is, Level& obj)
         }
     }
 
-    obj = std::move(Level{GameParameter{}, gridWidth, gridHeight, bricks, 
-        indestructibleBricks});
+    obj = std::move(Level{GameParameter{}, gridWidth, gridHeight, bricks,
+                          indestructibleBricks});
     return is;
 }
 

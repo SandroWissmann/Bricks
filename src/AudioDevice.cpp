@@ -15,10 +15,9 @@ constexpr auto filenameLostBall = "sounds/lostBall.wav";
 constexpr auto filenameExtraLife = "sounds/extraLife.wav";
 constexpr auto filenameWinGame = "sounds/winGame.wav";
 
-AudioDevice::AudioDevice(
-    int rate, Uint16 format, int channels, int buffers)
-    :mRate{rate}, mFormat{format}, mChannels{channels}, mBuffers{buffers},
-    mChunk{nullptr}
+AudioDevice::AudioDevice(int rate, Uint16 format, int channels, int buffers)
+    : mRate{rate}, mFormat{format}, mChannels{channels}, mBuffers{buffers},
+      mChunk{nullptr}
 {
     SDL_RAII::init();
 
@@ -33,18 +32,18 @@ AudioDevice::~AudioDevice() noexcept
 
 void AudioDevice::playSound(const std::string& filename)
 {
-    if(Mix_OpenAudio(mRate, mFormat, mChannels, mBuffers) != 0) {
+    if (Mix_OpenAudio(mRate, mFormat, mChannels, mBuffers) != 0) {
         std::cerr << "Mix_OpenAudio failed: " << Mix_GetError() << '\n';
     }
 
-    mChunk = Mix_LoadWAV(filename.c_str ());
-    if(mChunk == NULL) {
+    mChunk = Mix_LoadWAV(filename.c_str());
+    if (mChunk == NULL) {
         std::cerr << "Mix_LoadWAV failed: " << Mix_GetError() << '\n';
     }
 
-    Mix_VolumeChunk(mChunk, MIX_MAX_VOLUME); 
+    Mix_VolumeChunk(mChunk, MIX_MAX_VOLUME);
 
-    if(Mix_PlayChannel(-1, mChunk, 0) == -1) {
+    if (Mix_PlayChannel(-1, mChunk, 0) == -1) {
         std::cerr << "Mix_PlayChannel failed: " << Mix_GetError() << '\n';
     }
 }

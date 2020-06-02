@@ -11,7 +11,7 @@ namespace bricks {
 class AudioDevice {
 public:
     AudioDevice(int rate = 44100, Uint16 format = AUDIO_S16SYS,
-        int channels = 2, int buffers = 4096);
+                int channels = 2, int buffers = 4096);
     ~AudioDevice() noexcept;
 
     AudioDevice(const AudioDevice&) = delete;
@@ -27,7 +27,7 @@ private:
     int mChannels;
     int mBuffers;
 
-    Mix_Chunk *mChunk;
+    Mix_Chunk* mChunk;
 };
 
 void playDestroyBrick(AudioDevice& audioDevice);

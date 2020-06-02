@@ -8,8 +8,7 @@ namespace bricks::types {
 
 using namespace utility;
 
-Width::Width(double value) : 
-    mValue{checkArgs(value)}
+Width::Width(double value) : mValue{checkArgs(value)}
 {
 }
 
@@ -20,10 +19,11 @@ double Width::operator()() const
 
 double Width::checkArgs(double value) const
 {
-    if(value < 0.0) {
+    if (value < 0.0) {
         throw std::invalid_argument("Width::checkArgs(int value)\n"
-        "Value must be >= 0.0\n"
-        "Value: " + std::to_string(value));
+                                    "Value must be >= 0.0\n"
+                                    "Value: " +
+                                    std::to_string(value));
     }
     return value;
 }

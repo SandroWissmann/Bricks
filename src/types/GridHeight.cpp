@@ -9,8 +9,7 @@ namespace bricks::types {
 
 using namespace utility;
 
-GridHeight::GridHeight(int value) 
-    : mValue{checkArgs(value)}
+GridHeight::GridHeight(int value) : mValue{checkArgs(value)}
 {
 }
 
@@ -21,10 +20,11 @@ int GridHeight::operator()() const
 
 int GridHeight::checkArgs(int value) const
 {
-    if(value < 0) {
+    if (value < 0) {
         throw std::invalid_argument("GridHeight::checkArgs(int value)\n"
-        "Value must be >= 0\n"
-        "Value: " + std::to_string(value));
+                                    "Value must be >= 0\n"
+                                    "Value: " +
+                                    std::to_string(value));
     }
     return value;
 }

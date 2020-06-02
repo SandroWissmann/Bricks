@@ -13,13 +13,12 @@ TEST(RGBColorTest, Constructor)
     EXPECT_EQ(rgbColor.a(), 0x40);
 }
 
-
 TEST(RGBColorTest, Constructor_throws_invald_argument)
 {
     EXPECT_THROW((RGBColor{0x00 - 1, 0x00, 0x00, 0x00}), std::invalid_argument);
-    EXPECT_THROW((RGBColor{0x00, 0x00 -1, 0x00, 0x00}), std::invalid_argument);
-    EXPECT_THROW((RGBColor{0x00, 0x00, 0x00 -1, 0x00}), std::invalid_argument);
-    EXPECT_THROW((RGBColor{0x00, 0x00, 0x00, 0x00 -1}), std::invalid_argument);
+    EXPECT_THROW((RGBColor{0x00, 0x00 - 1, 0x00, 0x00}), std::invalid_argument);
+    EXPECT_THROW((RGBColor{0x00, 0x00, 0x00 - 1, 0x00}), std::invalid_argument);
+    EXPECT_THROW((RGBColor{0x00, 0x00, 0x00, 0x00 - 1}), std::invalid_argument);
     EXPECT_THROW((RGBColor{0xFF + 1, 0x00, 0x00, 0x00}), std::invalid_argument);
     EXPECT_THROW((RGBColor{0x00, 0xFF + 1, 0x00, 0x00}), std::invalid_argument);
     EXPECT_THROW((RGBColor{0x00, 0x00, 0xFF + 1, 0x00}), std::invalid_argument);

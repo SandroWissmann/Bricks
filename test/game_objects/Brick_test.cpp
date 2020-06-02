@@ -8,12 +8,7 @@ using namespace bricks::types;
 
 Brick makeBrick(int hitpoints)
 {
-    return Brick{
-        Point{0.0, 0.0},
-        Width{1},
-        Height{1},
-        Hitpoints{hitpoints}
-    };
+    return Brick{Point{0.0, 0.0}, Width{1}, Height{1}, Hitpoints{hitpoints}};
 }
 
 TEST(BrickTest, defaultConstructor)

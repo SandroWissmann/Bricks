@@ -23,8 +23,7 @@ struct Point;
 class Level {
 public:
     Level();
-    Level(const GameParameter& parameter,
-          const types::GridWidth& gridWidth,
+    Level(const GameParameter& parameter, const types::GridWidth& gridWidth,
           const types::GridHeight& gridHeight,
           const std::vector<game_objects::Brick>& bricks_,
           const std::vector<game_objects::IndestructibleBrick>&
@@ -45,10 +44,10 @@ private:
     game_objects::Wall makeLeftWall();
     game_objects::Wall makeRightWall();
     game_objects::Wall makeTopWall();
-    game_objects::Platform makePlatform(
-        const types::Width& width, const types::Velocity& velocity);
+    game_objects::Platform makePlatform(const types::Width& width,
+                                        const types::Velocity& velocity);
     game_objects::Ball makeBall(const types::Velocity& velocity,
-        const types::Gravity& gravity);
+                                const types::Gravity& gravity);
 
     void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
 

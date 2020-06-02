@@ -45,15 +45,12 @@ constexpr double platformVelocityMax = 28.0;
 constexpr double platformWidthMin = 2.0;
 
 Game::Game(std::size_t screenWidth, std::size_t screenHeight)
-    : mParameter{},
-        mLevelFilenames{getLevelFilenamesFromFolder("level")},
+    : mParameter{}, mLevelFilenames{getLevelFilenamesFromFolder("level")},
       mLevel{loadLevel(1)}, mRenderer{Renderer{
                                 screenWidth, screenHeight,
                                 static_cast<std::size_t>(mLevel.gridWidth()),
                                 static_cast<std::size_t>(mLevel.gridHeight())}},
-      mInputHandler{},
-      mAudioDevice{}, 
-      mHighscore{loadHighscore()}
+      mInputHandler{}, mAudioDevice{}, mHighscore{loadHighscore()}
 {
     updateValuesInTitleBar();
 }
@@ -102,7 +99,7 @@ void Game::runLevel()
         mRenderer.render(mLevel);
 
         mInputHandler.handleInput(mLevel, msPerFrame);
-        if(mInputHandler.changedPauseState()) {
+        if (mInputHandler.changedPauseState()) {
             mRenderer.setPaused(mInputHandler.isPaused());
         }
         if (mInputHandler.isQuit()) {
@@ -157,11 +154,11 @@ void Game::increaseDifficulty()
     ballVelocity += ballVelocityIncrease;
     ballGravity += ballGravityIncrease;
 
-    platformVelocity = std::clamp(platformVelocity, platformVelocity, 
-        platformVelocityMax);
+    platformVelocity =
+        std::clamp(platformVelocity, platformVelocity, platformVelocityMax);
     platformWidth = std::clamp(platformWidth, platformWidthMin, platformWidth);
     ballVelocity = std::clamp(ballVelocity, ballVelocity, ballVelocityMax);
-    ballGravity = std::clamp(ballGravity, ballGravity, ballGravityMax);    
+    ballGravity = std::clamp(ballGravity, ballGravity, ballGravityMax);
 
     mParameter.setPlatformVelocity(Velocity{platformVelocity});
     mParameter.setPlatformWidth(Width{platformWidth});

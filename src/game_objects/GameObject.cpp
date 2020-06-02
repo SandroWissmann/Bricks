@@ -57,12 +57,14 @@ double GameObject::height() const
 
 Point GameObject::checkArgs(Point point)
 {
-    if(point.x < 0.0 || point.y < 0.0) {
-        throw std::invalid_argument(
-            "Point GameObject::checkArgs(Point point)\n"
-        "Point must be >= 0\n"
-        "Point x: " + std::to_string(point.x) + "\n"
-        "Point y: " + std::to_string(point.y) + "\n");
+    if (point.x < 0.0 || point.y < 0.0) {
+        throw std::invalid_argument("Point GameObject::checkArgs(Point point)\n"
+                                    "Point must be >= 0\n"
+                                    "Point x: " +
+                                    std::to_string(point.x) +
+                                    "\n"
+                                    "Point y: " +
+                                    std::to_string(point.y) + "\n");
     }
     return point;
 }

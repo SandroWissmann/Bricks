@@ -5,10 +5,10 @@
 #include <memory>
 
 #include "AudioDevice.h"
+#include "GameParameter.h"
+#include "InputHandler.h"
 #include "Level.h"
 #include "Renderer.h"
-#include "InputHandler.h"
-#include "GameParameter.h"
 
 #include <string>
 #include <vector>

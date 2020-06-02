@@ -65,18 +65,19 @@ void Ball::move(double elapsedTimeInMS)
     auto newPos = topLeft();
 
     if (velocity() != 0.0) {
-        newPos = impl::calcNewPosition(newPos, velocity(), angle(), elapsedTimeInMS);
+        newPos =
+            impl::calcNewPosition(newPos, velocity(), angle(), elapsedTimeInMS);
     }
 
     if (gravity() != 0.0) {
         newPos = impl::calcNewPosition(newPos, gravity(), Angle{90.0_deg},
-                                 elapsedTimeInMS);
+                                       elapsedTimeInMS);
     }
 
     setTopLeft(newPos);
 }
 
-namespace impl{
+namespace impl {
 
 Point calcNewPosition(const Point& p, double velocity, Angle angle,
                       double elapsedTimeInMS)
@@ -122,6 +123,6 @@ Point calcDelta(Angle angle, double sideC)
     }
     return ret;
 }
-}
+} // namespace impl
 
 } // namespace bricks::game_objects

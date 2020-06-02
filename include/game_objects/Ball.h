@@ -38,7 +38,7 @@ private:
     bool mIsActive;
 };
 
-namespace impl{
+namespace impl {
 
 types::Point calcNewPosition(const types::Point& p, double velocity,
                              types::Angle angle, double elapsedTimeInMS);
@@ -46,6 +46,6 @@ types::Point calcNewPosition(const types::Point& p, double velocity,
 double calcTraveldWay(double deltaTimeMS, double velocityInS);
 
 types::Point calcDelta(types::Angle angle, double sideC);
-}
+} // namespace impl
 } // namespace bricks::game_objects
 #endif

@@ -14,7 +14,7 @@ public:
 
 private:
     int checkArgs(int value) const;
-    
+
     int mValue{0};
 };
 

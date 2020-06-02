@@ -36,17 +36,13 @@ TEST(GameObjectTest_, defaultConstructor)
 
 DerivedGameObject makeDerrivedGameObject(Point point)
 {
-    return DerivedGameObject{
-        point,
-        Width{1},
-        Height{1}
-    };
+    return DerivedGameObject{point, Width{1}, Height{1}};
 }
 
 TEST(GameObjectTest_, Constructor_throws_invald_argument)
 {
-    EXPECT_THROW((makeDerrivedGameObject(Point{-1,0})), std::invalid_argument);
-    EXPECT_THROW((makeDerrivedGameObject(Point{0,-1})), std::invalid_argument);
+    EXPECT_THROW((makeDerrivedGameObject(Point{-1, 0})), std::invalid_argument);
+    EXPECT_THROW((makeDerrivedGameObject(Point{0, -1})), std::invalid_argument);
 }
 
 class GameObjectTest : public ::testing::Test {

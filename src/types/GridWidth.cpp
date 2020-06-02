@@ -9,8 +9,7 @@ namespace bricks::types {
 
 using namespace utility;
 
-GridWidth::GridWidth(int value) 
-    : mValue{checkArgs(value)}
+GridWidth::GridWidth(int value) : mValue{checkArgs(value)}
 {
 }
 
@@ -21,10 +20,11 @@ int GridWidth::operator()() const
 
 int GridWidth::checkArgs(int value) const
 {
-    if(value < 0) {
+    if (value < 0) {
         throw std::invalid_argument("GridWidth::checkArgs(int value)\n"
-        "Value must be >= 0\n"
-        "Value: " + std::to_string(value));
+                                    "Value must be >= 0\n"
+                                    "Value: " +
+                                    std::to_string(value));
     }
     return value;
 }
