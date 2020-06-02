@@ -5,7 +5,7 @@ add_definitions(-std=c++17)
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
-set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-*)
+set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-* -fix)
 
 project(bricks)
 

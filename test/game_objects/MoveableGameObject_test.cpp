@@ -8,7 +8,7 @@ using namespace bricks::types;
 
 class DerivedGameObject : public MoveableGameObject {
 public:
-    DerivedGameObject() : MoveableGameObject()
+    DerivedGameObject()  
     {
     }
 

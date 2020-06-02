@@ -47,7 +47,7 @@ InputHandler::Event InputHandler::getEvent()
 {
     Event event = Event::none;
     SDL_Event sdlEvent;
-    while (SDL_PollEvent(&sdlEvent)) {
+    while (SDL_PollEvent(&sdlEvent) != 0) {
         if (sdlEvent.type == SDL_QUIT) {
             return event = Event::quit;
         }
@@ -60,16 +60,16 @@ InputHandler::Event InputHandler::getEvent()
 
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
-    if (keystates[SDL_SCANCODE_LEFT]) {
+    if (keystates[SDL_SCANCODE_LEFT] != 0u) {
         return Event::left;
     }
-    if (keystates[SDL_SCANCODE_RIGHT]) {
+    if (keystates[SDL_SCANCODE_RIGHT] != 0u) {
         return Event::right;
     }
-    if (keystates[SDL_SCANCODE_SPACE]) {
+    if (keystates[SDL_SCANCODE_SPACE] != 0u) {
         return Event::space;
     }
-    if (keystates[SDL_SCANCODE_ESCAPE]) {
+    if (keystates[SDL_SCANCODE_ESCAPE] != 0u) {
         return Event::escape;
     }
     return Event::none;

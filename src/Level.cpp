@@ -251,10 +251,7 @@ bool isComment(const std::string line)
 
     char c;
     ist >> c;
-    if (c == '#') {
-        return true;
-    }
-    return false;
+    return c == '#';
 }
 
 Point platformInitPosition(double platformWidth, double gridWidth,
