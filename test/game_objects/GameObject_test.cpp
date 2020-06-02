@@ -71,6 +71,18 @@ TEST_F(GameObjectTest, bottomRight)
     EXPECT_EQ(obj.bottomRight().y, 20.2 + obj.height());
 }
 
+TEST_F(GameObjectTest, bottomLeft)
+{
+    EXPECT_EQ(obj.bottomLeft().x, 10.1);
+    EXPECT_EQ(obj.bottomLeft().y, 20.2 + obj.height());
+}
+
+TEST_F(GameObjectTest, topRight)
+{
+    EXPECT_EQ(obj.topRight().x, 10.1 + obj.width());
+    EXPECT_EQ(obj.topRight().y, 20.2);
+}
+
 TEST_F(GameObjectTest, width)
 {
     EXPECT_EQ(obj.width(), 10.5);
