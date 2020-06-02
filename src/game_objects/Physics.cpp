@@ -44,7 +44,7 @@ bool reflectFromQuadrantI(Ball& ball, const Platform& platform)
     if (interectsWithBottomY(ball, platform)) {
         return reflectHorizontalFromQuadrantI(ball, platform);
     }
-    else if (interectsWithRightX(ball, platform)) {
+    if (interectsWithRightX(ball, platform)) {
         return reflectVerticalFromQuadrantI(ball, platform);
     }
     return false;
@@ -76,7 +76,6 @@ void reflectHorizontalItoIV(Ball& ball, const Platform& platform)
     auto xLeft = platform.topLeft().x;
     auto xCenter = xRight - (platform.width() / 2.0);
     auto xBall = ball.bottomRight().x;
-    auto len = xRight - xCenter;
 
     auto factor = calcAngleFactor(xBall, xLeft, xCenter, xRight);
 
@@ -94,7 +93,7 @@ bool reflectFromQuadrantII(Ball& ball, const Platform& platform)
     if (interectsWithBottomY(ball, platform)) {
         return reflectHorizontalFromQuadrantII(ball, platform);
     }
-    else if (interectsWithLeftX(ball, platform)) {
+    if (interectsWithLeftX(ball, platform)) {
         return reflectVerticalFromQuadrantII(ball, platform);
     }
     return false;
@@ -179,7 +178,7 @@ bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
     if (interectsWithBottomY(ball, obj)) {
         return reflectHorizontalFromQuadrantI(ball, obj);
     }
-    else if (interectsWithRightX(ball, obj)) {
+    if (interectsWithRightX(ball, obj)) {
         return reflectVerticalFromQuadrantI(ball, obj);
     }
     return false;
@@ -230,7 +229,7 @@ bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
     if (interectsWithBottomY(ball, obj)) {
         return reflectHorizontalFromQuadrantII(ball, obj);
     }
-    else if (interectsWithLeftX(ball, obj)) {
+    if (interectsWithLeftX(ball, obj)) {
         return reflectVerticalFromQuadrantII(ball, obj);
     }
     return false;
@@ -281,7 +280,7 @@ bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
     if (interectsWithTopY(ball, obj)) {
         return reflectHorizontalFromQuadrantIII(ball, obj);
     }
-    else if (interectsWithLeftX(ball, obj)) {
+    if (interectsWithLeftX(ball, obj)) {
         return reflectVerticalFromQuadrantIII(ball, obj);
     }
     return false;
@@ -332,7 +331,7 @@ bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
     if (interectsWithTopY(ball, obj)) {
         return reflectHorizontalFromQuadrantIV(ball, obj);
     }
-    else if (interectsWithRightX(ball, obj)) {
+    if (interectsWithRightX(ball, obj)) {
         return reflectVerticalFromQuadrantIV(ball, obj);
     }
     return false;

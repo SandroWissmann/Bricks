@@ -15,7 +15,7 @@ using Angle = types::Angle;
 using Gravity = types::Gravity;
 using Quadrant = types::Quadrant;
 
-Ball::Ball() : MoveableGameObject{}, mAngle{0.0}, mGravity{}, mIsActive{false}
+Ball::Ball() : mAngle{0.0}, mGravity{}, mIsActive{false}
 {
 }
 

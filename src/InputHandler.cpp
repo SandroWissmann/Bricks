@@ -51,7 +51,7 @@ InputHandler::Event InputHandler::getEvent()
         if (sdlEvent.type == SDL_QUIT) {
             return event = Event::quit;
         }
-        else if (sdlEvent.type == SDL_KEYDOWN) {
+        if (sdlEvent.type == SDL_KEYDOWN) {
             if (sdlEvent.key.keysym.sym == SDLK_p) {
                 return Event::p;
             }
@@ -91,9 +91,7 @@ void InputHandler::handleEvent(const Event& event, double elapsedTimeMS,
         mChangedPauseState = true;
         return;
     }
-    else {
-        mChangedPauseState = false;
-    }
+    mChangedPauseState = false;
 
     switch (event) {
     case Event::quit:

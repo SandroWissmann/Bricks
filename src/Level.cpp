@@ -43,12 +43,6 @@ static constexpr auto ballWidth{0.75};
 static constexpr auto ballHeight{0.75};
 static constexpr auto ballAngle{135.0_deg};
 
-Level::Level()
-    : mParameter{}, mGridWidth{}, mGridHeight{}, mLeftWall{}, mRightWall{},
-      mTopWall{}, platform{}, ball{}, bricks{}, indestructibleBricks{}
-{
-}
-
 Level::Level(const GameParameter& parameter, const GridWidth& gridWidth,
              const GridHeight& gridHeight, const std::vector<Brick>& bricks_,
              const std::vector<IndestructibleBrick>& indestructibleBricks_)

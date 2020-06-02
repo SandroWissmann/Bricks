@@ -45,12 +45,12 @@ constexpr double platformVelocityMax = 28.0;
 constexpr double platformWidthMin = 2.0;
 
 Game::Game(std::size_t screenWidth, std::size_t screenHeight)
-    : mParameter{}, mLevelFilenames{getLevelFilenamesFromFolder("level")},
+    : mLevelFilenames{getLevelFilenamesFromFolder("level")},
       mLevel{loadLevel(1)}, mRenderer{Renderer{
                                 screenWidth, screenHeight,
                                 static_cast<std::size_t>(mLevel.gridWidth()),
                                 static_cast<std::size_t>(mLevel.gridHeight())}},
-      mInputHandler{}, mAudioDevice{}, mHighscore{loadHighscore()}
+      mHighscore{loadHighscore()}
 {
     updateValuesInTitleBar();
 }

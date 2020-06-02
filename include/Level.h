@@ -22,7 +22,7 @@ struct Point;
 
 class Level {
 public:
-    Level();
+    Level() = default;
     Level(const GameParameter& parameter, const types::GridWidth& gridWidth,
           const types::GridHeight& gridHeight,
           const std::vector<game_objects::Brick>& bricks_,

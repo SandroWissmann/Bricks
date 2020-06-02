@@ -7,7 +7,7 @@ using Width = types::Width;
 using Height = types::Height;
 using Velocity = types::Velocity;
 
-MoveableGameObject::MoveableGameObject() : GameObject{}, mVelocity{0.0}
+MoveableGameObject::MoveableGameObject() : mVelocity{0.0}
 {
 }
 

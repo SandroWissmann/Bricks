@@ -29,7 +29,7 @@ private:
 
 namespace impl {
 
-long double mirrorQuadrantAngle(long double angle);
+long double mirrorQuadrantAngle(long double quadrantAngle);
 
 Quadrant calcQuadrant(long double angle);
 
