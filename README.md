@@ -85,33 +85,33 @@ X 19.0 Y 2.0 W 3.0 H 1.0 HP 1
 //...
 ```
 
-* First line:
+#### First line:
 
-...`W 26 H 18`
+`W 26 H 18`
 
-...Define the size of the board. All sizes from all levels should be the same.
-...If you want different sizes you have to change it in all the `.lvl` files.
-
-
-* Lines starting with a `#`:
-
-...`# PointX PointY Length Width`
-
-...Soley used as a comment. You can use this feature to group the bricks you add.
+Define the size of the board. All sizes from all levels should be the same.
+If you want different sizes you have to change it in all the `.lvl` files.
 
 
-* Bricks:
+#### Lines starting with a `#`:
 
-...`X 4.0 Y 2.0 W 3.0 H 1.0 HP 1`
+`# PointX PointY Length Width`
 
-...X = X Position on the grid 
-...Y = Y Position on the grid
-...W = Width of the block
-...H = Height of the block
-...HP = Hitpoints of the brick. Must be in range 1 to 9.
+Soley used as a comment. You can use this feature to group the bricks you add.
 
-* Indestructible Bricks:
 
-...`X 4.0 Y 2.0 W 3.0 H 1.0`
+#### Bricks:
 
-...Same as Bricks. Only differnnce is missing `HP` specification.
+`X 4.0 Y 2.0 W 3.0 H 1.0 HP 1`
+
+X = X Position on the grid 
+Y = Y Position on the grid
+W = Width of the block
+H = Height of the block
+HP = Hitpoints of the brick. Must be in range 1 to 9.
+
+#### Indestructible Bricks:
+
+`X 4.0 Y 2.0 W 3.0 H 1.0`
+
+Same as Bricks. Only differnnce is missing `HP` specification.
