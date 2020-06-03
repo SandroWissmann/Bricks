@@ -17,6 +17,7 @@
 
 * Basic gameplay similar to games like [Breakout](https://en.wikipedia.org/wiki/Arkanoid) or [Arkanoid](https://en.wikipedia.org/wiki/Arkanoid)
 * It displays Level, Lifes, Score and Highscore
+* Sound
 * It contains 5 Levels to play (but more can be added, since they are loaded from the file)
 * The difficullty increases on each playthrough
 * The "Highscore" is saved on program exit
@@ -27,7 +28,7 @@
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
 * make >= 4.1 (Linux, Mac), 3.81 (Windows)
-  * Linux: "make" is installed by default on most Linux distros
+  * Linux: `make` is installed by default on most Linux distros
   * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 * SDL2 >= 2.0
@@ -38,8 +39,8 @@
   `sudo apt install libmikmod-dev libfishsound1-dev libsmpeg-dev liboggz2-dev libflac-dev libfluidsynth-dev libsdl2-mixer-dev libsdl2-mixer-2.0-0 -y;`
   * Windows/Mac: Runtime Binaries can be found [here](https://www.libsdl.org/projects/SDL_mixer/) for Windows and Mac
 * gcc/g++ >= 8.0
-  * Linux: gcc / g++ is installed by default on most Linux distros
-  * Mac: same deal as "make" - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
+  * Linux: `gcc` / `g++` is installed by default on most Linux distros
+  * Mac: same deal as `make` - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
 
