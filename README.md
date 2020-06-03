@@ -16,18 +16,18 @@
 ## Features
 
 * Basic gameplay similar to games like [Breakout](https://en.wikipedia.org/wiki/Arkanoid) or [Arkanoid](https://en.wikipedia.org/wiki/Arkanoid)
-* Displays Level, Lifes, Score and Highscore
-* 5 Levels (but more can be added since they are loaded from file)
-* Increases difficulty on each playthrough
-* Highscore saved on program exit
-* Pause function (Press P)
+* It displays Level, Lifes, Score and Highscore
+* It contains 5 Levels to play (but more can be added, since they are loaded from the file)
+* The difficullty increases on each playthrough
+* The "Highscore" is saved on program exit
+* It contains a "Pause" function (Press P)
 
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
 * make >= 4.1 (Linux, Mac), 3.81 (Windows)
-  * Linux: make is installed by default on most Linux distros
+  * Linux: "make" is installed by default on most Linux distros
   * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 * SDL2 >= 2.0
@@ -39,7 +39,7 @@
   * Windows/Mac: Runtime Binaries can be found [here](https://www.libsdl.org/projects/SDL_mixer/) for Windows and Mac
 * gcc/g++ >= 8.0
   * Linux: gcc / g++ is installed by default on most Linux distros
-  * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
+  * Mac: same deal as "make" - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
 
@@ -60,17 +60,17 @@
 
 ## Additional Commands from Makefile
 
-* `make debug` -> build with debug information
+* `make debug` -> builds with debug information
 * `make format` -> runs clang format on project
-* `make clean` -> delete build folder
+* `make clean` -> deletes build folder
 * `make memcheck` -> builds app and runs it with valgrind
 
 for more information see Makefile in bricks folder
 
 ## How to add your own Levels:
 
-1 Go to folder `level`
-2 add a new file with the ending `.lvl`
+1. Go to folder `level`
+2. Add a new file with the ending `.lvl`
 
 * Levels get loaded in sorted order
 
@@ -99,8 +99,8 @@ X 19.0 Y 2.0 W 3.0 H 1.0 HP 1
 
 `W 26 H 18`
 
-Define the size of the board. All sizes from all levels should be the same.
-If you want different sizes you have to change it in all the `.lvl` files.
+It defines the size of the board. All sizes from all levels should be the same.
+If you want different sizes, you have to change it in all the `.lvl` files.
 
 
 #### Lines starting with a `#`:
@@ -124,4 +124,4 @@ HP = Hitpoints of the brick. Must be in range 1 to 9.
 
 `X 4.0 Y 2.0 W 3.0 H 1.0`
 
-Same as Bricks. Only differnnce is missing `HP` specification.
+Same as Bricks. The only difference is the missing `HP` specification.
