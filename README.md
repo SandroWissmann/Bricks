@@ -1,18 +1,17 @@
 # Bricks
 
-<table>
-  <tr>
-    <td><img src="documentation/level1.png" width=270 height=480></td>
-    <td><img src="documentation/level2.png" width=270 height=480></td>
-  </tr>
-    <tr>
-    <td><img src="documentation/level4.png" width=270 height=480></td>
-    <td><img src="documentation/level5.png" width=270 height=480></td>
-  </tr>
- </table>
-
 <img src="documentation/bricks.gif"/>
 
+<table>
+  <tr>
+    <td><img src="documentation/level1.png" width=388 height=279></td>
+    <td><img src="documentation/level2.png" width=388 height=279></td>
+  </tr>
+    <tr>
+    <td><img src="documentation/level4.png" width=388 height=279></td>
+    <td><img src="documentation/level5.png" width=388 height=279></td>
+  </tr>
+ </table>
 
 ## Features
 
