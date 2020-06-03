@@ -9,6 +9,7 @@ using namespace bricks::types;
 class DerivedGameObject : public MoveableGameObject {
 public:
     DerivedGameObject()  
+        
     {
     }
 
@@ -37,7 +38,6 @@ TEST(MoveableGameObjectTest_F, defaultConstructor)
     EXPECT_EQ(obj.topLeft().y, 0.0);
     EXPECT_EQ(obj.width(), 0.0);
     EXPECT_EQ(obj.height(), 0.0);
-    EXPECT_EQ(obj.velocity(), 0.0);
 }
 
 class MoveableGameObjectTest : public ::testing::Test {

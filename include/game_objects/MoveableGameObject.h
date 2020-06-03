@@ -27,7 +27,7 @@ public:
     void setVelocity(double velocity);
 
 private:
-    double mVelocity;
+    double mVelocity{0.0};
 };
 
 } // namespace bricks::game_objects
