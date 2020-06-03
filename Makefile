@@ -36,4 +36,4 @@ memcheck:
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=debug .. && \
 	make -j${nproc}
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="valgrindReport" ./build/bricks	
+	valgrind --leak-check=full --show-reachable=no --show-leak-kinds=all --track-origins=yes --log-file="valgrindReport" ./build/bricks	
