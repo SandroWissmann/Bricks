@@ -1,7 +1,7 @@
 # Bricks
 
-![alt-text-1](documentation/level1.png "title-1") ![alt-text-2](documentation/level2.png "title-2")
-![alt-text-3](documentation/level4.png "title-3") ![alt-text-4](documentation/level5.png "title-4")
+<img src="documentation/level1.png width="425"/> <img src="documentation/level2.png" width="425"/> 
+<img src="documentation/level4.png width="425"/> <img src="documentation/level5.png" width="425"/> 
 
 <img src="documentation/bricks.gif"/>
 
