@@ -65,7 +65,7 @@ This makes sure you also clone the submodule for `googletest` which is needed to
 3. `cd build`
 4. `./tests`
 
-## Additional Commands from Makefile
+### Additional Commands from Makefile
 
 * `make debug` -> builds with debug information
 * `make format` -> runs clang format on project
