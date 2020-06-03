@@ -43,16 +43,22 @@
   * Mac: same deal as `make` - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
+## Cloning 
 
-## Basic Build Instructions
+When cloning this project, be sure to use the --recurse-submodules flag. 
 
-1. Clone this repo.
-2. Go to folder `bricks`
-3. Run `make build`
+`git clone https://github.com/SandroWissmann/Bricks.git --recurse-submodules`
+
+This makes sure you also clone the submodule for `googletest` which is needed to run the tests
+
+### Running the game
+
+1. Go to folder `bricks`
+2. Run `make build`
 3. `cd build`
 4. `./bricks`
 
-## Running tests
+### Running the tests
 
 1. Go to folder `bricks`
 2. Run `make build`
