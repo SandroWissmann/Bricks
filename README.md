@@ -1,15 +1,15 @@
 # Bricks
 
-<img src="documentation/bricks.gif"/>
+<img src="docs/bricks.gif"/>
 
 <table>
   <tr>
-    <td><img src="documentation/level1.png" width=388 height=279></td>
-    <td><img src="documentation/level2.png" width=388 height=279></td>
+    <td><img src="docs/level1.png" width=388 height=279></td>
+    <td><img src="docs/level2.png" width=388 height=279></td>
   </tr>
     <tr>
-    <td><img src="documentation/level4.png" width=388 height=279></td>
-    <td><img src="documentation/level5.png" width=388 height=279></td>
+    <td><img src="docs/level4.png" width=388 height=279></td>
+    <td><img src="docs/level5.png" width=388 height=279></td>
   </tr>
  </table>
 
