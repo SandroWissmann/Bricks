@@ -21,52 +21,14 @@ find_package(SDL2_mixer REQUIRED)
 include_directories(
     ${SDL2_INCLUDE_DIRS} 
     ${SDL2_mixer_INCLUDE_DIRS} 
-    include 
-    include/game_objects
-    include/types
-    include/utility 
+    ${CMAKE_SOURCE_DIR}/include 
+    ${CMAKE_SOURCE_DIR}/include/game_objects
+    ${CMAKE_SOURCE_DIR}/include/types
+    ${CMAKE_SOURCE_DIR}/include/utility 
 )
 
 add_subdirectory(thirdparty/googletest)
-
-add_executable(bricks 
-    src/game_objects/Ball.cpp
-    src/game_objects/Brick.cpp
-    src/game_objects/GameObject.cpp
-    src/game_objects/MoveableGameObject.cpp
-    src/game_objects/Physics.cpp
-    src/game_objects/Platform.cpp
-
-    src/types/Angle.cpp
-    src/types/Gravity.cpp
-    src/types/GridHeight.cpp
-    src/types/GridWidth.cpp
-    src/types/Height.cpp
-    src/types/Hitpoints.cpp
-    src/types/Point.cpp
-    src/types/RGBColor.cpp
-    src/types/Velocity.cpp
-    src/types/Width.cpp
-
-    src/utility/IsNumber.cpp
-    src/utility/NearlyEqual.cpp
-    src/utility/TimeMeasure.cpp
-
-    src/AudioDevice.cpp
-    src/Game.cpp
-    src/GameParameter.cpp
-    src/InputHandler.cpp
-    src/Level.cpp
-    src/main.cpp
-    src/Renderer.cpp
-    src/SDL_RAII.cpp
-)
-
-target_link_libraries(
-    bricks 
-    SDL2::Main
-    SDL2::Mixer
-)
+add_subdirectory(src)
 
 add_executable(test 
     test/game_objects/Ball_test.cpp
