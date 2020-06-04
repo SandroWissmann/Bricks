@@ -68,9 +68,9 @@ This makes sure you also clone the submodule for `googletest` which is needed to
 ### Additional Commands from Makefile
 
 * `make debug` -> builds with debug information
-* `make format` -> runs clang format on project
+* `make format` -> runs [clangFormat](https://clang.llvm.org/docs/ClangFormat.html) on project
 * `make clean` -> deletes build folder
-* `make memcheck` -> builds app and runs it with valgrind
+* `make memcheck` -> builds app and runs it with [valgrind](https://www.valgrind.org/)
 
 for more information see Makefile in bricks folder
 
