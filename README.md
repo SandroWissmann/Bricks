@@ -132,3 +132,7 @@ HP = Hitpoints of the brick. Must be in range 1 to 9.
 `X 4.0 Y 2.0 W 3.0 H 1.0`
 
 Same as Bricks. The only difference is the missing `HP` specification.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
