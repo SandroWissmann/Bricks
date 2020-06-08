@@ -1,4 +1,5 @@
 {
+    "clang-tidy.executable": "/usr/bin/clang-tidy",
     "files.associations": {
         "cmath": "cpp",
         "limits": "cpp",

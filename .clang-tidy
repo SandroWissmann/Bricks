@@ -1,0 +1,8 @@
+---
+Checks: '*,-abseil*,-google*,-fuchsia*,-llvm-header-guard'
+WarningsAsErrors: '*'
+FormatStyle: file
+CheckOptions:
+  - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value: '1'
+...
