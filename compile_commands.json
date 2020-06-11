@@ -1,0 +1,357 @@
+[
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/game_objects/Ball_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Ball_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Ball_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/game_objects/Ball.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Ball.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Ball.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/game_objects/Brick_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Brick_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Brick_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/game_objects/Brick.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Brick.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Brick.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/game_objects/GameObject_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/GameObject_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/GameObject_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/game_objects/GameObject.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/GameObject.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/GameObject.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/game_objects/MoveableGameObject_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/MoveableGameObject_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/MoveableGameObject_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/game_objects/MoveableGameObject.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/MoveableGameObject.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/MoveableGameObject.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/game_objects/Physics_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Physics_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Physics_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/game_objects/Physics.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Physics.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Physics.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/game_objects/Platform_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Platform_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/game_objects/Platform_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/game_objects/Platform.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Platform.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Platform.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Angle_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Angle_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Angle_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Angle.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Angle.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Angle.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Gravity_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Gravity_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Gravity_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Gravity.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Gravity.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Gravity.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/GridHeight_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/GridHeight_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/GridHeight_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/GridHeight.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridHeight.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridHeight.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/GridWidth_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/GridWidth_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/GridWidth_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/GridWidth.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridWidth.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridWidth.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Height_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Height_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Height_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Height.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Height.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Height.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Hitpoints_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Hitpoints_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Hitpoints_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Hitpoints.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Hitpoints.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Hitpoints.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Point_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Point_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Point_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Point.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Point.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Point.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/RGBColor.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/RGBColor.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/RGBColor.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/RGBColor_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/RGBColor_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/RGBColor_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Velocity_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Velocity_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Velocity_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Velocity.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Velocity.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Velocity.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/types/Width_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Width_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/types/Width_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/types/Width.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Width.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Width.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/utility/IsNumber_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/utility/IsNumber_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/utility/IsNumber_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/utility/IsNumber.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/IsNumber.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/IsNumber.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/utility/NearlyEqual_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/utility/NearlyEqual_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/utility/NearlyEqual_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/utility/NearlyEqual.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/NearlyEqual.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/NearlyEqual.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/utility/OperatorDegree_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/utility/OperatorDegree_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/utility/OperatorDegree_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/GameParameter.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/GameParameter.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/GameParameter.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/test/Level_test.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/Level_test.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/test/Level_test.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -o CMakeFiles/test.dir/src/Level.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Level.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Level.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/thirdparty/googletest/googlemock",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock/src/gmock_main.cc",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/thirdparty/googletest/googlemock",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock/src/gmock-all.cc",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/thirdparty/googletest/googletest",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -isystem /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/src/gtest_main.cc",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/thirdparty/googletest/googletest",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest    -std=c++17 -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/src/gtest-all.cc",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/thirdparty/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/game_objects/Ball.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Ball.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Ball.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/game_objects/Brick.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Brick.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Brick.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/game_objects/GameObject.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/GameObject.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/GameObject.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/game_objects/MoveableGameObject.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/MoveableGameObject.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/MoveableGameObject.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/game_objects/Physics.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Physics.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Physics.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/game_objects/Platform.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Platform.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/game_objects/Platform.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Angle.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Angle.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Angle.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Gravity.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Gravity.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Gravity.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/GridHeight.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridHeight.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridHeight.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/GridWidth.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridWidth.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/GridWidth.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Height.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Height.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Height.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Hitpoints.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Hitpoints.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Hitpoints.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Point.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Point.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Point.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/RGBColor.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/RGBColor.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/RGBColor.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Velocity.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Velocity.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Velocity.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/types/Width.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Width.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/types/Width.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/utility/IsNumber.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/IsNumber.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/IsNumber.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/utility/NearlyEqual.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/NearlyEqual.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/NearlyEqual.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/utility/TimeMeasure.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/TimeMeasure.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/utility/TimeMeasure.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/AudioDevice.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/AudioDevice.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/AudioDevice.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/Game.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Game.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Game.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/GameParameter.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/GameParameter.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/GameParameter.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/InputHandler.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/InputHandler.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/InputHandler.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/Level.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Level.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Level.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/main.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/main.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/main.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/Renderer.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Renderer.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/Renderer.cpp"
+},
+{
+  "directory": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/build/src",
+  "command": "/usr/bin/c++   -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/game_objects -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/types -I/mnt/Programmierung/Cpp/Udacity/Project/Bricks/include/utility -isystem /usr/include/SDL2    -std=c++17 -o CMakeFiles/bricks.dir/SDL_RAII.cpp.o -c /mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/SDL_RAII.cpp",
+  "file": "/mnt/Programmierung/Cpp/Udacity/Project/Bricks/src/SDL_RAII.cpp"
+}
+]
