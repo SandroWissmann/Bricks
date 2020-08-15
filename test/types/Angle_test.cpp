@@ -150,7 +150,7 @@ TEST(isInQuadrantIV, Expect_FALSE)
     EXPECT_FALSE(isInQuadrantIV(270.0_deg));
 }
 
-TEST(calcAngleIfOutOfRange, Expect_FALSE)
+TEST(calcAngleIfOutOfRange, Expected_result)
 {
     EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(0.0_deg), 0.0_deg);
     EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(360.0_deg), 360.0_deg);
