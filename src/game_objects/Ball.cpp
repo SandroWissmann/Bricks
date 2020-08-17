@@ -82,10 +82,10 @@ namespace impl {
 Point calcNewPosition(const Point& p, double velocity, Angle angle,
                       double elapsedTimeInMS)
 {
-    auto distance = calcTraveldWay(elapsedTimeInMS, velocity);
-    auto traveldWay = calcDelta(angle, distance);
+    auto traveldWay = calcTraveldWay(elapsedTimeInMS, velocity);
+    auto delta = calcDelta(angle, traveldWay);
 
-    return Point{p.x + traveldWay.x, p.y + traveldWay.y};
+    return Point{p.x + delta.x, p.y + delta.y};
 }
 
 double calcTraveldWay(double deltaTimeMS, double velocityInS)
