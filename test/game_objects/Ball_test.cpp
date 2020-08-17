@@ -20,6 +20,7 @@ TEST(BallTest_, defaultConstructor)
     EXPECT_EQ(ball.velocity(), 0.0);
     EXPECT_EQ(ball.angle().get(), 0.0);
     EXPECT_EQ(ball.gravity(), 0.0);
+    EXPECT_EQ(ball.isActive(), false);
 }
 
 class BallTest : public ::testing::Test {
