@@ -61,182 +61,69 @@ TEST_F(BallTest, gravity)
     EXPECT_DOUBLE_EQ(obj.gravity(), 4.0);
 }
 
-TEST_F(BallTest, move_no_move_if_disabled)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{0.0_deg}, Gravity{0.0});
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
+class BallMoveMultipleParametersTests
+    : public ::testing::TestWithParam<
+          std::tuple<bool, double, double, double, Point>> {
+protected:
+};
 
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y);
+TEST_P(BallMoveMultipleParametersTests, CheckIfMovesCorrectly)
+{
+    // bool active = std::get<0>(GetParam());
+    // Velocity velocity{std::get<1>(GetParam())};
+    // Angle angle{std::get<2>(GetParam())};
+    // Gravity gravity{std::get<3>(GetParam())};
+    // Point endPoint = std::get<4>(GetParam());
+
+    // Ball obj{Point{0.0, 0.0}, Width{3.1}, Height{4.2},
+    //          velocity,        angle,      gravity};
+    // if (active) {
+    //     obj.activate();
+    // }
+    // auto timeInMS = 1000;
+    // obj.move(timeInMS);
+
+    // EXPECT_DOUBLE_EQ(obj.topLeft().x, endPoint.x);
+    // EXPECT_DOUBLE_EQ(obj.topLeft().y, endPoint.y);
 }
 
-TEST_F(BallTest, move_onlyGravity)
-{
-    auto obj = makeBall(Velocity{0.0}, Angle{90.0_deg}, Gravity{2.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
+INSTANTIATE_TEST_CASE_P(
+    BallMoveTests, BallMoveMultipleParametersTests,
+    ::testing::Values(
+        // not active
+        std::make_tuple(false, 2.0, 0.0, 0.0, Point{0.0, 0.0}),
+        // only gravity
+        std::make_tuple(true, 0.0, 0.0, 2.0, Point{0.0, 2.0}),
+        // 0 degrees
+        std::make_tuple(true, 2.0, 0.0, 0.0, Point{2.0, 0.0}),
+        // 30 degrees
+        std::make_tuple(true, 2.0, 30.0, 0.0, Point{1.732050807568877, 1}),
+        // 45 degrees
+        std::make_tuple(true, 2.0, 45.0, 0.0,
+                        Point{1.414213562373096, 1.414213562373096}),
+        // 60 degrees
+        std::make_tuple(true, 2.0, 60.0, 0.0, Point{1.0, 1.732050807568877}),
+        // 90 degrees
+        std::make_tuple(true, 2.0, 90.0, 0.0, Point{0.0, 2.0}),
+        // 90 degrees + gravity
+        std::make_tuple(true, 2.0, 90.0, 2.0, Point{0.0, 4.0}),
+        // 120 degrees
+        std::make_tuple(true, 2.0, 12.0, 0.0, Point{-1, 1.732050807568877}),
+        // 135 degrees
+        std::make_tuple(true, 2.0, 135.0, 0.0,
+                        Point{-1.41421356237, 1.414213562373096}),
+        // 180 degrees
+        std::make_tuple(true, 2.0, 180.0, 0.0, Point{-2.0, 0.0}),
+        // 230 degrees
+        std::make_tuple(true, 2.0, 230.0, 0.0,
+                        Point{-1.28557521937, -1.53208888624}),
+        // 270 degrees
+        std::make_tuple(true, 2.0, 270.0, 0.0, Point{0.0, -2.0}),
+        // 270 degrees + gravity
+        std::make_tuple(true, 2.0, 270.0, 2.0, Point{0.0, -2.0})));
 
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y + oldObj.gravity());
-}
-
-TEST_F(BallTest, move_angle0)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{0.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x + oldObj.velocity());
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y);
-}
-
-TEST_F(BallTest, move_angle30)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{30.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 11.732050807568877);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 11);
-}
-
-TEST_F(BallTest, move_angle45)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{45.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 11.414213562373096);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 11.414213562373096);
-}
-
-TEST_F(BallTest, move_angle60)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{60.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 11);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 11.732050807568877);
-}
-
-TEST_F(BallTest, move_angle90)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{90.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y + oldObj.velocity());
-}
-
-TEST_F(BallTest, move_angle90_gravity)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{90.0_deg}, Gravity{2.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y,
-                     oldObj.topLeft().y + oldObj.velocity() * 2);
-}
-
-TEST_F(BallTest, move_angle120)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{120.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 9);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 11.732050807568877);
-}
-
-TEST_F(BallTest, move_angle135)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{135.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 8.5857864376269042);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 11.414213562373096);
-}
-
-TEST_F(BallTest, move_angle180)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{180.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x - oldObj.velocity());
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y);
-}
-
-TEST_F(BallTest, move_angle230)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{230.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 8.7144247806269206);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 8.4679111137620442);
-}
-
-TEST_F(BallTest, move_angle270)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{270.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y - oldObj.velocity());
-}
-
-TEST_F(BallTest, move_angle315)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{315.0_deg}, Gravity{0.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, 11.414213562373096);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, 8.5857864376269042);
-}
-
-TEST_F(BallTest, move_angle270_gravity)
-{
-    auto obj = makeBall(Velocity{2.0}, Angle{270.0_deg}, Gravity{2.0});
-    obj.activate();
-    auto oldObj = obj;
-    auto timeInMS = 1000;
-    obj.move(timeInMS);
-
-    EXPECT_DOUBLE_EQ(obj.topLeft().x, oldObj.topLeft().x);
-    EXPECT_DOUBLE_EQ(obj.topLeft().y, oldObj.topLeft().y);
-}
+// INSTANTIATE_TEST_CASE_P(BallMoveTests, BallMoveMultipleParametersTests,
+//                         ::testing::Values(std::make_tuple(
+//                             false, 2.0, 0.0, 0.0,
+//                             bricks::types::Point{0.0, 0.0}) // not active
+//                                           ));
