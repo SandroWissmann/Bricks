@@ -5,7 +5,7 @@ add_definitions(-std=c++17)
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
-set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-* -fix)
+# set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-* -fix)
 
 project(bricks)
 
@@ -13,7 +13,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 set(LIBRARY_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/lib")
 
-#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+# set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_mixer REQUIRED)
@@ -28,6 +28,8 @@ include_directories(
 )
 
 add_subdirectory(thirdparty/googletest)
+
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 add_subdirectory(src)
 
 add_executable(test 
