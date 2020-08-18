@@ -9,7 +9,7 @@ using Width = types::Width;
 using Height = types::Height;
 using Hitpoints = types::Hitpoints;
 
-Brick::Brick() : mStartHitpoints{0}, mHitpoints{mStartHitpoints}
+Brick::Brick() : mStartHitpoints{1}, mHitpoints{mStartHitpoints}
 {
 }
 

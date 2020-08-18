@@ -19,8 +19,8 @@ TEST(BrickTest, defaultConstructor)
     EXPECT_EQ(brick.topLeft().y, 0.0);
     EXPECT_EQ(brick.width(), 0.0);
     EXPECT_EQ(brick.height(), 0.0);
-    EXPECT_EQ(brick.startHitpoints(), 0);
-    EXPECT_EQ(brick.hitpoints(), 0);
+    EXPECT_EQ(brick.startHitpoints(), 1);
+    EXPECT_EQ(brick.hitpoints(), 1);
 }
 
 TEST(BrickTest, Constructor_throws_invald_argument)
