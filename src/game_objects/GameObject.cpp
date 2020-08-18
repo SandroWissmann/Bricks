@@ -25,9 +25,7 @@ Point GameObject::topLeft() const
 
 void GameObject::setTopLeft(Point topLeft)
 {
-    if (topLeft.x >= 0.0 && topLeft.y >= 0.0) {
-        mTopLeft = topLeft;
-    }
+    mTopLeft = topLeft;
 }
 
 Point GameObject::bottomRight() const
