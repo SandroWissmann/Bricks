@@ -72,6 +72,35 @@ TEST_P(AngleMirrorHorizontalMultipleParametersTests, mirrorHorizontal)
 INSTANTIATE_TEST_CASE_P(
     AngleMirrorHorizontalTests, AngleMirrorHorizontalMultipleParametersTests,
     ::testing::Values(
+        std::make_tuple(Quadrant::I, Quadrant::IV, 30.0_deg, 330.0_deg),
+        std::make_tuple(Quadrant::II, Quadrant::III, 120.0_deg, 240.0_deg),
+        std::make_tuple(Quadrant::III, Quadrant::II, 240.0_deg, 120.0_deg),
+        std::make_tuple(Quadrant::IV, Quadrant::I, 330.0_deg, 30.0_deg)));
+
+class AngleMirrorVerticalMultipleParametersTests
+    : public ::testing::TestWithParam<
+          std::tuple<Quadrant, Quadrant, double, double>> {
+protected:
+};
+
+TEST_P(AngleMirrorVerticalMultipleParametersTests, mirrorVertical)
+{
+    auto quadrantBefore = std::get<0>(GetParam());
+    auto quadrantAfter = std::get<1>(GetParam());
+    auto angleBefore = std::get<2>(GetParam());
+    auto angleAfter = std::get<3>(GetParam());
+
+    Angle obj{angleBefore};
+    EXPECT_EQ(obj.quadrant(), quadrantBefore);
+
+    obj.mirrorVertical();
+    EXPECT_EQ(obj.quadrant(), quadrantAfter);
+    EXPECT_NEAR(obj.get(), angleAfter, 0.000000001);
+}
+
+INSTANTIATE_TEST_CASE_P(
+    AngleMirrorVerticalTests, AngleMirrorVerticalMultipleParametersTests,
+    ::testing::Values(
         std::make_tuple(Quadrant::I, Quadrant::II, 30.0_deg, 150.0_deg),
         std::make_tuple(Quadrant::II, Quadrant::I, 150.0_deg, 30.0_deg),
         std::make_tuple(Quadrant::III, Quadrant::IV, 210.0_deg, 330.0_deg),
