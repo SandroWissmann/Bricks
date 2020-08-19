@@ -54,101 +54,120 @@ TEST(AngleTest, quadrant)
     EXPECT_EQ(obj.quadrant(), Quadrant::III);
 }
 
-TEST(calcQuadrant, Expect_FALSE)
+class CalcQuadrantMultipleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, Quadrant>> {
+protected:
+};
+
+TEST_P(CalcQuadrantMultipleParametersTests, CalcQuadrant)
 {
-    EXPECT_EQ(calcQuadrant(0.0_deg), Quadrant::I);
-    EXPECT_EQ(calcQuadrant(45.0_deg), Quadrant::I);
-    EXPECT_EQ(calcQuadrant(90.0_deg), Quadrant::I);
-    EXPECT_EQ(calcQuadrant(90.1_deg), Quadrant::II);
-    EXPECT_EQ(calcQuadrant(135.0_deg), Quadrant::II);
-    EXPECT_EQ(calcQuadrant(180.0_deg), Quadrant::II);
-    EXPECT_EQ(calcQuadrant(180.1_deg), Quadrant::III);
-    EXPECT_EQ(calcQuadrant(225.0_deg), Quadrant::III);
-    EXPECT_EQ(calcQuadrant(270.0_deg), Quadrant::III);
-    EXPECT_EQ(calcQuadrant(270.1_deg), Quadrant::IV);
-    EXPECT_EQ(calcQuadrant(315.0_deg), Quadrant::IV);
-    EXPECT_EQ(calcQuadrant(360.0_deg), Quadrant::IV);
+    auto angle = std::get<0>(GetParam());
+    auto quadrant = std::get<1>(GetParam());
+    EXPECT_EQ(calcQuadrant(angle), quadrant);
 }
 
-TEST(isInQuadrantI, Expect_TRUE)
+INSTANTIATE_TEST_CASE_P(
+    CalcQuadrantTests, CalcQuadrantMultipleParametersTests,
+    ::testing::Values(std::make_tuple(0.0_deg, Quadrant::I),
+                      std::make_tuple(45.0_deg, Quadrant::I),
+                      std::make_tuple(90.0_deg, Quadrant::I),
+                      std::make_tuple(90.1_deg, Quadrant::II),
+                      std::make_tuple(135.0_deg, Quadrant::II),
+                      std::make_tuple(180.0_deg, Quadrant::II),
+                      std::make_tuple(180.1_deg, Quadrant::III),
+                      std::make_tuple(225.0_deg, Quadrant::III),
+                      std::make_tuple(270.0_deg, Quadrant::III),
+                      std::make_tuple(270.1_deg, Quadrant::IV),
+                      std::make_tuple(315.0_deg, Quadrant::IV),
+                      std::make_tuple(360.0_deg, Quadrant::IV)));
+
+class IsInQuadrantIMultipleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, bool>> {
+protected:
+};
+
+TEST_P(IsInQuadrantIMultipleParametersTests, isInQuadrantI)
 {
-    EXPECT_TRUE(isInQuadrantI(0.0_deg));
-    EXPECT_TRUE(isInQuadrantI(45.0_deg));
-    EXPECT_TRUE(isInQuadrantI(90.0_deg));
+    auto angle = std::get<0>(GetParam());
+    auto result = std::get<1>(GetParam());
+    EXPECT_EQ(isInQuadrantI(angle), result);
 }
 
-TEST(isInQuadrantI, Expect_FALSE)
+INSTANTIATE_TEST_CASE_P(
+    IsInQuadranI, IsInQuadrantIMultipleParametersTests,
+    ::testing::Values(
+        std::make_tuple(0.0_deg, true), std::make_tuple(45.0_deg, true),
+        std::make_tuple(90.0_deg, true), std::make_tuple(90.1_deg, false),
+        std::make_tuple(135.0_deg, false), std::make_tuple(180.0_deg, false),
+        std::make_tuple(180.1_deg, false), std::make_tuple(225.0_deg, false),
+        std::make_tuple(270.0_deg, false), std::make_tuple(270.1_deg, false),
+        std::make_tuple(315.0_deg, false), std::make_tuple(360.0_deg, false)));
+
+class IsInQuadrantIIMultipleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, bool>> {
+protected:
+};
+
+TEST_P(IsInQuadrantIIMultipleParametersTests, isInQuadrantII)
 {
-    EXPECT_FALSE(isInQuadrantI(90.1_deg));
-    EXPECT_FALSE(isInQuadrantI(135.0_deg));
-    EXPECT_FALSE(isInQuadrantI(180.0_deg));
-    EXPECT_FALSE(isInQuadrantI(180.1_deg));
-    EXPECT_FALSE(isInQuadrantI(225.0_deg));
-    EXPECT_FALSE(isInQuadrantI(270.0_deg));
-    EXPECT_FALSE(isInQuadrantI(270.1_deg));
-    EXPECT_FALSE(isInQuadrantI(315.0_deg));
-    EXPECT_FALSE(isInQuadrantI(360.0_deg));
+    auto angle = std::get<0>(GetParam());
+    auto result = std::get<1>(GetParam());
+    EXPECT_EQ(isInQuadrantII(angle), result);
 }
 
-TEST(isInQuadrantII, Expect_TRUE)
+INSTANTIATE_TEST_CASE_P(
+    IsInQuadranII, IsInQuadrantIIMultipleParametersTests,
+    ::testing::Values(
+        std::make_tuple(0.0_deg, false), std::make_tuple(45.0_deg, false),
+        std::make_tuple(90.0_deg, false), std::make_tuple(90.1_deg, true),
+        std::make_tuple(135.0_deg, true), std::make_tuple(180.0_deg, true),
+        std::make_tuple(180.1_deg, false), std::make_tuple(225.0_deg, false),
+        std::make_tuple(270.0_deg, false), std::make_tuple(270.1_deg, false),
+        std::make_tuple(315.0_deg, false), std::make_tuple(360.0_deg, false)));
+
+class IsInQuadrantIIIMultipleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, bool>> {
+protected:
+};
+
+TEST_P(IsInQuadrantIIIMultipleParametersTests, isInQuadrantIII)
 {
-    EXPECT_TRUE(isInQuadrantII(90.1_deg));
-    EXPECT_TRUE(isInQuadrantII(135.0_deg));
-    EXPECT_TRUE(isInQuadrantII(180.0_deg));
+    auto angle = std::get<0>(GetParam());
+    auto result = std::get<1>(GetParam());
+    EXPECT_EQ(isInQuadrantIII(angle), result);
 }
 
-TEST(isInQuadrantII, Expect_FALSE)
+INSTANTIATE_TEST_CASE_P(
+    IsInQuadranIII, IsInQuadrantIIIMultipleParametersTests,
+    ::testing::Values(
+        std::make_tuple(0.0_deg, false), std::make_tuple(45.0_deg, false),
+        std::make_tuple(90.0_deg, false), std::make_tuple(90.1_deg, false),
+        std::make_tuple(135.0_deg, false), std::make_tuple(180.0_deg, false),
+        std::make_tuple(180.1_deg, true), std::make_tuple(225.0_deg, true),
+        std::make_tuple(270.0_deg, true), std::make_tuple(270.1_deg, false),
+        std::make_tuple(315.0_deg, false), std::make_tuple(360.0_deg, false)));
+
+class IsInQuadrantIVMultipleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, bool>> {
+protected:
+};
+
+TEST_P(IsInQuadrantIVMultipleParametersTests, isInQuadrantIV)
 {
-    EXPECT_FALSE(isInQuadrantII(0.0_deg));
-    EXPECT_FALSE(isInQuadrantII(45.0_deg));
-    EXPECT_FALSE(isInQuadrantII(90.0_deg));
-    EXPECT_FALSE(isInQuadrantII(180.1_deg));
-    EXPECT_FALSE(isInQuadrantII(225.0_deg));
-    EXPECT_FALSE(isInQuadrantII(270.0_deg));
-    EXPECT_FALSE(isInQuadrantII(270.1_deg));
-    EXPECT_FALSE(isInQuadrantII(315.0_deg));
-    EXPECT_FALSE(isInQuadrantII(360.0_deg));
+    auto angle = std::get<0>(GetParam());
+    auto result = std::get<1>(GetParam());
+    EXPECT_EQ(isInQuadrantIV(angle), result);
 }
 
-TEST(isInQuadrantIII, Expect_TRUE)
-{
-    EXPECT_TRUE(isInQuadrantIII(180.1_deg));
-    EXPECT_TRUE(isInQuadrantIII(225.0_deg));
-    EXPECT_TRUE(isInQuadrantIII(270.0_deg));
-}
-
-TEST(isInQuadrantIII, Expect_FALSE)
-{
-    EXPECT_FALSE(isInQuadrantIII(0.0_deg));
-    EXPECT_FALSE(isInQuadrantIII(45.0_deg));
-    EXPECT_FALSE(isInQuadrantIII(90.0_deg));
-    EXPECT_FALSE(isInQuadrantIII(90.1_deg));
-    EXPECT_FALSE(isInQuadrantIII(135.0_deg));
-    EXPECT_FALSE(isInQuadrantIII(180.0_deg));
-    EXPECT_FALSE(isInQuadrantIII(270.1_deg));
-    EXPECT_FALSE(isInQuadrantIII(315.0_deg));
-    EXPECT_FALSE(isInQuadrantIII(360.0_deg));
-}
-
-TEST(isInQuadrantIV, Expect_TRUE)
-{
-    EXPECT_TRUE(isInQuadrantIV(270.1_deg));
-    EXPECT_TRUE(isInQuadrantIV(315.0_deg));
-    EXPECT_TRUE(isInQuadrantIV(360.0_deg));
-}
-
-TEST(isInQuadrantIV, Expect_FALSE)
-{
-    EXPECT_FALSE(isInQuadrantIV(0.0_deg));
-    EXPECT_FALSE(isInQuadrantIV(45.0_deg));
-    EXPECT_FALSE(isInQuadrantIV(90.0_deg));
-    EXPECT_FALSE(isInQuadrantIV(90.1_deg));
-    EXPECT_FALSE(isInQuadrantIV(135.0_deg));
-    EXPECT_FALSE(isInQuadrantIV(180.0_deg));
-    EXPECT_FALSE(isInQuadrantIV(180.1_deg));
-    EXPECT_FALSE(isInQuadrantIV(225.0_deg));
-    EXPECT_FALSE(isInQuadrantIV(270.0_deg));
-}
+INSTANTIATE_TEST_CASE_P(
+    IsInQuadranIV, IsInQuadrantIVMultipleParametersTests,
+    ::testing::Values(
+        std::make_tuple(0.0_deg, false), std::make_tuple(45.0_deg, false),
+        std::make_tuple(90.0_deg, false), std::make_tuple(90.1_deg, false),
+        std::make_tuple(135.0_deg, false), std::make_tuple(180.0_deg, false),
+        std::make_tuple(180.1_deg, false), std::make_tuple(225.0_deg, false),
+        std::make_tuple(270.0_deg, false), std::make_tuple(270.1_deg, true),
+        std::make_tuple(315.0_deg, true), std::make_tuple(360.0_deg, true)));
 
 TEST(calcAngleIfOutOfRange, Expected_result)
 {
@@ -161,3 +180,27 @@ TEST(calcAngleIfOutOfRange, Expected_result)
     EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(-360.0_deg), 0.0_deg);
     EXPECT_DOUBLE_EQ(calcAngleIfOutOfRange(-540.0_deg), 180.0_deg);
 }
+
+class CalcAngleIfOutOfRangeMultipleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, double>> {
+protected:
+};
+
+TEST_P(CalcAngleIfOutOfRangeMultipleParametersTests, CalcAngleIfOutOfRange)
+{
+    auto angle = std::get<0>(GetParam());
+    auto result_angle = std::get<1>(GetParam());
+    EXPECT_NEAR(calcAngleIfOutOfRange(angle), result_angle, 0.000000001);
+}
+
+INSTANTIATE_TEST_CASE_P(CalcAngleIfOutOfRange,
+                        CalcAngleIfOutOfRangeMultipleParametersTests,
+                        ::testing::Values(std::make_tuple(0.0_deg, 0.0_deg),
+                                          std::make_tuple(360.0_deg, 360.0_deg),
+                                          std::make_tuple(360.1_deg, 0.1_deg),
+                                          std::make_tuple(540.0_deg, 180.0_deg),
+
+                                          std::make_tuple(-0.1_deg, 359.9_deg),
+                                          std::make_tuple(-360.0_deg, 0.0_deg),
+                                          std::make_tuple(-540.0_deg,
+                                                          180.0_deg)));
