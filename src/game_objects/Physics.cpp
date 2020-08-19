@@ -488,7 +488,7 @@ void reflectHorizontalIncreased(Ball& ball)
 {
     auto angle = ball.angle();
     angle.mirrorHorizontal();
-    angle.setQuadrantAngle(increaseAngle(angle.quadrantAngle()));
+    angle.setQuadrantAngle(increaseQuadrandAngle(angle.quadrantAngle()));
     ball.setAngle(angle);
 }
 
@@ -496,7 +496,7 @@ void reflectHorizontalDecreased(Ball& ball)
 {
     auto angle = ball.angle();
     angle.mirrorHorizontal();
-    angle.setQuadrantAngle(decreaseAngle(angle.quadrantAngle()));
+    angle.setQuadrantAngle(decreaseQuadrantAngle(angle.quadrantAngle()));
     ball.setAngle(angle);
 }
 
@@ -511,7 +511,7 @@ void reflectVerticalIncreased(Ball& ball)
 {
     auto angle = ball.angle();
     angle.mirrorVertical();
-    angle.setQuadrantAngle(increaseAngle(angle.quadrantAngle()));
+    angle.setQuadrantAngle(increaseQuadrandAngle(angle.quadrantAngle()));
     ball.setAngle(angle);
 }
 
@@ -519,7 +519,7 @@ void reflectVerticalDecreased(Ball& ball)
 {
     auto angle = ball.angle();
     angle.mirrorVertical();
-    angle.setQuadrantAngle(decreaseAngle(angle.quadrantAngle()));
+    angle.setQuadrantAngle(decreaseQuadrantAngle(angle.quadrantAngle()));
     ball.setAngle(angle);
 }
 
@@ -551,14 +551,14 @@ void putBeforeIntersectsWithTopY(Ball& ball, const GameObject& obj)
     ball.setTopLeft(p);
 }
 
-long double increaseAngle(long double quadrantAngle)
+long double increaseQuadrandAngle(long double quadrantAngle)
 {
     quadrantAngle *= random(1.0L, 1.5L);
 
     return std::clamp(quadrantAngle, 0.0L, 60.0_deg);
 }
 
-long double decreaseAngle(long double quadrantAngle)
+long double decreaseQuadrantAngle(long double quadrantAngle)
 {
     return quadrantAngle * random(0.5L, 1.0L);
 }

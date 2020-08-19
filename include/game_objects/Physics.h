@@ -76,9 +76,9 @@ void putBeforeIntersectsWithLeftX(GameObject& a, const GameObject& b);
 void putBeforeIntersectsWithBottomY(Ball& ball, const GameObject& obj);
 void putBeforeIntersectsWithTopY(Ball& ball, const GameObject& obj);
 
-long double increaseAngle(long double quadrantAngle);
+long double increaseQuadrandAngle(long double quadrantAngle);
 
-long double decreaseAngle(long double quadrantAngle);
+long double decreaseQuadrantAngle(long double quadrantAngle);
 
 long double mirror(long double quadrantAngle);
 
