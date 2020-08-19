@@ -6,14 +6,14 @@
 
 namespace bricks::utility {
 
-constexpr long double rad2deg(long double radAngle)
+constexpr long double deg2rad(long double degAngle)
 {
-    return radAngle * M_PI / 180.0L;
+    return degAngle * M_PI / 180.0L;
 }
 
-constexpr long double operator"" _deg(long double radAngle)
+constexpr long double operator"" _deg(long double degAngle)
 {
-    return rad2deg(radAngle);
+    return deg2rad(degAngle);
 }
 
 } // namespace bricks::utility
