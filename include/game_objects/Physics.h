@@ -51,10 +51,10 @@ types::Angle clampAngle(const types::Angle& angle);
 bool isSmaller(double angle, double targetAngle, double delta);
 bool isBigger(double angle, double targetAngle, double delta);
 
-bool interectsWithRightX(const GameObject& a, const GameObject& b);
-bool interectsWithLeftX(const GameObject& a, const GameObject& b);
-bool interectsWithBottomY(const GameObject& a, const GameObject& b);
-bool interectsWithTopY(const GameObject& a, const GameObject& b);
+bool intersectsWithRightX(const GameObject& a, const GameObject& b);
+bool intersectsWithLeftX(const GameObject& a, const GameObject& b);
+bool intersectsWithBottomY(const GameObject& a, const GameObject& b);
+bool intersectsWithTopY(const GameObject& a, const GameObject& b);
 
 bool isInsideWithX(const Ball& ball, const GameObject& obj);
 bool isInsideWithY(const Ball& ball, const GameObject& obj);

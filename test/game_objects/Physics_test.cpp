@@ -184,52 +184,52 @@ protected:
     Ball ball;
 };
 
-TEST_F(CollisionTest, interectsWithRightX)
+TEST_F(CollisionTest, intersectsWithRightX)
 {
-    EXPECT_FALSE(interectsWithRightX(ball, brickTopLeft));
-    EXPECT_FALSE(interectsWithRightX(ball, brickTop));
-    EXPECT_TRUE(interectsWithRightX(ball, brickTopRight));
-    EXPECT_TRUE(interectsWithRightX(ball, brickRight));
-    EXPECT_TRUE(interectsWithRightX(ball, brickBottomRight));
-    EXPECT_FALSE(interectsWithRightX(ball, brickBottom));
-    EXPECT_FALSE(interectsWithRightX(ball, brickBottomLeft));
-    EXPECT_FALSE(interectsWithRightX(ball, brickLeft));
+    EXPECT_FALSE(intersectsWithRightX(ball, brickTopLeft));
+    EXPECT_FALSE(intersectsWithRightX(ball, brickTop));
+    EXPECT_TRUE(intersectsWithRightX(ball, brickTopRight));
+    EXPECT_TRUE(intersectsWithRightX(ball, brickRight));
+    EXPECT_TRUE(intersectsWithRightX(ball, brickBottomRight));
+    EXPECT_FALSE(intersectsWithRightX(ball, brickBottom));
+    EXPECT_FALSE(intersectsWithRightX(ball, brickBottomLeft));
+    EXPECT_FALSE(intersectsWithRightX(ball, brickLeft));
 }
 
-TEST_F(CollisionTest, interectsWithLeftX)
+TEST_F(CollisionTest, intersectsWithLeftX)
 {
-    EXPECT_TRUE(interectsWithLeftX(ball, brickTopLeft));
-    EXPECT_FALSE(interectsWithLeftX(ball, brickTop));
-    EXPECT_FALSE(interectsWithLeftX(ball, brickTopRight));
-    EXPECT_FALSE(interectsWithLeftX(ball, brickRight));
-    EXPECT_FALSE(interectsWithLeftX(ball, brickBottomRight));
-    EXPECT_FALSE(interectsWithLeftX(ball, brickBottom));
-    EXPECT_TRUE(interectsWithLeftX(ball, brickBottomLeft));
-    EXPECT_TRUE(interectsWithLeftX(ball, brickLeft));
+    EXPECT_TRUE(intersectsWithLeftX(ball, brickTopLeft));
+    EXPECT_FALSE(intersectsWithLeftX(ball, brickTop));
+    EXPECT_FALSE(intersectsWithLeftX(ball, brickTopRight));
+    EXPECT_FALSE(intersectsWithLeftX(ball, brickRight));
+    EXPECT_FALSE(intersectsWithLeftX(ball, brickBottomRight));
+    EXPECT_FALSE(intersectsWithLeftX(ball, brickBottom));
+    EXPECT_TRUE(intersectsWithLeftX(ball, brickBottomLeft));
+    EXPECT_TRUE(intersectsWithLeftX(ball, brickLeft));
 }
 
-TEST_F(CollisionTest, interectsWithBottomY)
+TEST_F(CollisionTest, intersectsWithBottomY)
 {
-    EXPECT_FALSE(interectsWithBottomY(ball, brickTopLeft));
-    EXPECT_FALSE(interectsWithBottomY(ball, brickTop));
-    EXPECT_FALSE(interectsWithBottomY(ball, brickTopRight));
-    EXPECT_FALSE(interectsWithBottomY(ball, brickRight));
-    EXPECT_TRUE(interectsWithBottomY(ball, brickBottomRight));
-    EXPECT_TRUE(interectsWithBottomY(ball, brickBottom));
-    EXPECT_TRUE(interectsWithBottomY(ball, brickBottomLeft));
-    EXPECT_FALSE(interectsWithBottomY(ball, brickLeft));
+    EXPECT_FALSE(intersectsWithBottomY(ball, brickTopLeft));
+    EXPECT_FALSE(intersectsWithBottomY(ball, brickTop));
+    EXPECT_FALSE(intersectsWithBottomY(ball, brickTopRight));
+    EXPECT_FALSE(intersectsWithBottomY(ball, brickRight));
+    EXPECT_TRUE(intersectsWithBottomY(ball, brickBottomRight));
+    EXPECT_TRUE(intersectsWithBottomY(ball, brickBottom));
+    EXPECT_TRUE(intersectsWithBottomY(ball, brickBottomLeft));
+    EXPECT_FALSE(intersectsWithBottomY(ball, brickLeft));
 }
 
-TEST_F(CollisionTest, interectsWithTopY)
+TEST_F(CollisionTest, intersectsWithTopY)
 {
-    EXPECT_TRUE(interectsWithTopY(ball, brickTopLeft));
-    EXPECT_TRUE(interectsWithTopY(ball, brickTop));
-    EXPECT_TRUE(interectsWithTopY(ball, brickTopRight));
-    EXPECT_FALSE(interectsWithTopY(ball, brickRight));
-    EXPECT_FALSE(interectsWithTopY(ball, brickBottomRight));
-    EXPECT_FALSE(interectsWithTopY(ball, brickBottom));
-    EXPECT_FALSE(interectsWithTopY(ball, brickBottomLeft));
-    EXPECT_FALSE(interectsWithTopY(ball, brickLeft));
+    EXPECT_TRUE(intersectsWithTopY(ball, brickTopLeft));
+    EXPECT_TRUE(intersectsWithTopY(ball, brickTop));
+    EXPECT_TRUE(intersectsWithTopY(ball, brickTopRight));
+    EXPECT_FALSE(intersectsWithTopY(ball, brickRight));
+    EXPECT_FALSE(intersectsWithTopY(ball, brickBottomRight));
+    EXPECT_FALSE(intersectsWithTopY(ball, brickBottom));
+    EXPECT_FALSE(intersectsWithTopY(ball, brickBottomLeft));
+    EXPECT_FALSE(intersectsWithTopY(ball, brickLeft));
 }
 
 TEST_F(CollisionTest, isInsideWithX)

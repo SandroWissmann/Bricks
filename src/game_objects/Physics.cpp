@@ -41,10 +41,10 @@ bool reflect(Ball& ball, const Platform& platform)
 
 bool reflectFromQuadrantI(Ball& ball, const Platform& platform)
 {
-    if (interectsWithBottomY(ball, platform)) {
+    if (intersectsWithBottomY(ball, platform)) {
         return reflectHorizontalFromQuadrantI(ball, platform);
     }
-    if (interectsWithRightX(ball, platform)) {
+    if (intersectsWithRightX(ball, platform)) {
         return reflectVerticalFromQuadrantI(ball, platform);
     }
     return false;
@@ -55,11 +55,11 @@ bool reflectHorizontalFromQuadrantI(Ball& ball, const Platform& platform)
     if (isInsideWithX(ball, platform)) {
         reflectHorizontalItoIV(ball, platform);
     }
-    else if (interectsWithRightX(ball, platform) &&
+    else if (intersectsWithRightX(ball, platform) &&
              notThroughWithRightX(ball, platform)) {
         reflectHorizontalItoIV(ball, platform);
     }
-    else if (interectsWithLeftX(ball, platform) &&
+    else if (intersectsWithLeftX(ball, platform) &&
              notThroughWithLeftX(ball, platform)) {
         reflectHorizontalItoIV(ball, platform);
     }
@@ -90,10 +90,10 @@ void reflectHorizontalItoIV(Ball& ball, const Platform& platform)
 
 bool reflectFromQuadrantII(Ball& ball, const Platform& platform)
 {
-    if (interectsWithBottomY(ball, platform)) {
+    if (intersectsWithBottomY(ball, platform)) {
         return reflectHorizontalFromQuadrantII(ball, platform);
     }
-    if (interectsWithLeftX(ball, platform)) {
+    if (intersectsWithLeftX(ball, platform)) {
         return reflectVerticalFromQuadrantII(ball, platform);
     }
     return false;
@@ -104,11 +104,11 @@ bool reflectHorizontalFromQuadrantII(Ball& ball, const Platform& platform)
     if (isInsideWithX(ball, platform)) {
         reflectHorizontalIItoIII(ball, platform);
     }
-    else if (interectsWithRightX(ball, platform) &&
+    else if (intersectsWithRightX(ball, platform) &&
              notThroughWithRightX(ball, platform)) {
         reflectHorizontalIItoIII(ball, platform);
     }
-    else if (interectsWithLeftX(ball, platform) &&
+    else if (intersectsWithLeftX(ball, platform) &&
              notThroughWithLeftX(ball, platform)) {
         reflectHorizontalIItoIII(ball, platform);
     }
@@ -175,10 +175,10 @@ bool reflect(Ball& ball, const GameObject& obj)
 
 bool reflectFromQuadrantI(Ball& ball, const GameObject& obj)
 {
-    if (interectsWithBottomY(ball, obj)) {
+    if (intersectsWithBottomY(ball, obj)) {
         return reflectHorizontalFromQuadrantI(ball, obj);
     }
-    if (interectsWithRightX(ball, obj)) {
+    if (intersectsWithRightX(ball, obj)) {
         return reflectVerticalFromQuadrantI(ball, obj);
     }
     return false;
@@ -189,11 +189,11 @@ bool reflectHorizontalFromQuadrantI(Ball& ball, const GameObject& obj)
     if (isInsideWithX(ball, obj)) {
         reflectHorizontal(ball);
     }
-    else if (interectsWithRightX(ball, obj) &&
+    else if (intersectsWithRightX(ball, obj) &&
              notThroughWithRightX(ball, obj)) {
         reflectHorizontalIncreased(ball);
     }
-    else if (interectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
+    else if (intersectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
         reflectHorizontalIncreased(ball);
     }
     else {
@@ -209,11 +209,11 @@ bool reflectVerticalFromQuadrantI(Ball& ball, const GameObject& obj)
     if (isInsideWithY(ball, obj)) {
         reflectVertical(ball);
     }
-    else if (interectsWithBottomY(ball, obj) &&
+    else if (intersectsWithBottomY(ball, obj) &&
              notThroughWithBottomY(ball, obj)) {
         reflectVerticalIncreased(ball);
     }
-    else if (interectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
+    else if (intersectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
         reflectVerticalIncreased(ball);
     }
     else {
@@ -226,10 +226,10 @@ bool reflectVerticalFromQuadrantI(Ball& ball, const GameObject& obj)
 
 bool reflectFromQuadrantII(Ball& ball, const GameObject& obj)
 {
-    if (interectsWithBottomY(ball, obj)) {
+    if (intersectsWithBottomY(ball, obj)) {
         return reflectHorizontalFromQuadrantII(ball, obj);
     }
-    if (interectsWithLeftX(ball, obj)) {
+    if (intersectsWithLeftX(ball, obj)) {
         return reflectVerticalFromQuadrantII(ball, obj);
     }
     return false;
@@ -240,11 +240,11 @@ bool reflectHorizontalFromQuadrantII(Ball& ball, const GameObject& obj)
     if (isInsideWithX(ball, obj)) {
         reflectHorizontal(ball);
     }
-    else if (interectsWithRightX(ball, obj) &&
+    else if (intersectsWithRightX(ball, obj) &&
              notThroughWithRightX(ball, obj)) {
         reflectHorizontalDecreased(ball);
     }
-    else if (interectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
+    else if (intersectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
         reflectHorizontalDecreased(ball);
     }
     else {
@@ -260,11 +260,11 @@ bool reflectVerticalFromQuadrantII(Ball& ball, const GameObject& obj)
     if (isInsideWithY(ball, obj)) {
         reflectVertical(ball);
     }
-    else if (interectsWithBottomY(ball, obj) &&
+    else if (intersectsWithBottomY(ball, obj) &&
              notThroughWithBottomY(ball, obj)) {
         reflectVerticalDecreased(ball);
     }
-    else if (interectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
+    else if (intersectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
         reflectVerticalDecreased(ball);
     }
     else {
@@ -277,10 +277,10 @@ bool reflectVerticalFromQuadrantII(Ball& ball, const GameObject& obj)
 
 bool reflectFromQuadrantIII(Ball& ball, const GameObject& obj)
 {
-    if (interectsWithTopY(ball, obj)) {
+    if (intersectsWithTopY(ball, obj)) {
         return reflectHorizontalFromQuadrantIII(ball, obj);
     }
-    if (interectsWithLeftX(ball, obj)) {
+    if (intersectsWithLeftX(ball, obj)) {
         return reflectVerticalFromQuadrantIII(ball, obj);
     }
     return false;
@@ -291,11 +291,11 @@ bool reflectHorizontalFromQuadrantIII(Ball& ball, const GameObject& obj)
     if (isInsideWithX(ball, obj)) {
         reflectHorizontal(ball);
     }
-    else if (interectsWithRightX(ball, obj) &&
+    else if (intersectsWithRightX(ball, obj) &&
              notThroughWithRightX(ball, obj)) {
         reflectHorizontalIncreased(ball);
     }
-    else if (interectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
+    else if (intersectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
         reflectHorizontalIncreased(ball);
     }
     else {
@@ -311,11 +311,11 @@ bool reflectVerticalFromQuadrantIII(Ball& ball, const GameObject& obj)
     if (isInsideWithY(ball, obj)) {
         reflectVertical(ball);
     }
-    else if (interectsWithBottomY(ball, obj) &&
+    else if (intersectsWithBottomY(ball, obj) &&
              notThroughWithBottomY(ball, obj)) {
         reflectVerticalIncreased(ball);
     }
-    else if (interectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
+    else if (intersectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
         reflectVerticalIncreased(ball);
     }
     else {
@@ -328,10 +328,10 @@ bool reflectVerticalFromQuadrantIII(Ball& ball, const GameObject& obj)
 
 bool reflectFromQuadrantIV(Ball& ball, const GameObject& obj)
 {
-    if (interectsWithTopY(ball, obj)) {
+    if (intersectsWithTopY(ball, obj)) {
         return reflectHorizontalFromQuadrantIV(ball, obj);
     }
-    if (interectsWithRightX(ball, obj)) {
+    if (intersectsWithRightX(ball, obj)) {
         return reflectVerticalFromQuadrantIV(ball, obj);
     }
     return false;
@@ -342,11 +342,11 @@ bool reflectHorizontalFromQuadrantIV(Ball& ball, const GameObject& obj)
     if (isInsideWithX(ball, obj)) {
         reflectHorizontal(ball);
     }
-    else if (interectsWithRightX(ball, obj) &&
+    else if (intersectsWithRightX(ball, obj) &&
              notThroughWithRightX(ball, obj)) {
         reflectHorizontalDecreased(ball);
     }
-    else if (interectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
+    else if (intersectsWithLeftX(ball, obj) && notThroughWithLeftX(ball, obj)) {
         reflectHorizontalDecreased(ball);
     }
     else {
@@ -362,11 +362,11 @@ bool reflectVerticalFromQuadrantIV(Ball& ball, const GameObject& obj)
     if (isInsideWithY(ball, obj)) {
         reflectVertical(ball);
     }
-    else if (interectsWithBottomY(ball, obj) &&
+    else if (intersectsWithBottomY(ball, obj) &&
              notThroughWithBottomY(ball, obj)) {
         reflectVerticalDecreased(ball);
     }
-    else if (interectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
+    else if (intersectsWithTopY(ball, obj) && notThroughWithTopY(ball, obj)) {
         reflectVerticalDecreased(ball);
     }
     else {
@@ -422,24 +422,24 @@ bool isBigger(double angle, double targetAngle, double delta)
     return angle >= targetAngle && angle < targetAngle + delta;
 }
 
-bool interectsWithRightX(const GameObject& a, const GameObject& b)
+bool intersectsWithRightX(const GameObject& a, const GameObject& b)
 {
     return a.bottomRight().x >= b.topLeft().x && a.topLeft().x < b.topLeft().x;
 }
 
-bool interectsWithLeftX(const GameObject& a, const GameObject& b)
+bool intersectsWithLeftX(const GameObject& a, const GameObject& b)
 {
     return a.topLeft().x <= b.bottomRight().x &&
            a.bottomRight().x > b.bottomRight().x;
 }
 
-bool interectsWithTopY(const GameObject& a, const GameObject& b)
+bool intersectsWithTopY(const GameObject& a, const GameObject& b)
 {
     return a.topLeft().y <= b.bottomRight().y &&
            a.bottomRight().y > b.bottomRight().y;
 }
 
-bool interectsWithBottomY(const GameObject& a, const GameObject& b)
+bool intersectsWithBottomY(const GameObject& a, const GameObject& b)
 {
     return a.bottomRight().y >= b.topLeft().y && a.topLeft().y < b.topLeft().y;
 }

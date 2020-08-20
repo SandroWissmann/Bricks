@@ -115,7 +115,7 @@ void InputHandler::handleEvent(const Event& event, double elapsedTimeMS,
         }
         break;
     case Event::left:
-        if (interectsWithLeftX(platform, leftWall)) {
+        if (intersectsWithLeftX(platform, leftWall)) {
             putBeforeIntersectsWithLeftX(platform, leftWall);
         }
         else {
@@ -123,7 +123,7 @@ void InputHandler::handleEvent(const Event& event, double elapsedTimeMS,
         }
         break;
     case Event::right:
-        if (interectsWithRightX(platform, rightWall)) {
+        if (intersectsWithRightX(platform, rightWall)) {
             putBeforeIntersectsWithRightX(platform, rightWall);
         }
         else {
