@@ -35,91 +35,103 @@ INSTANTIATE_TEST_CASE_P(
                       std::make_tuple(1.5, 0.5), std::make_tuple(1.75, 0.75),
                       std::make_tuple(2.0, 1.0)));
 
-TEST(clampAngle, AngleGetsClamped)
+class ClampAngleParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, double>> {
+protected:
+};
+
+TEST_P(ClampAngleParametersTests, CheckResults)
 {
-    EXPECT_EQ((clampAngle(Angle{0.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{5.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{10.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{15.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{20.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{25.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{30.0_deg}).get()), 30.0_deg);
-    EXPECT_EQ((clampAngle(Angle{35.0_deg}).get()), 35.0_deg);
-    EXPECT_EQ((clampAngle(Angle{40.0_deg}).get()), 40.0_deg);
-    EXPECT_EQ((clampAngle(Angle{45.0_deg}).get()), 45.0_deg);
-    EXPECT_EQ((clampAngle(Angle{50.0_deg}).get()), 50.0_deg);
-    EXPECT_EQ((clampAngle(Angle{55.0_deg}).get()), 55.0_deg);
-    EXPECT_EQ((clampAngle(Angle{60.0_deg}).get()), 60.0_deg);
-    EXPECT_EQ((clampAngle(Angle{65.0_deg}).get()), 65.0_deg);
-    EXPECT_EQ((clampAngle(Angle{70.0_deg}).get()), 70.0_deg);
-    EXPECT_EQ((clampAngle(Angle{75.0_deg}).get()), 75.0_deg);
-    EXPECT_EQ((clampAngle(Angle{80.0_deg}).get()), 75.0_deg);
-    EXPECT_EQ((clampAngle(Angle{85.0_deg}).get()), 75.0_deg);
-    EXPECT_EQ((clampAngle(Angle{90.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{95.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{100.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{105.0_deg}).get()), 105.0_deg);
-    EXPECT_EQ((clampAngle(Angle{110.0_deg}).get()), 110.0_deg);
-    EXPECT_EQ((clampAngle(Angle{115.0_deg}).get()), 115.0_deg);
-    EXPECT_EQ((clampAngle(Angle{120.0_deg}).get()), 120.0_deg);
-    EXPECT_EQ((clampAngle(Angle{125.0_deg}).get()), 125.0_deg);
-    EXPECT_EQ((clampAngle(Angle{130.0_deg}).get()), 130.0_deg);
-    EXPECT_EQ((clampAngle(Angle{135.0_deg}).get()), 135.0_deg);
-    EXPECT_EQ((clampAngle(Angle{140.0_deg}).get()), 140.0_deg);
-    EXPECT_EQ((clampAngle(Angle{145.0_deg}).get()), 145.0_deg);
-    EXPECT_EQ((clampAngle(Angle{150.0_deg}).get()), 150.0_deg);
-    EXPECT_EQ((clampAngle(Angle{155.0_deg}).get()), 150.0_deg);
-    EXPECT_EQ((clampAngle(Angle{160.0_deg}).get()), 150.0_deg);
-    EXPECT_EQ((clampAngle(Angle{165.0_deg}).get()), 150.0_deg);
-    EXPECT_EQ((clampAngle(Angle{170.0_deg}).get()), 150.0_deg);
-    EXPECT_EQ((clampAngle(Angle{175.0_deg}).get()), 150.0_deg);
-    EXPECT_EQ((clampAngle(Angle{180.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{185.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{190.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{195.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{200.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{205.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{210.0_deg}).get()), 210.0_deg);
-    EXPECT_EQ((clampAngle(Angle{215.0_deg}).get()), 215.0_deg);
-    EXPECT_EQ((clampAngle(Angle{220.0_deg}).get()), 220.0_deg);
-    EXPECT_EQ((clampAngle(Angle{225.0_deg}).get()), 225.0_deg);
-    EXPECT_EQ((clampAngle(Angle{230.0_deg}).get()), 230.0_deg);
-    EXPECT_EQ((clampAngle(Angle{235.0_deg}).get()), 235.0_deg);
-    EXPECT_EQ((clampAngle(Angle{240.0_deg}).get()), 240.0_deg);
-    EXPECT_EQ((clampAngle(Angle{245.0_deg}).get()), 245.0_deg);
-    EXPECT_EQ((clampAngle(Angle{250.0_deg}).get()), 250.0_deg);
-    EXPECT_EQ((clampAngle(Angle{255.0_deg}).get()), 255.0_deg);
-    EXPECT_EQ((clampAngle(Angle{260.0_deg}).get()), 255.0_deg);
-    EXPECT_EQ((clampAngle(Angle{265.0_deg}).get()), 255.0_deg);
-    EXPECT_EQ((clampAngle(Angle{270.0_deg}).get()), 285.0_deg);
-    EXPECT_EQ((clampAngle(Angle{275.0_deg}).get()), 285.0_deg);
-    EXPECT_EQ((clampAngle(Angle{280.0_deg}).get()), 285.0_deg);
-    EXPECT_EQ((clampAngle(Angle{285.0_deg}).get()), 285.0_deg);
-    EXPECT_EQ((clampAngle(Angle{290.0_deg}).get()), 290.0_deg);
-    EXPECT_EQ((clampAngle(Angle{295.0_deg}).get()), 295.0_deg);
-    EXPECT_EQ((clampAngle(Angle{300.0_deg}).get()), 300.0_deg);
-    EXPECT_EQ((clampAngle(Angle{305.0_deg}).get()), 305.0_deg);
-    EXPECT_EQ((clampAngle(Angle{310.0_deg}).get()), 310.0_deg);
-    EXPECT_EQ((clampAngle(Angle{315.0_deg}).get()), 315.0_deg);
-    EXPECT_EQ((clampAngle(Angle{320.0_deg}).get()), 320.0_deg);
-    EXPECT_EQ((clampAngle(Angle{325.0_deg}).get()), 325.0_deg);
-    EXPECT_EQ((clampAngle(Angle{330.0_deg}).get()), 330.0_deg);
-    EXPECT_EQ((clampAngle(Angle{335.0_deg}).get()), 330.0_deg);
-    EXPECT_EQ((clampAngle(Angle{340.0_deg}).get()), 330.0_deg);
-    EXPECT_EQ((clampAngle(Angle{345.0_deg}).get()), 330.0_deg);
-    EXPECT_EQ((clampAngle(Angle{350.0_deg}).get()), 330.0_deg);
-    EXPECT_EQ((clampAngle(Angle{355.0_deg}).get()), 330.0_deg);
-    EXPECT_EQ((clampAngle(Angle{360.0_deg}).get()), 360.0_deg);
+    auto input_angle = std::get<0>(GetParam());
+    auto output_angle = std::get<1>(GetParam());
+
+    EXPECT_NEAR((clampAngle(Angle{input_angle}).get()), output_angle, 0.1);
 }
+
+INSTANTIATE_TEST_CASE_P(ClampAngleTests, ClampAngleParametersTests,
+                        ::testing::Values(std::make_tuple(0.0_deg, 30.0_deg),
+                                          std::make_tuple(5.0_deg, 30.0_deg),
+                                          std::make_tuple(10.0_deg, 30.0_deg),
+                                          std::make_tuple(15.0_deg, 30.0_deg),
+                                          std::make_tuple(20.0_deg, 30.0_deg),
+                                          std::make_tuple(25.0_deg, 30.0_deg),
+                                          std::make_tuple(30.0_deg, 30.0_deg),
+                                          std::make_tuple(35.0_deg, 35.0_deg),
+                                          std::make_tuple(40.0_deg, 40.0_deg),
+                                          std::make_tuple(45.0_deg, 45.0_deg),
+                                          std::make_tuple(50.0_deg, 50.0_deg),
+                                          std::make_tuple(55.0_deg, 55.0_deg),
+                                          std::make_tuple(60.0_deg, 60.0_deg),
+                                          std::make_tuple(65.0_deg, 65.0_deg),
+                                          std::make_tuple(70.0_deg, 70.0_deg),
+                                          std::make_tuple(75.0_deg, 75.0_deg),
+                                          std::make_tuple(80.0_deg, 75.0_deg),
+                                          std::make_tuple(85.0_deg, 75.0_deg),
+                                          std::make_tuple(90.0_deg, 105.0_deg),
+                                          std::make_tuple(95.0_deg, 105.0_deg),
+                                          std::make_tuple(100.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(105.0_deg, 105.0_deg),
+                                          std::make_tuple(110.0_deg, 110.0_deg),
+                                          std::make_tuple(115.0_deg, 115.0_deg),
+                                          std::make_tuple(120.0_deg, 120.0_deg),
+                                          std::make_tuple(125.0_deg, 125.0_deg),
+                                          std::make_tuple(130.0_deg, 130.0_deg),
+                                          std::make_tuple(135.0_deg, 135.0_deg),
+                                          std::make_tuple(140.0_deg, 140.0_deg),
+                                          std::make_tuple(145.0_deg, 145.0_deg),
+                                          std::make_tuple(150.0_deg, 150.0_deg),
+                                          std::make_tuple(155.0_deg, 150.0_deg),
+                                          std::make_tuple(160.0_deg, 150.0_deg),
+                                          std::make_tuple(165.0_deg, 150.0_deg),
+                                          std::make_tuple(170.0_deg, 150.0_deg),
+                                          std::make_tuple(175.0_deg, 150.0_deg),
+                                          std::make_tuple(180.0_deg, 210.0_deg),
+                                          std::make_tuple(185.0_deg, 210.0_deg),
+                                          std::make_tuple(190.0_deg, 210.0_deg),
+                                          std::make_tuple(195.0_deg, 210.0_deg),
+                                          std::make_tuple(200.0_deg, 210.0_deg),
+                                          std::make_tuple(205.0_deg, 210.0_deg),
+                                          std::make_tuple(210.0_deg, 210.0_deg),
+                                          std::make_tuple(215.0_deg, 215.0_deg),
+                                          std::make_tuple(220.0_deg, 220.0_deg),
+                                          std::make_tuple(225.0_deg, 225.0_deg),
+                                          std::make_tuple(230.0_deg, 230.0_deg),
+                                          std::make_tuple(235.0_deg, 235.0_deg),
+                                          std::make_tuple(240.0_deg, 240.0_deg),
+                                          std::make_tuple(245.0_deg, 245.0_deg),
+                                          std::make_tuple(250.0_deg, 250.0_deg),
+                                          std::make_tuple(255.0_deg, 255.0_deg),
+                                          std::make_tuple(260.0_deg, 255.0_deg),
+                                          std::make_tuple(265.0_deg, 255.0_deg),
+                                          std::make_tuple(270.0_deg, 285.0_deg),
+                                          std::make_tuple(275.0_deg, 285.0_deg),
+                                          std::make_tuple(280.0_deg, 285.0_deg),
+                                          std::make_tuple(285.0_deg, 285.0_deg),
+                                          std::make_tuple(290.0_deg, 290.0_deg),
+                                          std::make_tuple(295.0_deg, 295.0_deg),
+                                          std::make_tuple(300.0_deg, 300.0_deg),
+                                          std::make_tuple(305.0_deg, 305.0_deg),
+                                          std::make_tuple(310.0_deg, 310.0_deg),
+                                          std::make_tuple(315.0_deg, 315.0_deg),
+                                          std::make_tuple(320.0_deg, 320.0_deg),
+                                          std::make_tuple(325.0_deg, 325.0_deg),
+                                          std::make_tuple(330.0_deg, 330.0_deg),
+                                          std::make_tuple(335.0_deg, 330.0_deg),
+                                          std::make_tuple(340.0_deg, 330.0_deg),
+                                          std::make_tuple(345.0_deg, 330.0_deg),
+                                          std::make_tuple(350.0_deg, 330.0_deg),
+                                          std::make_tuple(355.0_deg, 330.0_deg),
+                                          std::make_tuple(360.0_deg,
+                                                          360.0_deg)));
 
 Ball makeBall(Point p, Width w, Height h)
 {
