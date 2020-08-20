@@ -11,54 +11,29 @@ using namespace bricks::game_objects;
 using namespace bricks::types;
 using namespace bricks::utility;
 
-class CalcAngleFactorTest : public ::testing::Test {
+class CalcAngleFactorParametersTests
+    : public ::testing::TestWithParam<std::tuple<double, double>> {
 protected:
-    static constexpr double xLeft = 30.0;
-    static constexpr double xCenter = 60.0;
-    static constexpr double xRight = 90.0;
 };
 
-TEST_F(CalcAngleFactorTest, xBallIsXLeft)
+TEST_P(CalcAngleFactorParametersTests, CheckResults)
 {
-    auto xBall = xLeft;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 1.0);
+    auto xBall = std::get<0>(GetParam());
+    auto expectedResult = std::get<1>(GetParam());
+
+    constexpr double xLeft = 0.0;
+    constexpr double xCenter = 1.0;
+    constexpr double xRight = 2.0;
+    EXPECT_NEAR(calcAngleFactor(xBall, xLeft, xCenter, xRight), expectedResult,
+                0.000000001);
 }
 
-TEST_F(CalcAngleFactorTest, xBallIsXCenter)
-{
-    auto xBall = xCenter;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.0);
-}
-
-TEST_F(CalcAngleFactorTest, xBallIsXRight)
-{
-    auto xBall = xRight;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 1.0);
-}
-
-TEST_F(CalcAngleFactorTest, xBallIsXBetweenLeftAndCenter)
-{
-    auto xBall = xLeft + (xCenter - xLeft) / 2;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.5);
-}
-
-TEST_F(CalcAngleFactorTest, xBallIsXBetweenLeftAndCenter2)
-{
-    auto xBall = xLeft + (xCenter - xLeft) / 4;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.75);
-}
-
-TEST_F(CalcAngleFactorTest, xBallIsXBetweenCenterAndRight)
-{
-    auto xBall = xRight - (xRight - xCenter) / 2;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.5);
-}
-
-TEST_F(CalcAngleFactorTest, xBallIsXBetweenCenterAndRight2)
-{
-    auto xBall = xRight - (xRight - xCenter) / 4;
-    EXPECT_EQ(calcAngleFactor(xBall, xLeft, xCenter, xRight), 0.75);
-}
+INSTANTIATE_TEST_CASE_P(
+    CalcAngleFactorTests, CalcAngleFactorParametersTests,
+    ::testing::Values(std::make_tuple(0.0, 1.0), std::make_tuple(0.25, 0.75),
+                      std::make_tuple(0.5, 0.5), std::make_tuple(1.0, 0.0),
+                      std::make_tuple(1.5, 0.5), std::make_tuple(1.75, 0.75),
+                      std::make_tuple(2.0, 1.0)));
 
 TEST(clampAngle, AngleGetsClamped)
 {
