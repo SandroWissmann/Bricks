@@ -72,7 +72,7 @@ void Game::run()
             mLifes = mStartLifes;
             mGameOver = false;
             mScore = 0;
-            mParameter = GameParameter{};
+            mParameter = DifficultyParameter{};
         }
         else if (beatGame()) {
             playWinGame(mAudioDevice);

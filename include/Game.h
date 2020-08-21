@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "AudioDevice.h"
-#include "GameParameter.h"
+#include "DifficultyParameter.h"
 #include "InputHandler.h"
 #include "Level.h"
 #include "Renderer.h"
@@ -43,7 +43,7 @@ private:
     long long getBrickValue(const game_objects::Brick& brick) const;
     void awardExtraLifeIfThresholdReached();
 
-    GameParameter mParameter;
+    DifficultyParameter mParameter;
     std::vector<std::string> mLevelFilenames;
     Level mLevel;
     Renderer mRenderer;

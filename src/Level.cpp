@@ -43,7 +43,7 @@ static constexpr auto ballWidth{0.75};
 static constexpr auto ballHeight{0.75};
 static constexpr auto ballAngle{135.0_deg};
 
-Level::Level(const GameParameter& parameter, const GridWidth& gridWidth,
+Level::Level(const DifficultyParameter& parameter, const GridWidth& gridWidth,
              const GridHeight& gridHeight, const std::vector<Brick>& bricks_,
              const std::vector<IndestructibleBrick>& indestructibleBricks_)
     : mParameter{parameter}, mGridWidth{gridWidth()},
@@ -95,7 +95,7 @@ Wall Level::topWall() const
     return mTopWall;
 }
 
-void Level::setParameter(const GameParameter& parameter)
+void Level::setParameter(const DifficultyParameter& parameter)
 {
     mParameter = parameter;
     resetBall();
@@ -238,7 +238,7 @@ std::istream& operator>>(std::istream& is, Level& obj)
         }
     }
 
-    obj = std::move(Level{GameParameter{}, gridWidth, gridHeight, bricks,
+    obj = std::move(Level{DifficultyParameter{}, gridWidth, gridHeight, bricks,
                           indestructibleBricks});
     return is;
 }
