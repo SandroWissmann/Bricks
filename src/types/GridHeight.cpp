@@ -18,7 +18,7 @@ int GridHeight::operator()() const
     return mValue;
 }
 
-int GridHeight::checkArgs(int value) const
+int GridHeight::checkArgs(int value) 
 {
     if (value < 0) {
         throw std::invalid_argument("GridHeight::checkArgs(int value)\n"

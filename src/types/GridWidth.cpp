@@ -18,7 +18,7 @@ int GridWidth::operator()() const
     return mValue;
 }
 
-int GridWidth::checkArgs(int value) const
+int GridWidth::checkArgs(int value) 
 {
     if (value < 0) {
         throw std::invalid_argument("GridWidth::checkArgs(int value)\n"

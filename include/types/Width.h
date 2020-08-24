@@ -13,7 +13,7 @@ public:
     double operator()() const;
 
 private:
-    double checkArgs(double value) const;
+    static double checkArgs(double value) ;
 
     double mValue{0.0};
 };

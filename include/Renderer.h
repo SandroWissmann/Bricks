@@ -70,7 +70,7 @@ private:
 
     SDL_Rect toSDLRect(const game_objects::GameObject& obj) const;
     void setDrawColor(const types::RGBColor& color);
-    types::RGBColor getBrickDrawColor(const game_objects::Brick& brick);
+    static types::RGBColor getBrickDrawColor(const game_objects::Brick& brick);
 
     std::unique_ptr<SDL_Window, SDLWindowDeleter> mSdlWindow;
     std::unique_ptr<SDL_Renderer, SDLRendererDeleter> mSdlRenderer;

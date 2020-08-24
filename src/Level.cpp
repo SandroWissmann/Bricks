@@ -112,32 +112,32 @@ void Level::resetPlatform()
                             mParameter.getPlatformVelocity());
 }
 
-Wall Level::makeLeftWall()
+Wall Level::makeLeftWall() const
 {
     return Wall{Point{0, 0}, Width{wallThickness},
                 Height{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
-Wall Level::makeRightWall()
+Wall Level::makeRightWall() const
 {
     return Wall{Point{mGridWidth + wallThickness, 0.0}, Width{wallThickness},
                 Height{static_cast<double>(mGridHeight + wallThickness)}};
 }
 
-Wall Level::makeTopWall()
+Wall Level::makeTopWall() const
 {
     return Wall{Point{wallThickness, 0}, Width{static_cast<double>(mGridWidth)},
                 Height{wallThickness}};
 }
 
-Platform Level::makePlatform(const Width& width, const Velocity& velocity)
+Platform Level::makePlatform(const Width& width, const Velocity& velocity) const
 {
     auto p = impl::platformInitPosition(width(), mGridWidth, mGridHeight);
 
     return Platform{p, width, Height{platformHeight}, velocity};
 }
 
-Ball Level::makeBall(const Velocity& velocity, const Gravity& gravity)
+Ball Level::makeBall(const Velocity& velocity, const Gravity& gravity) const
 {
     auto p = impl::ballInitPosition(mGridWidth, mGridHeight);
 

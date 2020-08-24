@@ -30,7 +30,7 @@ public:
 private:
     enum class Event { none, quit, left, right, space, escape, p };
 
-    Event getEvent();
+    static Event getEvent();
     void handleEvent(const Event& event, double elapsedTimeMS, Level& level);
     void handleEvent(const Event& event, double elapsedTimeMS,
                      const game_objects::Wall& leftWall,

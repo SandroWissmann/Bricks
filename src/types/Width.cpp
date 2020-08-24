@@ -17,7 +17,7 @@ double Width::operator()() const
     return mValue;
 }
 
-double Width::checkArgs(double value) const
+double Width::checkArgs(double value) 
 {
     if (value < 0.0) {
         throw std::invalid_argument("Width::checkArgs(int value)\n"

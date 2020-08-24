@@ -17,7 +17,7 @@ int Hitpoints::operator()() const
     return mValue;
 }
 
-int Hitpoints::checkArgs(int value) const
+int Hitpoints::checkArgs(int value) 
 {
     if (value < 0) {
         throw std::invalid_argument("Hitpoints::checkArgs(int value)\n"

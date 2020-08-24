@@ -17,10 +17,10 @@ public:
     RGBColor grayscale() const;
 
 private:
-    int checkArgs(int value);
+    static int checkArgs(int value);
 
-    int calcLighterPart(int part, double factor) const;
-    int calcDarkerPart(int part, double factor) const;
+    static int calcLighterPart(int part, double factor) ;
+    static int calcDarkerPart(int part, double factor) ;
 
     int mR;
     int mG;

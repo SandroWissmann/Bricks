@@ -42,15 +42,15 @@ public:
     void resetPlatform();
 
 private:
-    game_objects::Wall makeLeftWall();
-    game_objects::Wall makeRightWall();
-    game_objects::Wall makeTopWall();
+    game_objects::Wall makeLeftWall() const;
+    game_objects::Wall makeRightWall() const;
+    game_objects::Wall makeTopWall() const;
     game_objects::Platform makePlatform(const types::Width& width,
-                                        const types::Velocity& velocity);
+                                        const types::Velocity& velocity) const;
     game_objects::Ball makeBall(const types::Velocity& velocity,
-                                const types::Gravity& gravity);
+                                const types::Gravity& gravity) const;
 
-    void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
+    static void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
 
     DifficultyParameter mParameter;
     int mGridWidth{0};

@@ -73,13 +73,13 @@ int RGBColor::checkArgs(int value)
     return value;
 }
 
-int RGBColor::calcLighterPart(int part, double factor) const
+int RGBColor::calcLighterPart(int part, double factor) 
 {
     return std::clamp(static_cast<int>(part + (0xFF - part) * factor), 0x00,
                       0xFF);
 }
 
-int RGBColor::calcDarkerPart(int part, double factor) const
+int RGBColor::calcDarkerPart(int part, double factor) 
 {
     return std::clamp(static_cast<int>(part * (1.0 - factor)), 0x00, 0xFF);
 }
