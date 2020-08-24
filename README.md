@@ -35,8 +35,9 @@
   * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
   * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
 * SDL2 Mixer >= 2.0
-  * Linux: can be installed with command:
-  `sudo apt install libmikmod-dev libfishsound1-dev libsmpeg-dev liboggz2-dev libflac-dev libfluidsynth-dev libsdl2-mixer-dev libsdl2-mixer-2.0-0 -y;`
+  * Linux:
+    * Ubuntu: `sudo apt install libmikmod-dev libfishsound1-dev libsmpeg-dev liboggz2-dev libflac-dev libfluidsynth-dev libsdl2-mixer-dev libsdl2-mixer-2.0-0 -y;`
+    * Arch: `sudo pacman -S sdl2_mixer`
   * Windows/Mac: Runtime Binaries can be found [here](https://www.libsdl.org/projects/SDL_mixer/) for Windows and Mac
 * gcc/g++ >= 8.0
   * Linux: `gcc` / `g++` is installed by default on most Linux distros
