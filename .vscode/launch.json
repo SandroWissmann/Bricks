@@ -8,7 +8,7 @@
             "name": "Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Bricks",
+            "program": "${workspaceFolder}/build/bricks",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
@@ -42,7 +42,9 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask": "g++ build active file",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }
