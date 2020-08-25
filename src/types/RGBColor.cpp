@@ -1,7 +1,6 @@
 #include "RGBColor.h"
 
 #include <algorithm>
-#include <cassert>
 #include <stdexcept>
 
 namespace bricks::types {
@@ -9,10 +8,6 @@ namespace bricks::types {
 RGBColor::RGBColor(int r, int g, int b, int a)
     : mR{checkArgs(r)}, mG{checkArgs(g)}, mB{checkArgs(b)}, mA{checkArgs(a)}
 {
-    assert(mR >= 0 && mR <= 0xFF);
-    assert(mG >= 0 && mG <= 0xFF);
-    assert(mB >= 0 && mB <= 0xFF);
-    assert(mA >= 0 && mA <= 0xFF);
 }
 
 int RGBColor::r() const
@@ -73,13 +68,13 @@ int RGBColor::checkArgs(int value)
     return value;
 }
 
-int RGBColor::calcLighterPart(int part, double factor) 
+int RGBColor::calcLighterPart(int part, double factor)
 {
     return std::clamp(static_cast<int>(part + (0xFF - part) * factor), 0x00,
                       0xFF);
 }
 
-int RGBColor::calcDarkerPart(int part, double factor) 
+int RGBColor::calcDarkerPart(int part, double factor)
 {
     return std::clamp(static_cast<int>(part * (1.0 - factor)), 0x00, 0xFF);
 }
