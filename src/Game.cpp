@@ -186,45 +186,6 @@ bool Game::ballLost()
     return mLevel.ball.bottomRight().y >= mLevel.gridHeight();
 }
 
-long long loadHighscore()
-{
-    std::ifstream ifs{highscoreFilename};
-    if (!ifs.is_open()) {
-        return 0;
-    }
-    std::string s;
-    ifs >> s;
-    if (!isNumber<long long>(s)) {
-        return 0;
-    }
-    return std::stoll(s);
-}
-
-void writeHighscore(long long highscore)
-{
-    std::ofstream ofs{highscoreFilename};
-    if (!ofs) {
-        throw std::runtime_error("void writeHighscore(long long highscore)\n"
-                                 "File could not be opened\n");
-    }
-    ofs << highscore;
-}
-
-std::string makeTitle(int level, int lifes, long long score,
-                      long long highscore)
-{
-    return std::string{"Level: " + std::to_string(level) +
-                       "     "
-                       "Lifes: " +
-                       std::to_string(lifes) +
-                       "     "
-                       "Score: " +
-                       std::to_string(score) +
-                       "     "
-                       "Highscore: " +
-                       std::to_string(highscore)};
-}
-
 void Game::handleBallCollisions()
 {
     if (reflect(mLevel.ball, mLevel.leftWall())) {
@@ -279,6 +240,45 @@ void Game::awardExtraLifeIfThresholdReached()
         ++mLifes;
         mLastExtraLifeDivisor = extraLifeDivisor;
     }
+}
+
+long long loadHighscore()
+{
+    std::ifstream ifs{highscoreFilename};
+    if (!ifs.is_open()) {
+        return 0;
+    }
+    std::string s;
+    ifs >> s;
+    if (!isNumber<long long>(s)) {
+        return 0;
+    }
+    return std::stoll(s);
+}
+
+void writeHighscore(long long highscore)
+{
+    std::ofstream ofs{highscoreFilename};
+    if (!ofs) {
+        throw std::runtime_error("void writeHighscore(long long highscore)\n"
+                                 "File could not be opened\n");
+    }
+    ofs << highscore;
+}
+
+std::string makeTitle(int level, int lifes, long long score,
+                      long long highscore)
+{
+    return std::string{"Level: " + std::to_string(level) +
+                       "     "
+                       "Lifes: " +
+                       std::to_string(lifes) +
+                       "     "
+                       "Score: " +
+                       std::to_string(score) +
+                       "     "
+                       "Highscore: " +
+                       std::to_string(highscore)};
 }
 
 bool allBricksAreDestroyed(const std::vector<Brick> bricks)
