@@ -40,7 +40,7 @@ private:
     bool ballLost();
     void handleBallCollisions();
 
-    long long getBrickValue(const game_objects::Brick& brick) const;
+    long long getBrickScore(const game_objects::Brick& brick) const;
     void awardExtraLifeIfThresholdReached();
 
     DifficultyParameter mParameter;

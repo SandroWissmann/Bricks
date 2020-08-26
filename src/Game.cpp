@@ -215,7 +215,7 @@ void Game::handleBallCollisions()
 
             if (brick.isDestroyed()) {
                 playDestroyBrick(mAudioDevice);
-                mScore += getBrickValue(brick);
+                mScore += getBrickScore(brick);
                 awardExtraLifeIfThresholdReached();
                 updateValuesInTitleBar();
             }
@@ -227,7 +227,7 @@ void Game::handleBallCollisions()
     }
 }
 
-long long Game::getBrickValue(const Brick& brick) const
+long long Game::getBrickScore(const Brick& brick) const
 {
     return pointsPerBrickHitpoints * brick.startHitpoints() * mCurrentLevelIDX;
 }
