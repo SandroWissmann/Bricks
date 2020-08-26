@@ -112,7 +112,7 @@ void Game::runLevel()
         if (mLevel.ball.isActive()) {
             mLevel.ball.move(msPerFrame);
 
-            if (ballLost()) {
+            if (ballIsLost()) {
                 --mLifes;
                 if (mLifes <= 0) {
                     mGameOver = true;
@@ -181,7 +181,7 @@ void Game::updateValuesInTitleBar()
         makeTitle(mCurrentLevelIDX, mLifes, mScore, mHighscore));
 }
 
-bool Game::ballLost()
+bool Game::ballIsLost()
 {
     return mLevel.ball.bottomRight().y >= mLevel.gridHeight();
 }

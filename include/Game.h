@@ -37,7 +37,7 @@ private:
 
     void updateValuesInTitleBar();
 
-    bool ballLost();
+    bool ballIsLost();
     void handleBallCollisions();
 
     long long getBrickScore(const game_objects::Brick& brick) const;
