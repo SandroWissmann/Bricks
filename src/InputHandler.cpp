@@ -45,7 +45,6 @@ bool InputHandler::isQuit() const
 
 InputHandler::Event InputHandler::getEvent()
 {
-    Event event = Event::none;
     SDL_Event sdlEvent;
     while (SDL_PollEvent(&sdlEvent) != 0) {
         if (sdlEvent.type == SDL_QUIT) {
