@@ -66,7 +66,7 @@ void Game::run()
             playGameOver(mAudioDevice);
             if (mScore > mHighscore) {
                 mHighscore = mScore;
-                writeHighscore(mHighscore);
+                saveHighscore(mHighscore);
             }
             mCurrentLevelIDX = 1;
             mLifes = mStartLifes;
@@ -256,7 +256,7 @@ long long loadHighscore()
     return std::stoll(s);
 }
 
-void writeHighscore(long long highscore)
+void saveHighscore(long long highscore)
 {
     std::ofstream ofs{highscoreFilename};
     if (!ofs) {

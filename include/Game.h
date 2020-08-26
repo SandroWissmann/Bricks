@@ -61,7 +61,7 @@ private:
 };
 
 long long loadHighscore();
-void writeHighscore(long long highscore);
+void saveHighscore(long long highscore);
 
 std::string makeTitle(int level, int lifes, long long score,
                       long long highscore);
