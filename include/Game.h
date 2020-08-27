@@ -42,7 +42,7 @@ private:
     long long getBrickScore(const game_objects::Brick& brick) const;
     void awardExtraLifeIfThresholdReached();
 
-    DifficultyParameter mParameter;
+    DifficultyParameter mDifficultyParameter;
     std::vector<std::string> mLevelFilenames;
     Level mLevel;
     Renderer mRenderer;
