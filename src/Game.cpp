@@ -46,12 +46,13 @@ constexpr double platformWidthMin = 2.0;
 
 Game::Game(std::size_t screenWidth, std::size_t screenHeight)
     : mLevelFilenames{getLevelFilenamesFromFolder("level")},
-      mLevel{loadLevel(1)}, mRenderer{Renderer{
-                                screenWidth, screenHeight,
-                                static_cast<std::size_t>(mLevel.gridWidth()),
-                                static_cast<std::size_t>(mLevel.gridHeight())}},
+      mLevel{loadLevel(mLevelFilenames, 1)},
+      mRenderer{Renderer{screenWidth, screenHeight,
+                         static_cast<std::size_t>(mLevel.gridWidth()),
+                         static_cast<std::size_t>(mLevel.gridHeight())}},
       mHighscore{loadHighscore()}
 {
+    mLevel.setParameter(mParameter);
     updateValuesInTitleBar();
 }
 
@@ -83,7 +84,9 @@ void Game::run()
             playNextLevel(mAudioDevice);
             ++mCurrentLevelIDX;
         }
-        mLevel = loadLevel(mCurrentLevelIDX);
+        mLevel = loadLevel(mLevelFilenames, mCurrentLevelIDX);
+        mLevel.setParameter(mParameter);
+
         updateValuesInTitleBar();
     }
 }
@@ -164,15 +167,6 @@ void Game::increaseDifficulty()
     mParameter.setPlatformWidth(Width{platformWidth});
     mParameter.setBallVelocity(Velocity{ballVelocity});
     mParameter.setBallGravity(Gravity{ballGravity});
-}
-
-Level Game::loadLevel(int levelIDX)
-{
-    assert(!mLevelFilenames.empty());
-
-    auto level = readFromFile(mLevelFilenames.at(levelIDX - 1));
-    level.setParameter(mParameter);
-    return level;
 }
 
 void Game::updateValuesInTitleBar()
@@ -294,6 +288,13 @@ void delayToFramerate(double elapsedTimeInMS)
         wait(std::chrono::milliseconds{
             static_cast<int>(msPerFrame - elapsedTimeInMS)});
     }
+}
+
+Level loadLevel(const std::vector<std::string>& levelFilenames, int levelIDX)
+{
+    assert(!levelFilenames.empty());
+
+    return readFromFile(levelFilenames.at(levelIDX - 1));
 }
 
 std::vector<std::string>

@@ -33,7 +33,6 @@ private:
 
     bool beatGame();
     void increaseDifficulty();
-    Level loadLevel(int levelIDX);
 
     void updateValuesInTitleBar();
 
@@ -69,6 +68,8 @@ std::string makeTitle(int level, int lifes, long long score,
 bool allBricksAreDestroyed(const std::vector<game_objects::Brick> bricks);
 
 void delayToFramerate(double elapsedTimeInMS);
+
+Level loadLevel(const std::vector<std::string>& levelFilenames, int levelIDX);
 
 std::vector<std::string>
 getLevelFilenamesFromFolder(const std::string& folderName);
