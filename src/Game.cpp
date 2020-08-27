@@ -52,7 +52,7 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
                          static_cast<std::size_t>(mLevel.gridHeight())}},
       mHighscore{loadHighscore()}
 {
-    mLevel.setParameter(mDifficultyParameter);
+    mLevel.setDifficultyParameter(mDifficultyParameter);
     updateValuesInTitleBar();
 }
 
@@ -85,7 +85,7 @@ void Game::run()
             ++mCurrentLevelIDX;
         }
         mLevel = loadLevel(mLevelFilenames, mCurrentLevelIDX);
-        mLevel.setParameter(mDifficultyParameter);
+        mLevel.setDifficultyParameter(mDifficultyParameter);
 
         updateValuesInTitleBar();
     }

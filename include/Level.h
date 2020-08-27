@@ -37,7 +37,7 @@ public:
     game_objects::Wall rightWall() const;
     game_objects::Wall topWall() const;
 
-    void setParameter(const DifficultyParameter& parameter);
+    void setDifficultyParameter(const DifficultyParameter& difficultyParameter);
     void resetBall();
     void resetPlatform();
 
@@ -52,7 +52,7 @@ private:
 
     static void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
 
-    DifficultyParameter mParameter;
+    DifficultyParameter mDifficultyParameter;
     int mGridWidth{0};
     int mGridHeight{0};
     game_objects::Wall mLeftWall;

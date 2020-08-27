@@ -46,12 +46,13 @@ static constexpr auto ballAngle{135.0_deg};
 Level::Level(const DifficultyParameter& parameter, const GridWidth& gridWidth,
              const GridHeight& gridHeight, const std::vector<Brick>& bricks_,
              const std::vector<IndestructibleBrick>& indestructibleBricks_)
-    : mParameter{parameter}, mGridWidth{gridWidth()},
+    : mDifficultyParameter{parameter}, mGridWidth{gridWidth()},
       mGridHeight{gridHeight()}, mLeftWall{makeLeftWall()},
       mRightWall{makeRightWall()}, mTopWall{makeTopWall()},
-      platform{makePlatform(mParameter.getPlatformWidth(),
-                            mParameter.getPlatformVelocity())},
-      ball{makeBall(mParameter.getBallVelocity(), mParameter.getBallGravity())},
+      platform{makePlatform(mDifficultyParameter.getPlatformWidth(),
+                            mDifficultyParameter.getPlatformVelocity())},
+      ball{makeBall(mDifficultyParameter.getBallVelocity(),
+                    mDifficultyParameter.getBallGravity())},
       bricks{bricks_}, indestructibleBricks{indestructibleBricks_}
 {
     assert(mGridWidth > 0);
@@ -95,21 +96,23 @@ Wall Level::topWall() const
     return mTopWall;
 }
 
-void Level::setParameter(const DifficultyParameter& parameter)
+void Level::setDifficultyParameter(
+    const DifficultyParameter& difficultyParameter)
 {
-    mParameter = parameter;
+    mDifficultyParameter = difficultyParameter;
     resetBall();
     resetPlatform();
 }
 
 void Level::resetBall()
 {
-    ball = makeBall(mParameter.getBallVelocity(), mParameter.getBallGravity());
+    ball = makeBall(mDifficultyParameter.getBallVelocity(),
+                    mDifficultyParameter.getBallGravity());
 }
 void Level::resetPlatform()
 {
-    platform = makePlatform(mParameter.getPlatformWidth(),
-                            mParameter.getPlatformVelocity());
+    platform = makePlatform(mDifficultyParameter.getPlatformWidth(),
+                            mDifficultyParameter.getPlatformVelocity());
 }
 
 Wall Level::makeLeftWall() const
