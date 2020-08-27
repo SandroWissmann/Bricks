@@ -154,7 +154,7 @@ void Game::increaseDifficulty()
 
     platformVelocity = std::clamp(platformVelocity + platformVelocityIncrease,
                                   platformVelocity, platformVelocityMax);
-    platformWidth = std::clamp(platformWidth + platformWidthDecrease,
+    platformWidth = std::clamp(platformWidth - platformWidthDecrease,
                                platformWidthMin, platformWidth);
     ballVelocity = std::clamp(ballVelocity + ballVelocityIncrease, ballVelocity,
                               ballVelocityMax);
