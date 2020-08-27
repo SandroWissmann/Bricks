@@ -23,7 +23,7 @@ add_executable(bricks
 
     AudioDevice.cpp
     Game.cpp
-    DifficultyParameter.cpp
+    DifficultyParameters.cpp
     InputHandler.cpp
     Level.cpp
     main.cpp

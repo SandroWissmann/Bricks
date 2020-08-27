@@ -52,7 +52,7 @@ Game::Game(std::size_t screenWidth, std::size_t screenHeight)
                          static_cast<std::size_t>(mLevel.gridHeight())}},
       mHighscore{loadHighscore()}
 {
-    mLevel.setDifficultyParameter(mDifficultyParameter);
+    mLevel.setDifficultyParameters(mDifficultyParameters);
     updateValuesInTitleBar();
 }
 
@@ -73,7 +73,7 @@ void Game::run()
             mLifes = mStartLifes;
             mGameOver = false;
             mScore = 0;
-            mDifficultyParameter = DifficultyParameter{};
+            mDifficultyParameters = DifficultyParameters{};
         }
         else if (beatGame()) {
             playWinGame(mAudioDevice);
@@ -85,7 +85,7 @@ void Game::run()
             ++mCurrentLevelIDX;
         }
         mLevel = loadLevel(mLevelFilenames, mCurrentLevelIDX);
-        mLevel.setDifficultyParameter(mDifficultyParameter);
+        mLevel.setDifficultyParameters(mDifficultyParameters);
 
         updateValuesInTitleBar();
     }
@@ -147,10 +147,10 @@ bool Game::beatGame()
 
 void Game::increaseDifficulty()
 {
-    double platformVelocity = mDifficultyParameter.getPlatformVelocity()();
-    double platformWidth = mDifficultyParameter.getPlatformWidth()();
-    double ballVelocity = mDifficultyParameter.getBallVelocity()();
-    double ballGravity = mDifficultyParameter.getBallGravity()();
+    double platformVelocity = mDifficultyParameters.getPlatformVelocity()();
+    double platformWidth = mDifficultyParameters.getPlatformWidth()();
+    double ballVelocity = mDifficultyParameters.getBallVelocity()();
+    double ballGravity = mDifficultyParameters.getBallGravity()();
 
     platformVelocity = std::clamp(platformVelocity + platformVelocityIncrease,
                                   platformVelocity, platformVelocityMax);
@@ -161,10 +161,10 @@ void Game::increaseDifficulty()
     ballGravity = std::clamp(ballGravity + ballGravityIncrease, ballGravity,
                              ballGravityMax);
 
-    mDifficultyParameter.setPlatformVelocity(Velocity{platformVelocity});
-    mDifficultyParameter.setPlatformWidth(Width{platformWidth});
-    mDifficultyParameter.setBallVelocity(Velocity{ballVelocity});
-    mDifficultyParameter.setBallGravity(Gravity{ballGravity});
+    mDifficultyParameters.setPlatformVelocity(Velocity{platformVelocity});
+    mDifficultyParameters.setPlatformWidth(Width{platformWidth});
+    mDifficultyParameters.setBallVelocity(Velocity{ballVelocity});
+    mDifficultyParameters.setBallGravity(Gravity{ballGravity});
 }
 
 void Game::updateValuesInTitleBar()

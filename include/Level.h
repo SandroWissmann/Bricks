@@ -7,7 +7,7 @@
 #include "game_objects/Platform.h"
 #include "game_objects/Wall.h"
 
-#include "DifficultyParameter.h"
+#include "DifficultyParameters.h"
 
 #include <iosfwd>
 #include <vector>
@@ -23,7 +23,7 @@ struct Point;
 class Level {
 public:
     Level() = default;
-    Level(const DifficultyParameter& parameter,
+    Level(const DifficultyParameters& difficultyParameters,
           const types::GridWidth& gridWidth,
           const types::GridHeight& gridHeight,
           const std::vector<game_objects::Brick>& bricks_,
@@ -37,7 +37,8 @@ public:
     game_objects::Wall rightWall() const;
     game_objects::Wall topWall() const;
 
-    void setDifficultyParameter(const DifficultyParameter& difficultyParameter);
+    void
+    setDifficultyParameters(const DifficultyParameters& difficultyParameters);
     void resetBall();
     void resetPlatform();
 
@@ -52,7 +53,7 @@ private:
 
     static void transposeCoordinatesWithWalls(game_objects::GameObject& obj);
 
-    DifficultyParameter mDifficultyParameter;
+    DifficultyParameters mDifficultyParameters;
     int mGridWidth{0};
     int mGridHeight{0};
     game_objects::Wall mLeftWall;

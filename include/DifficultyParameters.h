@@ -1,5 +1,5 @@
-#ifndef DIFFICULTYPARAMETER_H
-#define DIFFICULTYPARAMETER_H
+#ifndef DIFFICULTYPARAMETERS_H
+#define DIFFICULTYPARAMETERS_H
 
 #include "types/Gravity.h"
 #include "types/Velocity.h"
@@ -7,9 +7,9 @@
 
 namespace bricks {
 
-class DifficultyParameter {
+class DifficultyParameters {
 public:
-    DifficultyParameter(
+    DifficultyParameters(
         const types::Velocity& platformVelocity = types::Velocity{16.0},
         const types::Width& platformWidth = types::Width{4.0},
         const types::Velocity& ballVelocity = types::Velocity{16.0},

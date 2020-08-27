@@ -74,7 +74,7 @@ add_executable(test
     test/utility/OperatorDegree_test.cpp
 
 # needs to be added so linker works with level
-    src/DifficultyParameter.cpp
+    src/DifficultyParameters.cpp
 
     test/Level_test.cpp
     src/Level.cpp
