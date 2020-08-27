@@ -152,16 +152,14 @@ void Game::increaseDifficulty()
     double ballVelocity = mDifficultyParameter.getBallVelocity()();
     double ballGravity = mDifficultyParameter.getBallGravity()();
 
-    platformVelocity += platformVelocityIncrease;
-    platformWidth -= platformWidthDecrease;
-    ballVelocity += ballVelocityIncrease;
-    ballGravity += ballGravityIncrease;
-
-    platformVelocity =
-        std::clamp(platformVelocity, platformVelocity, platformVelocityMax);
-    platformWidth = std::clamp(platformWidth, platformWidthMin, platformWidth);
-    ballVelocity = std::clamp(ballVelocity, ballVelocity, ballVelocityMax);
-    ballGravity = std::clamp(ballGravity, ballGravity, ballGravityMax);
+    platformVelocity = std::clamp(platformVelocity + platformVelocityIncrease,
+                                  platformVelocity, platformVelocityMax);
+    platformWidth = std::clamp(platformWidth + platformWidthDecrease,
+                               platformWidthMin, platformWidth);
+    ballVelocity = std::clamp(ballVelocity + ballVelocityIncrease, ballVelocity,
+                              ballVelocityMax);
+    ballGravity = std::clamp(ballGravity + ballGravityIncrease, ballGravity,
+                             ballGravityMax);
 
     mDifficultyParameter.setPlatformVelocity(Velocity{platformVelocity});
     mDifficultyParameter.setPlatformWidth(Width{platformWidth});
