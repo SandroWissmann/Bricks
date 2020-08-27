@@ -75,7 +75,7 @@ void Game::run()
             mScore = 0;
             mDifficultyParameters = DifficultyParameters{};
         }
-        else if (beatGame()) {
+        else if (allLevelsFinished()) {
             playWinGame(mAudioDevice);
             mCurrentLevelIDX = 1;
             increaseDifficulty();
@@ -140,7 +140,7 @@ void Game::runLevel()
     }
 }
 
-bool Game::beatGame()
+bool Game::allLevelsFinished()
 {
     return mCurrentLevelIDX >= mLevelFilenames.size();
 }

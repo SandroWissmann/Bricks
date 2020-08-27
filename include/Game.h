@@ -31,7 +31,7 @@ public:
 private:
     void runLevel();
 
-    bool beatGame();
+    bool allLevelsFinished();
     void increaseDifficulty();
 
     void updateValuesInTitleBar();
