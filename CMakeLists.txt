@@ -43,6 +43,8 @@ add_executable(test
     src/game_objects/MoveableGameObject.cpp
     test/game_objects/Physics_test.cpp
     src/game_objects/Physics.cpp
+    test/game_objects/PhysicsImproved_test.cpp
+    src/game_objects/PhysicsImproved.cpp
     test/game_objects/Platform_test.cpp
     src/game_objects/Platform.cpp
 
