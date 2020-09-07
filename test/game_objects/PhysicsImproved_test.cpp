@@ -26,7 +26,7 @@ TEST_P(ReflectHorizontalParametersTests, CheckResults)
     auto ballAngle = std::get<1>(GetParam());
     auto ballResultTopLeft = std::get<2>(GetParam());
     auto ballResultAngle = std::get<3>(GetParam());
-    auto hitObjectsCount = std::get<3>(GetParam());
+    auto hitObjectsCount = std::get<4>(GetParam());
 
     Ball ball{ballTopLeft,   Width{3.0},       Height{2.5},
               Velocity{1.0}, Angle{ballAngle}, Gravity{0.0}};
@@ -102,7 +102,7 @@ TEST_P(ReflectVerticalParametersTests, CheckResults)
     auto ballAngle = std::get<1>(GetParam());
     auto ballResultTopLeft = std::get<2>(GetParam());
     auto ballResultAngle = std::get<3>(GetParam());
-    auto hitObjectsCount = std::get<3>(GetParam());
+    auto hitObjectsCount = std::get<4>(GetParam());
 
     Ball ball{ballTopLeft,   Width{2.5},       Height{3.0},
               Velocity{1.0}, Angle{ballAngle}, Gravity{0.0}};
