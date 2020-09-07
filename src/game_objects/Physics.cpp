@@ -63,7 +63,7 @@ bool reflectFromPlatform(Ball& ball, const Platform& platform)
     reflectFromSinglePlatform(ball, platform, intersection);
     auto angle = clampAngle(ball.angle());
     ball.setAngle(angle);
-    return false;
+    return true;
 }
 
 std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
