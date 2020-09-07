@@ -46,6 +46,15 @@ private:
 namespace impl {
 void moveLeft(game_objects::Platform& platform, double elapsedTimeInMS);
 void moveRight(game_objects::Platform& platform, double elapsedTimeInMS);
+
+bool intersectsWithLeftX(const game_objects::Platform& platform,
+                         const game_objects::Wall& wall);
+bool intersectsWithRightX(const game_objects::Platform& platform,
+                          const game_objects::Wall& wall);
+void putBeforeIntersectsWithLeftX(game_objects::Platform& platform,
+                                  const game_objects::Wall& wall);
+void putBeforeIntersectsWithRightX(game_objects::Platform& platform,
+                                   const game_objects::Wall& wall);
 } // namespace impl
 
 } // namespace bricks

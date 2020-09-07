@@ -4,7 +4,7 @@
 #include "game_objects/Platform.h"
 #include "game_objects/Wall.h"
 
-#include "game_objects/Physics.h"
+#include "types/Point.h"
 
 #include "Level.h"
 #include "SDL_RAII.h"
@@ -16,6 +16,8 @@ namespace bricks {
 using Ball = game_objects::Ball;
 using Platform = game_objects::Platform;
 using Wall = game_objects::Wall;
+
+using Point = types::Point;
 
 InputHandler::InputHandler()
 {
@@ -114,16 +116,16 @@ void InputHandler::handleEvent(const Event& event, double elapsedTimeMS,
         }
         break;
     case Event::left:
-        if (intersectsWithLeftX(platform, leftWall)) {
-            putBeforeIntersectsWithLeftX(platform, leftWall);
+        if (impl::intersectsWithLeftX(platform, leftWall)) {
+            impl::putBeforeIntersectsWithLeftX(platform, leftWall);
         }
         else {
             impl::moveLeft(platform, elapsedTimeMS);
         }
         break;
     case Event::right:
-        if (intersectsWithRightX(platform, rightWall)) {
-            putBeforeIntersectsWithRightX(platform, rightWall);
+        if (impl::intersectsWithRightX(platform, rightWall)) {
+            impl::putBeforeIntersectsWithRightX(platform, rightWall);
         }
         else {
             impl::moveRight(platform, elapsedTimeMS);
@@ -150,6 +152,33 @@ void moveRight(Platform& platform, double elapsedTimeInMS)
     }
     platform.move(elapsedTimeInMS);
 }
+
+bool intersectsWithLeftX(const Platform& platform, const Wall& wall)
+{
+    return platform.topLeft().x <= wall.bottomRight().x &&
+           platform.bottomRight().x > wall.bottomRight().x;
+}
+
+bool intersectsWithRightX(const Platform& platform, const Wall& wall)
+{
+    return platform.bottomRight().x >= wall.topLeft().x &&
+           platform.topLeft().x < wall.topLeft().x;
+}
+
+void putBeforeIntersectsWithLeftX(Platform& platform, const Wall& wall)
+{
+    auto p = platform.topLeft();
+    p.x = wall.bottomRight().x;
+    platform.setTopLeft(p);
+}
+
+void putBeforeIntersectsWithRightX(Platform& platform, const Wall& wall)
+{
+    auto p = platform.topLeft();
+    p.x = wall.topLeft().x - platform.width();
+    platform.setTopLeft(p);
+}
+
 } // namespace impl
 
 } // namespace bricks

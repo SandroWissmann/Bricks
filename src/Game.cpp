@@ -180,42 +180,30 @@ bool Game::ballIsLost()
 
 void Game::handleBallCollisions()
 {
-    if (reflect(mLevel.ball, mLevel.leftWall())) {
-        return;
-    }
-    if (reflect(mLevel.ball, mLevel.rightWall())) {
-        return;
-    }
-    if (reflect(mLevel.ball, mLevel.topWall())) {
-        return;
-    }
-    if (reflect(mLevel.ball, mLevel.platform)) {
-        playHitPlatform(mAudioDevice);
-        return;
-    }
-    for (auto& indestructibleBrick : mLevel.indestructibleBricks) {
-        if (reflect(mLevel.ball, indestructibleBrick)) {
-            return;
-        }
-    }
-    for (auto& brick : mLevel.bricks) {
-        if (brick.isDestroyed()) {
+    auto hitObjects = game_objects::reflectFromGameObjects(
+        mLevel.ball,
+        std::vector<Wall>{mLevel.leftWall(), mLevel.rightWall(),
+                          mLevel.topWall()},
+        mLevel.indestructibleBricks, mLevel.bricks);
+
+    for (const auto& hitObject : hitObjects) {
+        auto brick = dynamic_cast<Brick*>(hitObject.get());
+        if (!brick) {
             continue;
         }
-        if (reflect(mLevel.ball, brick)) {
-            brick.decreaseHitpoints();
-
-            if (brick.isDestroyed()) {
-                playDestroyBrick(mAudioDevice);
-                mScore += getBrickScore(brick);
-                awardExtraLifeIfThresholdReached();
-                updateValuesInTitleBar();
-            }
-            else {
-                playHitBrick(mAudioDevice);
-            }
-            return;
+        if (brick->isDestroyed()) {
+            playDestroyBrick(mAudioDevice);
+            mScore += getBrickScore(*brick);
+            awardExtraLifeIfThresholdReached();
+            updateValuesInTitleBar();
         }
+        else {
+            playHitBrick(mAudioDevice);
+        }
+    }
+
+    if (game_objects::reflectFromPlatform(mLevel.ball, mLevel.platform)) {
+        playHitPlatform(mAudioDevice);
     }
 }
 
