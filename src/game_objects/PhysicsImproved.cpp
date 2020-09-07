@@ -25,68 +25,330 @@ using Angle = types::Angle;
 using Point = types::Point;
 using Quadrant = types::Quadrant;
 
-bool reflectFromPlatform(const Ball& ball, const Platform& platform)
+template <typename GameObjectType>
+std::vector<ObjectIntersectionPair>
+getObjectIntersectionPairs(const Ball& ball,
+                           const std::vector<GameObjectType>& gameObjects)
 {
+    std::vector<ObjectIntersectionPair> objectIntersectionPairs;
+
+    for (const auto& gameObject : gameObjects) {
+        auto intersection = getIntersection(ball, gameObject);
+
+        if (intersection == Intersection::none) {
+            continue;
+        }
+        auto uniqueGameObject = std::make_unique<GameObjectType>(gameObject);
+
+        objectIntersectionPairs.push_back(
+            ObjectIntersectionPair{std::move(uniqueGameObject), intersection});
+    }
+    return objectIntersectionPairs;
+}
+
+template std::vector<ObjectIntersectionPair>
+getObjectIntersectionPairs<IndestructibleBrick>(
+    const Ball& ball, const std::vector<IndestructibleBrick>& gameObjects);
+
+template std::vector<ObjectIntersectionPair>
+getObjectIntersectionPairs<Wall>(const Ball& ball,
+                                 const std::vector<Wall>& gameObjects);
+
+bool reflectFromPlatform(Ball& ball, const Platform& platform)
+{
+    auto intersection = getIntersection(ball, platform);
+    if (intersection == Intersection::none) {
+        return false;
+    }
+    reflectFromSinglePlatform(ball, platform, intersection);
+    auto angle = clampAngle(ball.angle());
+    ball.setAngle(angle);
     return false;
 }
 
 std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
-    const Ball& ball, const std::vector<Wall>& walls,
-    const std::vector<IndestructibleBrick>& indestructibleBrick,
+    Ball& ball, const std::vector<Wall>& walls,
+    const std::vector<IndestructibleBrick>& indestructibleBricks,
     std::vector<Brick>& bricks)
 {
+    auto wallPairs = getObjectIntersectionPairs(ball, walls);
+
+    auto indBrickPairs = getObjectIntersectionPairs(ball, indestructibleBricks);
+
+    auto brickPairs = getObjectIntersectionPairs(ball, bricks);
+
+    std::vector<ObjectIntersectionPair> objectIntersectionPairs;
+    objectIntersectionPairs.reserve(wallPairs.size() + indBrickPairs.size() +
+                                    brickPairs.size());
+
+    std::move(wallPairs.begin(), wallPairs.end(),
+              std::back_inserter(objectIntersectionPairs));
+    std::move(indBrickPairs.begin(), indBrickPairs.end(),
+              std::back_inserter(objectIntersectionPairs));
+    std::move(brickPairs.begin(), brickPairs.end(),
+              std::back_inserter(objectIntersectionPairs));
+
+    if (objectIntersectionPairs.size() == 1) {
+        reflectFromSingleObject(ball, *objectIntersectionPairs[0].object.get(),
+                                objectIntersectionPairs[0].intersection);
+        auto angle = clampAngle(ball.angle());
+        ball.setAngle(angle);
+        return std::vector<std::shared_ptr<GameObject>>{
+            std::move(objectIntersectionPairs[0].object)};
+    }
+    if (objectIntersectionPairs.size() > 1) {
+        reflectFromMultipleObjects(ball, objectIntersectionPairs);
+        auto angle = clampAngle(ball.angle());
+        ball.setAngle(angle);
+
+        std::vector<std::shared_ptr<GameObject>> hitObjects;
+        for (auto& objectIntersectionPair : objectIntersectionPairs) {
+            hitObjects.push_back(std::move(objectIntersectionPair.object));
+        }
+        return hitObjects;
+    }
     return std::vector<std::shared_ptr<GameObject>>{};
 }
 
-bool reflectFromSingleObject(const Ball& ball, const Platform& platform,
-                             const Intersection& intersection)
+std::vector<ObjectIntersectionPair>
+getObjectIntersectionPairs(const Ball& ball, std::vector<Brick>& bricks)
 {
+    std::vector<ObjectIntersectionPair> objectIntersectionPairs;
+
+    for (auto& brick : bricks) {
+        if (brick.isDestroyed()) {
+            continue;
+        }
+
+        auto intersection = getIntersection(ball, brick);
+
+        if (intersection == Intersection::none) {
+            continue;
+        }
+        brick.decreaseHitpoints();
+        auto uniqueGameObject = std::make_unique<Brick>(brick);
+
+        objectIntersectionPairs.push_back(
+            ObjectIntersectionPair{std::move(uniqueGameObject), intersection});
+    }
+    return objectIntersectionPairs;
 }
 
-bool reflectFromSingleObject(const Ball& ball, const GameObject& obj,
+Intersection getIntersection(const Ball& ball, const GameObject& obj)
+{
+    std::vector<Intersection> intersections{};
+
+    if (topLeftIntersectsWithBottomRight(ball.topLeft(), obj.bottomRight(),
+                                         obj.topLeft())) {
+        intersections.push_back(Intersection::bottomRight);
+    }
+    if (topRightIntersectsWithBottomLeft(ball.topRight(), obj.bottomLeft(),
+                                         obj.topRight())) {
+        intersections.push_back(Intersection::bottomLeft);
+    }
+    if (bottomLeftIntersectsWithTopRight(ball.bottomLeft(), obj.topRight(),
+                                         obj.bottomLeft())) {
+        intersections.push_back(Intersection::topRight);
+    }
+    if (bottomRightIntersectsWithTopLeft(ball.bottomRight(), obj.topLeft(),
+                                         obj.bottomRight())) {
+        intersections.push_back(Intersection::topLeft);
+    }
+
+    if (intersections.empty()) {
+        return Intersection::none;
+    }
+    if (intersections.size() == 1) {
+        return intersections[0];
+    }
+    if (intersections.size() == 2) {
+        if (intersectsLeft(intersections)) {
+            return Intersection::left;
+        }
+        if (intersectsTop(intersections)) {
+            return Intersection::top;
+        }
+        if (intersectsRight(intersections)) {
+            return Intersection::right;
+        }
+        if (intersectsBottom(intersections)) {
+            return Intersection::bottom;
+        }
+    }
+    return Intersection::none;
+}
+
+bool bottomRightIntersectsWithTopLeft(const Point& bottomRight1,
+                                      const Point& topLeft2,
+                                      const Point& bottomRight2)
+{
+    auto xIsInside =
+        topLeft2.x <= bottomRight1.x && bottomRight1.x < bottomRight2.x;
+    auto yIsInside =
+        topLeft2.y <= bottomRight1.y && bottomRight1.y < bottomRight2.y;
+    return xIsInside and yIsInside;
+}
+
+bool bottomLeftIntersectsWithTopRight(const Point& bottomLeft1,
+                                      const Point& topRight2,
+                                      const Point& bottomLeft2)
+{
+    auto xIsInside =
+        topRight2.x >= bottomLeft1.x && bottomLeft1.x > bottomLeft2.x;
+    auto yIsInside =
+        topRight2.y <= bottomLeft1.y && bottomLeft1.y < bottomLeft2.y;
+    return xIsInside and yIsInside;
+}
+
+bool topLeftIntersectsWithBottomRight(const Point& topLeft1,
+                                      const Point& bottomRight2,
+                                      const Point& topLeft2)
+{
+    auto xIsInside = bottomRight2.x >= topLeft1.x && topLeft1.x > topLeft2.x;
+    auto yIsInside = bottomRight2.y >= topLeft1.y && topLeft1.y > topLeft2.y;
+    return xIsInside and yIsInside;
+}
+
+bool topRightIntersectsWithBottomLeft(const Point& topRight1,
+                                      const Point& bottomLeft2,
+                                      const Point& topRight2)
+{
+    auto xIsInside = bottomLeft2.x <= topRight1.x && topRight1.x < topRight2.x;
+    auto yIsInside = bottomLeft2.y >= topRight1.y && topRight1.y > topRight2.y;
+    return xIsInside and yIsInside;
+}
+
+bool intersectsLeft(const std::vector<Intersection>& intersections)
+{
+    assert(intersections.size() == 2);
+    std::vector<Intersection> expectedIntersections{Intersection::bottomLeft,
+                                                    Intersection::topLeft};
+    return allExpectedIntersectionsAreInIntersections(expectedIntersections,
+                                                      intersections);
+}
+
+bool intersectsTop(const std::vector<Intersection>& intersections)
+{
+    assert(intersections.size() == 2);
+    std::vector<Intersection> expectedIntersections{Intersection::topLeft,
+                                                    Intersection::topRight};
+    return allExpectedIntersectionsAreInIntersections(expectedIntersections,
+                                                      intersections);
+}
+
+bool intersectsRight(const std::vector<Intersection>& intersections)
+{
+    assert(intersections.size() == 2);
+    std::vector<Intersection> expectedIntersections{Intersection::topRight,
+                                                    Intersection::bottomRight};
+    return allExpectedIntersectionsAreInIntersections(expectedIntersections,
+                                                      intersections);
+}
+
+bool intersectsBottom(const std::vector<Intersection>& intersections)
+{
+    assert(intersections.size() == 2);
+    std::vector<Intersection> expectedIntersections{Intersection::bottomRight,
+                                                    Intersection::bottomLeft};
+    return allExpectedIntersectionsAreInIntersections(expectedIntersections,
+                                                      intersections);
+}
+
+bool allExpectedIntersectionsAreInIntersections(
+    const std::vector<Intersection>& expectedIntersections,
+    const std::vector<Intersection>& intersections)
+{
+    for (const auto& expectedIntersection : expectedIntersections) {
+        auto it = std::find(intersections.begin(), intersections.end(),
+                            expectedIntersection);
+        if (it == intersections.end()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void reflectFromSinglePlatform(Ball& ball, const Platform& platform,
+                               const Intersection& intersection)
+{
+    switch (intersection) {
+    case Intersection::none:
+        break;
+    case Intersection::topLeft:
+        if (intersectionIsMoreLeftThanTop(ball, platform)) {
+            reflectFromCollisionWithLeft(ball, platform);
+        }
+        else {
+            reflectFromCollisionWithTopRelativeToPositon(ball, platform);
+        }
+        break;
+    case Intersection::top:
+        reflectFromCollisionWithTopRelativeToPositon(ball, platform);
+        break;
+    case Intersection::topRight:
+        if (intersectionIsMoreTopThanRight(ball, platform)) {
+            reflectFromCollisionWithTopRelativeToPositon(ball, platform);
+        }
+        else {
+            reflectFromCollisionWithRight(ball, platform);
+        }
+        break;
+    default:
+        reflectFromSingleObject(ball, platform, intersection);
+    }
+}
+
+void reflectFromSingleObject(Ball& ball, const GameObject& obj,
                              const Intersection& intersection)
 {
-    if
-        intersection ==
-            _Intersection.LEFT
-            : _reflect_from_collision_with_left(ball, game_object)
-                  elif intersection ==
-            _Intersection.TOP_LEFT
-            : if _intersection_is_more_left_than_top(ball, game_object)
-            : _reflect_from_collision_with_left(ball, game_object) else
-            : if isinstance(game_object, Platform)
-            : _reflect_from_collision_with_top_relative_to_positon(
-                  ball, game_object) else
-            : _reflect_from_collision_with_top(ball, game_object)
-                  elif intersection ==
-            _Intersection.TOP : if isinstance(game_object, Platform)
-            : _reflect_from_collision_with_top_relative_to_positon(
-                  ball, game_object) else
-            : _reflect_from_collision_with_top(ball, game_object)
-                  elif intersection ==
-            _Intersection.TOP_RIGHT
-            : if _intersection_is_more_top_than_right(ball, game_object)
-            : if isinstance(game_object, Platform)
-            : _reflect_from_collision_with_top_relative_to_positon(
-                  ball, game_object) else
-            : _reflect_from_collision_with_top(ball, game_object) else
-            : _reflect_from_collision_with_right(ball, game_object)
-                  elif intersection ==
-            _Intersection.RIGHT
-            : _reflect_from_collision_with_right(ball, game_object)
-                  elif intersection ==
-            _Intersection.BOTTOM_RIGHT
-            : if _intersection_is_more_right_than_bottom(ball, game_object)
-            : _reflect_from_collision_with_right(ball, game_object) else
-            : _reflect_from_collision_with_bottom(ball, game_object)
-                  elif intersection ==
-            _Intersection.BOTTOM
-            : _reflect_from_collision_with_bottom(ball, game_object)
-                  elif intersection ==
-            _Intersection.BOTTOM_LEFT
-            : if _intersection_is_more_bottom_than_left(ball, game_object)
-            : _reflect_from_collision_with_bottom(ball, game_object) else
-            : _reflect_from_collision_with_left(ball, game_object)
+    switch (intersection) {
+    case Intersection::none:
+        break;
+    case Intersection::left:
+        reflectFromCollisionWithLeft(ball, obj);
+        break;
+    case Intersection::topLeft:
+        if (intersectionIsMoreLeftThanTop(ball, obj)) {
+            reflectFromCollisionWithLeft(ball, obj);
+        }
+        else {
+            reflectFromCollisionWithTop(ball, obj);
+        }
+        break;
+    case Intersection::top:
+        reflectFromCollisionWithTop(ball, obj);
+        break;
+    case Intersection::topRight:
+        if (intersectionIsMoreTopThanRight(ball, obj)) {
+            reflectFromCollisionWithTop(ball, obj);
+        }
+        else {
+            reflectFromCollisionWithRight(ball, obj);
+        }
+        break;
+    case Intersection::right:
+        reflectFromCollisionWithRight(ball, obj);
+        break;
+    case Intersection::bottomRight:
+        if (intersectionIsMoreRightThanBottom(ball, obj)) {
+            reflectFromCollisionWithRight(ball, obj);
+        }
+        else {
+            reflectFromCollisionWithBottom(ball, obj);
+        }
+        break;
+    case Intersection::bottom:
+        reflectFromCollisionWithBottom(ball, obj);
+        break;
+    case Intersection::bottomLeft:
+        if (intersectionIsMoreBottomThanLeft(ball, obj)) {
+            reflectFromCollisionWithBottom(ball, obj);
+        }
+        else {
+            reflectFromCollisionWithLeft(ball, obj);
+        }
+        break;
+    }
 }
 
 void reflectFromMultipleObjects(
@@ -95,16 +357,6 @@ void reflectFromMultipleObjects(
 {
     assert(objectIntersectionPairs.size() > 1);
 
-    if (objectIntersectionPairs.size() == 2) {
-        if (reflectFromTwoObjectsInCorner(ball, objectIntersectionPairs)) {
-            return;
-        }
-    }
-    if (objectIntersectionPairs.size() == 3) {
-        if (reflectFromThreeObjectsInCorner(ball, objectIntersectionPairs)) {
-            return;
-        }
-    }
     if (intersectsFromLeftWithMultiObjects(objectIntersectionPairs)) {
         reflectFromCollisionWithLeft(ball,
                                      *objectIntersectionPairs[0].object.get());
@@ -120,6 +372,17 @@ void reflectFromMultipleObjects(
     else if (intersectsFromBottomWithMultiObjects(objectIntersectionPairs)) {
         reflectFromCollisionWithBottom(
             ball, *objectIntersectionPairs[0].object.get());
+    }
+
+    if (objectIntersectionPairs.size() == 2) {
+        if (reflectFromTwoObjectsInCorner(ball, objectIntersectionPairs)) {
+            return;
+        }
+    }
+    if (objectIntersectionPairs.size() == 3) {
+        if (reflectFromThreeObjectsInCorner(ball, objectIntersectionPairs)) {
+            return;
+        }
     }
 }
 
@@ -199,17 +462,15 @@ bool intersectsInTopLeftCornerWithTwoObjects(
 {
     std::vector<Intersection> intersectionsVariant1{Intersection::right,
                                                     Intersection::bottomLeft};
-    auto isVariant1 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant1 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant1, objectIntersectionPairs);
     if (isVariant1) {
         return true;
     }
     std::vector<Intersection> intersectionsVariant2{Intersection::topRight,
                                                     Intersection::bottom};
-    auto isVariant2 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant2 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant2, objectIntersectionPairs);
     return isVariant2;
 }
 
@@ -222,7 +483,7 @@ bool intersectsInTopLeftCornerWithThreeObjects(
                                             Intersection::bottomRight,
                                             Intersection::topRight};
 
-    return objectIntersectionPairsContainOnlyValuesFromIntersectionList(
+    return allIntersectionsAreInObjectIntersectionPairs(
         intersections, objectIntersectionPairs);
 }
 
@@ -256,17 +517,15 @@ bool intersectsInTopRightCornerWithTwoObjects(
 {
     std::vector<Intersection> intersectionsVariant1{Intersection::bottomRight,
                                                     Intersection::left};
-    auto isVariant1 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant1 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant1, objectIntersectionPairs);
     if (isVariant1) {
         return true;
     }
     std::vector<Intersection> intersectionsVariant2{Intersection::bottom,
                                                     Intersection::topLeft};
-    auto isVariant2 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant2 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant2, objectIntersectionPairs);
     return isVariant2;
 }
 
@@ -279,7 +538,7 @@ bool intersectsInTopRightCornerWithThreeObjects(
                                             Intersection::bottomLeft,
                                             Intersection::topLeft};
 
-    return objectIntersectionPairsContainOnlyValuesFromIntersectionList(
+    return allIntersectionsAreInObjectIntersectionPairs(
         intersections, objectIntersectionPairs);
 }
 
@@ -313,17 +572,15 @@ bool intersectsInBottomRightCornerWithTwoObjects(
 {
     std::vector<Intersection> intersectionsVariant1{Intersection::top,
                                                     Intersection::bottomLeft};
-    auto isVariant1 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant1 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant1, objectIntersectionPairs);
     if (isVariant1) {
         return true;
     }
     std::vector<Intersection> intersectionsVariant2{Intersection::left,
                                                     Intersection::topRight};
-    auto isVariant2 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant2 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant2, objectIntersectionPairs);
     return isVariant2;
 }
 
@@ -336,7 +593,7 @@ bool intersectsInBottomRightCornerWithThreeObjects(
                                             Intersection::topLeft,
                                             Intersection::bottomLeft};
 
-    return objectIntersectionPairsContainOnlyValuesFromIntersectionList(
+    return allIntersectionsAreInObjectIntersectionPairs(
         intersections, objectIntersectionPairs);
 }
 
@@ -370,17 +627,15 @@ bool intersectsInBottomLeftCornerWithTwoObjects(
 {
     std::vector<Intersection> intersectionsVariant1{Intersection::top,
                                                     Intersection::bottomRight};
-    auto isVariant1 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant1 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant1, objectIntersectionPairs);
     if (isVariant1) {
         return true;
     }
     std::vector<Intersection> intersectionsVariant2{Intersection::topLeft,
                                                     Intersection::right};
-    auto isVariant2 =
-        objectIntersectionPairsContainOnlyValuesFromIntersectionList(
-            intersectionsVariant1, objectIntersectionPairs);
+    auto isVariant2 = allIntersectionsAreInObjectIntersectionPairs(
+        intersectionsVariant2, objectIntersectionPairs);
     return isVariant2;
 }
 
@@ -393,7 +648,7 @@ bool intersectsInBottomLeftCornerWithThreeObjects(
                                             Intersection::topRight,
                                             Intersection::bottomRight};
 
-    return objectIntersectionPairsContainOnlyValuesFromIntersectionList(
+    return allIntersectionsAreInObjectIntersectionPairs(
         intersections, objectIntersectionPairs);
 }
 
@@ -472,6 +727,20 @@ bool intersectsFromBottomWithMultiObjects(
 }
 
 bool objectIntersectionPairsContainOnlyValuesFromIntersectionList(
+    const std::vector<Intersection>& intersections,
+    const std::vector<ObjectIntersectionPair>& objectIntersectionPairs)
+{
+    for (const auto& objectIntersectionPair : objectIntersectionPairs) {
+        auto it = std::find(intersections.begin(), intersections.end(),
+                            objectIntersectionPair.intersection);
+        if (it == intersections.end()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool allIntersectionsAreInObjectIntersectionPairs(
     const std::vector<Intersection>& intersections,
     const std::vector<ObjectIntersectionPair>& objectIntersectionPairs)
 {

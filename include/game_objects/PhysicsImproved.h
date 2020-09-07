@@ -7,7 +7,8 @@
 
 namespace bricks::types {
 class Angle;
-}
+class Point;
+} // namespace bricks::types
 
 namespace bricks::game_objects {
 
@@ -34,21 +35,56 @@ enum class Intersection {
 };
 
 struct ObjectIntersectionPair {
-    std::shared_ptr<GameObject> object;
+    std::unique_ptr<GameObject> object;
     Intersection intersection;
 };
 
-bool reflectFromPlatform(const Ball& ball, const Platform& platform);
+bool reflectFromPlatform(Ball& ball, const Platform& platform);
 
 std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
-    const Ball& ball, const std::vector<Wall>& walls,
+    Ball& ball, const std::vector<Wall>& walls,
     const std::vector<IndestructibleBrick>& indestructibleBrick,
     std::vector<Brick>& bricks);
 
-bool reflectFromSingleObject(const Ball& ball, const Platform& platform,
-                             const Intersection& intersection);
+template <typename GameObjectType>
+std::vector<ObjectIntersectionPair>
+getObjectIntersectionPairs(const Ball& ball,
+                           std::vector<GameObjectType>& gameObjects);
 
-bool reflectFromSingleObject(const Ball& ball, const GameObject& obj,
+std::vector<ObjectIntersectionPair>
+getObjectIntersectionPairs(const Ball& ball, std::vector<Brick>& bricks);
+
+Intersection getIntersection(const Ball& ball, const GameObject& obj);
+
+bool bottomRightIntersectsWithTopLeft(const types::Point& bottomRight1,
+                                      const types::Point& topLeft2,
+                                      const types::Point& bottomRight2);
+
+bool bottomLeftIntersectsWithTopRight(const types::Point& bottomLeft1,
+                                      const types::Point& topRight2,
+                                      const types::Point& bottomLeft2);
+
+bool topLeftIntersectsWithBottomRight(const types::Point& topLeft1,
+                                      const types::Point& bottomRight2,
+                                      const types::Point& topLeft2);
+
+bool topRightIntersectsWithBottomLeft(const types::Point& topRight1,
+                                      const types::Point& bottomLeft2,
+                                      const types::Point& topRight2);
+
+bool intersectsLeft(const std::vector<Intersection>& intersections);
+bool intersectsTop(const std::vector<Intersection>& intersections);
+bool intersectsRight(const std::vector<Intersection>& intersections);
+bool intersectsBottom(const std::vector<Intersection>& intersections);
+
+bool allExpectedIntersectionsAreInIntersections(
+    const std::vector<Intersection>& expectedIntersections,
+    const std::vector<Intersection>& intersections);
+
+void reflectFromSinglePlatform(Ball& ball, const Platform& platform,
+                               const Intersection& intersection);
+
+void reflectFromSingleObject(Ball& ball, const GameObject& obj,
                              const Intersection& intersection);
 
 void reflectFromMultipleObjects(
@@ -105,6 +141,10 @@ bool intersectsFromBottomWithMultiObjects(
     const std::vector<ObjectIntersectionPair>& objectIntersectionPairs);
 
 bool objectIntersectionPairsContainOnlyValuesFromIntersectionList(
+    const std::vector<Intersection>& intersections,
+    const std::vector<ObjectIntersectionPair>& objectIntersectionPairs);
+
+bool allIntersectionsAreInObjectIntersectionPairs(
     const std::vector<Intersection>& intersections,
     const std::vector<ObjectIntersectionPair>& objectIntersectionPairs);
 
