@@ -22,6 +22,8 @@ class Wall;
 
 namespace bricks::game_objects {
 
+namespace impl {
+
 enum class Intersection {
     none,
     left,
@@ -39,12 +41,16 @@ struct ObjectIntersectionPair {
     Intersection intersection;
 };
 
+} // namespace impl
+
 bool reflectFromPlatform(Ball& ball, const Platform& platform);
 
 std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
     Ball& ball, const std::vector<Wall>& walls,
     const std::vector<IndestructibleBrick>& indestructibleBrick,
     std::vector<Brick>& bricks);
+
+namespace impl {
 
 template <typename GameObjectType>
 std::vector<ObjectIntersectionPair>
@@ -183,6 +189,8 @@ bool isSmaller(double angle, double targetAngle, double delta);
 bool isBigger(double angle, double targetAngle, double delta);
 
 long double random(long double min, long double max);
+
+} // namespace impl
 
 } // namespace bricks::game_objects
 

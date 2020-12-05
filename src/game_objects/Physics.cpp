@@ -25,6 +25,8 @@ using Angle = types::Angle;
 using Point = types::Point;
 using Quadrant = types::Quadrant;
 
+namespace impl {
+
 template <typename GameObjectType>
 std::vector<ObjectIntersectionPair>
 getObjectIntersectionPairs(const Ball& ball,
@@ -54,14 +56,16 @@ template std::vector<ObjectIntersectionPair>
 getObjectIntersectionPairs<Wall>(const Ball& ball,
                                  const std::vector<Wall>& gameObjects);
 
+} // namespace impl
+
 bool reflectFromPlatform(Ball& ball, const Platform& platform)
 {
-    auto intersection = getIntersection(ball, platform);
-    if (intersection == Intersection::none) {
+    auto intersection = impl::getIntersection(ball, platform);
+    if (intersection == impl::Intersection::none) {
         return false;
     }
-    reflectFromSinglePlatform(ball, platform, intersection);
-    auto angle = clampAngle(ball.angle());
+    impl::reflectFromSinglePlatform(ball, platform, intersection);
+    auto angle = impl::clampAngle(ball.angle());
     ball.setAngle(angle);
     return true;
 }
@@ -71,13 +75,14 @@ std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
     const std::vector<IndestructibleBrick>& indestructibleBricks,
     std::vector<Brick>& bricks)
 {
-    auto wallPairs = getObjectIntersectionPairs(ball, walls);
+    auto wallPairs = impl::getObjectIntersectionPairs(ball, walls);
 
-    auto indBrickPairs = getObjectIntersectionPairs(ball, indestructibleBricks);
+    auto indBrickPairs =
+        impl::getObjectIntersectionPairs(ball, indestructibleBricks);
 
-    auto brickPairs = getObjectIntersectionPairs(ball, bricks);
+    auto brickPairs = impl::getObjectIntersectionPairs(ball, bricks);
 
-    std::vector<ObjectIntersectionPair> objectIntersectionPairs;
+    std::vector<impl::ObjectIntersectionPair> objectIntersectionPairs;
     objectIntersectionPairs.reserve(wallPairs.size() + indBrickPairs.size() +
                                     brickPairs.size());
 
@@ -89,16 +94,17 @@ std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
               std::back_inserter(objectIntersectionPairs));
 
     if (objectIntersectionPairs.size() == 1) {
-        reflectFromSingleObject(ball, *objectIntersectionPairs[0].object.get(),
-                                objectIntersectionPairs[0].intersection);
-        auto angle = clampAngle(ball.angle());
+        impl::reflectFromSingleObject(ball,
+                                      *objectIntersectionPairs[0].object.get(),
+                                      objectIntersectionPairs[0].intersection);
+        auto angle = impl::clampAngle(ball.angle());
         ball.setAngle(angle);
         return std::vector<std::shared_ptr<GameObject>>{
             std::move(objectIntersectionPairs[0].object)};
     }
     if (objectIntersectionPairs.size() > 1) {
         reflectFromMultipleObjects(ball, objectIntersectionPairs);
-        auto angle = clampAngle(ball.angle());
+        auto angle = impl::clampAngle(ball.angle());
         ball.setAngle(angle);
 
         std::vector<std::shared_ptr<GameObject>> hitObjects;
@@ -109,6 +115,8 @@ std::vector<std::shared_ptr<GameObject>> reflectFromGameObjects(
     }
     return std::vector<std::shared_ptr<GameObject>>{};
 }
+
+namespace impl {
 
 std::vector<ObjectIntersectionPair>
 getObjectIntersectionPairs(const Ball& ball, std::vector<Brick>& bricks)
@@ -976,5 +984,7 @@ bool isBigger(double angle, double targetAngle, double delta)
 {
     return angle >= targetAngle && angle < targetAngle + delta;
 }
+
+} // namespace impl
 
 } // namespace bricks::game_objects

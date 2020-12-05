@@ -281,8 +281,9 @@ TEST_P(CalcAngleFactorParametersTests, CheckResults)
     constexpr double xLeft = 0.0;
     constexpr double xCenter = 1.0;
     constexpr double xRight = 2.0;
-    EXPECT_NEAR(calcAngleFactor(xBall, xLeft, xCenter, xRight), expectedResult,
-                0.000000001);
+    EXPECT_NEAR(bricks::game_objects::impl::calcAngleFactor(xBall, xLeft,
+                                                            xCenter, xRight),
+                expectedResult, 0.000000001);
 }
 
 INSTANTIATE_TEST_SUITE_P(
@@ -302,7 +303,9 @@ TEST_P(ClampAngleParametersTests, CheckResults)
     auto input_angle = std::get<0>(GetParam());
     auto output_angle = std::get<1>(GetParam());
 
-    EXPECT_NEAR((clampAngle(Angle{input_angle}).get()), output_angle, 0.1);
+    EXPECT_NEAR(
+        (bricks::game_objects::impl::clampAngle(Angle{input_angle}).get()),
+        output_angle, 0.1);
 }
 
 INSTANTIATE_TEST_SUITE_P(
